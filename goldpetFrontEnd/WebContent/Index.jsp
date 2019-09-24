@@ -65,7 +65,7 @@ body, html {
 	height: 30%;
 }
 
-#imgPet{
+#imgPet>img{
 	border-radius: 70%; 
 	overflow: hidden;
 	width:150px; 
@@ -165,11 +165,11 @@ body, html {
 			
 			<div id="imgPet" class="row">
 				<img src="img/slide02.png" alt="slide02.png" class="img-thumbnail">
+				<img src="img/slide01.png" alt="slide01.png" class="img-thumbnail">
+				
 							
 			</div>
-				<div id="imgPet" class="row">
-				<img src="img/slide02.png" alt="slide02.png" class="img-thumbnail">
-							
+									
 			</div>
 			
 			
