@@ -19,7 +19,7 @@ CREATE TABLE Telefone{
 	constraint fkCodUserGuard foreign key (codUser) references Usuario (codUser)
 }CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-CREATE TABLE Guardi√£o{
+CREATE TABLE Guardi„o{
 	codUser integer not null,
 	animais_resgatados integer,
 	constraint fkCodUserGuard foreign key (codUser) references Usuario (codUser)
@@ -53,11 +53,9 @@ CREATE TABLE Laudo(
 
 CREATE TABLE Resgatados(
 	codResgate integer primary key auto_increment,
-	endere√ßo varchar(50) not null,
+	endereÁo varchar(50) not null,
 	nivelUrgencia varchar(25) not null
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
-
-							---PARTE DO FORUM---
 
 CREATE TABLE Perguntas(
 	codePerguntas integer primary key auto_increment,
