@@ -86,7 +86,7 @@ body, html {
 
 </style>
 </head>
-<body>
+<body background="img/bgPet.png">
 
 	<div id="esquerda"></div>
 	<div id="meio">
@@ -157,15 +157,19 @@ body, html {
 				<span class="sr-only">Avançar</span>
 			</a>
 			
-		</div>		
+		</div>
 		
 		<div id="dogF">
 			
-			<h4>Dogs para doação</h4>
+			<h4 style="margin-top:2%;">Dogs para doação</h4>
 			
 			<div id="imgPet" class="row">
 				<img src="img/slide02.png" alt="slide02.png" class="img-thumbnail">
 				<img src="img/slide01.png" alt="slide01.png" class="img-thumbnail">
+				<img src="img/slide02.png" alt="slide02.png" class="img-thumbnail">
+				<img src="img/slide01.png" alt="slide01.png" class="img-thumbnail">
+				<img src="img/slide02.png" alt="slide02.png" class="img-thumbnail">
+				
 				
 							
 			</div>
