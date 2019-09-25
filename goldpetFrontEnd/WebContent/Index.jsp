@@ -96,8 +96,10 @@ body, html {
 			<div id="imgLogo">
 				<img src="img/LogoPet.png" style="width: 220px; height: 220px; " />
 			</div>
-
+	
+			
 			<div class="navC">
+			<div class="d-flex">
 				<nav class="navbar navbar-expand-lg navbar-light minhaNav">
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
@@ -115,7 +117,8 @@ body, html {
 					</div>
 				</nav>
 			</div>
-
+			</div>
+	
 		</div>
 		
 		
@@ -169,15 +172,13 @@ body, html {
 				<img src="img/slide02.png" alt="slide02.png" class="img-thumbnail">
 				<img src="img/slide01.png" alt="slide01.png" class="img-thumbnail">
 				<img src="img/slide02.png" alt="slide02.png" class="img-thumbnail">
-				
-				
-							
-			</div>
-									
-			</div>
 			
+			</div>
 			
 		</div>
+			
+			
+	</div>
 		
 
 	</div>
