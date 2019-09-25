@@ -6,11 +6,11 @@ CREATE TABLE Usuario{
 	p_nome varchar(15) not null,
 	s_nome varchar(15) not null,
 	nascimento date not null,
-	Tipo varchar(10) not null,
-	Endereco varchar(40) not null,
-	Senha varchar(15) not null,
-	Email varchar(50) not null,
-	Genero varchar(1) not null
+	tipo varchar(10) not null,
+	endereco varchar(40) not null,
+	senha varchar(15) not null,
+	email varchar(50) not null,
+	genero varchar(1) not null
 }CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Telefone{
@@ -22,6 +22,7 @@ CREATE TABLE Telefone{
 CREATE TABLE Guardião{
 	codUser integer not null,
 	animais_resgatados integer,
+	rank varchar(30) not null,
 	constraint fkCodUserGuard foreign key (codUser) references Usuario (codUser)
 }CHARACTER SET utf8 COLLATE utf8_general_ci;
 
