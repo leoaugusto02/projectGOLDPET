@@ -3,6 +3,7 @@ use GoldPet;
 
 CREATE TABLE Usuario{
 	codUser integer primary key auto_increment,
+	nick_name varchar(20) not null,
 	p_nome varchar(15) not null,
 	s_nome varchar(15) not null,
 	nascimento date not null,

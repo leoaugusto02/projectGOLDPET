@@ -28,6 +28,10 @@
 		<h4>Digite seus dados nos campos abaixo</h4>
 		<div class="form-group">
 			<input type="name" class="form-group col-md-6"
+				placeholder="Apelido">
+		</div>
+		<div class="form-group">
+			<input type="name" class="form-group col-md-6"
 				placeholder="Primeiro Nome">
 		</div>
 		<div class="form-group">
@@ -41,13 +45,13 @@
 			<input type="text" class="form-group col-md-6" placeholder="Endereço">
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-group col-md-6" placeholder="Email">
+			<input type="email" class="form-group col-md-6" placeholder="Email">
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-group col-md-6" placeholder="Senha">
+			<input type="password" class="form-group col-md-6" placeholder="Senha">
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-group col-md-6"
+			<input type="password" class="form-group col-md-6"
 				placeholder="Confirmar Senha">
 		</div>
 		<div class="form-group">
