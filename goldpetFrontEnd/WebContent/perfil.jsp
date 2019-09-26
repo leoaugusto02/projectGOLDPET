@@ -51,6 +51,7 @@ body, html {
 	display: flex;
 	flex-direction: column;
 }
+
 </style>
 
 <meta charset="ISO-8859-1">
@@ -64,7 +65,7 @@ body, html {
 	<div id="esquerda"></div>
 	<div id="meio">
 
-		<div class= "container">
+		<div class="container">
 			<div id="cabecalho">
 
 				<div id="imgLogo">
@@ -103,11 +104,13 @@ body, html {
 					<div style="text-align: center">
 						<h2>GUARDIÃO</h2>
 						<div id="imgLogo">
-							<img src="img/escudo.png" style="width: 220px; height: 220px;" />
+							<img src="img/female-icon.jpg"
+								style="width: 240px; height: 250px;" />
 							<div style="margin: -80px 0px 0px 200px">
 								<img src="img/escudo.png" style="width: 80px; height: 60px;" />
 							</div>
 						</div>
+						<br>
 						<h4>NICKNAME</h4>
 					</div>
 
