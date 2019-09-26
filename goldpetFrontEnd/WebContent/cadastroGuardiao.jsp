@@ -21,7 +21,7 @@
 	<center>
 		<div class="container" style="position: center">
 			<div id="imgLogo">
-				<img src="img/LogoPet.png" style="width: 220px; height: 220px;" />
+				<img src="img/escudo.png" style="width: 220px; height: 220px;" />
 			</div>
 
 
