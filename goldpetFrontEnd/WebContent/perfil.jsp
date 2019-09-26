@@ -106,7 +106,7 @@ body, html {
 						<div id="imgLogo">
 							<img src="img/female-icon.jpg"
 								style="width: 240px; height: 250px;" />
-							<div style="margin: -80px 0px 0px 200px">
+							<div style="margin: -50px 0px 0px 280px">
 								<img src="img/escudo.png" style="width: 80px; height: 60px;" />
 							</div>
 						</div>
