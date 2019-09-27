@@ -76,7 +76,8 @@ body, html {
     padding: 0rem;
     background-color: #fff;
     border: 1px solid #dee2e6;
-    border-radius: .25rem;a
+    border-radius: .25rem;
+    max-width: 100%;
     height: auto;
 }
 .dogF{
@@ -85,7 +86,7 @@ body, html {
 
 </style>
 </head>
-<body background="img/bg-cadastro.png">
+<body background="img/bgPet.png">
 
 	<div id="esquerda"></div>
 	<div id="meio">
@@ -95,8 +96,10 @@ body, html {
 			<div id="imgLogo">
 				<img src="img/LogoPet.png" style="width: 220px; height: 220px; " />
 			</div>
-
+	
+			
 			<div class="navC">
+			<div class="d-flex">
 				<nav class="navbar navbar-expand-lg navbar-light minhaNav">
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
@@ -114,15 +117,68 @@ body, html {
 					</div>
 				</nav>
 			</div>
-
-		</div>
-
+			</div>
 	
+		</div>
+		
+		
+		<div id="carouselSite" class="carousel slide" data-ride="carousel">
+		
+			<ol class="carousel-indicators">
+				<li data-target="#carouselSite" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselSite" data-slide-to="1"></li>
+				<li data-target="#carouselSite" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">		
+				<div class="carousel-item active">
+				
+					<img class="d-block w-100" src="img/slide01.png" style="height:500px" class="img-fluid d-block">
+				
+				</div>
+				
+				<div class="carousel-item">
+				
+					<img class="d-block w-100" src="img/slide02.png" style="height:500px" class="img-fluid d-block">
+				
+				</div>
+				
+				<div class="carousel-item">
+				
+					<img class="d-block w-100" src="img/slide01.jpg" style="height:500px" class="img-fluid d-block">
+				
+				</div>
+				
+			</div>
 			
-
+			<a class="carousel-control-prev" href="#carouselSite" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon"></span>
+				<span class="sr-only">Anterior</span>
+			</a>
 			
+			<a class="carousel-control-next" href="#carouselSite" role="button" data-slide="next">
+				<span class="carousel-control-next-icon"></span>
+				<span class="sr-only">Avançar</span>
+			</a>
 			
 		</div>
+		
+		<div id="dogF">
+			
+			<h4 style="margin-top:2%;">Dogs para doação</h4>
+			
+			<div id="imgPet" class="row">
+				<img src="img/slide02.png" alt="slide02.png" class="img-thumbnail">
+				<img src="img/slide01.png" alt="slide01.png" class="img-thumbnail">
+				<img src="img/slide02.png" alt="slide02.png" class="img-thumbnail">
+				<img src="img/slide01.png" alt="slide01.png" class="img-thumbnail">
+				<img src="img/slide02.png" alt="slide02.png" class="img-thumbnail">
+			
+			</div>
+			
+		</div>
+			
+			
+	</div>
 		
 
 	</div>
