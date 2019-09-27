@@ -18,10 +18,9 @@
 </head>
 <body>
 
-	<center>
-		<div class="container" style="position: center">
+		<div class="container" style="text-align:center">
 			<div id="imgLogo">
-				<img src="img/LogoPet.png" style="width: 220px; height: 220px;" />
+				<img src="img/escudo.png" style="width: 220px; height: 220px;" />
 			</div>
 
 
@@ -69,9 +68,6 @@
 			</div>
 			<input type="button" value="Cadastrar" />
 		</div>
-
-
-	</center>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script>
 </body>
