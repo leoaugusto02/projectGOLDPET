@@ -185,7 +185,8 @@ body, html {
 
 						</div>
 					</div>
-					<button type="button" class="btn btn-primary">Cadastrar</button>
+					<br>
+					<button type="button" class="btn btn-primary">Adotar</button>
 
 				</div>
 			</div>
