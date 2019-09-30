@@ -120,9 +120,6 @@ body, html {
 					<div style="text-align: center">
 						<h2>Doguinho</h2>
 						<div class = "circulo square"></div>
-						<div  style="margin: -50px 0px 0px 280px">
-							<img src="img/escudo.png" style="width: 85px; height: 60px;" />
-						</div>
 					</div>
 
 				</div>
