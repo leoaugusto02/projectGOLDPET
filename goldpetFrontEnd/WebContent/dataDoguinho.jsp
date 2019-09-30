@@ -118,15 +118,11 @@ body, html {
 				<!-- User profile -->
 				<div class="container">
 					<div style="text-align: center">
-						<h2>GUARDIÃO</h2>
-							<div  style="padding-top: 50px;" >
-								<img src="img/male-icon.png" style="width: 300px; height: 300px;"/>
-							</div>
-							<div style="margin: -50px 0px 0px 280px">
-								<img src="img/escudo.png" style="width: 85px; height: 60px;" />
-							</div>
-						<br>
-						<h4>NICKNAME</h4>
+						<h2>Doguinho</h2>
+						<div class = "circulo square"></div>
+						<div  style="margin: -50px 0px 0px 280px">
+							<img src="img/escudo.png" style="width: 85px; height: 60px;" />
+						</div>
 					</div>
 
 				</div>
@@ -136,7 +132,7 @@ body, html {
 				<div class="container">
 					<div class="card  mb-8">
 
-						<h4 class="card-header">Informações Usuario</h4>
+						<h4 class="card-header">Informações Doge</h4>
 
 						<div class="panel-body" border="3px">
 							<table class="table profile__table">
@@ -148,28 +144,51 @@ body, html {
 										<th><strong>Data de Nascimento:</strong></th>
 									</tr>
 									<tr>
-										<th><strong>Genero: </strong></th>
+										<th><strong>Raça:</strong></th>
 									</tr>
 									<tr>
-										<th><strong>Telefone: </strong></th>
+										<th><strong>Porte: </strong></th>
 									</tr>
 									<tr>
-										<th><strong>Email:</strong></th>
+										<th><strong>Idade:</strong></th>
 									</tr>
 									<tr>
-										<th><strong>Endereço:</strong></th>
+										<th><strong>Genero:</strong></th>
 									</tr>
 									<tr>
-										<th><strong>Rank:</strong></th>
-									</tr>
-									<tr>
-										<th><strong>Animais Resgatados:</strong></th>
+										<th><strong>Status:</strong></th>
 									</tr>
 								</tbody>
 							</table>
 
 						</div>
 					</div>
+
+					<div class="card  mb-8">
+
+						<h4 class="card-header">Laudo</h4>
+
+						<div class="panel-body" border="3px">
+							<table class="table profile__table">
+								<tbody>
+									<tr>
+										<th><strong>Nome do Veterinario:</strong><label></label></th>
+									</tr>
+									<tr>
+										<th><strong>Data do Diagnostico:</strong></th>
+									</tr>
+									<tr>
+										<th><strong>Breve Diagnostico:</strong></th>
+									</tr>
+									<tr>
+										<th><strong>Diagnostico completo: </strong></th>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+					<button type="button" class="btn btn-primary">Cadastrar</button>
 
 				</div>
 			</div>

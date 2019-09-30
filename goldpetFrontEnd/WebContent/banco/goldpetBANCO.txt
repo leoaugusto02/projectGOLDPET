@@ -35,13 +35,12 @@ CREATE TABLE Funcionario{
 
 CREATE TABLE Animais(
 	codAnimal integer primary key auto_increment,
-	tipo varchar(15) not null,
+	especie varchar(15) not null,
 	raca varchar(25) not null,
 	porte varchar(15) not null,
 	idade integer not null,
 	status varchar(15) not null,
 	sexo varchar(10) not null,
-	laudo varchar(10) not null
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Laudo(
