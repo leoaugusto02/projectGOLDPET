@@ -8,12 +8,14 @@ CREATE TABLE Usuario(
 	s_nome varchar(15) not null,
 	nascimento date not null,
 	tipo varchar(10) not null,
-	endereco varchar(40) not null,
 	senha varchar(15) not null,
 	email varchar(50) not null,
 	cpf varchar(14) not null, 
-	rg varchar(10),
-	genero varchar(1) not null
+	genero varchar(1) not null,
+	rua varchar(40) not null,
+	numero varchar(6),
+	cep varchar(10),
+	bairro varchar(30)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Telefone(
@@ -25,6 +27,7 @@ CREATE TABLE Telefone(
 CREATE TABLE Guardiao(
 	codUser integer not null,
 	animais_resgatados integer,
+	rg varchar(10) not null,
 	rank varchar(30) not null,
 	constraint fkCodUserGuard foreign key (codUser) references Usuario (codUser)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -32,7 +35,7 @@ CREATE TABLE Guardiao(
 CREATE TABLE Funcionario(
 	codUser integer not null,
 	cargo varchar(20) not null,
-	cep varchar(10) not null,
+	rg varchar(10),
 	constraint fkCodUserFunc foreign key (codUser) references Usuario (codUser)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
