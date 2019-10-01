@@ -20,23 +20,14 @@
 		style="margin-left: 42.5%; margin-top: 10%; width: 300px; background-color: rgba(199, 252, 255, 0.5);">
 		<div>
 
-
 			<img src="img/LogoPet.png" width="300px" height="300px">
-
 
 		</div>
 		<div class="card-base">
 
-
-
-
-
-
 			<div class="card-content processing">
 
-
 				<form class="login-with-password-reset" method="POST">
-
 
 					<div class="form-group form-group-icon">
 						<input name="login" type="email"
@@ -72,14 +63,9 @@
 	</div>
 	<div class="card-base">
 
-
 		<div class="card-content processing"></div>
 
-
-
 	</div>
-
-
 
 </body>
 
