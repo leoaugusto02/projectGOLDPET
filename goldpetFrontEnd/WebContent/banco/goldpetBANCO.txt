@@ -22,7 +22,7 @@ CREATE TABLE Telefone(
 	constraint fkCodUserTel foreign key (codUser) references Usuario (codUser)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-CREATE TABLE Guardião(
+CREATE TABLE Guardiao(
 	codUser integer not null,
 	animais_resgatados integer,
 	rank varchar(30) not null,
