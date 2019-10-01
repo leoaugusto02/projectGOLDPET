@@ -178,7 +178,7 @@ body, html {
 										<th><strong>Breve Diagnostico:</strong></th>
 									</tr>
 									<tr>
-										<th><strong>Diagnostico completo: </strong></th>
+										<th><strong>Diagnostico completo:</strong></th>
 									</tr>
 								</tbody>
 							</table>
