@@ -14,29 +14,29 @@ CREATE TABLE Pessoa(
 	genero varchar(1) not null,
 	rua varchar(40) not null,
 	numero varchar(6),
-	cep varchar(10),
-	bairro varchar(30)S
-)CHARACTER SET utf8 COLLATE utf8_general_ci;
-
-CREATE TABLE Telefone(
-	codePerson integer not null,
-	telefone varchar(11),
-	constraint fkCodeUserTel foreign key (codePerson) references Pessoa (codePerson)
+	rg varchar(15),
+	bairro varchar(30),
+	referencia varchar(150),
+	imgPerfil varchar(40),
+	telefone1 varchar(11) not null,
+	telefone2 varchar(11)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Guardiao(
+	codeGuard integer primary key auto_increment,
 	codePerson integer not null,
 	animais_resgatados integer,
-	rg varchar(10) not null,
 	rank varchar(30) not null,
+	progresso integer(3) not null,
 	constraint fkCodePersonGuard foreign key (codePerson) references Pessoa (codePerson)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Funcionario(
+	codeFunc integer primary key auto_increment,
 	codePerson integer not null,
 	cargo varchar(20) not null,
-	rg varchar(10),
-	constraint fkCodeUserFunc foreign key (codePerson) references Pessoa (codePerson)
+	cep varchar(10),
+	constraint fkCodePersonFunc foreign key (codePerson) references Pessoa (codePerson)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Animais(
@@ -72,7 +72,7 @@ CREATE TABLE Perguntas(
 	pergunta varchar(50) not null,
 	descricao varchar(200),
 	tema varchar(10),
-	constraint fkCodUserPerg foreign key (codePerson) references Pessoa (codePerson)
+	constraint fkCodePersonPerg foreign key (codePerson) references Pessoa (codePerson)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Respostas(
@@ -81,5 +81,5 @@ CREATE TABLE Respostas(
 	codePerg integer not null,
 	resposta varchar(250) not null,
 	constraint fkCodeRespPerg foreign key (codePerg) references Perguntas (codePerguntas),
-	constraint fkCodeUserResp foreign key (codePerson) references Pessoa (codePerson)
+	constraint fkCodePersonResp foreign key (codePerson) references Pessoa (codePerson)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
