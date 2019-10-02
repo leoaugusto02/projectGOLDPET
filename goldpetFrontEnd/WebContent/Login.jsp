@@ -60,7 +60,7 @@
     
     <i class="fa fa-refresh animation-spin form-loading"></i>
     
-</button><button type="button" class="btn btn-success">entrar</button>
+</button><button type="button" class="btn btn-success" style="margin-left:25%;">entrar</button>
       </div>
         </form></div>
         <div style="padding-left: 50%;">
