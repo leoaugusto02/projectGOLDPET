@@ -15,7 +15,7 @@ CREATE TABLE Usuario(
 	rua varchar(40) not null,
 	numero varchar(6),
 	cep varchar(10),
-	bairro varchar(30)
+	bairro varchar(30)S
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Telefone(
