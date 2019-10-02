@@ -6,7 +6,7 @@
 </style>
 <head>
 <meta charset="ISO-8859-1">
-<title>Ajude nossa ONG</title>
+<title>Página Inicial</title>
 <!-- <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css"> -->
 
@@ -115,10 +115,6 @@ body, html {
 
 	<div class="conteudo">
 
-
-
-
-
 		<div id="esquerda"></div>
 		<div id="meio">
 
@@ -156,23 +152,72 @@ body, html {
 						</nav>
 					</div>
 				</div>
-				
-				
 
 			</div>
-
- 	<div>
-				<img src="img/Conta.png" style="width: 100%; height: 550px"/> 
 			
-			</div>
+			<form>
+				<div class="table" style="margin-bottom: 100px;">
+				
+					<table class="table table-striped">
+						
+						<thead class="table-dark">
+							<tr>
+								<th>Nome</th>
+								<th>CPF</th>							
+								<th>E-mail</th>
+								<th>Tipo</th>
+								<th>Editar</th>
+								<th>Excluir</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Leônidas Augusto</td>
+								<td>540524787-10</td>
+								<td>leo@gmail.com</td>
+								<td>Guardião</td>
+	        					<td>
+									<button type="button" class="btn btn-default btn-sm">
+	        							<span class="">
+	        								<img src="img/edit.svg" width="25" height="25" >
+	        							</span>
+	        						</button>
+	        					</td>
+	        					<td>
+									<button type="button" class="btn btn-default btn-sm">
+	        							<span class="">
+	        								<img src="img/garbage.svg" width="25" height="25" >
+	        							</span>
+	        						</button>
+	        					</td>
+							</tr>
+							<tr>
+								<td>Marcelo</td>
+								<td>405245878-10</td>
+								<td>celim@gmail.com</td>
+								<td>Administrador</td>
+								<td>
+									<button type="button" class="btn btn-default btn-sm">
+	        							<span class="">
+	        								<img src="img/edit.svg" width="25" height="25" >
+	        							</span>
+	        						</button>
+	        					</td>
+	        					<td>
+									<button type="button" class="btn btn-default btn-sm">
+	        							<span class="">
+	        								<img src="img/garbage.svg" width="25" height="25" >
+	        							</span>
+	        						</button>
+	        					</td>
+							</tr>
+						</tbody>
+					
+					</table>
+			
+				</div>
+			</form>
 
-			<div>
-				<h4 style="margin-top: 20px">Ajude a nossa a ONG  conseguir recursos necessários para dar uma
-  				  vida mais confortável e alegre para os nossos animais. Nossa meta desse 
-  				  mês R$1500,00, ajude-nos!!
-  				 </h4>
-				 <h4>Quantidade arrecada: <img src="img/carregamento.jpg"></h4>
-			</div>
 		</div>
 
 
@@ -181,13 +226,15 @@ body, html {
 
 	</div>
 
-	<div id="finalPg">
+	<div id="finalPg" >
 	<img src="img/Rodape2.png" />
 	</div>
 
 
 	<!-- <script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script> -->
+	
+	<!-- Modal -->
 
 </body>
 </html>
