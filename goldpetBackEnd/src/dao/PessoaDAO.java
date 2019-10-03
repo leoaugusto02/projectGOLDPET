@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import vo.Animais;
 import vo.Guardiao;
 import vo.Pessoa;
 
@@ -67,7 +68,7 @@ public class PessoaDAO {
 		
 		String sql = "SELECT nick_name, p_nome, s_nome, nascimento, genero, telefone1, telefone2, email, rank, animais_resgatados,"
 				+ " progresso, imgPerfil FROM Pessoa p"
-				+ " INNER JOIN Guardiao g ON p.codePessoa = g.codePessoa";
+				+ " INNER JOIN Guardiao g ON p.codePessoa = g.codePessoa WHERE p.codePessoa = ?";
 
 		
 		
@@ -79,9 +80,9 @@ public class PessoaDAO {
 		ResultSet rs = ps.executeQuery();
 
 		if (rs.next()) {
-			Pessoa p = new Pessoa();
-			Guardiao g = new Guardiao();
+			Guardiao g = new Guardiao();			
 			
+			p.setCodePerson(rs.getInt("p.codePerson"));
 			p.setApelido(rs.getString("nick_name"));
 			p.setP_nome(rs.getString("p_nome"));
 			p.setS_nome(rs.getString("s_nome"));
@@ -91,6 +92,7 @@ public class PessoaDAO {
 			p.setTel2(rs.getString("telefone2"));
 			p.setEmail(rs.getString("email"));
 			p.setImgPerfil(rs.getString("imgPerfil"));
+			
 			
 			g.setRank(rs.getString("rank"));
 			g.setAnimasResgatados(rs.getInt("animaisResgatados"));
@@ -102,6 +104,18 @@ public class PessoaDAO {
 		}
 
 		return null;
+	}
+	
+	public Animais listarAnimal(int codeAnimal) {
+		
+		String sql = "SELECT especie, raca, porte, idade, sexo, status, nomeVeterinario, dataDiagnostico, diagnostico, imagem "
+				+ " FROM Animal a INNER JOIN Laudo l ON a.codeAnimal = l.codeAnimal";
+				
+		con = ConnectionDB.getConnection();
+		
+		ps = con.prepareStatement(sql);
+		ps.set
+		
 	}
 	
 }

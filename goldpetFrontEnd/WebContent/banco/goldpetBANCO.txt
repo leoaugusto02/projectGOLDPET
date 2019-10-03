@@ -55,7 +55,7 @@ CREATE TABLE Laudo(
 	constraint fkCodeAnimalLaudo foreign key (codeAnimal) references Animais (codeAnimal)
 );
 
-CREATE TABLE Resgate(
+CREATE TABLE Resgate(	
 	codeResgate integer primary key auto_increment,
 	descricao varchar (150) not null,
 	endereço varchar(50) not null,
