@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import vo.Guardiao;
 import vo.Pessoa;
 import vo.Usuario;
 
@@ -65,8 +66,12 @@ public class PessoaDAO {
 	
 	public Pessoa listarPessoa(int codePessoa) throws SQLException {
 		
-		String sql = "SELECT * FROM Pessoa WHERE CodeUser = ?";
+		String sql = "SELECT nick_name, p_nome, s_nome, nascimento, genero, telefone1, telefone2, email, rank, animais_resgatados,"
+				+ " progresso, imgPerfil FROM Pessoa p"
+				+ " INNER JOIN Guardiao g ON p.codePessoa = g.codePessoa";
 
+		
+		
 		con = ConnectionDB.getConnection();
 
 		ps = con.prepareStatement(sql);
@@ -76,17 +81,24 @@ public class PessoaDAO {
 
 		if (rs.next()) {
 			Pessoa p = new Pessoa();
-
+			Guardiao g = new Guardiao();
+			
 			p.setApelido(rs.getString("nick_name"));
 			p.setP_nome(rs.getString("p_nome"));
 			p.setS_nome(rs.getString("s_nome"));
-			p.setNascimento(rs.getDate("Nascimento"));
-			p.setGenero(rs.getString("Genero"));
-			p.setTel1(rs.getString("Telefone"));
+			p.setNascimento(rs.getDate("nascimento"));
+			p.setGenero(rs.getString("genero"));
+			p.setTel1(rs.getString("telefone1"));
+			p.setTel2(rs.getString("telefone2"));
 			p.setEmail(rs.getString("email"));
-			p.getGuardiao().setRank(rs.getString("rank"));
-			p.getGuardiao().setAnimasResgatados(rs.getInt("animaisResgatados"));
-
+			p.setImgPerfil(rs.getString("imgPerfil"));
+			
+			g.setRank(rs.getString("rank"));
+			g.setAnimasResgatados(rs.getInt("animaisResgatados"));
+			g.setProgresso(rs.getInt("progresso"));
+			
+			p.setGuardiao(g);
+			
 			return p;
 		}
 

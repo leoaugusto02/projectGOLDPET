@@ -12,10 +12,8 @@ CREATE TABLE Pessoa(
 	email varchar(50) not null,
 	cpf varchar(14) not null, 
 	genero varchar(1) not null,
-	rua varchar(40) not null,
-	numero varchar(6),
 	rg varchar(15),
-	bairro varchar(30),
+	cep varchar(10),
 	referencia varchar(150),
 	imgPerfil varchar(40),
 	telefone1 varchar(11) not null,
@@ -35,7 +33,6 @@ CREATE TABLE Funcionario(
 	codeFunc integer primary key auto_increment,
 	codePerson integer not null,
 	cargo varchar(20) not null,
-	cep varchar(10),
 	constraint fkCodePersonFunc foreign key (codePerson) references Pessoa (codePerson)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
