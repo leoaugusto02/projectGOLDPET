@@ -9,7 +9,6 @@ import java.util.List;
 
 import vo.Guardiao;
 import vo.Pessoa;
-import vo.Usuario;
 
 public class PessoaDAO {
 
