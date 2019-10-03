@@ -128,8 +128,8 @@ body, html {
 					<img src="img/LogoPet.png" style="width: 220px; height: 220px;" />
 				</div>
 
-
 				<div class="navC d-flex w-100 justfy-content-center">
+				
 					<div class="w-100">
 						<nav class="navbar navbar-expand-md navbar-light minhaNav">
 							<div class="w-100" id="navbarSupportedContent">
@@ -262,7 +262,7 @@ body, html {
 
 
 		</div>
-	
+
 
 
 		<div id="direita"></div>
