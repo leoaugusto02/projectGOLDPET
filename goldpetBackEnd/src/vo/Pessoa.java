@@ -1,16 +1,16 @@
 package vo;
 
-public class Usuario {
+public class Pessoa {
 
-	private Integer codUser;
+	private Integer codePerson;
 	private String apelido, p_nome, s_nome, tipo, endereco, senha, email, cpf, rg, genero;
 	
-	public Usuario(){}
+	public Pessoa(){}
 	
-	public Usuario(Integer codUser, String apelido, String p_nome, String s_nome, String tipo, String endereco,
+	public Pessoa(Integer codePerson, String apelido, String p_nome, String s_nome, String tipo, String endereco,
 			String senha, String email, String cpf, String rg, String genero) {
 		super();
-		this.codUser = codUser;
+		this.codePerson = codePerson;
 		this.apelido = apelido;
 		this.p_nome = p_nome;
 		this.s_nome = s_nome;
@@ -22,12 +22,15 @@ public class Usuario {
 		this.rg = rg;
 		this.genero = genero;
 	}
-	public Integer getCodUser() {
-		return codUser;
+	
+	public Integer getCodePerson() {
+		return codePerson;
 	}
-	public void setCodUser(Integer codUser) {
-		this.codUser = codUser;
+
+	public void setCodePerson(Integer codePerson) {
+		this.codePerson = codePerson;
 	}
+
 	public String getApelido() {
 		return apelido;
 	}

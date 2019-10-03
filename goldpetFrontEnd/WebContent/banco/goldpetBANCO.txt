@@ -1,8 +1,8 @@
 CREATE DATABASE IF NOT EXISTS GoldPet DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 use GoldPet;
 
-CREATE TABLE Usuario(
-	codUser integer primary key auto_increment,
+CREATE TABLE Pessoa(
+	codePerson integer primary key auto_increment,
 	nick_name varchar(20) not null,
 	p_nome varchar(15) not null,
 	s_nome varchar(15) not null,
@@ -15,32 +15,32 @@ CREATE TABLE Usuario(
 	rua varchar(40) not null,
 	numero varchar(6),
 	cep varchar(10),
-	bairro varchar(30)
+	bairro varchar(30)S
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Telefone(
-	codUser integer not null,
+	codePerson integer not null,
 	telefone varchar(11),
-	constraint fkCodUserTel foreign key (codUser) references Usuario (codUser)
+	constraint fkCodeUserTel foreign key (codePerson) references Pessoa (codePerson)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Guardiao(
-	codUser integer not null,
+	codePerson integer not null,
 	animais_resgatados integer,
 	rg varchar(10) not null,
 	rank varchar(30) not null,
-	constraint fkCodUserGuard foreign key (codUser) references Usuario (codUser)
+	constraint fkCodePersonGuard foreign key (codePerson) references Pessoa (codePerson)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Funcionario(
-	codUser integer not null,
+	codePerson integer not null,
 	cargo varchar(20) not null,
 	rg varchar(10),
-	constraint fkCodUserFunc foreign key (codUser) references Usuario (codUser)
+	constraint fkCodeUserFunc foreign key (codePerson) references Pessoa (codePerson)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Animais(
-	codAnimal integer primary key auto_increment,
+	codeAnimal integer primary key auto_increment,
 	especie varchar(15) not null,
 	raca varchar(25) not null,
 	porte varchar(15) not null,
@@ -50,16 +50,16 @@ CREATE TABLE Animais(
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Laudo(
-	codAnimal integer not null,
+	codeAnimal integer not null,
 	nomeVeterinario varchar(40) not null,
 	dataDiagnostico date not null,
 	diagnostico varchar(100) not null,
 	imagem varchar(30),
-	constraint fkCodAnimalLaudo foreign key (codAnimal) references Animais (codAnimal)
+	constraint fkCodeAnimalLaudo foreign key (codeAnimal) references Animais (codeAnimal)
 );
 
 CREATE TABLE Resgate(
-	codResgate integer primary key auto_increment,
+	codeResgate integer primary key auto_increment,
 	descricao varchar (150) not null,
 	endereço varchar(50) not null,
 	dogeImagem varchar (20) not null,
@@ -67,19 +67,19 @@ CREATE TABLE Resgate(
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Perguntas(
-	codPerguntas integer primary key auto_increment,
-	codUser integer not null,
+	codePerguntas integer primary key auto_increment,
+	codePerson integer not null,
 	pergunta varchar(50) not null,
 	descricao varchar(200),
 	tema varchar(10),
-	constraint fkCodUserPerg foreign key (codUser) references Usuario (codUser)
+	constraint fkCodUserPerg foreign key (codePerson) references Pessoa (codePerson)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Respostas(
 	codeRespostas integer primary key auto_increment,
-	codUser integer not null,
-	codPerg integer not null,
+	codePerson integer not null,
+	codePerg integer not null,
 	resposta varchar(250) not null,
-	constraint fkCodeRespPerg foreign key (codPerg) references Perguntas (codPerguntas),
-	constraint fkCodeUserResp foreign key (codUser) references Usuario (codUser)
+	constraint fkCodeRespPerg foreign key (codePerg) references Perguntas (codePerguntas),
+	constraint fkCodeUserResp foreign key (codePerson) references Pessoa (codePerson)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
