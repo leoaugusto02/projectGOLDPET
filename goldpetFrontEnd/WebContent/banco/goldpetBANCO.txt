@@ -55,7 +55,7 @@ CREATE TABLE Laudo(
 	constraint fkCodeAnimalLaudo foreign key (codeAnimal) references Animais (codeAnimal)
 );
 
-CREATE TABLE Resgate(
+CREATE TABLE Resgate(	
 	codeResgate integer primary key auto_increment,
 	descricao varchar (150) not null,
 	endereço varchar(50) not null,
@@ -69,7 +69,7 @@ CREATE TABLE Perguntas(
 	pergunta varchar(50) not null,
 	descricao varchar(200),
 	tema varchar(10),
-	constraint fkCodePersonPerg foreign key (codePerson) references Pessoa (codePerson)
+	constraint fkCodePergPerson foreign key (codePerson) references Pessoa (codePerson)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Respostas(
@@ -77,6 +77,18 @@ CREATE TABLE Respostas(
 	codePerson integer not null,
 	codePerg integer not null,
 	resposta varchar(250) not null,
-	constraint fkCodeRespPerg foreign key (codePerg) references Perguntas (codePerguntas),
+	constraint fkCodePergResp foreign key (codePerg) references Perguntas (codePerguntas),
 	constraint fkCodePersonResp foreign key (codePerson) references Pessoa (codePerson)
+)CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE Agenda(
+	codeAgenda integer primary key auto_increment,
+	codePerson integer,
+	codeAnimal integer,
+	data_adocao DATE not null,
+	horario_adocao not null,
+	adotado varchar(18) not null,
+	transportado varchar(19) not null,
+	constraint fkCodePersonAgenda foreign key (codePerson) references Pessoa (codePessoa),
+	constraint fkCodeAnimalAgenda foreign key (codeAnimal) references Animal (codeAnimal)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
