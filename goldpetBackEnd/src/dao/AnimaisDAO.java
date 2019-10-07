@@ -52,7 +52,7 @@ public class AnimaisDAO {
 
 	public boolean inserirAnimal(Animais a) throws SQLException {
 		
-		String sql = "INSERT INTO Animais VALUES(NULL, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO Animais VALUES(NULL, ?, ?, ?, ?, ?, ?, ?)";
 		
 		ps = con.prepareStatement(sql);
 		ps.setString(1, a.getEspecie());
@@ -60,7 +60,10 @@ public class AnimaisDAO {
 		ps.setString(4, a.getPorte());
 		ps.setInt(4, a.getIdade());
 		ps.setString(5, a.getStatus());
-		ps.setString(6, a.get);
+		ps.setString(6, a.getSexo());
+		ps.setString(7, a.getImgAnimal());
+		
+		return ps.executeUpdate() > 0;
 
 	}
 }
