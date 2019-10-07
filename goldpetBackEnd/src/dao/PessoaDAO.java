@@ -9,6 +9,7 @@ import java.util.List;
 
 import vo.Animais;
 import vo.Guardiao;
+import vo.Laudo;
 import vo.Pessoa;
 
 public class PessoaDAO {
@@ -80,6 +81,7 @@ public class PessoaDAO {
 		ResultSet rs = ps.executeQuery();
 
 		if (rs.next()) {
+			Pessoa p = new Pessoa();
 			Guardiao g = new Guardiao();			
 			
 			p.setCodePerson(rs.getInt("p.codePerson"));
@@ -93,7 +95,6 @@ public class PessoaDAO {
 			p.setEmail(rs.getString("email"));
 			p.setImgPerfil(rs.getString("imgPerfil"));
 			
-			
 			g.setRank(rs.getString("rank"));
 			g.setAnimasResgatados(rs.getInt("animaisResgatados"));
 			g.setProgresso(rs.getInt("progresso"));
@@ -104,18 +105,6 @@ public class PessoaDAO {
 		}
 
 		return null;
-	}
-	
-	public Animais listarAnimal(int codeAnimal) {
-		
-		String sql = "SELECT especie, raca, porte, idade, sexo, status, nomeVeterinario, dataDiagnostico, diagnostico, imagem "
-				+ " FROM Animal a INNER JOIN Laudo l ON a.codeAnimal = l.codeAnimal";
-				
-		con = ConnectionDB.getConnection();
-		
-		ps = con.prepareStatement(sql);
-		ps.set
-		
 	}
 	
 }

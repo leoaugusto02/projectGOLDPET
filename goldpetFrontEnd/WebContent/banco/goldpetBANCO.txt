@@ -55,6 +55,14 @@ CREATE TABLE Laudo(
 	constraint fkCodeAnimalLaudo foreign key (codeAnimal) references Animais (codeAnimal)
 );
 
+CREATE TABLE Adocao(
+	codeAdocao integer primary key auto_increment,
+	codePerson integer,
+	codeAnimal integer,
+	constraint fkCodePersonAdocao foreign key (codePerson) references Person (codePerson),
+	constraint fkCodeAnimalAdocao foreign key (codeAnimal) references Animais (codeAnimal)
+);
+
 CREATE TABLE Resgate(	
 	codeResgate integer primary key auto_increment,
 	descricao varchar (150) not null,

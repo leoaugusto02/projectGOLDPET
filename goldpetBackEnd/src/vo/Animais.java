@@ -9,13 +9,14 @@ public class Animais {
 	private Integer idade;
 	private String status;
 	private String sexo;
+	private Laudo laudo;
 
 	public Animais() {
 		super();
 	}
 	
 	public Animais(Integer codAnimal, String especie, String raca, String porte, Integer idade, String status,
-			String sexo) {
+			String sexo, Laudo laudo) {
 		super();
 		this.codAnimal = codAnimal;
 		this.especie = especie;
@@ -24,8 +25,9 @@ public class Animais {
 		this.idade = idade;
 		this.status = status;
 		this.sexo = sexo;
+		this.laudo = laudo;
 	}
-	
+
 	public Integer getCodAnimal() {
 		return codAnimal;
 	}
@@ -68,6 +70,12 @@ public class Animais {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	
 
+	public Laudo getLaudo() {
+		return laudo;
+	}
+
+	public void setLaudo(Laudo laudo) {
+		this.laudo = laudo;
+	}
 }
