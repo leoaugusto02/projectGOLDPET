@@ -9,26 +9,26 @@ import vo.Animais;
 import vo.Laudo;
 
 public class AnimaisDAO {
-	
+
 	private Connection con;
 	private PreparedStatement ps;
-	
-public Animais listarAnimal(int codeAnimal) throws SQLException {
-		
+
+	public Animais listarAnimal(int codeAnimal) throws SQLException {
+
 		String sql = "SELECT especie, raca, porte, idade, sexo, status, nomeVeterinario, dataDiagnostico, diagnostico, imagem "
 				+ " FROM Animal a INNER JOIN Laudo l ON a.codeAnimal = l.codeAnimal WHERE a.codeAnimal = ?";
-				
+
 		con = ConnectionDB.getConnection();
-		
+
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, codeAnimal);
-		
+
 		ResultSet rs = ps.executeQuery();
-		
-		if(rs.next()) {
+
+		if (rs.next()) {
 			Animais a = new Animais();
 			Laudo l = new Laudo();
-			
+
 			a.setCodAnimal(rs.getInt("a.codeAnimal"));
 			a.setEspecie(rs.getString("especie"));
 			a.setRaca(rs.getString("raca"));
@@ -36,18 +36,31 @@ public Animais listarAnimal(int codeAnimal) throws SQLException {
 			a.setIdade(rs.getInt("idade"));
 			a.setSexo(rs.getString("sexo"));
 			a.setStatus(rs.getString("status"));
-			
+
 			l.setNomeVeterinario(rs.getString("nomeVeterinario"));
 			l.setDataDiagnostico(rs.getString("dataDiagnostico"));
 			l.setDiagnostico(rs.getString("diagnostico"));
 			l.setImagem(rs.getString("imagem"));
-			
+
 			a.setLaudo(l);
-			
+
 			return a;
 		}
-		
+
 		return null;
 	}
-	
+
+	public boolean inserirAnimal(Animais a) throws SQLException {
+		
+		String sql = "INSERT INTO Animais VALUES(NULL, ?, ?, ?, ?, ?, ?)";
+		
+		ps = con.prepareStatement(sql);
+		ps.setString(1, a.getEspecie());
+		ps.setString(2, a.getRaca());
+		ps.setString(4, a.getPorte());
+		ps.setInt(4, a.getIdade());
+		ps.setString(5, a.getStatus());
+		ps.setString(6, a.get);
+
+	}
 }
