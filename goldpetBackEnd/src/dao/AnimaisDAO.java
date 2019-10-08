@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import vo.Animais;
 import vo.Laudo;
@@ -80,32 +82,5 @@ public class AnimaisDAO {
 		
 		return ps.executeUpdate() > 0;
 	}
-	
-	public boolean inserirResgate(Resgate r) throws SQLException {
-		
-		String sql = "INSERT INTO Resgate VALUES(NULL, ?, ?, ?, ?)";
-		
-		ps = con.prepareStatement(sql);
-		ps.setString(1, r.getDescricao());
-		ps.setString(2, r.getEndereco());
-		ps.setString(3, r.getDogeImagem());
-		ps.setString(4, r.getNivelUrgencia());
-		
-		return ps.executeUpdate() > 0;
-	}
-	
-	public Resgate ultimosResgate(Resgate r) throws SQLException {
-		
-		String sql = "SELECT descricao, endereco,  FROM Resgate ORDER BY nivelUrgencia DESC";
-		
-		ps = con.prepareStatement(sql);
-		
-		ResultSet rs = ps.executeQuery();
-		
-		while(rs.next()) {
-			
-			r.setCodResgate(rs.getInt("codeResgate"));
-		}
-	}
-	
+	 
 }
