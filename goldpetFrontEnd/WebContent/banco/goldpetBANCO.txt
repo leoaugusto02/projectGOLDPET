@@ -26,7 +26,7 @@ CREATE TABLE Guardiao(
 	animais_resgatados integer,
 	rank varchar(30) not null,
 	progresso integer(3) not null,
-	status varchar varchar(8) not null,
+	status varchar(8) not null,
 	constraint fkCodePersonGuard foreign key (codePerson) references Pessoa (codePerson)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
