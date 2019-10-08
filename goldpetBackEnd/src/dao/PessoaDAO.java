@@ -7,9 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import vo.Animais;
 import vo.Guardiao;
-import vo.Laudo;
 import vo.Pessoa;
 
 public class PessoaDAO {
