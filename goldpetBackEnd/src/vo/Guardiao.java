@@ -2,16 +2,19 @@ package vo;
 
 public class Guardiao {
 	private Integer codeGuard, animasResgatados, progresso;
-	private String rank;
-	
-	public Guardiao() {super();}
-	
-	public Guardiao(Integer codeGuard, Integer animasResgatados, Integer progresso, String rank) {
+	private String rank, status;
+
+	public Guardiao() {
+		super();
+	}
+
+	public Guardiao(Integer codeGuard, Integer animasResgatados, Integer progresso, String rank, String status) {
 		super();
 		this.codeGuard = codeGuard;
 		this.animasResgatados = animasResgatados;
 		this.progresso = progresso;
 		this.rank = rank;
+		this.status = status;
 	}
 
 	public Integer getCodeGuard() {
@@ -45,5 +48,12 @@ public class Guardiao {
 	public void setRank(String rank) {
 		this.rank = rank;
 	}
-	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }

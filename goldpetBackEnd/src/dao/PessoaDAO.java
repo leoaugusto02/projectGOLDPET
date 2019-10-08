@@ -40,7 +40,7 @@ public class PessoaDAO {
 
 		String sql = "BEGIN TRANSACTION;\r\n" + 
 				"INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);\r\n" + 
-				"INSERT INTO Guardiao VALUES(null, LAST_INSERT_ID(), 0, \"Iniciante\", 0);\r\n" + 
+				"INSERT INTO Guardiao VALUES(null, LAST_INSERT_ID(), 0, \"Iniciante\", 0, \"ativo\");\r\n" + 
 				"COMMIT";
 
 		con = ConnectionDB.getConnection();
@@ -137,7 +137,7 @@ public class PessoaDAO {
 	
 	public boolean verificarUsuario(Pessoa p) throws SQLException {
 
-		String sql = "SELECT * FROM pessoa WHERE apelido = ? OR email = ?";
+		String sql = "SELECT * FROM Pessoa WHERE apelido = ? OR email = ?";
 
 		con = ConnectionDB.getConnection();
 
