@@ -93,10 +93,9 @@ body, html {
 	padding-left: 15px;
 }
 
-#a{
-	color:black;
+#a {
+	color: black;
 	text-decoration: none;
-
 }
 </style>
 </head>
@@ -143,6 +142,91 @@ body, html {
 
 			</div>
 
+			<div id="buttonAdd"
+				style="margin-left: 86%; margin-bottom: 2%; width: 15%;">
+				<button type="button" class="btn btn-outline-success"
+					data-toggle="modal" data-target="#siteModal">
+					<img alt="add.png" src="img/add.png"
+						style="height: 20px; width: 20px; margin-left: -0.5;">
+					Adicinar Dog
+				</button>
+			</div>
+
+			<div class="modal" id="siteModal" tabindex="-1" role="dialog"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+
+						<div class="modal-header" style="background-color: #139F97;">
+							<h5 class="modal-title">Adicionar Pet</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span>x</span>
+							</button>
+						</div>
+
+						<div class="modal-body">
+							<div>
+
+								<input class="form-control" type="text" placeholder="nome do pet" style="margin-bottom:3%;"/>
+								
+								<input class="form-control" type="number" placeholder="Idade" style="margin-bottom:3%;" />
+
+								<input class="form-control" type="text" placeholder="Raça" style="margin-bottom:3%;" />
+								
+								<input class="form-control" type="text" placeholder="Porte" style="margin-bottom:3%;" />
+
+								<input class="form-control" type="text" placeholder="Espécie" style="margin-bottom:3%;" />
+								
+								<div class="form-check form-check-inline" style="margin-bottom:2%;">
+									<input class="form-check-input" type="radio"
+										name="inlineRadioOptions" id="inlineRadio1" value="option1">
+									<label class="form-check-label" for="inlineRadio1">
+									<img alt="feminino.png" src="img/feminino.png" 
+									style="height: 25px; width: 25px; margin-left: -0.5;">Fêmea</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio"
+										name="inlineRadioOptions" id="inlineRadio2" value="option2">
+									<label class="form-check-label" for="inlineRadio2">
+									<img alt="masculino.png" src="img/masculino.png" 
+									style="height: 25px; width: 25px; margin-left: -0.5;">Macho</label>
+									
+								</div>
+								
+								<div id="textArea">
+									<textarea class="form-control" id="textarea" placeholder="Status do Pet" rows="3" 
+									style="margin-top: 2px; margin-bottom: 0px; height: 80px; width:470px;"></textarea>
+								</div>
+								
+								<div>
+								
+									<button action="upload" type="file"
+									class="btn btn-outline-info" style="float:right; margin-top:2%;">
+									<img alt="petIcon.png" src="img/PetIcon.png"
+									style="height: 20px; width: 20px; margin-left:-1%;">Imagem Pet</button>
+									
+								</div>
+							</div>
+						</div>
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-danger"
+								data-dismiss="modal">
+								<img alt="close.png" src="img/close.png"
+									style="height: 20px; width: 20px; margin-left: -0.5;" /> Close
+							</button>
+							<button type="button" class="btn btn-outline-success">
+								<img alt="postar.png" src="img/postar.png"
+									style="height: 20px; width: 20px; margin-left: -0.5;" />
+								Postar
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
 			<div class="d-flex justify-content-around">
 				<div id="infoDog">
 					<div class="card bg-dark text-white" style="width: 23rem;">
@@ -183,8 +267,8 @@ body, html {
 					</div>
 				</div>
 			</div>
-			
-			<div class="d-flex justify-content-around" style="margin-top:2%;">
+
+			<div class="d-flex justify-content-around" style="margin-top: 2%;">
 				<div id="infoDog">
 					<div class="card bg-dark text-white" style="width: 23rem;">
 						<img src="img/slide01.png" class="card-img" href="#"
@@ -224,7 +308,7 @@ body, html {
 					</div>
 				</div>
 			</div>
-			
+
 
 
 
