@@ -11,6 +11,7 @@ import vo.Animais;
 import vo.Guardiao;
 import vo.Laudo;
 import vo.Pessoa;
+import vo.Usuario;
 
 public class PessoaDAO {
 
@@ -134,6 +135,29 @@ public class PessoaDAO {
 			return lstPessoa;
 		}
 		return null;
+	}
+	
+	public boolean editarDashBoard(int codePerson) {
+		
+		
+	}
+	
+	public boolean verificarUsuario(Pessoa p) throws SQLException {
+
+		String sql = "SELECT * FROM pessoa WHERE apelido = ? OR email = ?";
+
+		con = ConnectionDB.getConnection();
+
+		ps = con.prepareStatement(sql);
+		ps.setString(1, p.getApelido());
+		ps.setString(2, p.getEmail());
+
+		ResultSet rs = ps.executeQuery();
+
+		if (rs.next()) {
+			return false;
+		}
+		return true;
 	}
 	
 }
