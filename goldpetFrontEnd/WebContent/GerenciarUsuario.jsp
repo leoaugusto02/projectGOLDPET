@@ -163,9 +163,11 @@ body, html {
 							<tr>
 								<th name="nome">Nome</th>
 								<th>CPF</th>
+								<th>RG</th>
 								<th>E-mail</th>
 								<th>Tipo</th>
 								<th>CEP</th>
+								<th>Telefone</th>
 								<th>Editar</th>
 								<th>Excluir</th>
 							</tr>
@@ -174,9 +176,11 @@ body, html {
 							<tr>
 								<td>Leônidas Augusto</td>
 								<td>540524787-10</td>
+								<td>518942549146</td>
 								<td>leo@gmail.com</td>
 								<td>Guardião</td>
 								<td>1520</td>
+								<td>19985624851</td>
 								<td>
 									<button type="button" class="btn btn-default btn-sm"
 										data-toggle="modal" data-target="#exampleModal">
@@ -196,9 +200,11 @@ body, html {
 							<tr>
 								<td>Marcelo</td>
 								<td>405245878-10</td>
+								<td>1526546315110</td>
 								<td>celim@gmail.com</td>
 								<td>Funcionário</td>
 								<td>266326</td>
+								<td>19954821657</td>
 								<td>
 									<button type="button" class="btn btn-default btn-sm"
 										data-toggle="modal" data-target="#exampleModal">
