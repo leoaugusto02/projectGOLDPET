@@ -11,7 +11,6 @@ import vo.Animais;
 import vo.Guardiao;
 import vo.Laudo;
 import vo.Pessoa;
-import vo.Usuario;
 
 public class PessoaDAO {
 
@@ -137,10 +136,6 @@ public class PessoaDAO {
 		return null;
 	}
 	
-	public boolean editarDashBoard(int codePerson) {
-		
-		
-	}
 	
 	public boolean verificarUsuario(Pessoa p) throws SQLException {
 
