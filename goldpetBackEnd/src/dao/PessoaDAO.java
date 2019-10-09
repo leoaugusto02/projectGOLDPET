@@ -20,7 +20,7 @@ public class PessoaDAO {
 	
 	public Integer login(Pessoa p) throws SQLException {
 
-		String sql = "SELECT * FROM Pessoa WHERE email = ? OR nick_name = ? AND senha = ?";
+		String sql = "SELECT codePerson FROM Pessoa WHERE email = ? OR nick_name = ? AND senha = ?";
 
 		con = ConnectionDB.getConnection();
 
@@ -38,9 +38,9 @@ public class PessoaDAO {
 		return null;
 	}
 	
-	public boolean inserir(Pessoa p) throws SQLException {
+	public boolean cadastrarGuardiao(Pessoa p) throws SQLException {
 
-		String sql = "START TRANSACTION;\r\n" + 
+		String sql = "BEGIN TRANSACTION;\r\n" + 
 				"INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);\r\n" + 
 				"INSERT INTO Guardiao VALUES(null, LAST_INSERT_ID(), 0, \"Iniciante\", 0);\r\n" + 
 				"COMMIT";
@@ -65,13 +65,11 @@ public class PessoaDAO {
 		return ps.executeUpdate() > 0;
 	}
 	
-	public Pessoa listarPessoa(int codePessoa) throws SQLException {
+	public Pessoa perfil(int codePessoa) throws SQLException {
 		
 		String sql = "SELECT nick_name, p_nome, s_nome, nascimento, genero, telefone1, telefone2, email, rank, animais_resgatados,"
 				+ " progresso, imgPerfil FROM Pessoa p"
 				+ " INNER JOIN Guardiao g ON p.codePessoa = g.codePessoa WHERE p.codePessoa = ?";
-
-		
 		
 		con = ConnectionDB.getConnection();
 
@@ -105,6 +103,56 @@ public class PessoaDAO {
 		}
 
 		return null;
+	}
+	
+	public List<Pessoa> listarDashBoard(Pessoa p) throws SQLException{
+		
+		String sql = "SELECT codePerson, p_nome, s_nome, tipo, email, cpf, rg, cep, telefone1, telefone2 FROM Pessoa";
+		
+		con = ConnectionDB.getConnection();
+		
+		ps = con.prepareStatement(sql);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		List<Pessoa> lstPessoa = new ArrayList<>();
+		while(rs.next()) {
+			
+			p.setCodePerson(rs.getInt("codePerson"));
+			p.setP_nome(rs.getString("p_nome"));
+			p.setS_nome(rs.getString("s_nome"));
+			p.setTipo(rs.getString("tipo"));
+			p.setEmail(rs.getString("email"));
+			p.setCpf(rs.getString("cpf"));
+			p.setRg(rs.getString("rg"));
+			p.setCep(rs.getString("cep"));
+			p.setTel1(rs.getString("telefone1"));
+			p.setTel2(rs.getString("telefone2"));
+			
+			lstPessoa.add(p);
+			
+			return lstPessoa;
+		}
+		return null;
+	}
+	
+	
+	public boolean verificarUsuario(Pessoa p) throws SQLException {
+
+		String sql = "SELECT * FROM pessoa WHERE apelido = ? OR email = ?";
+
+		con = ConnectionDB.getConnection();
+
+		ps = con.prepareStatement(sql);
+		ps.setString(1, p.getApelido());
+		ps.setString(2, p.getEmail());
+
+		ResultSet rs = ps.executeQuery();
+
+		if (rs.next()) {
+			return false;
+		}
+		return true;
 	}
 	
 }

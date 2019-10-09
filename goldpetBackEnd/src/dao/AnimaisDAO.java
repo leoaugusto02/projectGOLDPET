@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import vo.Animais;
 import vo.Laudo;
+import vo.Resgate;
 
 public class AnimaisDAO {
 
@@ -64,6 +67,20 @@ public class AnimaisDAO {
 		ps.setString(7, a.getImgAnimal());
 		
 		return ps.executeUpdate() > 0;
-
 	}
+	
+	public boolean inserirLaudo(Animais a) throws SQLException {
+		
+		String sql = "INSERT INTO Laudo VALUES(?, ?, ?, ?, ?)";
+		
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, a.getCodAnimal());
+		ps.setString(2, a.getLaudo().getNomeVeterinario());
+		ps.setString(3, a.getLaudo().getDataDiagnostico());
+		ps.setString(4, a.getLaudo().getDiagnostico());
+		ps.setString(5, a.getLaudo().getImagem());
+		
+		return ps.executeUpdate() > 0;
+	}
+	 
 }
