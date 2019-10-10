@@ -137,7 +137,7 @@ public class PessoaDAO {
 	
 	public boolean verificarUsuario(Pessoa p) throws SQLException {
 
-		String sql = "SELECT * FROM Pessoa WHERE apelido = ? OR email = ?";
+		String sql = "SELECT * FROM Pessoa WHERE nick_name = ? OR email = ?";
 
 		con = ConnectionDB.getConnection();
 
@@ -151,6 +151,25 @@ public class PessoaDAO {
 			return false;
 		}
 		return true;
+	}
+	
+	public boolean MudarTipoContaDashBoard(int codePerson, String acao) {
+		
+		//1 = funcionario
+		//else = guardidao
+		
+		String sql;
+		
+		if(acao.equals("1")) {
+			sql = "BEGIN TRANSACTION;\r\n"
+				+ " UPDATE Pessoa SET tipo = funcionário WHERE codePerson = ?;\r\n"
+				+ " UPDATE Funcionario SET status = ativo";
+		}else{
+			sql = "UPDATE Pessoa SET tipo = Guardião WHERE codePerson = ?";
+		}
+		return false;;
+		
+		
 	}
 	
 }
