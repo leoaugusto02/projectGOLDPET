@@ -31,7 +31,7 @@ import vo.Pessoa;
 public class ProcessaPessoas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		    	
 	    	PrintWriter out = resp.getWriter();
 			Respostas r = new Respostas();
@@ -167,7 +167,7 @@ public class ProcessaPessoas extends HttpServlet {
 				 String apelido, p_nome, s_nome, tipo, senha, confSenha, email, cep, cpf, rg, genero,
 				 referencia, tel1, tel2;
 				 
-				 apelido = req.getParameter("nome");
+				 apelido = req.getParameter("apelido");
 				 p_nome = req.getParameter("pNome");
 				 s_nome = req.getParameter("sNome");
 				 senha = req.getParameter("senha");
@@ -181,7 +181,7 @@ public class ProcessaPessoas extends HttpServlet {
 				 referencia = req.getParameter("referencia");
 				 genero = req.getParameter("genero");
 				 
-				 SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+				 SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-MM");
 				Date dataNasc;
 				
 				try {
@@ -271,9 +271,10 @@ public class ProcessaPessoas extends HttpServlet {
 				out.print(objMens.toString());
 			}
 			
-
-	    	super.service(req, resp);
-	    }
+	    }else {
+			objMens.put("mensagem", "aguardando requisição");
+			out.print(objMens.toString());
+		}
 	    
 	}
 }

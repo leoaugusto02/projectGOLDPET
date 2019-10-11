@@ -102,7 +102,7 @@
 						for="RadioF">Feminino</label>
 				</div>
 			</div>
-			<button type="button" class="btn btn-primary">Cadastrar</button>
+			<input type="submit" class="btn btn-primary" value="Cadastrar">
 			<input type="hidden" name="acao" value="cadastrar"/>
 		</div>
 		<% 			
@@ -138,7 +138,7 @@
 					"&senha=" + senha + "&confSenha=" + confSenha + "&genero=" + genero
 					+ "&acao=" + acao;
 			
-			URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaPessoa");
+			URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaPessoas");
 
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("POST");

@@ -168,7 +168,7 @@ public class PessoaDAO {
 		}else{
 			sql = "UPDATE Pessoa SET tipo = Guardião WHERE codePerson = ?";
 		}
-		return false;;
+		return false;
 		
 		
 	}
