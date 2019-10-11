@@ -39,7 +39,7 @@ public class PessoaDAO {
 	public boolean cadastrarGuardiao(Pessoa p) throws SQLException {
 
 		String sql = "BEGIN TRANSACTION;\r\n" + 
-				"INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);\r\n" + 
+				"INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);\r\n" + 
 				"INSERT INTO Guardiao VALUES(null, LAST_INSERT_ID(), 0, \"Iniciante\", 0, \"ativo\");\r\n" + 
 				"COMMIT";
 
@@ -55,10 +55,11 @@ public class PessoaDAO {
 		ps.setString(8, p.getCpf());
 		ps.setString(9, p.getGenero());
 		ps.setString(10, p.getRg());
-		ps.setString(11, p.getReferencia());
-		ps.setString(12, p.getImgPerfil());
-		ps.setString(13, p.getTel1());
-		ps.setString(14, p.getTel2());
+		ps.setString(11, p.getCep());
+		ps.setString(12, p.getReferencia());
+		ps.setString(13, p.getImgPerfil());
+		ps.setString(14, p.getTel1());
+		ps.setString(15, p.getTel2());
 		
 		return ps.executeUpdate() > 0;
 	}
