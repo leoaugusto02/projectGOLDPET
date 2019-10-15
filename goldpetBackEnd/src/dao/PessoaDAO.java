@@ -38,7 +38,7 @@ public class PessoaDAO {
 	
 	public boolean cadastrarGuardiao(Pessoa p) throws SQLException {
 
-		String sql = "BEGIN TRANSACTION;\r\n" + 
+		String sql = "START TRANSACTION;\r\n" + 
 				"INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);\r\n" + 
 				"INSERT INTO Guardiao VALUES(null, LAST_INSERT_ID(), 0, \"Iniciante\", 0, \"ativo\");\r\n" + 
 				"COMMIT";
