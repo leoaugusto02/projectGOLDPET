@@ -1,11 +1,11 @@
 							--CADASTRO GUARDIAO--
 
-START TRANSACTION;
+START TRANSACTION
 INSERT INTO Pessoa VALUES(NULL, "leo", "leonidas", "augusto", "2002-09-03", "Guardiao", "123", "leo@email.com", "1212112", "M", "1212123", "12123334", "perto", "imagem", "111111","222222");
 INSERT INTO Guardiao VALUES(null, LAST_INSERT_ID(), 0,"INICIANTE",0,"ativo");
 COMMIT;
 
-"START TRANSACTION;"
+"START TRANSACTION"
 "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);"
 "INSERT INTO Guardiao VALUES(null, LAST_INSERT_ID(), 0,"INICIANTE",0,"ativo");"
 "COMMIT";
