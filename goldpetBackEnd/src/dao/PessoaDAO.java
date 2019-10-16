@@ -47,7 +47,7 @@ public class PessoaDAO {
 				+ "END// "
 				+ "DELIMITER;";
 
-		String sql2 = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, 'Guardiao', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql2 = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, 'Guardião', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
 		con = ConnectionDB.getConnection();
