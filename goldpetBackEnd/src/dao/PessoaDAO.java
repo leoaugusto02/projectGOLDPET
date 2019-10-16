@@ -14,8 +14,7 @@ public class PessoaDAO {
 
 	private Connection con;
 	private PreparedStatement ps;
-	
-	
+
 	public Integer login(Pessoa p) throws SQLException {
 
 		String sql = "SELECT codePerson FROM Pessoa WHERE email = ? OR nick_name = ? AND senha = ?";
@@ -30,21 +29,30 @@ public class PessoaDAO {
 		ResultSet rs = ps.executeQuery();
 
 		if (rs.next()) {
-			 p.setCodePerson(rs.getInt("codePerson"));
-			 return p.getCodePerson();
+			p.setCodePerson(rs.getInt("codePerson"));
+			return p.getCodePerson();
 		}
 		return null;
 	}
-	
-	public boolean cadastrarGuardiao(Pessoa p) throws SQLException {
 
-		String sql = "START TRANSACTION;\r\n" + 
-				"INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);\r\n" + 
-				"INSERT INTO Guardiao VALUES(null, LAST_INSERT_ID(), 0, \"Iniciante\", 0, \"ativo\");\r\n" + 
-				"COMMIT";
+	public boolean cadastrarGuardiao(Pessoa p) throws SQLException {
+		
+		String sql = "DELIMITER // "
+				+ "CREATE TRIGGER IF NOT EXISTS cadGuard AFTER INSERT "
+				+ "ON Pessoa "
+				+ "FOR EACH ROW "
+				+ "BEGIN "
+				+ "INSERT INTO Guardiao "
+				+ "VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,\"INICIANTE\",0,\"ativo\"); "
+				+ "END// "
+				+ "DELIMITER;";
+
+		String sql2 = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 
 		con = ConnectionDB.getConnection();
 		ps = con.prepareStatement(sql);
+		ps = con.prepareStatement(sql2);
 		ps.setString(1, p.getApelido());
 		ps.setString(2, p.getP_nome());
 		ps.setString(3, p.getS_nome());
@@ -63,13 +71,13 @@ public class PessoaDAO {
 		
 		return ps.executeUpdate() > 0;
 	}
-	
+
 	public Pessoa perfil(int codePessoa) throws SQLException {
-		
+
 		String sql = "SELECT nick_name, p_nome, s_nome, nascimento, genero, telefone1, telefone2, email, rank, animais_resgatados,"
 				+ " progresso, imgPerfil FROM Pessoa p"
 				+ " INNER JOIN Guardiao g ON p.codePessoa = g.codePessoa WHERE p.codePessoa = ?";
-		
+
 		con = ConnectionDB.getConnection();
 
 		ps = con.prepareStatement(sql);
@@ -79,8 +87,8 @@ public class PessoaDAO {
 
 		if (rs.next()) {
 			Pessoa p = new Pessoa();
-			Guardiao g = new Guardiao();			
-			
+			Guardiao g = new Guardiao();
+
 			p.setCodePerson(rs.getInt("p.codePerson"));
 			p.setApelido(rs.getString("nick_name"));
 			p.setP_nome(rs.getString("p_nome"));
@@ -91,32 +99,32 @@ public class PessoaDAO {
 			p.setTel2(rs.getString("telefone2"));
 			p.setEmail(rs.getString("email"));
 			p.setImgPerfil(rs.getString("imgPerfil"));
-			
+
 			g.setRank(rs.getString("rank"));
 			g.setAnimasResgatados(rs.getInt("animaisResgatados"));
 			g.setProgresso(rs.getInt("progresso"));
-			
+
 			p.setGuardiao(g);
-			
+
 			return p;
 		}
 
 		return null;
 	}
-	
-	public List<Pessoa> listarDashBoard(Pessoa p) throws SQLException{
-		
+
+	public List<Pessoa> listarDashBoard(Pessoa p) throws SQLException {
+
 		String sql = "SELECT codePerson, p_nome, s_nome, tipo, email, cpf, rg, cep, telefone1, telefone2 FROM Pessoa";
-		
+
 		con = ConnectionDB.getConnection();
-		
+
 		ps = con.prepareStatement(sql);
-		
+
 		ResultSet rs = ps.executeQuery();
-		
+
 		List<Pessoa> lstPessoa = new ArrayList<>();
-		while(rs.next()) {
-			
+		while (rs.next()) {
+
 			p.setCodePerson(rs.getInt("codePerson"));
 			p.setP_nome(rs.getString("p_nome"));
 			p.setS_nome(rs.getString("s_nome"));
@@ -127,15 +135,14 @@ public class PessoaDAO {
 			p.setCep(rs.getString("cep"));
 			p.setTel1(rs.getString("telefone1"));
 			p.setTel2(rs.getString("telefone2"));
-			
+
 			lstPessoa.add(p);
-			
+
 			return lstPessoa;
 		}
 		return null;
 	}
-	
-	
+
 	public boolean verificarUsuario(Pessoa p) throws SQLException {
 
 		String sql = "SELECT * FROM Pessoa WHERE nick_name = ? OR email = ?";
@@ -153,24 +160,23 @@ public class PessoaDAO {
 		}
 		return true;
 	}
-	
+
 	public boolean MudarTipoContaDashBoard(int codePerson, String acao) {
-		
-		//1 = funcionario
-		//else = guardidao
-		
+
+		// 1 = funcionario
+		// else = guardidao
+
 		String sql;
-		
-		if(acao.equals("1")) {
-			sql = "BEGIN TRANSACTION;\r\n"
-				+ " UPDATE Pessoa SET tipo = funcionário WHERE codePerson = ?;\r\n"
-				+ " UPDATE Funcionario SET status = ativo";
-		}else{
+
+		if (acao.equals("1")) {
+			sql = "BEGIN TRANSACTION;\r\n" + " UPDATE Pessoa SET tipo = funcionário WHERE codePerson = ?;\r\n"
+					+ " UPDATE Funcionario SET status = ativo";
+		} else {
 			sql = "UPDATE Pessoa SET tipo = Guardião WHERE codePerson = ?";
-		}
+		}
+
 		return false;
-		
-		
+
 	}
-	
+
 }

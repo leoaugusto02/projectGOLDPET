@@ -21,6 +21,4 @@ public class Respostas {
 		this.resposta = respostas;
 	}
 	
-	
-
 }

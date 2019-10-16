@@ -2,7 +2,7 @@
 
 START TRANSACTION
 INSERT INTO Pessoa VALUES(NULL, "leo", "leonidas", "augusto", "2002-09-03", "Guardiao", "123", "leo@email.com", "1212112", "M", "1212123", "12123334", "perto", "imagem", "111111","222222");
-INSERT INTO Guardiao VALUES(null, LAST_INSERT_ID(), 0,"INICIANTE",0,"ativo");
+INSERT INTO Guardiao VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,"INICIANTE",0,"ativo");
 COMMIT;
 
 "START TRANSACTION"
@@ -14,10 +14,14 @@ COMMIT;
 
 DELIMITER //
 
-CREATE TRIGGER cadGuard AFTER INSERT 
+CREATE TRIGGER IF NOT EXISTS cadGuard  AFTER INSERT 
 ON Pessoa 
 FOR EACH ROW 
 BEGIN 
-INSERT INTO Guardiao VALUES(null, LAST_INSERT_ID(), 0,"INICIANTE",0,"ativo");
+INSERT INTO Guardiao VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,"INICIANTE",0,"ativo");
 END//
+
+DELIMITER ;
+
+
 								   --FIM--
