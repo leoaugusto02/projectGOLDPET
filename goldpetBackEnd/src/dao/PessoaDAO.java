@@ -38,8 +38,10 @@ public class PessoaDAO {
 	
 	public boolean cadastrarGuardiao(Pessoa p) throws SQLException {
 
-		String sql = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		String sql2 = "INSERT INTO Guardiao VALUES(null, LAST_INSERT_ID(), 0, \"Iniciante\", 0, \"ativo\")";
+		String sql = "START TRANSACTION;\r\n" + 
+				"INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);\r\n" + 
+				"INSERT INTO Guardiao VALUES(null, LAST_INSERT_ID(), 0, \"Iniciante\", 0, \"ativo\");\r\n" + 
+				"COMMIT";
 
 		con = ConnectionDB.getConnection();
 		ps = con.prepareStatement(sql);
@@ -58,7 +60,6 @@ public class PessoaDAO {
 		ps.setString(13, p.getImgPerfil());
 		ps.setString(14, p.getTel1());
 		ps.setString(15, p.getTel2());
-		ps = con.prepareStatement(sql2);
 		
 		return ps.executeUpdate() > 0;
 	}
