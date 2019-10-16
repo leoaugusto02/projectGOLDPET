@@ -35,9 +35,12 @@ public class PessoaDAO {
 		return null;
 	}
 
-	public boolean cadastrarGuardiao(Pessoa p) throws SQLException {
+	public boolean cadastrar(Pessoa p, String acao) throws SQLException {
 		
-		String sql = "DELIMITER // "
+		String sql, sql2;
+		
+		
+		sql = "DELIMITER // "
 				+ "CREATE TRIGGER IF NOT EXISTS cadGuard AFTER INSERT "
 				+ "ON Pessoa "
 				+ "FOR EACH ROW "
@@ -46,8 +49,9 @@ public class PessoaDAO {
 				+ "VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,\"INICIANTE\",0,\"ativo\"); "
 				+ "END// "
 				+ "DELIMITER;";
-
-		String sql2 = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, 'Guardião', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		
+		sql2 = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, 'Guardião', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
 		con = ConnectionDB.getConnection();
@@ -177,5 +181,5 @@ public class PessoaDAO {
 		return false;
 
 	}
-
+	
 }

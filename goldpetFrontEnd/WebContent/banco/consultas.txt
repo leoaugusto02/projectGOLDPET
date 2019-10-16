@@ -14,11 +14,13 @@ COMMIT;
 
 DELIMITER //
 
-CREATE TRIGGER IF NOT EXISTS cadGuard  AFTER INSERT 
+CREATE TRIGGER IF NOT EXISTS cadastro AFTER INSERT 
 ON Pessoa 
 FOR EACH ROW 
-BEGIN 
-INSERT INTO Guardiao VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,"INICIANTE",0,"ativo");
+BEGIN
+IF  WHERE tipo = "Guardião" THEN INSERT INTO Guardiao VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,"Iniciante",0,"ativo");
+ELSE INSERT INTO Funcionario VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0, "Programador", "ativo");
+END IF//
 END//
 
 DELIMITER ;
