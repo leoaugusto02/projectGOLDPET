@@ -103,7 +103,7 @@
 				</div>
 			</div>
 			<input type="submit" class="btn btn-primary" value="Cadastrar">
-			<input type="hidden" name="acao" value="cadastrar"/>
+			<input type="hidden" name="acao" id="acao" value="cadastrar"/>
 		</div>
 		<% 			
 			

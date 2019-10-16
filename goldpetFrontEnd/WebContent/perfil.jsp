@@ -1,3 +1,9 @@
+<%@page import="org.json.JSONObject"%>
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.io.DataOutputStream"%>
+<%@page import="java.net.HttpURLConnection"%>
+<%@page import="java.net.URL"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -78,6 +84,40 @@ body, html {
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+	<%
+	if (request.getSession().getAttribute("codigoUsuario") == null) {
+		System.out.println("Por favor Realize o login");
+		response.sendRedirect("login.jsp");
+		return;
+	}else {
+		Integer codeUser = (Integer) request.getSession().getAttribute("codigoUsuario");
+		String acao = "mostrarCredencial";
+		System.out.println(codeUser);
+		
+		String parametros = "codeUser=" + codeUser + "&acao=" + acao;
+
+		URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaPessoas");
+
+		HttpURLConnection con = (HttpURLConnection) url.openConnection();
+		con.setRequestMethod("POST");
+		con.setDoOutput(true);
+		
+		System.out.println(parametros);
+
+		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+		wr.writeBytes(parametros);
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+		String apnd = "", linha = "";
+
+		while ((linha = br.readLine()) != null)
+			apnd += linha;
+
+		JSONObject obj = new JSONObject(apnd);
+	}
+	%>
 	<div id="esquerda"></div>
 	<div id="meio">
 
@@ -153,6 +193,7 @@ body, html {
 								<tbody>
 									<tr>
 										<th><strong>Nome:</strong><label></label></th>
+										<td><%=obj.getString("Nome")%></td>
 									</tr>
 									<tr>
 										<th><strong>Data de Nascimento:</strong></th>

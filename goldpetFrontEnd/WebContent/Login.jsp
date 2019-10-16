@@ -1,3 +1,9 @@
+<%@page import="org.json.JSONObject"%>
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.io.DataOutputStream"%>
+<%@page import="java.net.HttpURLConnection"%>
+<%@page import="java.net.URL"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -16,6 +22,49 @@
 </head>
 <body background="img/bgBone.jpg">
 
+	<%
+	
+		String login = request.getParameter("login");
+		String senha = request.getParameter("senha");
+		String acao = request.getParameter("acao");
+		
+		if ((login != null) && (senha != null) && (acao != null)) {
+
+			String parametros = "login=" + login + "&senha=" + senha + "&acao=" + acao;
+			
+			URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaPessoas");
+
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("POST");
+			con.setDoOutput(true);
+
+			System.out.println(parametros);
+
+			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+			wr.writeBytes(parametros);
+	
+			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+			String apnd = "", linha = "";
+			
+
+			while((linha = br.readLine()) != null) apnd += linha;
+			
+			JSONObject obj = new JSONObject(apnd);
+			
+			if(obj.getString("mensagem").equals("0")){
+				request.getSession().setAttribute("codigoUsuario", obj.getInt("codeUser"));
+
+				response.sendRedirect("perfil.jsp");
+			}else{
+				System.out.println("Usuario não existe");
+			}
+			
+		}else {
+			System.out.println("Todos os campos precisam ser preenchidos");
+		}
+	%>
+
 	<div class="card card-splash"
 		style="margin-left: 42.5%; margin-top: 10%; width: 300px; background-color: rgba(199, 252, 255, 0.5);">
 		<div>
@@ -27,10 +76,10 @@
 
 			<div class="card-content processing">
 
-				<form class="login-with-password-reset" method="POST">
+				<form class="login-with-password-reset" acao="#" method="POST">
 
 					<div class="form-group form-group-icon">
-						<input name="login" type="email"
+						<input name="login" type="text"
 							class="form-control form-control-lg login-email"
 							placeholder="Digite seu email/usuario" required autofocus
 							autocomplete="on">
@@ -38,9 +87,8 @@
 					<div class="form-group form-group-icon">
 						<span class="component-hint block"> <input
 							class="form-control form-control-lg login-password can-be-visible"
-							type="password" name="password" maxlength="40"
-							placeholder="Digite sua senha" required>
-
+							type="password" maxlength="40" placeholder="Digite sua senha"
+							required name="senha">
 						</span>
 
 					</div>
@@ -51,8 +99,9 @@
 							<i class="fa fa-refresh animation-spin form-loading"></i>
 
 						</button>
-						<button type="button" class="btn btn-success"
-							style="margin-left: 25%;">entrar</button>
+						<input type="submit" class="btn btn-success"
+							style="margin-left: 25%;" value="Entrar" />
+						<input type="hidden" name="acao" value="login" id="acao" >	
 					</div>
 				</form>
 			</div>
@@ -66,6 +115,15 @@
 		<div class="card-content processing"></div>
 
 	</div>
+	
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	
+	<script>
+		function login() {
+			$("#acao").val("login");
+		}
+	</script>
 
 </body>
 
