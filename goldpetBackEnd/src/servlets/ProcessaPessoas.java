@@ -39,6 +39,7 @@ public class ProcessaPessoas extends HttpServlet {
 		JSONObject objMens = new JSONObject();
 
 		String acao = req.getParameter("acao");
+		String acaoConta = req.getParameter("acaoConta");
 		/*
 		 * 0 = funcionou 1 = erro servlet 2 = não há perguntas
 		 */
@@ -168,7 +169,7 @@ public class ProcessaPessoas extends HttpServlet {
 				try {
 					if (pDao.verificarUsuario(p)) {
 						if (senha.equals(confSenha)) {
-							if (pDao.cadastrarGuardiao(p)) {
+							if (pDao.cadastrar(p, acaoConta)) {
 								objMens.put("mensagem", "0");
 								out.print(objMens.toString());
 								System.out.println("certo");
@@ -234,6 +235,7 @@ public class ProcessaPessoas extends HttpServlet {
 				try {
 					p = pDao.perfil(Integer.valueOf(codigo));
 
+					objMens.put("apelido", p.getApelido());
 					objMens.put("nome", p.getP_nome() + p.getS_nome());
 					objMens.put("nascimento", p.getNascimento());
 					objMens.put("telefone", p.getTel1());

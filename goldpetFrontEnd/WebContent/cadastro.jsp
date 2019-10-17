@@ -122,6 +122,7 @@
 				String genero = request.getParameter("genero");				
 				String acao = request.getParameter("acao");
 				String dataNasc = request.getParameter("nascimento");
+				String acaoConta = "Guardião";
 		
 		if ((pNome != null) && (sNome != null) && (apelido != null) && (cep != null) && 
 				(referencia != null) && (cpf != null) && (rg != null) && 
@@ -136,7 +137,7 @@
 					"&cep=" + cep + "&referencia=" + referencia + "&cpf="+ cpf + "&rg=" + rg +
 					"&tel1=" + tel1 + "&tel2=" + tel2 + "&nascimento=" + dataNasc + "&email=" + email +
 					"&senha=" + senha + "&confSenha=" + confSenha + "&genero=" + genero
-					+ "&acao=" + acao;
+					+ "&acao=" + acao + "&acaoConta=" + acaoConta;
 			
 			URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaPessoas");
 
