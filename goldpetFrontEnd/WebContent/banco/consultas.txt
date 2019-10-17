@@ -15,11 +15,11 @@ COMMIT;
 DELIMITER //
 
 CREATE TRIGGER IF NOT EXISTS cadastro AFTER INSERT 
-ON Pessoa 
+ON Pessoa
 FOR EACH ROW 
 BEGIN
-IF  WHERE tipo = "Guardião" THEN INSERT INTO Guardiao VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,"Iniciante",0,"ativo");
-ELSE INSERT INTO Funcionario VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0, "Programador", "ativo");
+INSERT INTO Guardiao VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,"Iniciante",0,"ativo");
+INSERT INTO Funcionario VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0, "Programador", "ativo");
 END IF//
 END//
 
