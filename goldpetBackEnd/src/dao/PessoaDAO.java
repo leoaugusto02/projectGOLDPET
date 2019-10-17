@@ -41,9 +41,9 @@ public class PessoaDAO {
 		con = ConnectionDB.getConnection();
 
 		if (acao == "Guardião") {
-			sqlCondicao = "INSERT INTO Guardiao VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,\"Iniciante\",0,\"ativo\")";
+			sqlCondicao = "INSERT INTO Guardiao VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,\"Iniciante\",0,\"ativo\");";
 		} else {
-			sqlCondicao = "INSERT INTO Funcionario VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0, ?, \"ativo\")";
+			sqlCondicao = "INSERT INTO Funcionario VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0, ?, \"ativo\");";
 		}
 		
 		sql = "DELIMITER // " + "CREATE TRIGGER IF NOT EXISTS cadastro AFTER INSERT " + "ON Pessoa " + "FOR EACH ROW "
@@ -95,7 +95,7 @@ public class PessoaDAO {
 
 		String sql = "SELECT nick_name, p_nome, s_nome, nascimento, genero, telefone1, telefone2, email, rank, animais_resgatados,"
 				+ " progresso, imgPerfil FROM Pessoa p"
-				+ " INNER JOIN Guardiao g ON p.codePessoa = g.codePessoa WHERE p.codePessoa = ?";
+				+ " INNER JOIN Guardiao g ON p.codePerson = g.codePerson WHERE p.codePerson = ?";
 
 		con = ConnectionDB.getConnection();
 
@@ -188,8 +188,7 @@ public class PessoaDAO {
 		String sql;
 
 		if (acao.equals("1")) {
-			sql = "BEGIN TRANSACTION;\r\n" + " UPDATE Pessoa SET tipo = funcionário WHERE codePerson = ?;\r\n"
-					+ " UPDATE Funcionario SET status = ativo";
+			sql = " UPDATE Pessoa SET tipo = funcionário WHERE codePerson = ?; UPDATE Funcionario SET status = ativo";
 		} else {
 			sql = "UPDATE Pessoa SET tipo = Guardião WHERE codePerson = ?";
 		}
