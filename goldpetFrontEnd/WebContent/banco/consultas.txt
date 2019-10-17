@@ -27,3 +27,7 @@ DELIMITER ;
 
 
 								   --FIM--
+								   
+								   --PERFIL--
+								   
+SELECT nick								   

@@ -40,7 +40,7 @@ public class PessoaDAO {
 		String sql, sql2, sqlCondicao = null;
 		con = ConnectionDB.getConnection();
 
-		if (acao == "Guardião") {
+		if (acao.equals("Guardião")) {
 			sqlCondicao = "INSERT INTO Guardiao VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,\"Iniciante\",0,\"ativo\");";
 		} else {
 			sqlCondicao = "INSERT INTO Funcionario VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0, ?, \"ativo\");";
@@ -54,7 +54,7 @@ public class PessoaDAO {
 		ps = con.prepareStatement(sql);
 		ps = con.prepareStatement(sql2);
 		
-		if (acao == "Funcionário") {
+		if (acao.equals("Funcionário")) {
 			ps.setString(1, p.getFuncionario().getCargo());
 			ps.setString(2, p.getApelido());
 			ps.setString(3, p.getP_nome());
