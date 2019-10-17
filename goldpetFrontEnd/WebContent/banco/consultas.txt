@@ -25,6 +25,16 @@ END//
 
 DELIMITER ;
 
+	sql = "DELIMITER // \r\n"
+		+ "CREATE TRIGGER IF NOT EXISTS cadastro AFTER INSERT \r\n"
+		+ "ON Pessoa \r\n" 
+		+ "FOR EACH ROW \r\n"
+		+ "BEGIN \r\n"
+		+ sqlCondicao + "\r\n"
+		+ " END// \r\n"
+		+ "DELIMITER ;";
+
+
 
 								   --FIM--
 								   

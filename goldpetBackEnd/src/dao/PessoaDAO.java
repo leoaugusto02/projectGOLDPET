@@ -37,7 +37,7 @@ public class PessoaDAO {
 
 	public boolean cadastrar(Pessoa p, String acao) throws SQLException {
 
-		String sql, sql2, sqlCondicao = null;
+		String sql, sqlCondicao = null;
 		con = ConnectionDB.getConnection();
 
 		if (acao.equals("Guardião")) {
@@ -46,13 +46,9 @@ public class PessoaDAO {
 			sqlCondicao = "INSERT INTO Funcionario VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0, ?, \"ativo\");";
 		}
 		
-		sql = "DELIMITER // " + "CREATE TRIGGER IF NOT EXISTS cadastro AFTER INSERT " + "ON Pessoa " + "FOR EACH ROW "
-				+ "BEGIN " + sqlCondicao + " END// " + "DELIMITER ;";
-
-		sql2 = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, 'Guardião', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		sql = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, 'Guardião', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		ps = con.prepareStatement(sql);
-		ps = con.prepareStatement(sql2);
 		
 		if (acao.equals("Funcionário")) {
 			ps.setString(1, p.getFuncionario().getCargo());
