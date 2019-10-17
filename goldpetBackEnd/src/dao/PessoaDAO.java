@@ -36,32 +36,21 @@ public class PessoaDAO {
 	}
 
 	public boolean cadastrar(Pessoa p, String acao) throws SQLException {
-		
+
 		String sql, sql2, sqlCondicao = null;
-		
-		if(acao == "Guardião") {
-			sqlCondicao = "INSERT INTO Guardiao VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,\"Iniciante\",0,\"ativo\")";
-		}else {
-			sqlCondicao = "INSERT INTO Funcionario VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0, ?, \"ativo\")";
-		}
-		
-		sql = "DELIMITER // "
-				+ "CREATE TRIGGER IF NOT EXISTS cadastro AFTER INSERT "
-				+ "ON Pessoa "
-				+ "FOR EACH ROW "
-				+ "BEGIN "
-				+ sqlCondicao
-				+ " END// "
-				+ "DELIMITER ;";
-		
-		
-		sql2 = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, 'Guardião', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-
 		con = ConnectionDB.getConnection();
-		ps = con.prepareStatement(sql);
-		ps.setString(1, p.getFuncionario().getCargo());
+
+		sql = "DELIMITER // " + "CREATE TRIGGER IF NOT EXISTS cadastro AFTER INSERT " + "ON Pessoa " + "FOR EACH ROW "
+				+ "BEGIN " + sqlCondicao + " END// " + "DELIMITER ;";
+
+		sql2 = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, 'Guardião', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		ps = con.prepareStatement(sql2);
+
+		if (acao == "Funcionário") {
+			ps.setString(1, p.getFuncionario().getCargo());
+		} else {
+			ps.setString(1, "");	
+		}
 		ps.setString(2, p.getApelido());
 		ps.setString(3, p.getP_nome());
 		ps.setString(4, p.getS_nome());
@@ -76,7 +65,15 @@ public class PessoaDAO {
 		ps.setString(13, p.getImgPerfil());
 		ps.setString(14, p.getTel1());
 		ps.setString(15, p.getTel2());
-		
+
+		if (acao == "Guardião") {
+			sqlCondicao = "INSERT INTO Guardiao VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,\"Iniciante\",0,\"ativo\")";
+		} else {
+			sqlCondicao = "INSERT INTO Funcionario VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0, ?, \"ativo\")";
+		}
+
+		ps = con.prepareStatement(sql);
+
 		return ps.executeUpdate() > 0;
 	}
 
@@ -186,5 +183,5 @@ public class PessoaDAO {
 		return false;
 
 	}
-	
+
 }
