@@ -38,10 +38,8 @@ public class PessoaDAO {
 	
 	public boolean cadastrarGuardiao(Pessoa p) throws SQLException {
 
-		String sql = "BEGIN TRANSACTION;\r\n" + 
-				"INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);\r\n" + 
-				"INSERT INTO Guardiao VALUES(null, LAST_INSERT_ID(), 0, \"Iniciante\", 0);\r\n" + 
-				"COMMIT";
+		String sql = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql2 = "INSERT INTO Guardiao VALUES(null, LAST_INSERT_ID(), 0, \"Iniciante\", 0, \"ativo\")";
 
 		con = ConnectionDB.getConnection();
 		ps = con.prepareStatement(sql);
@@ -55,10 +53,12 @@ public class PessoaDAO {
 		ps.setString(8, p.getCpf());
 		ps.setString(9, p.getGenero());
 		ps.setString(10, p.getRg());
-		ps.setString(11, p.getReferencia());
-		ps.setString(12, p.getImgPerfil());
-		ps.setString(13, p.getTel1());
-		ps.setString(14, p.getTel2());
+		ps.setString(11, p.getCep());
+		ps.setString(12, p.getReferencia());
+		ps.setString(13, p.getImgPerfil());
+		ps.setString(14, p.getTel1());
+		ps.setString(15, p.getTel2());
+		ps = con.prepareStatement(sql2);
 		
 		return ps.executeUpdate() > 0;
 	}
@@ -137,7 +137,7 @@ public class PessoaDAO {
 	
 	public boolean verificarUsuario(Pessoa p) throws SQLException {
 
-		String sql = "SELECT * FROM pessoa WHERE apelido = ? OR email = ?";
+		String sql = "SELECT * FROM Pessoa WHERE nick_name = ? OR email = ?";
 
 		con = ConnectionDB.getConnection();
 
@@ -151,6 +151,25 @@ public class PessoaDAO {
 			return false;
 		}
 		return true;
+	}
+	
+	public boolean MudarTipoContaDashBoard(int codePerson, String acao) {
+		
+		//1 = funcionario
+		//else = guardidao
+		
+		String sql;
+		
+		if(acao.equals("1")) {
+			sql = "BEGIN TRANSACTION;\r\n"
+				+ " UPDATE Pessoa SET tipo = funcionário WHERE codePerson = ?;\r\n"
+				+ " UPDATE Funcionario SET status = ativo";
+		}else{
+			sql = "UPDATE Pessoa SET tipo = Guardião WHERE codePerson = ?";
+		}
+		return false;
+		
+		
 	}
 	
 }

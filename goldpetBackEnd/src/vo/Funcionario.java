@@ -3,14 +3,17 @@ package vo;
 public class Funcionario {
 
 	private Integer codeFunc;
-	private String cargo;
-	
-	public Funcionario(){super();}
+	private String cargo, status;
 
-	public Funcionario(Integer codeFunc, String cargo, String cep) {
+	public Funcionario() {
+		super();
+	}
+
+	public Funcionario(Integer codeFunc, String cargo, String status) {
 		super();
 		this.codeFunc = codeFunc;
 		this.cargo = cargo;
+		this.status = status;
 	}
 
 	public Integer getCodeFunc() {
@@ -29,4 +32,11 @@ public class Funcionario {
 		this.cargo = cargo;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }
