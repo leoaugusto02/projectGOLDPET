@@ -40,9 +40,6 @@ public class PessoaDAO {
 		String sql, sql2, sqlCondicao = null;
 		con = ConnectionDB.getConnection();
 
-		sql = "DELIMITER // " + "CREATE TRIGGER IF NOT EXISTS cadastro AFTER INSERT " + "ON Pessoa " + "FOR EACH ROW "
-				+ "BEGIN " + sqlCondicao + " END// " + "DELIMITER ;";
-
 		sql2 = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, 'Guardião', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		ps = con.prepareStatement(sql2);
 
@@ -71,6 +68,9 @@ public class PessoaDAO {
 		} else {
 			sqlCondicao = "INSERT INTO Funcionario VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0, ?, \"ativo\")";
 		}
+		
+		sql = "DELIMITER // " + "CREATE TRIGGER IF NOT EXISTS cadastro AFTER INSERT " + "ON Pessoa " + "FOR EACH ROW "
+				+ "BEGIN " + sqlCondicao + " END// " + "DELIMITER ;";
 
 		ps = con.prepareStatement(sql);
 
