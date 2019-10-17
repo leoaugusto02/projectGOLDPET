@@ -116,13 +116,14 @@ body, html {
 				apnd += linha;
 
 			JSONObject obj = new JSONObject(apnd);
-		}
+		
 	%>
-	<form action="#" method="post">
+
 		<div id="esquerda"></div>
 		<div id="meio">
 
 			<div class="container">
+				<form action="#" method="post">
 				<div id="cabecalho">
 
 					<div id="imgLogo">
@@ -195,41 +196,52 @@ body, html {
 									<tbody>
 										<tr>
 											<th><strong>Apelido:</strong><label></label></th>
-											<td></td>
+											<td><%=obj.getString("apelido")%></td>
 										</tr>
 										<tr>
 											<th><strong>Nome:</strong><label></label></th>
-											<td></td>
+											<td><%=obj.getString("nome")%></td>
 										</tr>
 										<tr>
 											<th><strong>Data de Nascimento:</strong></th>
+											<td><%=obj.getString("nascimento")%></td>
 										</tr>
 										<tr>
 											<th><strong>Genero: </strong></th>
+											<td><%=obj.getString("genero")%></td>
 										</tr>
 										<tr>
 											<th><strong>Telefone1: </strong></th>
+											<td><%=obj.getString("tel1")%></td>
 										</tr>
 										<tr>
 											<th><strong>Telefone2:</strong><label></label></th>
-											<td></td>
+											<td><%=obj.getString("tel2")%></td>
 										</tr>
 										<tr>
 											<th><strong>Email:</strong></th>
+											<td><%=obj.getString("email")%></td>
 										</tr>
 										<tr>
 											<th><strong>Endereço:</strong></th>
+											<td><%=obj.getString("endereco")%></td>
 										</tr>
 										<tr>
 											<th><strong>Rank:</strong></th>
+											<td><%=obj.getString("rank")%></td>
 										</tr>
 										<tr>
 											<th><strong>Animais Resgatados:</strong></th>
+											<td><%=obj.getString("aniResgatados")%></td>
 										</tr>
 										<tr>
 											<th><strong>Progresso:</strong><label></label></th>
+											<td><%=obj.getString("progresso")%></td>
 											<td></td>
 										</tr>
+										<%
+											}
+										%>
 									</tbody>
 								</table>
 
@@ -238,16 +250,17 @@ body, html {
 
 					</div>
 				</div>
-			</div>
-		
-
-				<div>
+				<div id="botao" style="margin-top: 5%; margin-left: 28%">
 					<button type="button" class="btn btn-outline-success"
 						data-toggle="modal" data-target="#siteModal">Alterar
 						Informações</button>
-				</div>
+ 				</form>
 			</div>
-		</form>
+		
+
+				
+			</div>
+		
 	<div class="modal" id="siteModal" tabindex="-1" role="dialog"
 		aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -343,7 +356,9 @@ body, html {
 					</div>
 				</div>
 			</div>
-			<div id="direita"></div>
+		</div>
+	</div>
+	<div id="direita"></div>
 
 			<script src="js/jquery-3.3.1.min.js"></script>
 			<script src="js/bootstrap.min.js"></script>

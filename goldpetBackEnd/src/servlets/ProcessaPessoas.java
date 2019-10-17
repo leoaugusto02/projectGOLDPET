@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.RespostasDAO;
 import dao.PessoaDAO;
+import vo.Guardiao;
 import vo.Perguntas;
 import vo.Respostas;
 import vo.Pessoa;
@@ -228,6 +229,7 @@ public class ProcessaPessoas extends HttpServlet {
 			} else if (acao.equals("mostrarCredencial")) {
 
 				Pessoa p = new Pessoa();
+				Guardiao g = new Guardiao();
 				
 				System.out.println("CREDENCIAL");
 
@@ -238,11 +240,15 @@ public class ProcessaPessoas extends HttpServlet {
 					objMens.put("apelido", p.getApelido());
 					objMens.put("nome", p.getP_nome() + p.getS_nome());
 					objMens.put("nascimento", p.getNascimento());
-					objMens.put("telefone", p.getTel1());
-					objMens.put("email", p.getEmail());
-					objMens.put("cep", p.getCep());
-					
 					objMens.put("Genero", p.getGenero());
+					objMens.put("tel1", p.getTel1());
+					objMens.put("tel2", p.getTel2());
+					objMens.put("email", p.getEmail());
+					objMens.put("endereco", p.getCep());
+					objMens.put("rank", g.getRank());
+					objMens.put("aniResgatados", g.getAnimasResgatados());
+					objMens.put("progresso", g.getProgresso());
+					
 					out.print(objMens.toString());
 					System.out.println(objMens.toString());
 
