@@ -278,6 +278,7 @@ body, html {
 							<p class="card-text">Informaçoes basicas sobre o dogzin
 								clicando na imagem ira para o perfil dele para ver os laudos
 								medicos e saber mais sobre o dog</p>
+								<button>Adotar</button>
 							<p class="card-text">Last updated 3 mins ago</p>
 						</div>
 					</div>
