@@ -41,48 +41,38 @@ public class PessoaDAO {
 		con = ConnectionDB.getConnection();
 
 		if (acao.equals("Guardião")) {
-			sqlCondicao = "INSERT INTO Guardiao VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,\"Iniciante\",0,\"ativo\");";
+			sqlCondicao = "INSERT INTO Guardiao VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,\"Iniciante\",0,\"ativo\"); ";
 		} else {
-			sqlCondicao = "INSERT INTO Funcionario VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0, ?, \"ativo\");";
+			sqlCondicao = "INSERT INTO Funcionario VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0, ?, \"ativo\"); ";
 		}
-		
-		sql = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, 'Guardião', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		
+
+		sql = "DELIMITER // " +
+			  "START TRANSACTION; "+
+			  "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?); "+
+			   sqlCondicao +
+			  "COMMIT// " +
+			  "DELIMITER ;";
+
 		ps = con.prepareStatement(sql);
-		
+
+		ps.setString(1, p.getApelido());
+		ps.setString(2, p.getP_nome());
+		ps.setString(3, p.getS_nome());
+		ps.setDate(4, new java.sql.Date(p.getNascimento().getTime()));
+		ps.setString(5, p.getSenha());
+		ps.setString(6, p.getEmail());
+		ps.setString(7, p.getCpf());
+		ps.setString(8, p.getGenero());
+		ps.setString(9, p.getRg());
+		ps.setString(10, p.getCep());
+		ps.setString(11, p.getReferencia());
+		ps.setString(12, p.getImgPerfil());
+		ps.setString(13, p.getTel1());
+		ps.setString(14, p.getTel2());
+
 		if (acao.equals("Funcionário")) {
-			ps.setString(1, p.getFuncionario().getCargo());
-			ps.setString(2, p.getApelido());
-			ps.setString(3, p.getP_nome());
-			ps.setString(4, p.getS_nome());
-			ps.setDate(5, new java.sql.Date(p.getNascimento().getTime()));
-			ps.setString(6, p.getSenha());
-			ps.setString(7, p.getEmail());
-			ps.setString(8, p.getCpf());
-			ps.setString(9, p.getGenero());
-			ps.setString(10, p.getRg());
-			ps.setString(11, p.getCep());
-			ps.setString(12, p.getReferencia());
-			ps.setString(13, p.getImgPerfil());
-			ps.setString(14, p.getTel1());
-			ps.setString(15, p.getTel2());
-		} else {
-			ps.setString(1, p.getApelido());
-			ps.setString(2, p.getP_nome());
-			ps.setString(3, p.getS_nome());
-			ps.setDate(4, new java.sql.Date(p.getNascimento().getTime()));
-			ps.setString(5, p.getSenha());
-			ps.setString(6, p.getEmail());
-			ps.setString(7, p.getCpf());
-			ps.setString(8, p.getGenero());
-			ps.setString(9, p.getRg());
-			ps.setString(10, p.getCep());
-			ps.setString(11, p.getReferencia());
-			ps.setString(12, p.getImgPerfil());
-			ps.setString(13, p.getTel1());
-			ps.setString(14, p.getTel2());	
+			ps.setString(15, p.getFuncionario().getCargo());
 		}
-		
 
 		return ps.executeUpdate() > 0;
 	}
