@@ -5,8 +5,8 @@
 <style>
 body {
 	height: 900px;
-	background-color: #8aedc2;
-	background-image: linear-gradient(#8aedc2, white);
+	background-color: #139f97;
+	background-image: linear-gradient(#139f97, white);
 	background-repeat: no-repeat, repeat;
 }
 
@@ -40,7 +40,7 @@ body {
 }
 
 .minhaNav {
-	background-color: #8aedc2;
+	background-color: #139f97;
 	margin-top: 6%;
 	height: 30%;
 }
@@ -128,8 +128,7 @@ body {
 
 			<div class="userLateral">
 				<div class="imgUser">
-					<img src="https://bootdey.com/img/Content/avatar/avatar5.png"
-						style="width: 100px; height: 100px;" />
+					
 				</div>
 				<div class="user"></div>
 			</div>
