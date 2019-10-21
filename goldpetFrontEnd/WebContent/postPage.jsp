@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -7,7 +6,7 @@
 body{
   height: 900px;
   background-color: #8aedc2;
-  background-image: linear-gradient(#8aedc2, white);
+  background-image: linear-gradient(#139f97, white);
   background-repeat: no-repeat, repeat;
 }
 .global {
@@ -32,7 +31,7 @@ body{
 }
 
 .minhaNav {
-	background-color: #8aedc2;
+	background-color: #139f97;
 	margin-top: 6%;
 	height: 30%;
 }
@@ -49,23 +48,10 @@ body{
 	height: 100%;
 	float: left;
 }
-
-.userBolsonaro {
-	width: 15%;
-	height: 100%;
-	float: right;
-	padding-top: 3%;
-}
-
 .botao {
 	float: right;
 }
 
-.imgUser {
-	float: top;
-	overflow: hidden;
-	padding-left: 39%;
-}
 </style>
 <head>
 <meta charset="UTF-8" />
@@ -117,7 +103,7 @@ body{
 	<div class="global">
 		<div class="userLula">
 			<div class="imgUser">
-				<img src="https://bootdey.com/img/Content/avatar/avatar5.png"
+				<img src=""
 					style="width: 80px; height: 80px;" />
 			</div>
 		</div>

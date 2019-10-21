@@ -230,8 +230,6 @@ body, html {
 
 		</div>
 
-
-
 		<div id="direita"></div>
 
 	</div>
