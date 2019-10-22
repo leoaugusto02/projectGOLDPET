@@ -76,8 +76,11 @@ body, html {
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
+
 	<div id="esquerda"></div>
 	<div id="meio">
 
@@ -88,11 +91,12 @@ body, html {
 					<img src="img/LogoPet.png" style="width: 220px; height: 220px;" />
 				</div>
 
-				<div class="navC">
-					<div class="d-flex">
-						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
-							<div class="collapse navbar-collapse" id="navbarSupportedContent">
-								<ul class="navbar-nav mr-auto">
+							<div class="navC d-flex w-100 justfy-content-center">
+				
+					<div class="w-100">
+						<nav class="navbar navbar-expand-md navbar-light minhaNav">
+							<div class="w-100" id="navbarSupportedContent">
+								<ul class="navbar-nav mr-auto menu ">
 									<li class="nav-item active"><a class="nav-link" href="#">Home
 											<span class="sr-only">(current)</span>
 									</a></li>
@@ -100,17 +104,22 @@ body, html {
 
 									<li class="nav-item"><a class="nav-link" href="#">Resgate</a></li>
 
+									<li class="nav-item"><a class="nav-link" href="#">Adoção</a></li>
+
 									<li class="nav-item"><a class="nav-link" href="#">Sobre
 											Nós</a></li>
 
 									<li class="nav-item"><a class="nav-link" href="#">Cadastrar
 											Pet</a></li>
+
+									<li class="nav-item"><a class="nav-link" href="#">Forum</a></li>
+
 								</ul>
 							</div>
 						</nav>
 					</div>
 				</div>
-
+				
 			</div>
 			<br>
 			<div class="col-xs-12 col-sm-9">
@@ -119,7 +128,7 @@ body, html {
 				<div class="container">
 					<div style="text-align: center">
 						<h2>Doguinho</h2>
-						<div class = "circulo square"></div>
+						<div class="circulo square"></div>
 					</div>
 
 				</div>
@@ -186,15 +195,138 @@ body, html {
 						</div>
 					</div>
 					<br>
-					<button type="button" class="btn btn-primary">Adotar</button>
+
+					<div id="buttonAdd">
+						<button type="button" class="btn btn-outline-success"
+							data-toggle="modal" data-target="#siteModal">Adotar</button>
+					</div>
+
+					<div class="modal" id="siteModal" tabindex="-1" role="dialog"
+						aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+
+								<div class="modal-header" style="background-color: #139F97;">
+									<h5 class="modal-title">Adotar</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span>x</span>
+									</button>
+								</div>
+
+								<div class="modal-body">
+									<div>
+										<div class="custom-control custom-radio">
+											<input type="radio" id="customRadio1" name="customRadio"
+												class="custom-control-input"> <label
+												class="custom-control-label" for="customRadio1 style="margin-bottom: 1%;"">Buscar
+												na Ong</label>
+										</div>
+										<div class="custom-control custom-radio">
+											<input type="radio" id="customRadio2" name="customRadio"
+												class="custom-control-input" > <label
+												class="custom-control-label" for="customRadio2" style="margin-bottom: 3%;">Levar
+												até na casa</label>
+										</div>
+									</div>
+
+									<div id="levarNaCasa">
+										<input class="form-control" type="text" placeholder="CEP" id="cep"
+											style="margin-bottom: 3%;" /> 
+											
+											<script>
+											 $(document).ready(function(){ 
+										            $("#cep").keyup(function(){
+										            	var cep = $("#cep").val();
+										            	if(cep.length == 8){
+										            		
+										                $.get("https://viacep.com.br/ws/"+cep+"/json/",
+										                		function(data, status){
+										                    console.log(data);
+										                    $("#cidade").val(data.localidade);
+										                    $("#nomeRua").val(data.logradouro);
+										                    $("#bairro").val(data.bairro);
+										                });
+										            	}
+										            });
+										        });
+											
+											</script>
+											
+											<input class="form-control" type="text" placeholder="Cidade" id="cidade"
+											 style="margin-bottom: 3%;" /> 
+											
+											<input class="form-control" type="text" placeholder="Rua" id="nomeRua"
+											 style="margin-bottom: 3%;" /> 
+											
+											<input class="form-control" type="number" placeholder="N° casa"
+											 style="margin-bottom: 3%;" /> 
+											
+											<input class="form-control" type="text" placeholder="Bairro" id="bairro"
+											 style="margin-bottom: 3%;" />
+
+									</div>
+
+									<div id="buscarNaYong">
+										<div class="form-group">
+											<label class="col-md-5 control-label" for="hora">Horario</label>
+											<div class="col-md-5">
+												<select id="hora" name="time" class="form-control">
+													<option value="Não informado">Não informado</option>
+													<option value="Manha">9:00 AM</option>
+													<option value="Manha">9:30 AM</option>
+													<option value="Manha">10:00 AM</option>
+													<option value="Manha">10:30 AM</option>
+													<option value="Manha">11:00 AM</option>
+													<option value="Manha">11:30 AM</option>
+													<option value="Tarde">12:00 PM</option>
+													<option value="Tarde">12:30 PM</option>
+													<option value="Tarde">13:00 PM</option>
+												</select>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="col-md-4 control-label" for="dia">Dia</label>
+											<div class="col-md-4">
+												<select id="hora" name="time" class="form-control">
+													<option value="Não informado">Não informado</option>
+													<option value="Segunda">Segunda</option>
+													<option value="Terca">Terça</option>
+													<option value="Quarta">Quarta</option>
+													<option value="Quinta">Quinta</option>
+													<option value="Sexta">Sexta</option>
+												</select>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-outline-danger"
+										data-dismiss="modal">
+										<img alt="close.png" src="img/close.png"
+											style="height: 20px; width: 20px; margin-left: -0.5;" />
+										Fechar
+									</button>
+									<button type="button" class="btn btn-outline-success">
+										<img alt="postar.png" src="img/postar.png"
+											style="height: 20px; width: 20px; margin-left: -0.5;" />
+										Confirmar
+									</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
 
 				</div>
 			</div>
 		</div>
 	</div>
 	<div id="direita"></div>
-
-	<script src="js/jquery-3.3.1.min.js"></script>
+	
 	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
