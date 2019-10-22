@@ -232,11 +232,11 @@ body, html {
 										</tr>
 										<tr>
 											<th><strong>Animais Resgatados:</strong></th>
-											<td><%=obj.getString("aniResgatados")%></td>
+											<td><%=obj.getInt("aniResgatados")%></td>
 										</tr>
 										<tr>
 											<th><strong>Progresso:</strong><label></label></th>
-											<td><%=obj.getString("progresso")%></td>
+											<td><%=obj.getInt("progresso")%></td>
 											<td></td>
 										</tr>
 										<%

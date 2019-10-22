@@ -165,7 +165,7 @@
 				%>	
 				<div class="card border-success mb-2">
 					<div class="card-text" style="padding:2%;text-align:center">Cadastro Concluido</div>
-					<a class="btn btn-success" href="login.jsp" style="margin:3%">
+					<a class="btn btn-success" href="Login.jsp" style="margin:3%">
 					Retornar para a página de login</a> 			
 				</div>
 				<% 	

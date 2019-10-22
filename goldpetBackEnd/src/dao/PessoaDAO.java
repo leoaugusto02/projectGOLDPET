@@ -39,21 +39,21 @@ public class PessoaDAO {
 
 		String sql, sqlCondicao = null;
 		con = ConnectionDB.getConnection();
-
+		
+		sql = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?,'"+acao+"', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
 		if (acao.equals("Guardião")) {
-			sqlCondicao = "INSERT INTO Guardiao VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,\"Iniciante\",0,\"ativo\"); ";
+			sqlCondicao = "INSERT INTO Guardiao VALUES(null, "
+					+ "(SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,'Iniciante',0,'ativo')";
 		} else {
-			sqlCondicao = "INSERT INTO Funcionario VALUES(null, (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0, ?, \"ativo\"); ";
+			sqlCondicao = "INSERT INTO Funcionario VALUES(null, "
+					+ "(SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0, ?, 'ativo')";
 		}
 
-		sql = "DELIMITER // " +
-			  "START TRANSACTION; "+
-			  "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?); "+
-			   sqlCondicao +
-			  "COMMIT// " +
-			  "DELIMITER ;";
-
+		
+		con.setAutoCommit(false);
 		ps = con.prepareStatement(sql);
+		PreparedStatement ps2 = con.prepareStatement(sqlCondicao);
 
 		ps.setString(1, p.getApelido());
 		ps.setString(2, p.getP_nome());
@@ -71,15 +71,21 @@ public class PessoaDAO {
 		ps.setString(14, p.getTel2());
 
 		if (acao.equals("Funcionário")) {
-			ps.setString(15, p.getFuncionario().getCargo());
+			ps2.setString(1, p.getFuncionario().getCargo());
 		}
-
-		return ps.executeUpdate() > 0;
+		
+		if((ps.executeUpdate() > 0) && (ps2.executeUpdate() > 0)) {
+			con.commit();
+			return true;
+		}
+		
+		return false;
+		
 	}
 
 	public Pessoa perfil(int codePessoa) throws SQLException {
 
-		String sql = "SELECT nick_name, p_nome, s_nome, nascimento, genero, telefone1, telefone2, email, rank, animais_resgatados,"
+		String sql = "SELECT nick_name, p_nome, s_nome, nascimento, genero, telefone1, telefone2, email, cep, rank, animais_resgatados,"
 				+ " progresso, imgPerfil FROM Pessoa p"
 				+ " INNER JOIN Guardiao g ON p.codePerson = g.codePerson WHERE p.codePerson = ?";
 
@@ -92,9 +98,7 @@ public class PessoaDAO {
 
 		if (rs.next()) {
 			Pessoa p = new Pessoa();
-			Guardiao g = new Guardiao();
 
-			p.setCodePerson(rs.getInt("p.codePerson"));
 			p.setApelido(rs.getString("nick_name"));
 			p.setP_nome(rs.getString("p_nome"));
 			p.setS_nome(rs.getString("s_nome"));
@@ -103,10 +107,13 @@ public class PessoaDAO {
 			p.setTel1(rs.getString("telefone1"));
 			p.setTel2(rs.getString("telefone2"));
 			p.setEmail(rs.getString("email"));
+			p.setCep(rs.getString("cep"));
 			p.setImgPerfil(rs.getString("imgPerfil"));
+			
+			Guardiao g = new Guardiao();
 
 			g.setRank(rs.getString("rank"));
-			g.setAnimasResgatados(rs.getInt("animaisResgatados"));
+			g.setAnimasResgatados(rs.getInt("animais_resgatados"));
 			g.setProgresso(rs.getInt("progresso"));
 
 			p.setGuardiao(g);
