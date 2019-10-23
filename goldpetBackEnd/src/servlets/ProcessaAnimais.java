@@ -11,15 +11,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
+
+import dao.AnimaisDAO;
 
 @WebServlet("/ProcessaAnimais")
 public class ProcessaAnimais extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	super.service(req, resp);
-    }
-    
-    
+
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		super.service(req, resp);
+
+		PrintWriter out = resp.getWriter();
+		AnimaisDAO aDao = new AnimaisDAO();
+		JSONObject objMens = new JSONObject();
+
+		String acao = req.getParameter("acao");
+
+		
+		if (acao != null) {
+			if (acao.equals("adocao")) {
+				
+				aDao.l
+
+			}
+		}
+
+	}
+
 }

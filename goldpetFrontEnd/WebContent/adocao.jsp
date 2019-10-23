@@ -1,3 +1,9 @@
+<%@page import="org.json.JSONObject"%>
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.io.DataOutputStream"%>
+<%@page import="java.net.HttpURLConnection"%>
+<%@page import="java.net.URL"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -101,6 +107,39 @@ body, html {
 </head>
 <body>
 
+	<%
+		String acao = "adocao";
+		int codigoAnimal = 1;/*request.getParameter("codigoAnimal");*/
+
+
+
+			String parametros = "acao=" + acao;
+
+			URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
+
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("POST");
+			con.setDoOutput(true);
+
+			System.out.println(parametros);
+
+			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+			wr.writeBytes(parametros);
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+			String linha = "";
+
+			JSONObject obj;
+
+			/*if (obj.getString("mensagem").equals("0")) {
+				response.sendRedirect("dataDoguinho.jsp");
+			} else {
+				System.out.println("Animal não existe");
+			}*/
+	
+	%>
+
 	<div class="conteudo">
 
 		<div id="esquerda"></div>
@@ -168,44 +207,50 @@ body, html {
 						<div class="modal-body">
 							<div>
 
-								<input class="form-control" type="text" placeholder="nome do pet" style="margin-bottom:3%;"/>
-								
-								<input class="form-control" type="number" placeholder="Idade" style="margin-bottom:3%;" />
+								<input class="form-control" type="text"
+									placeholder="nome do pet" style="margin-bottom: 3%;" /> <input
+									class="form-control" type="number" placeholder="Idade"
+									style="margin-bottom: 3%;" /> <input class="form-control"
+									type="text" placeholder="Raça" style="margin-bottom: 3%;" /> <input
+									class="form-control" type="text" placeholder="Porte"
+									style="margin-bottom: 3%;" /> <input class="form-control"
+									type="text" placeholder="Espécie" style="margin-bottom: 3%;" />
 
-								<input class="form-control" type="text" placeholder="Raça" style="margin-bottom:3%;" />
-								
-								<input class="form-control" type="text" placeholder="Porte" style="margin-bottom:3%;" />
-
-								<input class="form-control" type="text" placeholder="Espécie" style="margin-bottom:3%;" />
-								
-								<div class="form-check form-check-inline" style="margin-bottom:2%;">
+								<div class="form-check form-check-inline"
+									style="margin-bottom: 2%;">
 									<input class="form-check-input" type="radio"
 										name="inlineRadioOptions" id="inlineRadio1" value="option1">
-									<label class="form-check-label" for="inlineRadio1">
-									<img alt="feminino.png" src="img/feminino.png" 
-									style="height: 25px; width: 25px; margin-left: -0.5;">Fêmea</label>
+									<label class="form-check-label" for="inlineRadio1"> <img
+										alt="feminino.png" src="img/feminino.png"
+										style="height: 25px; width: 25px; margin-left: -0.5;">Fêmea
+									</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio"
 										name="inlineRadioOptions" id="inlineRadio2" value="option2">
-									<label class="form-check-label" for="inlineRadio2">
-									<img alt="masculino.png" src="img/masculino.png" 
-									style="height: 25px; width: 25px; margin-left: -0.5;">Macho</label>
-									
+									<label class="form-check-label" for="inlineRadio2"> <img
+										alt="masculino.png" src="img/masculino.png"
+										style="height: 25px; width: 25px; margin-left: -0.5;">Macho
+									</label>
+
 								</div>
-								
+
 								<div id="textArea">
-									<textarea class="form-control" id="textarea" placeholder="Status do Pet" rows="3" 
-									style="margin-top: 2px; margin-bottom: 0px; height: 80px; width:470px;"></textarea>
+									<textarea class="form-control" id="textarea"
+										placeholder="Status do Pet" rows="3"
+										style="margin-top: 2px; margin-bottom: 0px; height: 80px; width: 470px;"></textarea>
 								</div>
-								
+
 								<div>
-								
+
 									<button action="upload" type="file"
-									class="btn btn-outline-info" style="float:right; margin-top:2%;">
-									<img alt="petIcon.png" src="img/PetIcon.png"
-									style="height: 20px; width: 20px; margin-left:-1%;">Imagem Pet</button>
-									
+										class="btn btn-outline-info"
+										style="float: right; margin-top: 2%;">
+										<img alt="petIcon.png" src="img/PetIcon.png"
+											style="height: 20px; width: 20px; margin-left: -1%;">Imagem
+										Pet
+									</button>
+
 								</div>
 							</div>
 						</div>
@@ -226,9 +271,44 @@ body, html {
 				</div>
 			</div>
 
+			<!-- FORM -->
+			
+			<form action="#" method="post">
 
-			<div class="d-flex justify-content-around">
-				<div id="infoDog">
+				<div class="d-flex justify-content-around">
+				
+				<%
+				while ((linha = br.readLine()) != null) {
+					System.out.println(linha);
+					obj = new JSONObject(linha);
+				%>
+					<div id="infoDog">
+						<div class="card bg-dark text-white" style="width: 23rem;">
+							<img src="img/slide01.png" class="card-img" href="#"
+								style="height: 500px;">
+							<div class="card-img-overlay">
+								<h5 class="card-title"></h5>
+								<p class="card-text">Informaçoes basicas sobre o dogzin
+									clicando na imagem ira para o perfil dele para ver os laudos
+									medicos e saber mais sobre o dog</p>
+								<p class="card-text">Last updated 3 mins ago</p>
+							</div>
+						</div>
+					</div>
+				<%} %>
+
+				<!--  	<div class="card bg-dark text-white" style="width: 23rem;">
+						<img src="img/slide01.png" class="card-img" href="#"
+							style="height: 500px;">
+						<div class="card-img-overlay">
+							<h5 class="card-title">Nome do dogzin</h5>
+							<p class="card-text">Informaçoes basicas sobre o dogzin
+								clicando na imagem ira para o perfil dele para ver os laudos
+								medicos e saber mais sobre o dog</p>
+							<p class="card-text">Last updated 3 mins ago</p>
+						</div>
+					</div>
+
 					<div class="card bg-dark text-white" style="width: 23rem;">
 						<img src="img/slide01.png" class="card-img" href="#"
 							style="height: 500px;">
@@ -242,34 +322,34 @@ body, html {
 					</div>
 				</div>
 
-
-				<div class="card bg-dark text-white" style="width: 23rem;">
-					<img src="img/slide01.png" class="card-img" href="#"
-						style="height: 500px;">
-					<div class="card-img-overlay">
-						<h5 class="card-title">Nome do dogzin</h5>
-						<p class="card-text">Informaçoes basicas sobre o dogzin
-							clicando na imagem ira para o perfil dele para ver os laudos
-							medicos e saber mais sobre o dog</p>
-						<p class="card-text">Last updated 3 mins ago</p>
+				<div class="d-flex justify-content-around" style="margin-top: 2%;">
+					<div id="infoDog">
+						<div class="card bg-dark text-white" style="width: 23rem;">
+							<img src="img/slide01.png" class="card-img" href="#"
+								style="height: 500px;">
+							<div class="card-img-overlay">
+								<h5 class="card-title">Nome do dogzin</h5>
+								<p class="card-text">Informaçoes basicas sobre o dogzin
+									clicando na imagem ira para o perfil dele para ver os laudos
+									medicos e saber mais sobre o dog</p>
+								<p class="card-text">Last updated 3 mins ago</p>
+							</div>
+						</div>
 					</div>
-				</div>
 
-				<div class="card bg-dark text-white" style="width: 23rem;">
-					<img src="img/slide01.png" class="card-img" href="#"
-						style="height: 500px;">
-					<div class="card-img-overlay">
-						<h5 class="card-title">Nome do dogzin</h5>
-						<p class="card-text">Informaçoes basicas sobre o dogzin
-							clicando na imagem ira para o perfil dele para ver os laudos
-							medicos e saber mais sobre o dog</p>
-						<p class="card-text">Last updated 3 mins ago</p>
+
+					<div class="card bg-dark text-white" style="width: 23rem;">
+						<img src="img/slide01.png" class="card-img" href="#"
+							style="height: 500px;">
+						<div class="card-img-overlay">
+							<h5 class="card-title">Nome do dogzin</h5>
+							<p class="card-text">Informaçoes basicas sobre o dogzin
+								clicando na imagem ira para o perfil dele para ver os laudos
+								medicos e saber mais sobre o dog</p>
+							<p class="card-text">Last updated 3 mins ago</p>
+						</div>
 					</div>
-				</div>
-			</div>
 
-			<div class="d-flex justify-content-around" style="margin-top: 2%;">
-				<div id="infoDog">
 					<div class="card bg-dark text-white" style="width: 23rem;">
 						<img src="img/slide01.png" class="card-img" href="#"
 							style="height: 500px;">
@@ -282,42 +362,21 @@ body, html {
 						</div>
 					</div>
 				</div>
-
-
-				<div class="card bg-dark text-white" style="width: 23rem;">
-					<img src="img/slide01.png" class="card-img" href="#"
-						style="height: 500px;">
-					<div class="card-img-overlay">
-						<h5 class="card-title">Nome do dogzin</h5>
-						<p class="card-text">Informaçoes basicas sobre o dogzin
-							clicando na imagem ira para o perfil dele para ver os laudos
-							medicos e saber mais sobre o dog</p>
-						<p class="card-text">Last updated 3 mins ago</p>
-					</div>
-				</div>
-
-				<div class="card bg-dark text-white" style="width: 23rem;">
-					<img src="img/slide01.png" class="card-img" href="#"
-						style="height: 500px;">
-					<div class="card-img-overlay">
-						<h5 class="card-title">Nome do dogzin</h5>
-						<p class="card-text">Informaçoes basicas sobre o dogzin
-							clicando na imagem ira para o perfil dele para ver os laudos
-							medicos e saber mais sobre o dog</p>
-						<p class="card-text">Last updated 3 mins ago</p>
-					</div>
-				</div>
-			</div>
-
-
-
-
+				<input type="hidden" name="acao" id="acao" value="card" />-->
+			</form>
 		</div>
 
 		<div id="direita"></div>
 
 	</div>
-	<!-- <script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery-3.3.1.min.js"></script> -->
+	 <script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery-3.3.1.min.js"></script> 
+	
+	<script>
+		function card(){
+			$("#acao").val("card");
+		}
+	
+	</script>
 
 </body>
