@@ -40,7 +40,7 @@ public class ProcessaAnimais extends HttpServlet {
 
 				try {
 					a = aDao.perfilDog(1);
-
+//desbugando o commit
 					objMens.put("especie", a.getEspecie());
 					objMens.put("raca", a.getRaca());
 					objMens.put("porte", a.getPorte());
