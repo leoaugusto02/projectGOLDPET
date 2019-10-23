@@ -52,10 +52,10 @@ SELECT nick
 								
 UPDATE Pessoa p, Guardiao g, Funcionario f SET tipo = "Funcionário", g.status = "desativado", f.status = "contratado";
 															
-INSERT INTO Funcionario(codePerson, cargo, status);
-SELECT * FROM (SELECT 1,'Somewhere', '022') AS func
+INSERT INTO Funcionario(codePerson, cargo, status)
+SELECT * FROM (SELECT (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1),'Somewhere', '022') AS func
 WHERE NOT EXISTS (
-	SELECT codePerson FROM Guardiao WHERE codePerson = 1
+	SELECT codePerson FROM Funcionario WHERE codePerson = (SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1)
 ) LIMIT 1;	
 								
 								

@@ -39,9 +39,9 @@ public class PessoaDAO {
 
 		String sql, sqlCondicao = null;
 		con = ConnectionDB.getConnection();
-		
-		sql = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?,'"+acao+"', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		
+
+		sql = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?,'" + acao + "', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 		if (acao.equals("Guardião")) {
 			sqlCondicao = "INSERT INTO Guardiao VALUES(null, "
 					+ "(SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,'Iniciante',0,'ativo')";
@@ -50,7 +50,6 @@ public class PessoaDAO {
 					+ "(SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0, ?, 'ativo')";
 		}
 
-		
 		con.setAutoCommit(false);
 		ps = con.prepareStatement(sql);
 		PreparedStatement ps2 = con.prepareStatement(sqlCondicao);
@@ -73,14 +72,14 @@ public class PessoaDAO {
 		if (acao.equals("Funcionário")) {
 			ps2.setString(1, p.getFuncionario().getCargo());
 		}
-		
-		if((ps.executeUpdate() > 0) && (ps2.executeUpdate() > 0)) {
+
+		if ((ps.executeUpdate() > 0) && (ps2.executeUpdate() > 0)) {
 			con.commit();
 			return true;
 		}
-		
+
 		return false;
-		
+
 	}
 
 	public Pessoa perfil(int codePessoa) throws SQLException {
@@ -109,7 +108,7 @@ public class PessoaDAO {
 			p.setEmail(rs.getString("email"));
 			p.setCep(rs.getString("cep"));
 			p.setImgPerfil(rs.getString("imgPerfil"));
-			
+
 			Guardiao g = new Guardiao();
 
 			g.setRank(rs.getString("rank"));
@@ -173,22 +172,40 @@ public class PessoaDAO {
 		return true;
 	}
 
-	public boolean MudarTipoContaDashBoard(int codePerson, String acao) {
+	public boolean MudarTipoContaDashBoard(int codePerson, String acao, String cargo) throws SQLException {
 
 		// 1 = funcionario
-		// else = guardidao
+		// else = guardiao
 
 		String sql, sql2;
 		con = ConnectionDB.getConnection();
-		
+
 		if (acao.equals("1")) {
-			sql = "UPDATE Pessoa SET tipo = Funcionário WHERE codePerson = ?";
-		    sql2 = "UPDATE Funcionario SET status = contratado";
+			sql = "INSERT INTO Funcionario(codePerson, cargo)"
+					+ " SELECT * FROM (SELECT "+codePerson+",'"+cargo+"') AS func"
+					+ " WHERE NOT EXISTS ("
+					+ "	SELECT codePerson FROM Funcionario WHERE codePerson ="+ codePerson
+					+ ") LIMIT 1;";
+			sql2 = "UPDATE Pessoa p INNER JOIN Funcionario f ON p.codePerson = f.codePerson INNER JOIN Guardiao g ON p.codePerson = f.codePerson SET p.tipo = 'Funcionário', f.status='ativo', g.status='desativo' WHERE p.codePerson =" + codePerson;
 		} else {
-			sql = "UPDATE Pessoa SET tipo = Guardião WHERE codePerson = ?";
-		    sql2 = "UPDATE Guardião SET status = ativo";
+			sql = "INSERT INTO Guardiao(codePerson, animais_resgatados, rank, progresso)"
+					+ " SELECT * FROM (SELECT "+codePerson+", 0, 'Iniciante', 0) AS guard"
+					+ " WHERE NOT EXISTS ("
+					+ "	SELECT codePerson FROM Guardiao WHERE codePerson ="+ codePerson
+					+ ") LIMIT 1;";
+			sql2 = "UPDATE Pessoa p INNER JOIN Funcionario f ON p.codePerson = f.codePerson INNER JOIN Guardiao g ON p.codePerson = f.codePerson SET p.tipo = 'Guardião', f.status='demetido', g.status='ativo' WHERE p.codePerson =" + codePerson;
 		}
+		
+		con.setAutoCommit(false);
+		ps = con.prepareStatement(sql);
+		PreparedStatement ps2 = con.prepareStatement(sql2);
+		
+		if ((ps.executeUpdate() > 0) && (ps2.executeUpdate() > 0)) {
+			con.commit();
+			return true;
+		}
+		
 		return false;
 	}
-
+	
 }
