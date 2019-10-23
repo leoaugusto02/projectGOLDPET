@@ -46,4 +46,21 @@ DELIMITER ;
 								   
 								   --PERFIL--
 								   
-SELECT nick								   
+SELECT nick	
+
+								--DASHBOARD--
+								
+UPDATE Pessoa p, Guardiao g, Funcionario f SET tipo = "Funcionário", g.status = "desativado", f.status = "contratado";
+															
+INSERT INTO Funcionario(codePerson, cargo, status);
+SELECT * FROM (SELECT 1,'Somewhere', '022') AS func
+WHERE NOT EXISTS (
+	SELECT codePerson FROM Guardiao WHERE codePerson = 1
+) LIMIT 1;	
+								
+								
+INSERT INTO table_listnames (name, address, tele)
+SELECT * FROM (SELECT 'Rupert', 'Somewhere', '022') AS tmp
+WHERE NOT EXISTS (
+    SELECT name FROM table_listnames WHERE name = 'Rupert'
+) LIMIT 1;															   

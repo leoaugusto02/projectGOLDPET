@@ -180,18 +180,13 @@ public class PessoaDAO {
 
 		String sql, sql2;
 		con = ConnectionDB.getConnection();
-
-		
-		UPDATE Pessoa p, Guardiao g, Funcionario f SET tipo = "Funcionário", g.status = "desativado", f.status = "contratado";
 		
 		if (acao.equals("1")) {
 			sql = "UPDATE Pessoa SET tipo = Funcionário WHERE codePerson = ?";
 		    sql2 = "UPDATE Funcionario SET status = contratado";
-		    sql3 = "UPDATE Guardião SET status = desativado";
 		} else {
 			sql = "UPDATE Pessoa SET tipo = Guardião WHERE codePerson = ?";
 		    sql2 = "UPDATE Guardião SET status = ativo";
-		    sql3 = "UPDATE Funcionário SET status = demetido";
 		}
 		return false;
 	}
