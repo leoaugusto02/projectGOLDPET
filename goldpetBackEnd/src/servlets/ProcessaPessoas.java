@@ -229,7 +229,6 @@ public class ProcessaPessoas extends HttpServlet {
 			} else if (acao.equals("mostrarCredencial")) {
 
 				Pessoa p = new Pessoa();
-				Guardiao g = new Guardiao();
 				
 				System.out.println("CREDENCIAL");
 
