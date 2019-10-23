@@ -33,7 +33,7 @@ public class ProcessaAnimais extends HttpServlet {
 		if (acao != null) {
 			if (acao.equals("adocao")) {
 				
-				aDao.l
+				//aDao.
 
 			}
 		}
