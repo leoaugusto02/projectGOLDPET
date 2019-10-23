@@ -1,3 +1,9 @@
+<%@page import="org.json.JSONObject"%>
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.io.DataOutputStream"%>
+<%@page import="java.net.HttpURLConnection"%>
+<%@page import="java.net.URL"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -81,6 +87,32 @@ body, html {
 </head>
 <body>
 
+	<%
+	String acao = "perfil";
+	
+	String parametros = "acao=" + acao;
+	
+	URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
+
+	HttpURLConnection con = (HttpURLConnection) url.openConnection();
+	con.setRequestMethod("POST");
+	con.setDoOutput(true);
+
+	System.out.println(parametros);
+
+	DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+	wr.writeBytes(parametros);
+
+	BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+	String apnd = "", linha = "";
+	
+	while ((linha = br.readLine()) != null)
+		apnd += linha;
+
+	JSONObject obj = new JSONObject(apnd);
+	
+	%>
 	<div id="esquerda"></div>
 	<div id="meio">
 
@@ -144,26 +176,34 @@ body, html {
 							<table class="table profile__table">
 								<tbody>
 									<tr>
-										<th><strong>Nome:</strong><label></label></th>
-									</tr>
-									<tr>
-										<th><strong>Data de Nascimento:</strong></th>
+										<th><strong>Espécie:</strong><label></label></th>
+										<td><%=obj.getString("especie")%></td>
 									</tr>
 									<tr>
 										<th><strong>Raça:</strong></th>
+										<td><%=obj.getString("raca")%></td>
 									</tr>
 									<tr>
 										<th><strong>Porte: </strong></th>
+										<td><%=obj.getString("porte")%></td>
 									</tr>
 									<tr>
 										<th><strong>Idade:</strong></th>
+										<td><%=obj.getInt("idade")%></td>
 									</tr>
 									<tr>
 										<th><strong>Genero:</strong></th>
+										<td><%=obj.getString("sexo")%></td>
 									</tr>
 									<tr>
 										<th><strong>Status:</strong></th>
+										<td><%=obj.getString("status")%></td>
 									</tr>
+									<tr>
+										<th><strong>Imagem:</strong></th>
+										<td><%=obj.getString("imgAnimal")%></td>
+									</tr>
+									
 								</tbody>
 							</table>
 
@@ -179,15 +219,19 @@ body, html {
 								<tbody>
 									<tr>
 										<th><strong>Nome do Veterinario:</strong><label></label></th>
+										<td><%=obj.getString("nomeVet")%></td>
 									</tr>
 									<tr>
 										<th><strong>Data do Diagnostico:</strong></th>
+										<td><%=obj.getString("dataDiag")%></td>
 									</tr>
 									<tr>
 										<th><strong>Breve Diagnostico:</strong></th>
+										<td><%=obj.getString("diagnostico")%></td>
 									</tr>
 									<tr>
 										<th><strong>Diagnostico completo:</strong></th>
+										<td><%=obj.getString("imgDiag")%></td>
 									</tr>
 								</tbody>
 							</table>

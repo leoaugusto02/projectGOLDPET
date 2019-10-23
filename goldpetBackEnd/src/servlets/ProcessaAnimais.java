@@ -32,7 +32,7 @@ public class ProcessaAnimais extends HttpServlet {
 
 		
 		if (acao != null) {
-			if (acao.equals("perfilDoge")) {
+			if (acao.equals("adocao")) {
 				
 				Animais a = new Animais();
 				
@@ -63,9 +63,6 @@ public class ProcessaAnimais extends HttpServlet {
 				}
 
 			}
-		}else {
-			objMens.put("mensagem", "aguardando requisição");
-			out.print(objMens.toString());
 		}
 
 	}
