@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
 <style>
 body {
 	height: 900px;
@@ -60,33 +61,6 @@ body {
 	margin-left: 0.5%;
 }
 
-#customers {
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-#customers td, #customers th {
-	border: 1px solid #ccd7e8;
-	padding: 8px;
-}
-
-#customers tr:nth-child(even) {
-	background-color: #f2f2f2;
-}
-
-#customers tr:hover {
-	background-color: #ddd;
-}
-
-#customers th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	text-align: left;
-	background-color: #000000;
-	color: white;
-}
-
 .menu {
 	padding-right: 15px;
 	width: 100%;
@@ -95,11 +69,34 @@ body {
 .menu>li {
 	padding-left: 15px;
 }
+
+p.round {
+	text-align: center;
+	width: 400px;
+	height: 50px;
+	margin-left: 220px;
+	font-size: 25px;
+	color: white;
+	text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.clearfix {
+	margin-left: 250px;
+	width: 600px;
+	height: 225px;
+}
+
+.texto {
+	margin-left: 10px;
+	width: 800px;
+	height: 225px;
+	font-size: 18px;
+}
 </style>
-<html>
 <head>
+<meta charset="UTF-8" />
 <meta charset="ISO-8859-1">
-<title>Lista Pet's</title>
+<title>Os cães também suam, sabia?</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -108,7 +105,6 @@ body {
 
 		<div id="esquerda"></div>
 		<div id="meio">
-
 			<div id="cabecalho">
 
 				<div id="imgLogo">
@@ -124,14 +120,14 @@ body {
 									<li class="nav-item active"><a class="nav-link" href="#">Home
 											<span class="sr-only">(current)</span>
 									</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Doa��es</a></li>
+									<li class="nav-item"><a class="nav-link" href="#">Doações</a></li>
 
 									<li class="nav-item"><a class="nav-link" href="#">Resgate</a></li>
 
-									<li class="nav-item"><a class="nav-link" href="#">Ado��o</a></li>
+									<li class="nav-item"><a class="nav-link" href="#">Adoção</a></li>
 
 									<li class="nav-item"><a class="nav-link" href="#">Sobre
-											N�s</a></li>
+											Nós</a></li>
 
 									<li class="nav-item"><a class="nav-link" href="#">Cadastrar
 											Pet</a></li>
@@ -143,56 +139,35 @@ body {
 						</nav>
 					</div>
 				</div>
-
 			</div>
+			<div class="clearfix">
+				<img class="img1" src="img/suam.jpg" alt="Suam" width="800px"
+					height="290px"> <br> <br>
+				<p class="round">Os cães também suam, sabia?</p>
+				<p class="texto">
+					“Antes de mais nada é preciso entender qual é a temperatura
+					corporal ideal para o cão: entre os 38 °C e os 39 °C. Bem diferente
+					da nossa. O suor é essencial para os animais, pois ajuda a eliminar
+					o calor do corpo”, explica dra Luana. <br> Como os cachorros
+					fazem isso? Devido a quantidade de pelo, os cães não suam muito
+					através da pele. Segundo a veterinária, a principal forma para
+					fazer com que o calor evapore é pelos coxins, aquelas almofadinhas
+					das patas. A língua também é um órgão que pode ajudar a eliminar
+					água e refrescar o organismo do animal. <br> O suor em excesso
+					pode ser um dos motivos do cachorro lamber as patas. Mas também
+					pode ser estresse.
+				</p>
+				<br>
+				<br>
+				<br>
+				<br>
+				<button type="button" class="btn btn-primary">Voltar</button>
+			</div>
+			</div>
+			</div>
+			
+			<br></body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
-			<form>
-				<div class="table" style="margin-bottom: 100px;">
-
-					<table id="customers">
-
-						<thead class="table-dark">
-							<tr>
-								<th name="nome">Nome Pet</th>
-								<th>Porte</th>
-								<th>Ra�a</th>
-								<th>Adotado por</th>
-								<th>E-mail</th>
-								<th>Telefone</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Lily</td>
-								<td>12</td>
-								<td>labrador</td>
-								<td>Helena</td>
-								<td>helena@gmail.com</td>
-								<td>99425155</td>
-
-							</tr>
-							<tr>
-								<td>Toby</td>
-								<td>2</td>
-								<td>Pastor Alem�o</td>
-								<td>Henry</td>
-								<td>henry@gmai.com</td>
-								<td>38372512</td>
-
-							</tr>
-						</tbody>
-
-					</table>
-
-				</div>
-			</form>
-
-		</div>
-
-		<div id="direita"></div>
-
-	</div>
-
-
-</body>
 </html>

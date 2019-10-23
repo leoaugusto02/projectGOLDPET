@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<html>
 <style>
 body {
 	height: 900px;
@@ -60,33 +61,6 @@ body {
 	margin-left: 0.5%;
 }
 
-#customers {
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-#customers td, #customers th {
-	border: 1px solid #ccd7e8;
-	padding: 8px;
-}
-
-#customers tr:nth-child(even) {
-	background-color: #f2f2f2;
-}
-
-#customers tr:hover {
-	background-color: #ddd;
-}
-
-#customers th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	text-align: left;
-	background-color: #000000;
-	color: white;
-}
-
 .menu {
 	padding-right: 15px;
 	width: 100%;
@@ -95,11 +69,34 @@ body {
 .menu>li {
 	padding-left: 15px;
 }
+
+p.round {
+	text-align: center;
+	width: 400px;
+	height: 50px;
+	margin-left: 220px;
+	font-size: 23px;
+	color: white;
+	text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.clearfix {
+	margin-left: 250px;
+	width: 600px;
+	height: 225px;
+}
+
+.texto {
+	margin-left: 10px;
+	width: 800px;
+	height: 225px;
+	font-size: 18px;
+}
 </style>
-<html>
 <head>
+<meta charset="UTF-8" />
 <meta charset="ISO-8859-1">
-<title>Lista Pet's</title>
+<title>Truques</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -108,7 +105,6 @@ body {
 
 		<div id="esquerda"></div>
 		<div id="meio">
-
 			<div id="cabecalho">
 
 				<div id="imgLogo">
@@ -124,7 +120,7 @@ body {
 									<li class="nav-item active"><a class="nav-link" href="#">Home
 											<span class="sr-only">(current)</span>
 									</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Doações</a></li>
+									<li class="nav-item"><a class="nav-link" href="#">Doasões</a></li>
 
 									<li class="nav-item"><a class="nav-link" href="#">Resgate</a></li>
 
@@ -143,56 +139,31 @@ body {
 						</nav>
 					</div>
 				</div>
-
 			</div>
-
-			<form>
-				<div class="table" style="margin-bottom: 100px;">
-
-					<table id="customers">
-
-						<thead class="table-dark">
-							<tr>
-								<th name="nome">Nome Pet</th>
-								<th>Porte</th>
-								<th>Raça</th>
-								<th>Adotado por</th>
-								<th>E-mail</th>
-								<th>Telefone</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Lily</td>
-								<td>12</td>
-								<td>labrador</td>
-								<td>Helena</td>
-								<td>helena@gmail.com</td>
-								<td>99425155</td>
-
-							</tr>
-							<tr>
-								<td>Toby</td>
-								<td>2</td>
-								<td>Pastor Alemão</td>
-								<td>Henry</td>
-								<td>henry@gmai.com</td>
-								<td>38372512</td>
-
-							</tr>
-						</tbody>
-
-					</table>
-
-				</div>
-			</form>
-
-		</div>
-
-		<div id="direita"></div>
-
-	</div>
-
-
+			<div class="clearfix">
+				<img class="img1" src="img/truques.jpg" alt="Truques" width="800px"
+					height="290px"> <br> <br>
+				<p class="round">Cães velhos aprendem truques novos?</p>
+				<p class="texto">
+					Um dos motivos de haver mais cães adultos nos abrigos e ONGs é o
+					medo de cães velhos não aprenderem coisas novas. Desde um xixi no
+					lugar certo, até um comando de adestramento. Esse mito ainda
+					persiste na mente de muitas pessoas, infelizmente. <br> Assim
+					como nós, qualquer cão, em todas as idades, pode aprender coisas
+					novas. Basta ter paciência e persistência. O aprendizado talvez não
+					seja tão rápido quanto seria com um filhote de seis meses, por
+					exemplo. Mas, mais que um desafio para o cão, é uma forma de
+					estreitar laços entre peludos e humanos.
+				</p>
+				<br>
+				<br>
+				<button type="button" class="btn btn-primary">Voltar</button>
+			</div>
+			</div>
+			</div>
+			
 </body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 </html>
