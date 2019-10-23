@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<html>
 <style>
 body {
 	height: 900px;
@@ -9,7 +10,7 @@ body {
 	background-repeat: no-repeat, repeat;
 }
 
-.conteudo {
+.conteudo {s
 	display: flex;
 	flex-direction: row;
 }
@@ -60,33 +61,6 @@ body {
 	margin-left: 0.5%;
 }
 
-#customers {
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-#customers td, #customers th {
-	border: 1px solid #ccd7e8;
-	padding: 8px;
-}
-
-#customers tr:nth-child(even) {
-	background-color: #f2f2f2;
-}
-
-#customers tr:hover {
-	background-color: #ddd;
-}
-
-#customers th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	text-align: left;
-	background-color: #000000;
-	color: white;
-}
-
 .menu {
 	padding-right: 15px;
 	width: 100%;
@@ -95,11 +69,34 @@ body {
 .menu>li {
 	padding-left: 15px;
 }
+
+p.round {
+	text-align: center;
+	width: 400px;
+	height: 50px;
+	margin-left: 220px;
+	font-size: 35px;
+	color: white;
+	text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.clearfix {
+	margin-left: 250px;
+	width: 600px;
+	height: 225px;
+}
+
+.texto {
+	margin-left: 10px;
+	width: 800px;
+	height: 225px;
+	font-size: 18px;
+}
 </style>
-<html>
 <head>
+<meta charset="UTF-8" />
 <meta charset="ISO-8859-1">
-<title>Lista Pet's</title>
+<title>Dormir com Pet</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -108,7 +105,6 @@ body {
 
 		<div id="esquerda"></div>
 		<div id="meio">
-
 			<div id="cabecalho">
 
 				<div id="imgLogo">
@@ -143,56 +139,41 @@ body {
 						</nav>
 					</div>
 				</div>
-
 			</div>
+			<div class="clearfix">
+				<img class="img1" src="img/dormir.jpg" alt="Dormir" width="800px"
+					height="290px"> <br> <br>
+				<p class="round">Dormir com Pet</p>
+				<p class="texto">
+					Tem bicho que parece gente, domina a casa toda, desde o sofá até a
+					cama, e ignora todo e qualquer limite de espaço. Mas, convenhamos,
+					há quem não resista dormir de conchinha com o cachorro e sente
+					falta quando o gato não vem para a cama durante a noite. Para a
+					relação afetiva entre o pet e o tutor é ótimo, mas resta a dúvida
+					se dormir com cachorro faz mal para a saúde e se é melhor deixar
+					cada um no seu quadrado. <br> Veja bem, mal não faz, mas é
+					preciso cautela e cuidados com o pet para evitar que os membros da
+					família tenham a saúde prejudicada por doenças transmitidas pelos
+					bichos, como verminoses, alergias, a temida toxoplasmose ou até
+					mesmo pela transmissão de ectoparasitas. <br> Vacinar,
+					vermifugar e manter proteção de pulgas e carrapatos no seu pet, bem
+					como manter sua higiene através de banhos e tosas e levá-lo ao
+					veterinário a qualquer sinal de doença são boas saídas para quem
+					não quer deixar o animal de lado nem na hora de dormir.
 
-			<form>
-				<div class="table" style="margin-bottom: 100px;">
-
-					<table id="customers">
-
-						<thead class="table-dark">
-							<tr>
-								<th name="nome">Nome Pet</th>
-								<th>Porte</th>
-								<th>Raça</th>
-								<th>Adotado por</th>
-								<th>E-mail</th>
-								<th>Telefone</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Lily</td>
-								<td>12</td>
-								<td>labrador</td>
-								<td>Helena</td>
-								<td>helena@gmail.com</td>
-								<td>99425155</td>
-
-							</tr>
-							<tr>
-								<td>Toby</td>
-								<td>2</td>
-								<td>Pastor Alemão</td>
-								<td>Henry</td>
-								<td>henry@gmai.com</td>
-								<td>38372512</td>
-
-							</tr>
-						</tbody>
-
-					</table>
-
-				</div>
-			</form>
-
-		</div>
-
-		<div id="direita"></div>
-
-	</div>
-
-
+				</p>
+				<br>
+				<br>
+				<br>
+				<br>
+				<button type="button" class="btn btn-primary">Voltar</button>
+			
+			</div>
+			</div>
+			</div>
+			<br>
 </body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 </html>
