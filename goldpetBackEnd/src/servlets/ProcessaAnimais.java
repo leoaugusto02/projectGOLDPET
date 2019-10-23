@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 
 import dao.AnimaisDAO;
+import vo.Animais;
 
 @WebServlet("/ProcessaAnimais")
 public class ProcessaAnimais extends HttpServlet {
@@ -31,11 +32,40 @@ public class ProcessaAnimais extends HttpServlet {
 
 		
 		if (acao != null) {
-			if (acao.equals("adocao")) {
+			if (acao.equals("perfilDoge")) {
 				
-				aDao.l
+				Animais a = new Animais();
+				
+				System.out.println("CREDENCIAL");
+
+				try {
+					a = aDao.perfilDog(1);
+
+					objMens.put("especie", a.getEspecie());
+					objMens.put("raca", a.getRaca());
+					objMens.put("porte", a.getPorte());
+					objMens.put("idade", a.getIdade());
+					objMens.put("status", a.getStatus());
+					objMens.put("sexo", a.getSexo());
+					objMens.put("imgAnimal", a.getImgAnimal());
+					objMens.put("nomeVet", a.getLaudo().getNomeVeterinario());
+					objMens.put("dataDiag", a.getLaudo().getDataDiagnostico());
+					objMens.put("diagnostico", a.getLaudo().getDiagnostico());
+					objMens.put("imgDiag", a.getLaudo().getImagem());
+					
+					out.print(objMens.toString());
+					System.out.println(objMens.toString());
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+					objMens.put("mensagem", "erro sql = " + e);
+					out.print(objMens.toString());
+				}
 
 			}
+		}else {
+			objMens.put("mensagem", "aguardando requisição");
+			out.print(objMens.toString());
 		}
 
 	}
