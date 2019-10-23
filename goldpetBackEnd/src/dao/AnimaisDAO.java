@@ -14,7 +14,7 @@ public class AnimaisDAO {
 	private Connection con;
 	private PreparedStatement ps;
 
-	public Animais listarAnimal(int codeAnimal) throws SQLException {
+	public Animais perfilDog(int codeAnimal) throws SQLException {
 
 		String sql = "SELECT especie, raca, porte, idade, sexo, status, nomeVeterinario, dataDiagnostico, diagnostico, imagem "
 				+ " FROM Animal a INNER JOIN Laudo l ON a.codeAnimal = l.codeAnimal WHERE a.codeAnimal = ?";
@@ -80,4 +80,5 @@ public class AnimaisDAO {
 		
 		return ps.executeUpdate() > 0;
 	}
+	
 }

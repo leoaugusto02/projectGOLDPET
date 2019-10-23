@@ -229,7 +229,6 @@ public class ProcessaPessoas extends HttpServlet {
 			} else if (acao.equals("mostrarCredencial")) {
 
 				Pessoa p = new Pessoa();
-				Guardiao g = new Guardiao();
 				
 				System.out.println("CREDENCIAL");
 
@@ -238,16 +237,16 @@ public class ProcessaPessoas extends HttpServlet {
 					p = pDao.perfil(Integer.valueOf(codigo));
 
 					objMens.put("apelido", p.getApelido());
-					objMens.put("nome", p.getP_nome() + p.getS_nome());
+					objMens.put("nome", p.getP_nome() + " " + p.getS_nome());
 					objMens.put("nascimento", p.getNascimento());
-					objMens.put("Genero", p.getGenero());
+					objMens.put("genero", p.getGenero());
 					objMens.put("tel1", p.getTel1());
 					objMens.put("tel2", p.getTel2());
 					objMens.put("email", p.getEmail());
 					objMens.put("endereco", p.getCep());
-					objMens.put("rank", g.getRank());
-					objMens.put("aniResgatados", g.getAnimasResgatados());
-					objMens.put("progresso", g.getProgresso());
+					objMens.put("rank", p.getGuardiao().getRank());
+					objMens.put("aniResgatados", p.getGuardiao().getAnimasResgatados());
+					objMens.put("progresso", p.getGuardiao().getProgresso());
 					
 					out.print(objMens.toString());
 					System.out.println(objMens.toString());
