@@ -61,8 +61,10 @@ public class ResgateDAO {
 		
 		String sql = "UPDATE Resgate SET status = 'resgatado'";
 		
-		con
+		con = ConnectionDB.getConnection();
 		
+		ps = con.prepareStatement(sql);
 		
+		return ps.executeUpdate() > 0;
 	}
 }
