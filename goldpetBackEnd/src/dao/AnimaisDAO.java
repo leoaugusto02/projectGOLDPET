@@ -56,6 +56,8 @@ public class AnimaisDAO {
 		
 		String sql = "INSERT INTO Animais VALUES(NULL, ?, ?, ?, ?, ?, ?, ?)";
 		
+		con = ConnectionDB.getConnection();
+		
 		ps = con.prepareStatement(sql);
 		ps.setString(1, a.getEspecie());
 		ps.setString(2, a.getRaca());
@@ -72,6 +74,8 @@ public class AnimaisDAO {
 		
 		String sql = "INSERT INTO Laudo VALUES(?, ?, ?, ?, ?)";
 		
+		con = ConnectionDB.getConnection();
+		
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, a.getCodAnimal());
 		ps.setString(2, a.getLaudo().getNomeVeterinario());
@@ -83,7 +87,9 @@ public class AnimaisDAO {
 	}
 	
 	public List<Animais> listarAnimaisAdocao() throws SQLException{
-		String sql="SELECT nome, status, raca, especie FROM Animais a";
+		String sql="SELECT codeAnimal ,nome, status, raca, especie FROM Animais a";
+		
+		con = ConnectionDB.getConnection();
 		
 		ps = con.prepareStatement(sql);
 		
