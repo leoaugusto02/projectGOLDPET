@@ -15,7 +15,7 @@ public class ResgateDAO {
 	private PreparedStatement ps;
 
 	public boolean inserirResgate(Resgate r) throws SQLException {
-
+//comentando para desbugar
 		String sql = "INSERT INTO Resgate VALUES(NULL, ?, ?, ?, ?)";
 
 		ps = con.prepareStatement(sql);
