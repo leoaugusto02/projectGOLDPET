@@ -108,8 +108,8 @@ body, html {
 <body>
 
 	<%
-		String acao = "adocao";
-		int codigoAnimal = 1;/*request.getParameter("codigoAnimal");*/
+	/*String acao = "adocao";
+		int codigoAnimal = 1;/*request.getParameter("codigoAnimal");
 
 
 
@@ -132,7 +132,7 @@ body, html {
 
 			JSONObject obj;
 
-			/*if (obj.getString("mensagem").equals("0")) {
+			if (obj.getString("mensagem").equals("0")) {
 				response.sendRedirect("dataDoguinho.jsp");
 			} else {
 				System.out.println("Animal não existe");
@@ -277,10 +277,10 @@ body, html {
 
 				<div class="d-flex justify-content-around">
 				
-				<%
+				<%/*
 				while ((linha = br.readLine()) != null) {
 					System.out.println(linha);
-					obj = new JSONObject(linha);
+					obj = new JSONObject(linha);*/
 				%>
 					<div id="infoDog">
 						<div class="card bg-dark text-white" style="width: 23rem;">
@@ -295,9 +295,9 @@ body, html {
 							</div>
 						</div>
 					</div>
-				<%} %>
+				<% %>
 
-				<!--  	<div class="card bg-dark text-white" style="width: 23rem;">
+			 	<div class="card bg-dark text-white" style="width: 23rem;">
 						<img src="img/slide01.png" class="card-img" href="#"
 							style="height: 500px;">
 						<div class="card-img-overlay">
@@ -362,7 +362,7 @@ body, html {
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="acao" id="acao" value="card" />-->
+				<input type="hidden" name="acao" id="acao" value="card" />
 			</form>
 		</div>
 
