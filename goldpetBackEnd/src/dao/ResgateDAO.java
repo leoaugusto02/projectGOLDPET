@@ -15,7 +15,11 @@ public class ResgateDAO {
 	private PreparedStatement ps;
 
 	public boolean inserirResgate(Resgate r) throws SQLException {
-//comentando para desbugar
+		//nivel de urgência vai de 4 ate 1
+		//4-pouco urgente
+		//3-urgente
+		//2-muito urgente
+		//1-perigo
 		String sql = "INSERT INTO Resgate VALUES(NULL, ?, ?, ?, ?)";
 
 		ps = con.prepareStatement(sql);
@@ -47,5 +51,10 @@ public class ResgateDAO {
 			return lstResg;
 		}
 		return null;
+	}
+	
+	public boolean confirmarResgate(Resgate r) {
+		
+		String sql = "";
 	}
 }

@@ -40,38 +40,34 @@ CREATE TABLE Funcionario(
 
 CREATE TABLE Animais(
 	codeAnimal integer primary key auto_increment,
+	nome varchar(20),
 	especie varchar(15) not null,
 	raca varchar(25) not null,
 	porte varchar(15) not null,
 	idade integer not null,
 	status varchar(15) not null,
 	sexo varchar(10) not null,
+	adocao varchar(11) not null,
 	imgAnimal varchar(40) not null
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Laudo(
 	codeAnimal integer not null,
-	nomeVeterinario varchar(40) not null,
+	nomeVeterinario varchar(40),
 	dataDiagnostico date not null,
 	diagnostico varchar(100) not null,
 	imagem varchar(30),
 	constraint fkCodeAnimalLaudo foreign key (codeAnimal) references Animais (codeAnimal)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-CREATE TABLE Adocao(
-	codeAdocao integer primary key auto_increment,
-	codePerson integer not null,
-	codeAnimal integer not null,
-	constraint fkCodePersonAdocao foreign key (codePerson) references Pessoa (codePerson),
-	constraint fkCodeAnimalAdocao foreign key (codeAnimal) references Animais (codeAnimal)
-)CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Resgate(	
 	codeResgate integer primary key auto_increment,
 	descricao varchar (150) not null,
 	endereco varchar(50) not null,
 	dogeImagem varchar (20) not null,
-	nivelUrgencia integer not null
+	nivelUrgencia integer not null,
+	status varchar(11) not null
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Perguntas(

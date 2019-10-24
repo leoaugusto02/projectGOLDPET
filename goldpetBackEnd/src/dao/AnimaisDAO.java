@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import vo.Animais;
 import vo.Laudo;
@@ -80,6 +82,17 @@ public class AnimaisDAO {
 		return ps.executeUpdate() > 0;
 	}
 	
-	
+	public List<Animais> listarAnimaisAdocao(Animais a) throws SQLException{
+		String sql="SELECT nome, status, raca, especie FROM Animais a";
+		
+		ps = con.prepareStatement(sql);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		List<Animais> lstAnimais = new ArrayList<>();
+		while(rs.next()) {
+			a.set
+		}
+	}
 	
 }
