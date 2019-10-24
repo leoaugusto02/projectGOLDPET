@@ -99,3 +99,11 @@ CREATE TABLE Agenda(
 	constraint fkCodePersonAgenda foreign key (codePerson) references Pessoa (codePerson),
 	constraint fkCodeAnimalAgenda foreign key (codeAnimal) references Animais (codeAnimal)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE Adocao(
+	codeAdocao integer primary key auto_increment,
+	codePerson integer not null,
+	codeAnimal integer not null,
+	constraint fkCodePersonAdocao foreign key (codePerson) references Pessoa (codePerson),
+	constraint fkCodeAnimalAdocao foreign key (codeAnimal) references Animais (codeAnimal)
+)CHARACTER SET utf8 COLLATE utf8_general_ci;

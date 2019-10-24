@@ -91,7 +91,7 @@ public class AnimaisDAO {
 		
 		List<Animais> lstAnimais = new ArrayList<>();
 		while(rs.next()) {
-			a.set
+			
 		}
 	}
 	
