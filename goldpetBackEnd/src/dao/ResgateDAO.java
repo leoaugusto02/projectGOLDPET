@@ -20,7 +20,7 @@ public class ResgateDAO {
 		//3-urgente
 		//2-muito urgente
 		//1-perigo
-		String sql = "INSERT INTO Resgate VALUES(NULL, ?, ?, ?, ?)";
+		String sql = "INSERT INTO Resgate VALUES(NULL, ?, ?, ?, ?, 'Em resgate')";
 
 		ps = con.prepareStatement(sql);
 		ps.setString(1, r.getDescricao());
@@ -53,8 +53,12 @@ public class ResgateDAO {
 		return null;
 	}
 	
-	public boolean confirmarResgate(Resgate r) {
+	public boolean confirmarResgate() throws SQLException {
 		
-		String sql = "";
+		String sql = "UPDATE Resgate SET status = 'resgatado'";
+		
+		con.prepareStatement(sql);
+		
+		
 	}
 }

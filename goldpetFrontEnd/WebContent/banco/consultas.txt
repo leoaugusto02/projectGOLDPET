@@ -66,4 +66,7 @@ WHERE NOT EXISTS (
 ) LIMIT 1;				
 
 					---LISTAR ANIMAIS---
-SELECT nome, status, raca, especie FROM Animais a;  											   
+SELECT nome, status, raca, especie FROM Animais a;
+
+					---Resgate---
+UPDATE Resgate SET status = 'resgatado';					  											   

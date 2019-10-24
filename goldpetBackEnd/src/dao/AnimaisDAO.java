@@ -82,7 +82,7 @@ public class AnimaisDAO {
 		return ps.executeUpdate() > 0;
 	}
 	
-	public List<Animais> listarAnimaisAdocao(Animais a) throws SQLException{
+	public List<Animais> listarAnimaisAdocao() throws SQLException{
 		String sql="SELECT nome, status, raca, especie FROM Animais a";
 		
 		ps = con.prepareStatement(sql);
@@ -91,6 +91,8 @@ public class AnimaisDAO {
 		
 		List<Animais> lstAnimais = new ArrayList<>();
 		while(rs.next()) {
+			Animais a = new Animais();
+			
 			a.setNome(rs.getString("nome"));
 			a.setStatus(rs.getString("status"));
 			a.setRaca(rs.getString("raca"));
