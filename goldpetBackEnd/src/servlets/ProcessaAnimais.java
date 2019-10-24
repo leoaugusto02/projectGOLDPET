@@ -22,7 +22,6 @@ public class ProcessaAnimais extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		super.service(req, resp);
 
 		PrintWriter out = resp.getWriter();
 		AnimaisDAO aDao = new AnimaisDAO();
