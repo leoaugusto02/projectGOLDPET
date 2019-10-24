@@ -20,7 +20,7 @@ public class AnimaisDAO {
 				+ " FROM Animais a INNER JOIN Laudo l ON a.codeAnimal = l.codeAnimal WHERE a.codeAnimal = ?";
 
 		con = ConnectionDB.getConnection();
-
+//conflito
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, codeAnimal);
 
@@ -42,7 +42,6 @@ public class AnimaisDAO {
 			l.setDataDiagnostico(rs.getString("dataDiagnostico"));
 			l.setDiagnostico(rs.getString("diagnostico"));
 			l.setImagem(rs.getString("imagem"));
-
 			a.setLaudo(l);
 
 			return a;
@@ -80,5 +79,7 @@ public class AnimaisDAO {
 		
 		return ps.executeUpdate() > 0;
 	}
+	
+	
 	
 }
