@@ -99,6 +99,7 @@ public class AnimaisDAO {
 		while(rs.next()) {
 			Animais a = new Animais();
 			
+			a.setCodAnimal(rs.getInt("codeAnimal"));
 			a.setNome(rs.getString("nome"));
 			a.setStatus(rs.getString("status"));
 			a.setRaca(rs.getString("raca"));
