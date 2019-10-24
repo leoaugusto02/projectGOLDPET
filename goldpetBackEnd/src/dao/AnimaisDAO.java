@@ -20,7 +20,7 @@ public class AnimaisDAO {
 				+ " FROM Animais a INNER JOIN Laudo l ON a.codeAnimal = l.codeAnimal WHERE a.codeAnimal = ?";
 
 		con = ConnectionDB.getConnection();
-//conflito
+
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, codeAnimal);
 
