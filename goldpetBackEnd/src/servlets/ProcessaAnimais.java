@@ -32,7 +32,7 @@ public class ProcessaAnimais extends HttpServlet {
 
 		
 		if (acao != null) {
-			if (acao.equals("adocao")) {
+			if (acao.equals("perfil")) {
 				
 				Animais a = new Animais();
 				
