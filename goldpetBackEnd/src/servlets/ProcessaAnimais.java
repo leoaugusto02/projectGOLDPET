@@ -39,7 +39,7 @@ public class ProcessaAnimais extends HttpServlet {
 
 				try {
 					a = aDao.perfilDog(1);
-//desbugando o commit
+					//desbugando o commit
 					objMens.put("especie", a.getEspecie());
 					objMens.put("raca", a.getRaca());
 					objMens.put("porte", a.getPorte());
@@ -61,6 +61,28 @@ public class ProcessaAnimais extends HttpServlet {
 					out.print(objMens.toString());
 				}
 
+			}else if(acao.equals("listaAdocao")) {
+				
+				try {
+					
+					List<Animais> list = aDao.listarAnimaisAdocao();
+					
+					for(Animais a : list) {
+						
+						objMens.put("codAnimal", a.getCodAnimal());
+						objMens.put("nome", a.getNome());
+						objMens.put("status", a.getStatus());
+						objMens.put("raca", a.getRaca());
+						objMens.put("especie", a.getEspecie());
+
+						out.print(objMens.toString() + "\n");
+
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
 			}
 		}
 

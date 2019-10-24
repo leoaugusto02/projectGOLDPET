@@ -108,8 +108,8 @@ body, html {
 <body>
 
 	<%
-	/*String acao = "adocao";
-		int codigoAnimal = 1;/*request.getParameter("codigoAnimal");
+	    String acao = "listaAdocao";
+		int codigoAnimal = 1; //request.getParameter("codigoAnimal");
 
 
 
@@ -129,15 +129,12 @@ body, html {
 			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
 			String linha = "";
-
 			JSONObject obj;
+			
+			
+			
+			
 
-			if (obj.getString("mensagem").equals("0")) {
-				response.sendRedirect("dataDoguinho.jsp");
-			} else {
-				System.out.println("Animal não existe");
-			}*/
-	
 	%>
 
 	<div class="conteudo">
@@ -277,27 +274,49 @@ body, html {
 
 				<div class="d-flex justify-content-around">
 				
-				<%/*
+				<%
+				System.out.println("Tô aqui antes do while");
+				
 				while ((linha = br.readLine()) != null) {
-					System.out.println(linha);
-					obj = new JSONObject(linha);*/
+					System.out.println("Tô aqui " + linha);
+					obj = new JSONObject(linha);
+				
 				%>
-					<div id="infoDog">
-						<div class="card bg-dark text-white" style="width: 23rem;">
-							<img src="img/slide01.png" class="card-img" href="#"
-								style="height: 500px;">
-							<div class="card-img-overlay">
-								<h5 class="card-title"></h5>
-								<p class="card-text">Informaçoes basicas sobre o dogzin
-									clicando na imagem ira para o perfil dele para ver os laudos
-									medicos e saber mais sobre o dog</p>
-								<p class="card-text">Last updated 3 mins ago</p>
-							</div>
+				<a href="dataDoguinho.jsp">
+				<div class="card bg-dark text-white" style="width: 23rem;">
+						<img src="img/slide01.png" class="card-img" href="#"
+							style="height: 500px;">
+						<div class="card-img-overlay">
+							<h5 class="card-title"><%=obj.getString("nome")%></h5>
+							<p class="card-text">
+								Código: <%=obj.getInt("codAnimal")%> <br>
+								Status: <%=obj.getString("nome")%><br>
+								Raça: <%=obj.getString("raca") %><br>
+								Espécie: <%=obj.getString("especie")%><br>
+								
+							</p>
+							<p class="card-text">Last updated 3 mins ago</p>
 						</div>
 					</div>
-				<% %>
-
-			 	<div class="card bg-dark text-white" style="width: 23rem;">
+					</a>
+				<%
+				}
+				System.out.println("Tô aqui dps do while");
+				%>
+				<!--	<div class="card bg-dark text-white" style="width: 23rem;">
+						<img src="img/slide01.png" class="card-img" href="#"
+							style="height: 500px;">
+						<div class="card-img-overlay">
+							<h5 class="card-title">Nome do dogzin</h5>
+							<p class="card-text">Informaçoes basicas sobre o dogzin
+								clicando na imagem ira para o perfil dele para ver os laudos
+								medicos e saber mais sobre o dog</p>
+							<p class="card-text">Last updated 3 mins ago</p>
+						</div>
+					</div>
+				</div>
+				
+			 	 <div class="card bg-dark text-white" style="width: 23rem;">
 						<img src="img/slide01.png" class="card-img" href="#"
 							style="height: 500px;">
 						<div class="card-img-overlay">
@@ -362,7 +381,7 @@ body, html {
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="acao" id="acao" value="card" />
+				<input type="hidden" name="acao" id="acao" value="card" /> -->
 			</form>
 		</div>
 
