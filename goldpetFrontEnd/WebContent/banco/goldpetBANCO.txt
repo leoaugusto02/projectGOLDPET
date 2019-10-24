@@ -47,7 +47,6 @@ CREATE TABLE Animais(
 	idade integer not null,
 	status varchar(15) not null,
 	sexo varchar(10) not null,
-	adocao varchar(11) not null,
 	imgAnimal varchar(40) not null
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
