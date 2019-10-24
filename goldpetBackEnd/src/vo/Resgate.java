@@ -3,15 +3,24 @@ package vo;
 public class Resgate {
 
 	private Integer codResgate, nivelUrgencia;
-	private String descricao, endereco, dogeImagem;
+	private String descricao, endereco, dogeImagem, status;
 
-	public Resgate(Integer codResgate, Integer nivelUrgencia, String descricao, String endereco, String dogeImagem) {
+	public Resgate( String status, Integer codResgate, Integer nivelUrgencia, String descricao, String endereco, String dogeImagem) {
 		super();
+		this.status = status;
 		this.codResgate = codResgate;
 		this.nivelUrgencia = nivelUrgencia;
 		this.descricao = descricao;
 		this.endereco = endereco;
 		this.dogeImagem = dogeImagem;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Integer getCodResgate() {
