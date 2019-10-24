@@ -91,8 +91,15 @@ public class AnimaisDAO {
 		
 		List<Animais> lstAnimais = new ArrayList<>();
 		while(rs.next()) {
+			a.setNome(rs.getString("nome"));
+			a.setStatus(rs.getString("status"));
+			a.setRaca(rs.getString("raca"));
+			a.setEspecie(rs.getString("especie"));
 			
+			lstAnimais.add(a);
 		}
+		
+		return lstAnimais;
 	}
 	
 }
