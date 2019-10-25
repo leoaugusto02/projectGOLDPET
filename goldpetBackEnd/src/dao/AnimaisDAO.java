@@ -56,6 +56,8 @@ public class AnimaisDAO {
 		
 		String sql = "INSERT INTO Animais VALUES(NULL, ?, ?, ?, ?, ?, ?, ?)";
 		
+		con = ConnectionDB.getConnection();
+		
 		ps = con.prepareStatement(sql);
 		ps.setString(1, a.getEspecie());
 		ps.setString(2, a.getRaca());
@@ -72,6 +74,8 @@ public class AnimaisDAO {
 		
 		String sql = "INSERT INTO Laudo VALUES(?, ?, ?, ?, ?)";
 		
+		con = ConnectionDB.getConnection();
+		
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, a.getCodAnimal());
 		ps.setString(2, a.getLaudo().getNomeVeterinario());
@@ -82,8 +86,10 @@ public class AnimaisDAO {
 		return ps.executeUpdate() > 0;
 	}
 	
-	public List<Animais> listarAnimaisAdocao(Animais a) throws SQLException{
-		String sql="SELECT nome, status, raca, especie FROM Animais a";
+	public List<Animais> listarAnimaisAdocao() throws SQLException{
+		String sql="SELECT codeAnimal ,nome, status, raca, especie FROM Animais a";
+		
+		con = ConnectionDB.getConnection();
 		
 		ps = con.prepareStatement(sql);
 		
@@ -91,8 +97,18 @@ public class AnimaisDAO {
 		
 		List<Animais> lstAnimais = new ArrayList<>();
 		while(rs.next()) {
+			Animais a = new Animais();
 			
+			a.setCodAnimal(rs.getInt("codeAnimal"));
+			a.setNome(rs.getString("nome"));
+			a.setStatus(rs.getString("status"));
+			a.setRaca(rs.getString("raca"));
+			a.setEspecie(rs.getString("especie"));
+			
+			lstAnimais.add(a);
 		}
+		
+		return lstAnimais;
 	}
 	
 }
