@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import vo.Animais;
 import vo.Laudo;
@@ -16,7 +18,7 @@ public class AnimaisDAO {
 
 	public Animais perfilDog(int codeAnimal) throws SQLException {
 
-		String sql = "SELECT especie, raca, porte, idade, sexo, status, nomeVeterinario, dataDiagnostico, diagnostico, imagem "
+		String sql = "SELECT especie, raca, porte, idade, sexo, status, imgAnimal, nomeVeterinario, dataDiagnostico, diagnostico, imagem "
 				+ " FROM Animais a INNER JOIN Laudo l ON a.codeAnimal = l.codeAnimal WHERE a.codeAnimal = ?";
 
 		con = ConnectionDB.getConnection();
@@ -30,19 +32,18 @@ public class AnimaisDAO {
 			Animais a = new Animais();
 			Laudo l = new Laudo();
 
-			a.setCodAnimal(rs.getInt("a.codeAnimal"));
 			a.setEspecie(rs.getString("especie"));
 			a.setRaca(rs.getString("raca"));
 			a.setPorte(rs.getString("porte"));
 			a.setIdade(rs.getInt("idade"));
 			a.setSexo(rs.getString("sexo"));
 			a.setStatus(rs.getString("status"));
+			a.setImgAnimal(rs.getString("imgAnimal"));
 
 			l.setNomeVeterinario(rs.getString("nomeVeterinario"));
 			l.setDataDiagnostico(rs.getString("dataDiagnostico"));
 			l.setDiagnostico(rs.getString("diagnostico"));
 			l.setImagem(rs.getString("imagem"));
-
 			a.setLaudo(l);
 
 			return a;
@@ -79,6 +80,28 @@ public class AnimaisDAO {
 		ps.setString(5, a.getLaudo().getImagem());
 		
 		return ps.executeUpdate() > 0;
+	}
+	
+	public List<Animais> listarAnimaisAdocao() throws SQLException{
+		String sql="SELECT nome, status, raca, especie FROM Animais a";
+		
+		ps = con.prepareStatement(sql);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		List<Animais> lstAnimais = new ArrayList<>();
+		while(rs.next()) {
+			Animais a = new Animais();
+			
+			a.setNome(rs.getString("nome"));
+			a.setStatus(rs.getString("status"));
+			a.setRaca(rs.getString("raca"));
+			a.setEspecie(rs.getString("especie"));
+			
+			lstAnimais.add(a);
+		}
+		
+		return lstAnimais;
 	}
 	
 }

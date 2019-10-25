@@ -15,8 +15,12 @@ public class ResgateDAO {
 	private PreparedStatement ps;
 
 	public boolean inserirResgate(Resgate r) throws SQLException {
-
-		String sql = "INSERT INTO Resgate VALUES(NULL, ?, ?, ?, ?)";
+		//nivel de urgência vai de 4 ate 1
+		//4-pouco urgente
+		//3-urgente
+		//2-muito urgente
+		//1-perigo
+		String sql = "INSERT INTO Resgate VALUES(NULL, ?, ?, ?, ?, 'Em resgate')";
 
 		ps = con.prepareStatement(sql);
 		ps.setString(1, r.getDescricao());
@@ -47,5 +51,14 @@ public class ResgateDAO {
 			return lstResg;
 		}
 		return null;
+	}
+	
+	public boolean confirmarResgate() throws SQLException {
+		
+		String sql = "UPDATE Resgate SET status = 'resgatado'";
+		
+		con.prepareStatement(sql);
+		
+		
 	}
 }
