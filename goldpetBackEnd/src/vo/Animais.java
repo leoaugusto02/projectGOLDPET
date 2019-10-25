@@ -1,7 +1,8 @@
 package vo;
 
 public class Animais {
-
+	
+	private String nome;
 	private Integer codAnimal;
 	private String especie;
 	private String raca;
@@ -16,9 +17,10 @@ public class Animais {
 		super();
 	}
 
-	public Animais(Integer codAnimal, String especie, String raca, String porte, Integer idade, String status,
+	public Animais( String nome, Integer codAnimal, String especie, String raca, String porte, Integer idade, String status,
 			String sexo, Laudo laudo, String imgAnimal) {
 		super();
+		this.nome = nome;
 		this.codAnimal = codAnimal;
 		this.especie = especie;
 		this.raca = raca;
@@ -28,6 +30,14 @@ public class Animais {
 		this.sexo = sexo;
 		this.laudo = laudo;
 		this.imgAnimal = imgAnimal;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Integer getCodAnimal() {
