@@ -123,7 +123,7 @@ public class PessoaDAO {
 		return null;
 	}
 
-	public List<Pessoa> listarDashBoard(Pessoa p) throws SQLException {
+	public List<Pessoa> listarPessoasDashBoard(Pessoa p) throws SQLException {
 
 		String sql = "SELECT codePerson, p_nome, s_nome, tipo, email, cpf, rg, cep, telefone1, telefone2 FROM Pessoa";
 

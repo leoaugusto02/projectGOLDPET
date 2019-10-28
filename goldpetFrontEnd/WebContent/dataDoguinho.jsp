@@ -174,7 +174,7 @@ body, html {
 
 						<div class="panel-body" border="3px">
 							<table class="table profile__table">
-								<tbody>
+								<tbody s>
 									<tr>
 										<th><strong>Espécie:</strong><label></label></th>
 										<td><%=obj.getString("especie")%></td>

@@ -111,4 +111,23 @@ public class AnimaisDAO {
 		return lstAnimais;
 	}
 	
+	public List<Animais> ListarAnimaisDashBoard() throws SQLException{
+		String sql = "SELECT nome, porte, raca, ad.* FROM an Animais INNER JOIN ad Adocao ON ad.codeAnimal = an.codeAnimal";
+		
+		con = ConnectionDB.getConnection();
+		
+		ps = con.prepareStatement(sql);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		List<Animais> lstAnimais = new ArrayList<>();
+		while(rs.next()) {
+			Animais a = new Animais();
+			
+			a.setCodAnimal(rs.getInt("an.codeAnimal"));
+		}
+		
+		return null;
+	}
+	
 }
