@@ -6,7 +6,7 @@
 </style>
 <head>
 <meta charset="ISO-8859-1">
-<title>Adoção</title>
+<title>Resgate</title>
 <!-- <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css"> -->
 
@@ -168,44 +168,48 @@ body, html {
 						<div class="modal-body">
 							<div>
 
-								<input class="form-control" type="text" placeholder="nome do pet" style="margin-bottom:3%;"/>
-								
-								<input class="form-control" type="number" placeholder="Idade" style="margin-bottom:3%;" />
+								<input class="form-control" type="text" placeholder="Raça"
+									style="margin-bottom: 3%;" /> <input class="form-control"
+									type="text" placeholder="Porte" style="margin-bottom: 3%;" />
 
-								<input class="form-control" type="text" placeholder="Raça" style="margin-bottom:3%;" />
-								
-								<input class="form-control" type="text" placeholder="Porte" style="margin-bottom:3%;" />
+								<input class="form-control" type="text" placeholder="Espécie"
+									style="margin-bottom: 3%;" />
 
-								<input class="form-control" type="text" placeholder="Espécie" style="margin-bottom:3%;" />
-								
-								<div class="form-check form-check-inline" style="margin-bottom:2%;">
+								<div class="form-check form-check-inline"
+									style="margin-bottom: 2%;">
 									<input class="form-check-input" type="radio"
 										name="inlineRadioOptions" id="inlineRadio1" value="option1">
-									<label class="form-check-label" for="inlineRadio1">
-									<img alt="feminino.png" src="img/feminino.png" 
-									style="height: 25px; width: 25px; margin-left: -0.5;">Fêmea</label>
+									<label class="form-check-label" for="inlineRadio1"> <img
+										alt="feminino.png" src="img/feminino.png"
+										style="height: 25px; width: 25px; margin-left: -0.5;">Fêmea
+									</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio"
 										name="inlineRadioOptions" id="inlineRadio2" value="option2">
-									<label class="form-check-label" for="inlineRadio2">
-									<img alt="masculino.png" src="img/masculino.png" 
-									style="height: 25px; width: 25px; margin-left: -0.5;">Macho</label>
-									
+									<label class="form-check-label" for="inlineRadio2"> <img
+										alt="masculino.png" src="img/masculino.png"
+										style="height: 25px; width: 25px; margin-left: -0.5;">Macho
+									</label>
+
 								</div>
-								
+
 								<div id="textArea">
-									<textarea class="form-control" id="textarea" placeholder="Status do Pet" rows="3" 
-									style="margin-top: 2px; margin-bottom: 0px; height: 80px; width:470px;"></textarea>
+									<textarea class="form-control" id="textarea"
+										placeholder="Status do Pet" rows="3"
+										style="margin-top: 2px; margin-bottom: 0px; height: 80px; width: 470px;"></textarea>
 								</div>
-								
+
 								<div>
-								
+
 									<button action="upload" type="file"
-									class="btn btn-outline-info" style="float:right; margin-top:2%;">
-									<img alt="petIcon.png" src="img/PetIcon.png"
-									style="height: 20px; width: 20px; margin-left:-1%;">Imagem Pet</button>
-									
+										class="btn btn-outline-info"
+										style="float: right; margin-top: 2%;">
+										<img alt="petIcon.png" src="img/PetIcon.png"
+											style="height: 20px; width: 20px; margin-left: -1%;">Imagem
+										Pet
+									</button>
+
 								</div>
 							</div>
 						</div>
@@ -227,93 +231,50 @@ body, html {
 			</div>
 
 
-			<div class="d-flex justify-content-around">
-				<div id="infoDog">
-					<div class="card bg-dark text-white" style="width: 23rem;">
+			<div class="">
+				<div class="d-flex flex-row justify-content-around mb-5" id="infoDog">
+					<div class="card" style="width: 23rem;">
 						<img src="img/slide01.png" class="card-img" href="#"
 							style="height: 500px;">
-						<div class="card-img-overlay">
-							<h5 class="card-title">Nome do dogzin</h5>
-							<p class="card-text">Informaçoes basicas sobre o dogzin
-								clicando na imagem ira para o perfil dele para ver os laudos
-								medicos e saber mais sobre o dog</p>
-							<p class="card-text">Last updated 3 mins ago</p>
+						<div class="card-body">
+							<h5 class="card-title">Especie</h5>
+							<p class="card-text">Observaçoes sobre o Pet</p>
+							<p class="card-text">
+								<small class="text-muted">Localizacao do Pet</small>
+							</p>
+						</div>
+					</div>
+
+
+					<div class="card" style="width: 23rem;">
+						<img src="img/slide01.png" class="card-img" href="#"
+							style="height: 500px;">
+						<div class="card-body">
+							<h5 class="card-title">Especie</h5>
+							<p class="card-text">Observaçoes sobre o Pet</p>
+							<p class="card-text">
+								<small class="text-muted">Localizacao do Pet</small>
+							</p>
+						</div>
+					</div>
+
+					<div class="card" style="width: 23rem;">
+						<img src="img/slide01.png" class="card-img" href="#"
+							style="height: 500px;">
+						<div class="card-body">
+							<h5 class="card-title">Especie</h5>
+							<p class="card-text">Observaçoes sobre o Pet</p>
+							<p class="card-text">
+								<small class="text-muted">Localizacao do Pet</small>
+							</p>
 						</div>
 					</div>
 				</div>
 
-
-				<div class="card bg-dark text-white" style="width: 23rem;">
-					<img src="img/slide01.png" class="card-img" href="#"
-						style="height: 500px;">
-					<div class="card-img-overlay">
-						<h5 class="card-title">Nome do dogzin</h5>
-						<p class="card-text">Informaçoes basicas sobre o dogzin
-							clicando na imagem ira para o perfil dele para ver os laudos
-							medicos e saber mais sobre o dog</p>
-						<p class="card-text">Last updated 3 mins ago</p>
-					</div>
-				</div>
-
-				<div class="card bg-dark text-white" style="width: 23rem;">
-					<img src="img/slide01.png" class="card-img" href="#"
-						style="height: 500px;">
-					<div class="card-img-overlay">
-						<h5 class="card-title">Nome do dogzin</h5>
-						<p class="card-text">Informaçoes basicas sobre o dogzin
-							clicando na imagem ira para o perfil dele para ver os laudos
-							medicos e saber mais sobre o dog</p>
-						<p class="card-text">Last updated 3 mins ago</p>
-					</div>
-				</div>
 			</div>
-
-			<div class="d-flex justify-content-around" style="margin-top: 2%;">
-				<div id="infoDog">
-					<div class="card bg-dark text-white" style="width: 23rem;">
-						<img src="img/slide01.png" class="card-img" href="#"
-							style="height: 500px;">
-						<div class="card-img-overlay">
-							<h5 class="card-title">Nome do dogzin</h5>
-							<p class="card-text">Informaçoes basicas sobre o dogzin
-								clicando na imagem ira para o perfil dele para ver os laudos
-								medicos e saber mais sobre o dog</p>
-								<button>Adotar</button>
-							<p class="card-text">Last updated 3 mins ago</p>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="card bg-dark text-white" style="width: 23rem;">
-					<img src="img/slide01.png" class="card-img" href="#"
-						style="height: 500px;">
-					<div class="card-img-overlay">
-						<h5 class="card-title">Nome do dogzin</h5>
-						<p class="card-text">Informaçoes basicas sobre o dogzin
-							clicando na imagem ira para o perfil dele para ver os laudos
-							medicos e saber mais sobre o dog</p>
-						<p class="card-text">Last updated 3 mins ago</p>
-					</div>
-				</div>
-
-				<div class="card bg-dark text-white" style="width: 23rem;">
-					<img src="img/slide01.png" class="card-img" href="#"
-						style="height: 500px;">
-					<div class="card-img-overlay">
-						<h5 class="card-title">Nome do dogzin</h5>
-						<p class="card-text">Informaçoes basicas sobre o dogzin
-							clicando na imagem ira para o perfil dele para ver os laudos
-							medicos e saber mais sobre o dog</p>
-						<p class="card-text">Last updated 3 mins ago</p>
-					</div>
-				</div>
-			</div>
-
-
-
-
 		</div>
+
+
 
 		<div id="direita"></div>
 
