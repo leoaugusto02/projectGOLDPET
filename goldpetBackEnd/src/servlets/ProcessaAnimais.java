@@ -34,12 +34,14 @@ public class ProcessaAnimais extends HttpServlet {
 			if (acao.equals("perfil")) {
 				
 				Animais a = new Animais();
+				int codAnimal = Integer.valueOf(req.getParameter("codAnimal"));
 				
 				System.out.println("CREDENCIAL");
 
 				try {
-					a = aDao.perfilDog(1);
+					a = aDao.perfilDog(codAnimal);
 					//desbugando o commit
+					
 					objMens.put("especie", a.getEspecie());
 					objMens.put("raca", a.getRaca());
 					objMens.put("porte", a.getPorte());

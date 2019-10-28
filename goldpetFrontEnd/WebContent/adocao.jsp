@@ -108,9 +108,8 @@ body, html {
 <body>
 
 	<%
-	    String acao = "listaAdocao";
-		int codigoAnimal = 1; //request.getParameter("codigoAnimal");
-
+	    String acao = "listaAdocao"; //request.getParameter("codigoAnimal");
+		String codAnimal = request.getParameter("codAnimal");
 
 
 			String parametros = "acao=" + acao;
@@ -280,9 +279,10 @@ body, html {
 				while ((linha = br.readLine()) != null) {
 					System.out.println("Tô aqui " + linha);
 					obj = new JSONObject(linha);
-				
+					
+
 				%>
-				<a href="dataDoguinho.jsp">
+				<a href="dataDoguinho.jsp?codAnimal=<%=obj.getInt("codAnimal")%>">
 				<div class="card bg-dark text-white" style="width: 23rem;">
 						<img src="img/slide01.png" class="card-img" href="#"
 							style="height: 500px;">

@@ -89,8 +89,8 @@ body, html {
 
 	<%
 	String acao = "perfil";
-	
-	String parametros = "acao=" + acao;
+	String codAnimal = request.getParameter("codAnimal");
+	String parametros = "acao=" + acao + "&codAnimal=" + codAnimal;
 	
 	URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
 
