@@ -21,6 +21,8 @@ public class ResgateDAO {
 		//2-muito urgente
 		//1-perigo
 		String sql = "INSERT INTO Resgate VALUES(NULL, ?, ?, ?, ?, 'Em resgate')";
+		
+		con = ConnectionDB.getConnection();
 
 		ps = con.prepareStatement(sql);
 		ps.setString(1, r.getDescricao());
@@ -34,6 +36,8 @@ public class ResgateDAO {
 	public List<Resgate> ultimosResgates(Resgate r) throws SQLException {
 
 		String sql = "SELECT descricao, endereco, dogeImagem, nivelUrgencia FROM Resgate ORDER BY nivelUrgencia DESC";
+		
+		con = ConnectionDB.getConnection();
 
 		ps = con.prepareStatement(sql);
 
@@ -57,8 +61,10 @@ public class ResgateDAO {
 		
 		String sql = "UPDATE Resgate SET status = 'resgatado'";
 		
-		con.prepareStatement(sql);
+		con = ConnectionDB.getConnection();
 		
+		ps = con.prepareStatement(sql);
 		
+		return ps.executeUpdate() > 0;
 	}
 }
