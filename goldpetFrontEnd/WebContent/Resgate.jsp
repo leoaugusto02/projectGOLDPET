@@ -237,12 +237,10 @@ body, html {
 						<img src="img/slide01.png" class="card-img" href="#"
 							style="height: 500px;">
 						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a longer card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
+							<h5 class="card-title">Especie</h5>
+							<p class="card-text">Observaçoes sobre o Pet</p>
 							<p class="card-text">
-								<small class="text-muted">Last updated 3 mins ago</small>
+								<small class="text-muted">Localizacao do Pet</small>
 							</p>
 						</div>
 					</div>
@@ -252,12 +250,10 @@ body, html {
 						<img src="img/slide01.png" class="card-img" href="#"
 							style="height: 500px;">
 						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a longer card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
+							<h5 class="card-title">Especie</h5>
+							<p class="card-text">Observaçoes sobre o Pet</p>
 							<p class="card-text">
-								<small class="text-muted">Last updated 3 mins ago</small>
+								<small class="text-muted">Localizacao do Pet</small>
 							</p>
 						</div>
 					</div>
@@ -266,12 +262,10 @@ body, html {
 						<img src="img/slide01.png" class="card-img" href="#"
 							style="height: 500px;">
 						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a longer card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
+							<h5 class="card-title">Especie</h5>
+							<p class="card-text">Observaçoes sobre o Pet</p>
 							<p class="card-text">
-								<small class="text-muted">Last updated 3 mins ago</small>
+								<small class="text-muted">Localizacao do Pet</small>
 							</p>
 						</div>
 					</div>

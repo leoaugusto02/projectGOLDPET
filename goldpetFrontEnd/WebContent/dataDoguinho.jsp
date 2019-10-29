@@ -1,9 +1,3 @@
-<%@page import="org.json.JSONObject"%>
-<%@page import="java.io.InputStreamReader"%>
-<%@page import="java.io.BufferedReader"%>
-<%@page import="java.io.DataOutputStream"%>
-<%@page import="java.net.HttpURLConnection"%>
-<%@page import="java.net.URL"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -18,6 +12,10 @@ body, html {
 	flex-direction: row;
 	width: 100%;
 	height: 100%;
+	height: 1800px;
+	background-color: #8aedc2;
+	background-image: linear-gradient(#8aedc2, white);
+	background-repeat: no-repeat, repeat;
 }
 
 .navC {
@@ -87,32 +85,6 @@ body, html {
 </head>
 <body>
 
-	<%
-	String acao = "perfil";
-	
-	String parametros = "acao=" + acao;
-	
-	URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
-
-	HttpURLConnection con = (HttpURLConnection) url.openConnection();
-	con.setRequestMethod("POST");
-	con.setDoOutput(true);
-
-	System.out.println(parametros);
-
-	DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-	wr.writeBytes(parametros);
-
-	BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
-	String apnd = "", linha = "";
-	
-	while ((linha = br.readLine()) != null)
-		apnd += linha;
-
-	JSONObject obj = new JSONObject(apnd);
-	
-	%>
 	<div id="esquerda"></div>
 	<div id="meio">
 
@@ -123,7 +95,7 @@ body, html {
 					<img src="img/LogoPet.png" style="width: 220px; height: 220px;" />
 				</div>
 
-							<div class="navC d-flex w-100 justfy-content-center">
+				<div class="navC d-flex w-100 justfy-content-center">
 				
 					<div class="w-100">
 						<nav class="navbar navbar-expand-md navbar-light minhaNav">
@@ -154,7 +126,7 @@ body, html {
 				
 			</div>
 			<br>
-			<div class="col-xs-12 col-sm-9">
+			<div class="col-xs-12 col-sm-9" style="margin-left:15%">
 
 				<!-- User profile -->
 				<div class="container">
@@ -168,7 +140,7 @@ body, html {
 				<br>
 				<!-- User info -->
 				<div class="container">
-					<div class="card  mb-8">
+					<div class="card  mb-8" style="margin-bottom:2%">
 
 						<h4 class="card-header">Informações Doge</h4>
 
@@ -176,34 +148,26 @@ body, html {
 							<table class="table profile__table">
 								<tbody>
 									<tr>
-										<th><strong>Espécie:</strong><label></label></th>
-										<td><%=obj.getString("especie")%></td>
+										<th><strong>Nome:</strong><label></label></th>
+									</tr>
+									<tr>
+										<th><strong>Data de Nascimento:</strong></th>
 									</tr>
 									<tr>
 										<th><strong>Raça:</strong></th>
-										<td><%=obj.getString("raca")%></td>
 									</tr>
 									<tr>
 										<th><strong>Porte: </strong></th>
-										<td><%=obj.getString("porte")%></td>
 									</tr>
 									<tr>
 										<th><strong>Idade:</strong></th>
-										<td><%=obj.getInt("idade")%></td>
 									</tr>
 									<tr>
 										<th><strong>Genero:</strong></th>
-										<td><%=obj.getString("sexo")%></td>
 									</tr>
 									<tr>
 										<th><strong>Status:</strong></th>
-										<td><%=obj.getString("status")%></td>
 									</tr>
-									<tr>
-										<th><strong>Imagem:</strong></th>
-										<td><%=obj.getString("imgAnimal")%></td>
-									</tr>
-									
 								</tbody>
 							</table>
 
@@ -219,19 +183,15 @@ body, html {
 								<tbody>
 									<tr>
 										<th><strong>Nome do Veterinario:</strong><label></label></th>
-										<td><%=obj.getString("nomeVet")%></td>
 									</tr>
 									<tr>
 										<th><strong>Data do Diagnostico:</strong></th>
-										<td><%=obj.getString("dataDiag")%></td>
 									</tr>
 									<tr>
 										<th><strong>Breve Diagnostico:</strong></th>
-										<td><%=obj.getString("diagnostico")%></td>
 									</tr>
 									<tr>
 										<th><strong>Diagnostico completo:</strong></th>
-										<td><%=obj.getString("imgDiag")%></td>
 									</tr>
 								</tbody>
 							</table>
@@ -259,7 +219,7 @@ body, html {
 								</div>
 
 								<div class="modal-body">
-									<div>
+									<div id="radionButton">
 										<div class="custom-control custom-radio">
 											<input type="radio" id="customRadio1" name="customRadio"
 												class="custom-control-input"> <label
