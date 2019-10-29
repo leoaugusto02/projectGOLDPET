@@ -28,13 +28,12 @@ body, html {
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
-	 overflow-x: hidden;
+	overflow-x: hidden;
 }
 
-.conteudo{
-	display:flex;
+.conteudo {
+	display: flex;
 	flex-direction: row;
-	
 }
 
 #esquerda {
@@ -67,7 +66,7 @@ body, html {
 #finalPg {
 	float: bottom;
 	width: 100%;
-	height:20%
+	height: 20%
 }
 
 .navC {
@@ -125,28 +124,33 @@ body, html {
 			<div id="cabecalho">
 
 				<div id="imgLogo">
-					<img src="img/LogoPet.png" style="width: 220px; height: 220px;"  href="Index.jsp" />
+					<img src="img/LogoPet.png" style="width: 220px; height: 220px;"
+						href="Index.jsp" />
 				</div>
 
 				<div class="navC d-flex w-100 justfy-content-center">
-				
+
 					<div class="w-100">
-			<nav class="navbar navbar-expand-lg navbar-light minhaNav">
-  <a class="navbar-brand" href="#">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="adocao.jsp">adoção<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link " href="Resgate.jsp">resgate</a>
-      <a class="nav-item nav-link active" href="DicasPets">Dicas</a>
-      <a class="nav-item nav-link " href="questionPage">Forun</a>
-      <a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
-      <a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
-    </div>
-  </div>
-</nav>
+						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
+							<a class="navbar-brand" href="#">Home</a>
+							<button class="navbar-toggler" type="button"
+								data-toggle="collapse" data-target="#navbarNavAltMarkup"
+								aria-controls="navbarNavAltMarkup" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+								<div class="navbar-nav">
+									<a class="nav-item nav-link active" href="adocao.jsp">adoção<span
+										class="sr-only">(current)</span></a> <a class="nav-item nav-link "
+										href="Resgate.jsp">resgate</a> <a
+										class="nav-item nav-link active" href="DicasPets">Dicas</a> <a
+										class="nav-item nav-link " href="questionPage">Forun</a> <a
+										class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
+									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
+								</div>
+							</div>
+						</nav>
 
 					</div>
 				</div>
@@ -264,7 +268,7 @@ body, html {
 	</div>
 
 	<div id="finalPg">
-	<img src="img/Rodape2.png" />
+		<img src="img/Rodape2.png" />
 	</div>
 
 
