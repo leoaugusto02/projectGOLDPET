@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:textColor="#E41111"
+        android:textSize="20dp"
+        android:text="Os cães também suam, sabia?"/>
+
+    <TextView
+        android:layout_width="365dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:text="“Antes de mais nada é preciso entender qual é a temperatura corporal ideal para o cão: entre os 38 °C e os 39 °C. Bem diferente da nossa. O suor é essencial para os animais, pois ajuda a eliminar o calor do corpo”, explica dra Luana."
+        android:textColor="#000"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#000"
+        android:textSize="18dp"
+        android:text="Como os cachorros fazem isso? Devido a quantidade de pelo, os cães não suam muito através da pele. Segundo a veterinária, a principal forma para fazer com que o calor evapore é pelos coxins, aquelas almofadinhas das patas. A língua também é um órgão que pode ajudar a eliminar água e refrescar o organismo do animal."/>
+
+    <TextView
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#000"
+        android:textSize="18dp"
+        android:text="O suor em excesso pode ser um dos motivos do cachorro lamber as patas. Mas também pode ser estresse."/>
+
+</LinearLayout>
