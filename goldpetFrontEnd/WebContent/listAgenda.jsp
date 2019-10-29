@@ -95,6 +95,8 @@ body {
 .menu>li {
 	padding-left: 15px;
 }
+
+
 </style>
 <html>
 <head>
@@ -106,7 +108,31 @@ body {
 <body>
 	<div class="conteudo">
 
-		<div id="esquerda"></div>
+		<div id="esquerda">
+			<div class="menuLateral" style="margin-top:75%;">
+				<ul>
+					<a href="home.html">
+						<li>Home</li>
+					</a>
+
+					<a href="produtos.html">
+						<li>Produtos</li>
+					</a>
+
+					<a href="Sobre.html">
+						<li>Sobre nós</li>
+					</a>
+
+					<a href="contato.html">
+						<li>Contato</li>
+					</a>
+
+				</ul>
+
+			</div>
+
+		</div>
+
 		<div id="meio">
 
 			<div id="cabecalho">
@@ -166,23 +192,51 @@ body {
 							<tr>
 								<td>Lily</td>
 								<td>12</td>
-								<td>labrador</td>
-								<td>Helena</td>
-								<td>helena@gmail.com</td>
+								<td>moreira</td>
+								<td>Jardim Bom Retiro</td>
+								<td>Terça-feira</td>
+								<td>13:30pm</td>
 								<td>99425155</td>
-								<td>99425155</td>
-								
 
 							</tr>
 							<tr>
 								<td>Toby</td>
 								<td>2</td>
-								<td>Pastor Alemão</td>
-								<td>Henry</td>
-								<td>henry@gmai.com</td>
+								<td>Cordilheira dos Andes</td>
+								<td>PQ Bandeirantes</td>
+								<td>Quarta-feira</td>
+								<td>16:30pm</td>
 								<td>38372512</td>
-								<td>38372512</td>
-								
+
+							</tr>
+							<tr>
+								<td>Nagato</td>
+								<td>179</td>
+								<td>Rua Miami</td>
+								<td>PQ Bandeirantes</td>
+								<td>Segunda-feira</td>
+								<td>11:30am</td>
+								<td>98752512</td>
+
+							</tr>
+							<tr>
+								<td>Kisame</td>
+								<td>666</td>
+								<td>Rua dos Santos</td>
+								<td>PQ Bom Retiro</td>
+								<td>Segunda-feira</td>
+								<td>10:30am</td>
+								<td>98752512</td>
+
+							</tr>
+							<tr>
+								<td>Tobirama</td>
+								<td>667</td>
+								<td>Rua dos Kage</td>
+								<td>Vila da Pedra</td>
+								<td>Quinta-feira</td>
+								<td>9:30am</td>
+								<td>98752512</td>
 
 							</tr>
 						</tbody>
