@@ -12,13 +12,14 @@ public class Animais {
 	private String sexo;
 	private Laudo laudo;
 	private String imgAnimal;
-
+	private Pessoa pessoa;
+	
 	public Animais() {
 		super();
 	}
 
-	public Animais( String nome, Integer codAnimal, String especie, String raca, String porte, Integer idade, String status,
-			String sexo, Laudo laudo, String imgAnimal) {
+	public Animais(String nome, Integer codAnimal, String especie, String raca, String porte, Integer idade,
+			String status, String sexo, Laudo laudo, String imgAnimal, Pessoa pessoa) {
 		super();
 		this.nome = nome;
 		this.codAnimal = codAnimal;
@@ -30,7 +31,9 @@ public class Animais {
 		this.sexo = sexo;
 		this.laudo = laudo;
 		this.imgAnimal = imgAnimal;
+		this.pessoa = pessoa;
 	}
+
 
 	public String getNome() {
 		return nome;
@@ -112,4 +115,11 @@ public class Animais {
 		this.imgAnimal = imgAnimal;
 	}
 
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
 }
