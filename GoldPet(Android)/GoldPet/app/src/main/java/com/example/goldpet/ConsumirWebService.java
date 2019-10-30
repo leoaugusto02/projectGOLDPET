@@ -9,17 +9,14 @@ import java.net.URL;
 
 public class ConsumirWebService {
 
-    public JSONObject cadastrar(String pNome, String sNome){
-        String urlWebService = "http://192.160.56.1:8080/goldpetBackEnd/ProcessaPessoas ";
+    public JSONObject cadastrar(String[] campos){
+        String urlWebService = "http://192.168.56.1:8080/goldpetBackEnd/ProcessaPessoas ";
 
         try{
             URL url = new URL(urlWebService);
             HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
-
-            StringBuffer json = new StringBuffer(1024);
-            String tmp = "";
 
 
         }catch(Exception e){

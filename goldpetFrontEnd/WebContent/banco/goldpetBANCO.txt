@@ -92,10 +92,11 @@ CREATE TABLE Agenda(
 	codeAnimal integer not null,
 	codePerson integer not null,
 	data_adocao DATE not null,
+	confirmar varchar(18),
 	horario_marcado DATETIME not null,
 	horario_entregue DATETIME,
-	adotado varchar(18) not null,
-	transportado varchar(19) not null,
+	adotado varchar(18),
+	transportado varchar(19),
 	constraint fkCodePersonAgenda foreign key (codePerson) references Pessoa (codePerson),
 	constraint fkCodeAnimalAgenda foreign key (codeAnimal) references Animais (codeAnimal)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;

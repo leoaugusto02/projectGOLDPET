@@ -143,4 +143,5 @@ public class AnimaisDAO {
 		return lstAnimais;
 	}
 	
+	public boolean Adotar
 }
