@@ -28,6 +28,7 @@ public class ProcessaAnimais extends HttpServlet {
 		JSONObject objMens = new JSONObject();
 
 		String acao = req.getParameter("acao");
+		String acaoModal = req.getParameter("acaoModal");
 
 		
 		if (acao != null) {
@@ -84,6 +85,8 @@ public class ProcessaAnimais extends HttpServlet {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+				
+			}else if(acaoModal.equals("inserir")) {
 				
 			}
 		}
