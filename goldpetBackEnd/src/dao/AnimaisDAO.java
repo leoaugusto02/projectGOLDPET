@@ -9,6 +9,7 @@ import java.util.List;
 
 import vo.Animais;
 import vo.Laudo;
+import vo.Pessoa;
 
 
 public class AnimaisDAO {
@@ -112,7 +113,7 @@ public class AnimaisDAO {
 	}
 	
 	public List<Animais> ListarAnimaisDashBoard() throws SQLException{
-		String sql = "SELECT nome, porte, raca, p_nome, s_nome,  FROM an Animais INNER JOIN ad Adocao ON ad.codeAnimal = an.codeAnimal";
+		String sql = "SELECT an.nome, porte, raca, p_nome, s_nome, p.email, p.telefone1, p.telefone2 FROM Animais an INNER JOIN Pessoa p INNER JOIN Agenda ag ON an.codeAnimal = ag.codeAnimal";
 		
 		con = ConnectionDB.getConnection();
 		
@@ -123,11 +124,23 @@ public class AnimaisDAO {
 		List<Animais> lstAnimais = new ArrayList<>();
 		while(rs.next()) {
 			Animais a = new Animais();
+			Pessoa p = new Pessoa();
 			
-			a.setCodAnimal(rs.getInt("an.codeAnimal"));
+			a.setNome(rs.getString("an.nome"));
+			a.setPorte(rs.getString("porte"));
+			a.setRaca(rs.getString("raca"));
+			p.setP_nome(rs.getString("p_nome"));
+			p.setS_nome(rs.getString("s_nome"));
+			p.setEmail(rs.getString("p.email"));
+			p.setTel1(rs.getString("p.telefone1"));
+			p.setTel2(rs.getString("p.telefone2"));
+			
+			a.setPessoa(p);
+			lstAnimais.add(a);
+
 		}
 		
-		return null;
+		return lstAnimais;
 	}
 	
 }

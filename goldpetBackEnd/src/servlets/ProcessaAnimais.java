@@ -35,7 +35,7 @@ public class ProcessaAnimais extends HttpServlet {
 				
 				Animais a = new Animais();
 				int codAnimal = Integer.valueOf(req.getParameter("codAnimal"));
-				
+				System.out.println("codAnimal= " + codAnimal);
 				System.out.println("CREDENCIAL");
 
 				try {
