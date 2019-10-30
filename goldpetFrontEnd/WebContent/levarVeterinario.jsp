@@ -136,7 +136,7 @@ p.round {
 			<div class="clearfix">
 				<img class="img1" src="img/veterinario.png" alt="Veterinario"
 					width="800px" height="290px"> <br> <br>
-				<p class="round">Olfatos</p>
+				<p class="round">Veterinario</p>
 				<p class="texto">
 					Sabe com que frequência deve levar seu cãozinho ao veterinário?
 					Essa é uma pergunta muito comum entre as mamães de quatro patas,
@@ -159,7 +159,7 @@ p.round {
 				<br>
 				<br>
 				<br>
-				<button type="button" class="btn btn-primary">Voltar</button>
+				<a href="DicasPets"><button type="button" class="btn btn-primary">Voltar</button></a>
 			
 			</div>
 			</div>

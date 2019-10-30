@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#E91C1C"
+        android:textSize="20dp"
+        android:text="Cachorros adoram beijar seus donos"/>
+
+    <TextView
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#000"
+        android:textSize="18dp"
+        android:text="Sabe aquela lambida no rosto que o seu cachorrinho adora dar? É o famoso beijo de cachorro. Normalmente um cão tem o costume de lamber a boca de outro animal, como sinal de afeição. É o mesmo carinho que a fêmea dispensa aos seus filhotes, lambendo-os para limpá-los e acarinhá-los. Já o filhote, lambe a boca da sua mãe para descobrir o que ela comeu e tentar pegar um restinho da alimentação que ficou no pelo."/>
+
+    <TextView
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#000"
+        android:textSize="18dp"
+        android:text="No caso dos cães com o ser humano, também pode ser sinal de afeto, mas um ótima forma de descobrir o que comemos."/>
+
+</LinearLayout>

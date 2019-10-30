@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="120dp"
+        android:textSize="25dp"
+        android:textColor="#EC0A0A"
+        android:text="Alimentação"/>
+
+    <TextView
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Programe os horários de alimentar seu cão, sem excessos e de maneira razoável para que ele não passe fome, os adultos alimente duas vezes ao dia e os filhotes de quatro a seis vezes ao dia. Dê alimentos próprios para a raça e a idade do cachorro  e deixe a água dele sempre limpa e fresca para que não corra risco de ingerir algo inapropriado."
+        android:textColor="#000"
+        android:textSize="18dp" />
+
+    <ImageView
+        android:layout_width="375dp"
+        android:layout_height="342dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/alimentacao" />
+
+</LinearLayout>

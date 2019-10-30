@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/txtAlimentacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:text="Alimentação"/>
+
+    <TextView android:id="@+id/txtHigiene"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:text="Higiene"/>
+
+    <TextView
+        android:id="@+id/txtPasseio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:text="Passeio"/>
+
+    <TextView android:id="@+id/txtBrincar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:text="Brincar"/>
+    <TextView
+        android:id="@+id/txtVeterinario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:text="Levar ao veterinário"/>
+
+    <TextView
+        android:id="@+id/txtDormir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:text="Dormir com o pet faz mal?"
+        />
+
+    <TextView
+        android:id="@+id/Olfato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:text="O mágico olfato dos cães"/>
+
+    <TextView
+        android:id="@+id/txtCachorrosFazem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:text="Por que os cachorros fazem xixi em pé?"/>
+
+    <TextView
+        android:id="@+id/txtSuam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:text="Os cães também suam, sabia?"/>
+
+    <TextView
+        android:id="@+id/txtTruques"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:text="Cães velhos aprendem truques novos?"/>
+
+    <TextView
+        android:id="@+id/txtBeijar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:text="Cachorros adoram beijar seus donos"
+        />
+
+
+
+</LinearLayout>

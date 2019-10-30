@@ -148,7 +148,7 @@ input[type=button]{
   <br>
   <br>
   <br>
-  <input type="button" value="Leia mais...">
+  <a href="adoramBeijar.jsp"><input type="button" value="Leia mais..."></a>
 </div>
 <br>
 <div class="clearfix">
@@ -158,7 +158,7 @@ input[type=button]{
   <br>
   <br>
   <br>
-  <input type="button" value="Leia mais...">
+  <a href="Alimentacao.jsp"><input type="button" value="Leia mais..."></a>
 </div>
 <br>
 <div class="clearfix">
@@ -174,49 +174,49 @@ input[type=button]{
   <h2><center>Higiene</center></h2>
   Dê banho em seu cachorro pelo menos uma vez ao mês e se possível peça em um pet shop que escove os dentes dele para prevenir...
   
-  <input type="button" value="Leia mais...">
+ <a href="higiene.jsp"><input type="button" value="Leia mais..."></a>
 </div> 
 <br> 
 <div class="clearfix">
   <img class="img1" src="img/passeio.jpg" alt="Passeio" width="170px" height="170px">
   <h2><center>Passeio</center></h2>
   Leve-o todos os dias para passear, o cachorro também precisa se exercitar e andar como nós, ainda mais se sua casa não tem quintal...
-  <input type="button" value="Leia mais...">
+  <a href="passeios.jsp"><input type="button" value="Leia mais..."></a>
 </div> 
 <br>
 <div class="clearfix">
   <img class="img1" src="img/truques.jpg" alt="Truques" width="170px" height="170px">
   <h2>Cães velhos aprendem truques novos?</h2>
  Um dos motivos de haver mais cães adultos nos abrigos e ONGs é o medo de cães velhos não aprenderem coisas novas. Desde um xixi no lugar certo, até...
-  <input type="button" value="Leia mais...">
+  <a href="truques.jsp"><input type="button" value="Leia mais..."></a>
 </div> 
 <br>
 <div class="clearfix">
   <img class="img1" src="img/dormir.jpg" alt="Dormir" width="170px" height="170px">
   <h2>Dormir com Pé</h2>
   Tem bicho que parece gente, domina a casa toda, desde o sofá até a cama, e ignora todo e qualquer limite de espaço. Mas...
-  <input type="button" value="Leia mais...">
+  <a href="dormir.jsp"><input type="button" value="Leia mais..."></a>
   </div>
   <br>
   <div class="clearfix">
   <img class="img1" src="img/suam.jpg" alt="Suam" width="170px" height="170px">
   <h2>Os cães também suam, sabia?</h2>
   Antes de mais nada é preciso entender qual é a temperatura corporal ideal para o cão: entre os 38 °C e os 39 °C. Bem diferente da nossa.
-  <input type="button" value="Leia mais...">
+  <a href="suam.jsp"><input type="button" value="Leia mais..."></a>
   </div>
   <br>
   <div class="clearfix">
   <img class="img1" src="img/olfato.png" alt="Olfato" width="170px" height="170px">
   <h2>O mágico olfato dos cães</h2>
   Você sabia que os cachorros percebem os cheiros 1 milhão de vezes melhor do que os seres humanos?
- <input type="button" value="Leia mais...">
+ <a href="Olfato.jsp"><input type="button" value="Leia mais..."></a>
   </div>
   <br>
   <div class="clearfix">
   <img class="img1" src="img/veterinario.png" alt="Veterinario" width="170px" height="170px">
   <h2>Levar ao Veterinario</h2>
   Sabe com que frequência deve levar seu cãozinho ao veterinário? Essa é uma pergunta muito comum...
-  <input type="button" value="Leia mais...">
+  <a href="levarVeterinario.jsp"><input type="button" value="Leia mais..."></a>
   </div>
   <br>
 </div>

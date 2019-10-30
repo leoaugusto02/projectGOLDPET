@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="nav_login" type="id"/>
+    <item name="nav_home" type="id"/>
+    <item name="nav_gallery" type="id"/>
+    <item name="nav_forum" type="id"/>
+
+</resources>
