@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context="com.example.goldpet.Cadastro">
 
     <ImageView
         android:layout_width="348dp"
@@ -12,21 +12,21 @@
         android:layout_marginLeft="35dp"
         android:src="@drawable/escudo" />
 
-    <EditText
+    <EditText android:id="@+id/edtApelido"
         android:layout_width="359dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="215dp"
         android:hint="Apelido" />
 
-    <EditText
+    <EditText android:id="@+id/edtNome"
         android:layout_width="181dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="260dp"
         android:hint="Nome" />
 
-    <EditText
+    <EditText android:id="@+id/edtSobrenome"
         android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="210dp"
