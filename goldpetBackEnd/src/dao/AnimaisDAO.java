@@ -143,5 +143,19 @@ public class AnimaisDAO {
 		return lstAnimais;
 	}
 	
-	public boolean Adotar
+	public boolean AdotarAnimal(Animais a) throws SQLException {
+		String sql = "INSERT INTO Agenda(codeAnimal, codePerson, data_adocao, confirmar, horario_marcado, transportado) VALUES (?, ?, ?, 'não confirmado', ?, ?);";
+				
+		con = ConnectionDB.getConnection();
+		
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, a.getCodAnimal());
+		ps.setInt(2, a.getPessoa().getCodePerson());
+		ps.setDate(3, new java.sql.Date(a.getAgenda().getData_adocao().getTime()));
+		ps.setString(4, a.getAgenda().getConfirmar());
+		ps.setDate(5, new java.sql.Date(a.getAgenda().getHorario_marcado().getTime()));
+		ps.setString(6, a.getAgenda().getTransportado());
+		
+		return ps.executeUpdate() > 0;
+	}
 }

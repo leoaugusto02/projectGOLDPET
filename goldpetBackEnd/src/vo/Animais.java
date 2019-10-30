@@ -13,13 +13,14 @@ public class Animais {
 	private Laudo laudo;
 	private String imgAnimal;
 	private Pessoa pessoa;
+	private Agenda agenda;
 	
 	public Animais() {
 		super();
 	}
 
 	public Animais(String nome, Integer codAnimal, String especie, String raca, String porte, Integer idade,
-			String status, String sexo, Laudo laudo, String imgAnimal, Pessoa pessoa) {
+			String status, String sexo, Laudo laudo, String imgAnimal, Pessoa pessoa, Agenda agenda) {
 		super();
 		this.nome = nome;
 		this.codAnimal = codAnimal;
@@ -32,8 +33,8 @@ public class Animais {
 		this.laudo = laudo;
 		this.imgAnimal = imgAnimal;
 		this.pessoa = pessoa;
+		this.agenda = agenda;
 	}
-
 
 	public String getNome() {
 		return nome;
@@ -121,5 +122,13 @@ public class Animais {
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
+	}
+
+	public Agenda getAgenda() {
+		return agenda;
+	}
+
+	public void setAgenda(Agenda agenda) {
+		this.agenda = agenda;
 	}
 }
