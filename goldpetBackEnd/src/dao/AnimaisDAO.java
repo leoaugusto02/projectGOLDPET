@@ -112,7 +112,7 @@ public class AnimaisDAO {
 	}
 	
 	public List<Animais> ListarAnimaisDashBoard() throws SQLException{
-		String sql = "SELECT nome, porte, raca, ad.* FROM an Animais INNER JOIN ad Adocao ON ad.codeAnimal = an.codeAnimal";
+		String sql = "SELECT nome, porte, raca, p_nome, s_nome,  FROM an Animais INNER JOIN ad Adocao ON ad.codeAnimal = an.codeAnimal";
 		
 		con = ConnectionDB.getConnection();
 		
