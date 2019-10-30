@@ -125,35 +125,29 @@ body, html {
 			<div id="cabecalho">
 
 				<div id="imgLogo">
-					<img src="img/LogoPet.png" style="width: 220px; height: 220px;" />
+					<img src="img/LogoPet.png" style="width: 220px; height: 220px;"  href="Index.jsp" />
 				</div>
 
 				<div class="navC d-flex w-100 justfy-content-center">
 				
 					<div class="w-100">
-						<nav class="navbar navbar-expand-md navbar-light minhaNav">
-							<div class="w-100" id="navbarSupportedContent">
-								<ul class="navbar-nav mr-auto menu ">
-									<li class="nav-item active"><a class="nav-link" href="#">Home
-											<span class="sr-only">(current)</span>
-									</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">Doações</a></li>
+			<nav class="navbar navbar-expand-lg navbar-light minhaNav">
+  <a class="navbar-brand" href="#">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="adocao.jsp">adoção<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link " href="Resgate.jsp">resgate</a>
+      <a class="nav-item nav-link active" href="DicasPets">Dicas</a>
+      <a class="nav-item nav-link " href="questionPage">Forun</a>
+      <a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
+      <a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
+    </div>
+  </div>
+</nav>
 
-									<li class="nav-item"><a class="nav-link" href="#">Resgate</a></li>
-
-									<li class="nav-item"><a class="nav-link" href="#">Adoção</a></li>
-
-									<li class="nav-item"><a class="nav-link" href="#">Sobre
-											Nós</a></li>
-
-									<li class="nav-item"><a class="nav-link" href="#">Cadastrar
-											Pet</a></li>
-
-									<li class="nav-item"><a class="nav-link" href="#">Forum</a></li>
-
-								</ul>
-							</div>
-						</nav>
 					</div>
 				</div>
 
