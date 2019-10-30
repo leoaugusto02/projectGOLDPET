@@ -95,6 +95,8 @@ body {
 .menu>li {
 	padding-left: 15px;
 }
+
+
 </style>
 <html>
 <head>
@@ -106,7 +108,31 @@ body {
 <body>
 	<div class="conteudo">
 
-		<div id="esquerda"></div>
+		<div id="esquerda">
+			<div class="menuLateral" style="margin-top:75%;">
+				<ul>
+					<a href="home.html">
+						<li>Home</li>
+					</a>
+
+					<a href="produtos.html">
+						<li>Produtos</li>
+					</a>
+
+					<a href="Sobre.html">
+						<li>Sobre nós</li>
+					</a>
+
+					<a href="contato.html">
+						<li>Contato</li>
+					</a>
+
+				</ul>
+
+			</div>
+
+		</div>
+
 		<div id="meio">
 
 			<div id="cabecalho">
@@ -171,7 +197,7 @@ body {
 								<td>Terça-feira</td>
 								<td>13:30pm</td>
 								<td>99425155</td>
-								
+
 							</tr>
 							<tr>
 								<td>Toby</td>
@@ -181,7 +207,7 @@ body {
 								<td>Quarta-feira</td>
 								<td>16:30pm</td>
 								<td>38372512</td>
-						
+
 							</tr>
 							<tr>
 								<td>Nagato</td>
@@ -191,7 +217,7 @@ body {
 								<td>Segunda-feira</td>
 								<td>11:30am</td>
 								<td>98752512</td>
-								
+
 							</tr>
 							<tr>
 								<td>Kisame</td>
@@ -201,7 +227,7 @@ body {
 								<td>Segunda-feira</td>
 								<td>10:30am</td>
 								<td>98752512</td>
-								
+
 							</tr>
 							<tr>
 								<td>Tobirama</td>
@@ -211,7 +237,7 @@ body {
 								<td>Quinta-feira</td>
 								<td>9:30am</td>
 								<td>98752512</td>
-								
+
 							</tr>
 						</tbody>
 
