@@ -1,6 +1,7 @@
 package com.example.goldpet;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -9,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.levirs.example.goldpet.R;
 
-public class Cadastro extends AppCompatActivity {
+public class Cadastro extends AppCompatActivity implements View.OnClickListener {
 
     EditText edtApelido, edtNome, edtSobrenome, edtCep, edtCpf, edtRg, edtTel1, edtTel2, edtEmail, edtSenha, edtConfSenha;
     RadioButton rbMasculino, rbFemenino;
@@ -34,6 +35,12 @@ public class Cadastro extends AppCompatActivity {
         rbFemenino = findViewById(R.id.rbFemenino);
         btnCadastrar = findViewById(R.id.btnCadastrar);
 
-        
+        btnCadastrar.setOnClickListener(this);
+    }
+
+
+    @Override
+    public void onClick(View view) {
+
     }
 }
