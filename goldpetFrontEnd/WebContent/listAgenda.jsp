@@ -18,12 +18,15 @@ body {
 	width: 15%;
 	display: flex;
 	flex-direction: column;
+	/*background-image: url("img/bgDireita.png")*/
 }
 
 #direita {
 	width: 15%;
 	display: flex;
 	flex-direction: column;
+/*	background-image: url("img/bgLados.png")*/
+	
 }
 
 #meio {
@@ -95,6 +98,27 @@ body {
 .menu>li {
 	padding-left: 15px;
 }
+ul{
+			list-style: none;
+			padding: 0px;
+			margin: 0px;
+		}
+		li{
+			border-left: 4px solid black;
+			margin-bottom: 2px;
+			text-color:black;
+			
+			padding: 5px 5px 5px 10px;
+			/*display: inline-block;*/
+		
+		}
+		li:hover{
+			border-left: 4px solid grey;
+		}
+		a{
+		color: black;
+		text-decoration : none;
+		}
 </style>
 <html>
 <head>
@@ -109,26 +133,24 @@ body {
 		<div id="esquerda">
 			<div class="menuLateral" style="margin-top: 75%;">
 				<ul>
-					<a href="home.html">
-						<li>Home</li>
+					<a href="#">
+						<li>Agenda</li>
 					</a>
 
-					<a href="produtos.html">
-						<li>Produtos</li>
+					<a href="#">
+						<li>Adoções</li>
 					</a>
 
-					<a href="Sobre.html">
-						<li>Sobre nós</li>
+					<a href="#">
+						<li>Usuarios</li>
 					</a>
 
-					<a href="contato.html">
-						<li>Contato</li>
+					<a href="#">
+						<li>Gerenciar</li>
 					</a>
 
 				</ul>
-
 			</div>
-
 		</div>
 
 		<div id="meio">
@@ -162,6 +184,7 @@ body {
 								</div>
 							</div>
 						</nav>
+
 					</div>
 				</div>
 
