@@ -107,35 +107,6 @@ body, html {
 </head>
 <body>
 
-	<%
-	    String acao = "listaAdocao"; //request.getParameter("codigoAnimal");
-		String codAnimal = request.getParameter("codAnimal");
-
-
-			String parametros = "acao=" + acao;
-
-			URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
-
-			HttpURLConnection con = (HttpURLConnection) url.openConnection();
-			con.setRequestMethod("POST");
-			con.setDoOutput(true);
-
-			System.out.println(parametros);
-
-			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-			wr.writeBytes(parametros);
-
-			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
-			String linha = "";
-			JSONObject obj;
-			
-			
-			
-			
-
-	%>
-
 	<div class="conteudo">
 
 		<div id="esquerda"></div>
@@ -186,7 +157,7 @@ body, html {
 					Adicinar Dog
 				</button>
 			</div>
-
+			<form action="#" method="post">
 			<div class="modal" id="siteModal" tabindex="-1" role="dialog"
 				aria-hidden="true">
 				<div class="modal-dialog" role="document">
@@ -204,27 +175,29 @@ body, html {
 							<div>
 
 								<input class="form-control" type="text"
-									placeholder="nome do pet" style="margin-bottom: 3%;" /> <input
-									class="form-control" type="number" placeholder="Idade"
-									style="margin-bottom: 3%;" /> <input class="form-control"
-									type="text" placeholder="Raça" style="margin-bottom: 3%;" /> <input
+									placeholder="nome do pet" style="margin-bottom: 3%;"
+									name="nome" /> <input class="form-control" type="number"
+									placeholder="Idade" name="idade" style="margin-bottom: 3%;" />
+								<input class="form-control" type="text" placeholder="Raça"
+									name="raca" style="margin-bottom: 3%;" /> <input
 									class="form-control" type="text" placeholder="Porte"
-									style="margin-bottom: 3%;" /> <input class="form-control"
-									type="text" placeholder="Espécie" style="margin-bottom: 3%;" />
+									name="porte" style="margin-bottom: 3%;" /> <input
+									class="form-control" type="text" placeholder="Espécie"
+									name="especie" style="margin-bottom: 3%;" />
 
 								<div class="form-check form-check-inline"
 									style="margin-bottom: 2%;">
-									<input class="form-check-input" type="radio"
-										name="inlineRadioOptions" id="inlineRadio1" value="option1">
-									<label class="form-check-label" for="inlineRadio1"> <img
+									<input class="form-check-input" type="radio" name="genero"
+										id="inlineRadio1" value="Fêmea"> <label
+										class="form-check-label" for="inlineRadio1"> <img
 										alt="feminino.png" src="img/feminino.png"
 										style="height: 25px; width: 25px; margin-left: -0.5;">Fêmea
 									</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio"
-										name="inlineRadioOptions" id="inlineRadio2" value="option2">
-									<label class="form-check-label" for="inlineRadio2"> <img
+									<input class="form-check-input" type="radio" name="genero"
+										id="inlineRadio2" value="Macho"> <label
+										class="form-check-label" for="inlineRadio2"> <img
 										alt="masculino.png" src="img/masculino.png"
 										style="height: 25px; width: 25px; margin-left: -0.5;">Macho
 									</label>
@@ -233,14 +206,14 @@ body, html {
 
 								<div id="textArea">
 									<textarea class="form-control" id="textarea"
-										placeholder="Status do Pet" rows="3"
+										placeholder="Status do Pet" rows="3" name="status"
 										style="margin-top: 2px; margin-bottom: 0px; height: 80px; width: 470px;"></textarea>
 								</div>
 
 								<div>
 
 									<button action="upload" type="file"
-										class="btn btn-outline-info"
+										class="btn btn-outline-info" name="imagem"
 										style="float: right; margin-top: 2%;">
 										<img alt="petIcon.png" src="img/PetIcon.png"
 											style="height: 20px; width: 20px; margin-left: -1%;">Imagem
@@ -257,145 +230,118 @@ body, html {
 								<img alt="close.png" src="img/close.png"
 									style="height: 20px; width: 20px; margin-left: -0.5;" /> Close
 							</button>
-							<button type="button" class="btn btn-outline-success">
+							<input type="submit" class="btn btn-outline-success" value="Postar"/>
 								<img alt="postar.png" src="img/postar.png"
 									style="height: 20px; width: 20px; margin-left: -0.5;" />
-								Postar
-							</button>
+							<input type="hidden" name="acaoModal" id="acaoModal"
+								value="inserirPet" />
 						</div>
 					</div>
 				</div>
 			</div>
+</form>
+			<%
+				String acao = "listaAdocao";
+				String codAnimal = request.getParameter("codAnimal");
+				String acaoModal = request.getParameter("acaoModal");
+
+				String parametros = "";
+
+				if (acaoModal != null) {
+					String nome = request.getParameter("nome");
+					String idade = request.getParameter("idade");
+					String raca = request.getParameter("raca");
+					String porte = request.getParameter("porte");
+					String especie = request.getParameter("especie");
+					String genero = request.getParameter("genero");
+					String imagem = request.getParameter("imagem");
+					String status = request.getParameter("status");
+
+					if ((nome != null) || (idade != null) || (raca != null) || (porte != null) || (especie != null)
+							|| (genero != null) || (imagem != null) || (status != null)) {
+
+						parametros = "acaoModal=" + acaoModal + "&nome=" + nome + "&idade=" + idade + "&raca=" + raca
+								+ "&porte=" + porte + "&especie=" + especie + "&genero" + genero + "&imagem=" + imagem
+								+ "&status=" + status;
+					
+					}else{
+						%>
+						<div class="alert alert-primary" role="alert">
+							Todos os campos devem ser preenchidos!
+						</div>
+						<%
+					}
+				} else {
+					parametros = "acao=" + acao;
+				}
+
+				URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
+
+				HttpURLConnection con = (HttpURLConnection) url.openConnection();
+				con.setRequestMethod("POST");
+				con.setDoOutput(true);
+
+				System.out.println(parametros);
+
+				System.out.println(parametros);
+
+				DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+				wr.writeBytes(parametros);
+
+				BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+				String linha = "";
+				JSONObject obj;
+			%>
 
 			<!-- FORM -->
-			
-			<form action="#" method="post">
 
-				<div class="d-flex justify-content-around">
-				
+			<form action="#" method="post"></form>
+			<div class="d-flex justify-content-around">
 				<%
-				System.out.println("Tô aqui antes do while");
-				
-				while ((linha = br.readLine()) != null) {
-					System.out.println("Tô aqui " + linha);
-					obj = new JSONObject(linha);
-					
+					System.out.println("Tô aqui antes do while");
 
+					while ((linha = br.readLine()) != null) {
+						System.out.println("Tô aqui " + linha);
+						obj = new JSONObject(linha);
 				%>
 				<a href="dataDoguinho.jsp?codAnimal=<%=obj.getInt("codAnimal")%>">
-				<div class="card bg-dark text-white" style="width: 23rem;">
+					<div class="card bg-dark text-white" style="width: 23rem;">
 						<img src="img/slide01.png" class="card-img" href="#"
 							style="height: 500px;">
 						<div class="card-img-overlay">
 							<h5 class="card-title"><%=obj.getString("nome")%></h5>
 							<p class="card-text">
-								Código: <%=obj.getInt("codAnimal")%> <br>
-								Status: <%=obj.getString("nome")%><br>
-								Raça: <%=obj.getString("raca") %><br>
-								Espécie: <%=obj.getString("especie")%><br>
-								
+								Código:
+								<%=obj.getInt("codAnimal")%>
+								<br> Status:
+								<%=obj.getString("nome")%><br> Raça:
+								<%=obj.getString("raca")%><br> Espécie:
+								<%=obj.getString("especie")%><br>
+
 							</p>
 							<p class="card-text">Last updated 3 mins ago</p>
 						</div>
 					</div>
-					</a>
+				</a>
 				<%
-				}
-				System.out.println("Tô aqui dps do while");
+					}
+					System.out.println("Tô aqui dps do while");
 				%>
-				<!--	<div class="card bg-dark text-white" style="width: 23rem;">
-						<img src="img/slide01.png" class="card-img" href="#"
-							style="height: 500px;">
-						<div class="card-img-overlay">
-							<h5 class="card-title">Nome do dogzin</h5>
-							<p class="card-text">Informaçoes basicas sobre o dogzin
-								clicando na imagem ira para o perfil dele para ver os laudos
-								medicos e saber mais sobre o dog</p>
-							<p class="card-text">Last updated 3 mins ago</p>
-						</div>
-					</div>
-				</div>
-				
-			 	 <div class="card bg-dark text-white" style="width: 23rem;">
-						<img src="img/slide01.png" class="card-img" href="#"
-							style="height: 500px;">
-						<div class="card-img-overlay">
-							<h5 class="card-title">Nome do dogzin</h5>
-							<p class="card-text">Informaçoes basicas sobre o dogzin
-								clicando na imagem ira para o perfil dele para ver os laudos
-								medicos e saber mais sobre o dog</p>
-							<p class="card-text">Last updated 3 mins ago</p>
-						</div>
-					</div>
+			</div>
 
-					<div class="card bg-dark text-white" style="width: 23rem;">
-						<img src="img/slide01.png" class="card-img" href="#"
-							style="height: 500px;">
-						<div class="card-img-overlay">
-							<h5 class="card-title">Nome do dogzin</h5>
-							<p class="card-text">Informaçoes basicas sobre o dogzin
-								clicando na imagem ira para o perfil dele para ver os laudos
-								medicos e saber mais sobre o dog</p>
-							<p class="card-text">Last updated 3 mins ago</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="d-flex justify-content-around" style="margin-top: 2%;">
-					<div id="infoDog">
-						<div class="card bg-dark text-white" style="width: 23rem;">
-							<img src="img/slide01.png" class="card-img" href="#"
-								style="height: 500px;">
-							<div class="card-img-overlay">
-								<h5 class="card-title">Nome do dogzin</h5>
-								<p class="card-text">Informaçoes basicas sobre o dogzin
-									clicando na imagem ira para o perfil dele para ver os laudos
-									medicos e saber mais sobre o dog</p>
-								<p class="card-text">Last updated 3 mins ago</p>
-							</div>
-						</div>
-					</div>
-
-
-					<div class="card bg-dark text-white" style="width: 23rem;">
-						<img src="img/slide01.png" class="card-img" href="#"
-							style="height: 500px;">
-						<div class="card-img-overlay">
-							<h5 class="card-title">Nome do dogzin</h5>
-							<p class="card-text">Informaçoes basicas sobre o dogzin
-								clicando na imagem ira para o perfil dele para ver os laudos
-								medicos e saber mais sobre o dog</p>
-							<p class="card-text">Last updated 3 mins ago</p>
-						</div>
-					</div>
-
-					<div class="card bg-dark text-white" style="width: 23rem;">
-						<img src="img/slide01.png" class="card-img" href="#"
-							style="height: 500px;">
-						<div class="card-img-overlay">
-							<h5 class="card-title">Nome do dogzin</h5>
-							<p class="card-text">Informaçoes basicas sobre o dogzin
-								clicando na imagem ira para o perfil dele para ver os laudos
-								medicos e saber mais sobre o dog</p>
-							<p class="card-text">Last updated 3 mins ago</p>
-						</div>
-					</div>
-				</div>
-				<input type="hidden" name="acao" id="acao" value="card" /> -->
-			</form>
 		</div>
 
 		<div id="direita"></div>
 
 	</div>
-	 <script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery-3.3.1.min.js"></script> 
+	<!-- <script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery-3.3.1.min.js"></script> -->
 	
 	<script>
-		function card(){
-			$("#acao").val("card");
+		function inserirDog(){
+			$("#acao").val("inserirDog");
 		}
-	
 	</script>
 
 </body>
