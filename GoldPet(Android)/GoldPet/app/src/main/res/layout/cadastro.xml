@@ -33,7 +33,7 @@
         android:layout_marginTop="260dp"
         android:hint="Sobrenome" />
 
-    <EditText
+    <EditText android:id="@+id/edtDataNasc"
         android:layout_width="361dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
