@@ -20,6 +20,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.cadastro);
 
         edtApelido = findViewById(R.id.edtApelido);
         edtNome = findViewById(R.id.edtNome);
@@ -42,6 +43,9 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         btnCadastrar.setOnClickListener(this);
         rbMasculino.setOnClickListener(this);
         rbFemenino.setOnClickListener(this);
+
+        Cadastro();
+
     }
 
     @Override
@@ -59,13 +63,22 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
                 } else if (rbFemenino.isChecked()) {
                     rbValue = "F";
                 }
-                final String c = ConsumirWebService.cadastrar(String.v(edtNome, edtSobrenome, edtApelido, edtCep, edtReferencia, edtCpf, edtRg, edtTel1, edtTel2, edtDataNasc, edtEmail, edtSenha, edtConfSenha), rbValue, acao, acaoConta);
-
-                Toast.makeText(this, c, Toast.LENGTH_SHORT).show();
-                break;
-
-
+               /* final String c = ConsumirWebService.cadastrar(edtNome.getText().toString(), edtSobrenome.getText().toString(), edtApelido.getText().toString(), edtCep.getText().toString(), edtReferencia.getText().toString(), edtCpf.getText().toString(),
+                    edtRg.getText().toString(), edtTel1.getText().toString(), edtTel2.getText().toString(), edtDataNasc.getText().toString(), edtEmail.getText().toString(), edtSenha.getText().toString(), edtConfSenha.getText().toString(),
+                    rbValue, acao, acaoConta);*/
+            break;
         }
     }
+
+    private void Cadastro(){
+        new Thread() {
+            public void run(){
+                final String c = ConsumirWebService.cadastrar("Eu", "Tu", "Tus", "123456","mais perto do q longe", "12334556",
+                        "543216", "123456", "123213", "20-10-2000", "tu@gmail.com", "123","123",
+                        "M", "Cadastrar", "Guardião");
+            }
+        }.start();
+    }
+
 
 }
