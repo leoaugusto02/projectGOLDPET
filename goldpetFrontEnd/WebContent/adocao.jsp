@@ -158,88 +158,90 @@ body, html {
 				</button>
 			</div>
 			<form action="#" method="post">
-			<div class="modal" id="siteModal" tabindex="-1" role="dialog"
-				aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
+				<div class="modal" id="siteModal" tabindex="-1" role="dialog"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
 
-						<div class="modal-header" style="background-color: #139F97;">
-							<h5 class="modal-title">Adicionar Pet</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span>x</span>
-							</button>
-						</div>
+							<div class="modal-header" style="background-color: #139F97;">
+								<h5 class="modal-title">Adicionar Pet</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span>x</span>
+								</button>
+							</div>
 
-						<div class="modal-body">
-							<div>
-
-								<input class="form-control" type="text"
-									placeholder="nome do pet" style="margin-bottom: 3%;"
-									name="nome" /> <input class="form-control" type="number"
-									placeholder="Idade" name="idade" style="margin-bottom: 3%;" />
-								<input class="form-control" type="text" placeholder="Raça"
-									name="raca" style="margin-bottom: 3%;" /> <input
-									class="form-control" type="text" placeholder="Porte"
-									name="porte" style="margin-bottom: 3%;" /> <input
-									class="form-control" type="text" placeholder="Espécie"
-									name="especie" style="margin-bottom: 3%;" />
-
-								<div class="form-check form-check-inline"
-									style="margin-bottom: 2%;">
-									<input class="form-check-input" type="radio" name="genero"
-										id="inlineRadio1" value="Fêmea"> <label
-										class="form-check-label" for="inlineRadio1"> <img
-										alt="feminino.png" src="img/feminino.png"
-										style="height: 25px; width: 25px; margin-left: -0.5;">Fêmea
-									</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="genero"
-										id="inlineRadio2" value="Macho"> <label
-										class="form-check-label" for="inlineRadio2"> <img
-										alt="masculino.png" src="img/masculino.png"
-										style="height: 25px; width: 25px; margin-left: -0.5;">Macho
-									</label>
-
-								</div>
-
-								<div id="textArea">
-									<textarea class="form-control" id="textarea"
-										placeholder="Status do Pet" rows="3" name="status"
-										style="margin-top: 2px; margin-bottom: 0px; height: 80px; width: 470px;"></textarea>
-								</div>
-
+							<div class="modal-body">
 								<div>
 
-									<button action="upload" type="file"
-										class="btn btn-outline-info" name="imagem"
-										style="float: right; margin-top: 2%;">
-										<img alt="petIcon.png" src="img/PetIcon.png"
-											style="height: 20px; width: 20px; margin-left: -1%;">Imagem
-										Pet
-									</button>
+									<input class="form-control" type="text"
+										placeholder="nome do pet" style="margin-bottom: 3%;"
+										name="nome" /> <input class="form-control" type="number"
+										placeholder="Idade" name="idade" style="margin-bottom: 3%;" />
+									<input class="form-control" type="text" placeholder="Raça"
+										name="raca" style="margin-bottom: 3%;" /> <input
+										class="form-control" type="text" placeholder="Porte"
+										name="porte" style="margin-bottom: 3%;" /> <input
+										class="form-control" type="text" placeholder="Espécie"
+										name="especie" style="margin-bottom: 3%;" />
 
+									<div class="form-check form-check-inline"
+										style="margin-bottom: 2%;">
+										<input class="form-check-input" type="radio" name="genero"
+											id="inlineRadio1" value="Fêmea"> <label
+											class="form-check-label" for="inlineRadio1"> <img
+											alt="feminino.png" src="img/feminino.png"
+											style="height: 25px; width: 25px; margin-left: -0.5;">Fêmea
+										</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="genero"
+											id="inlineRadio2" value="Macho"> <label
+											class="form-check-label" for="inlineRadio2"> <img
+											alt="masculino.png" src="img/masculino.png"
+											style="height: 25px; width: 25px; margin-left: -0.5;">Macho
+										</label>
+
+									</div>
+
+									<div id="textArea">
+										<textarea class="form-control" id="textarea"
+											placeholder="Status do Pet" rows="3" name="status"
+											style="margin-top: 2px; margin-bottom: 0px; height: 80px; width: 470px;"></textarea>
+									</div>
+
+									<div>
+
+										<button action="upload" type="file"
+											class="btn btn-outline-info" name="imagem"
+											style="float: right; margin-top: 2%;">
+											<img alt="petIcon.png" src="img/PetIcon.png"
+												style="height: 20px; width: 20px; margin-left: -1%;">Imagem
+											Pet
+										</button>
+
+									</div>
 								</div>
 							</div>
-						</div>
 
-						<div class="modal-footer">
-							<button type="button" class="btn btn-outline-danger"
-								data-dismiss="modal">
-								<img alt="close.png" src="img/close.png"
-									style="height: 20px; width: 20px; margin-left: -0.5;" /> Close
-							</button>
-							<input type="submit" class="btn btn-outline-success" value="Postar"/>
-								<img alt="postar.png" src="img/postar.png"
-									style="height: 20px; width: 20px; margin-left: -0.5;" />
-							<input type="hidden" name="acaoModal" id="acaoModal"
-								value="inserirPet" />
+							<div class="modal-footer">
+								<button type="button" class="btn btn-outline-danger"
+									data-dismiss="modal">
+									<img alt="close.png" src="img/close.png"
+										style="height: 20px; width: 20px; margin-left: -0.5;" />
+									Close
+								</button>
+								<input type="submit" class="btn btn-outline-success"
+									value="Postar" />
+								<!-- 	<img alt="postar.png" src="img/postar.png"
+									style="height: 20px; width: 20px; margin-left: -0.5;" /> -->
+								<input type="hidden" name="acaoModal" id="acaoModal"
+									value="inserirPet" />
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-</form>
+			</form>
 			<%
 				String acao = "listaAdocao";
 				String codAnimal = request.getParameter("codAnimal");
@@ -248,28 +250,27 @@ body, html {
 				String parametros = "";
 
 				if (acaoModal != null) {
+
+					System.out.println("açãoModal=" + acaoModal);
+
 					String nome = request.getParameter("nome");
 					String idade = request.getParameter("idade");
 					String raca = request.getParameter("raca");
 					String porte = request.getParameter("porte");
 					String especie = request.getParameter("especie");
 					String genero = request.getParameter("genero");
-					String imagem = request.getParameter("imagem");
+					String imagem = "imagem";
 					String status = request.getParameter("status");
 
 					if ((nome != null) || (idade != null) || (raca != null) || (porte != null) || (especie != null)
 							|| (genero != null) || (imagem != null) || (status != null)) {
 
 						parametros = "acaoModal=" + acaoModal + "&nome=" + nome + "&idade=" + idade + "&raca=" + raca
-								+ "&porte=" + porte + "&especie=" + especie + "&genero" + genero + "&imagem=" + imagem
+								+ "&porte=" + porte + "&especie=" + especie + "&genero=" + genero + "&imagem=" + imagem
 								+ "&status=" + status;
 					
-					}else{
-						%>
-						<div class="alert alert-primary" role="alert">
-							Todos os campos devem ser preenchidos!
-						</div>
-						<%
+						response.sendRedirect("adocao.jsp");
+
 					}
 				} else {
 					parametros = "acao=" + acao;
@@ -280,8 +281,6 @@ body, html {
 				HttpURLConnection con = (HttpURLConnection) url.openConnection();
 				con.setRequestMethod("POST");
 				con.setDoOutput(true);
-
-				System.out.println(parametros);
 
 				System.out.println(parametros);
 
@@ -296,14 +295,21 @@ body, html {
 
 			<!-- FORM -->
 
-			<form action="#" method="post"></form>
-			<div class="d-flex justify-content-around">
+			<form action="#" method="post">
 				<%
 					System.out.println("Tô aqui antes do while");
 
+					int i = 0;
+					boolean fimWhile = false;
+				
 					while ((linha = br.readLine()) != null) {
 						System.out.println("Tô aqui " + linha);
 						obj = new JSONObject(linha);
+						if(i == 0){
+							%>
+								<div class="d-flex justify-content-around">
+							<%
+						}
 				%>
 				<a href="dataDoguinho.jsp?codAnimal=<%=obj.getInt("codAnimal")%>">
 					<div class="card bg-dark text-white" style="width: 23rem;">
@@ -325,11 +331,24 @@ body, html {
 					</div>
 				</a>
 				<%
+						i++;
+						if(i==3){
+							fimWhile = false;
+							
+							%></div><%
+							
+							i=0;
+						}else{
+							fimWhile = true;
+						}
+						
 					}
 					System.out.println("Tô aqui dps do while");
+					if(fimWhile){
+						%></div><%
+					}
 				%>
-			</div>
-
+				</form>
 		</div>
 
 		<div id="direita"></div>
@@ -337,10 +356,10 @@ body, html {
 	</div>
 	<!-- <script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script> -->
-	
+
 	<script>
-		function inserirDog(){
-			$("#acao").val("inserirDog");
+		function inserirDog() {
+			$("#acaoModal").val("inserirPet");
 		}
 	</script>
 
