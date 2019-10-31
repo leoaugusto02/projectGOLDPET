@@ -86,8 +86,37 @@ public class ProcessaAnimais extends HttpServlet {
 					e.printStackTrace();
 				}
 				
-			}else if(acaoModal.equals("inserir")) {
+			}else if(acaoModal.equals("inserirDog")) {
 				
+				String nome = req.getParameter("nome");
+				Integer idade = Integer.valueOf(req.getParameter("idade"));
+				String raca = req.getParameter("raca");
+				String porte = req.getParameter("porte");
+				String especie = req.getParameter("especie");
+				String genero = req.getParameter("genero");
+				String imagem = req.getParameter("imagem");
+				String status = req.getParameter("status");
+				
+				Animais a = new Animais();
+				
+				a.setNome(nome);
+				a.setIdade(idade);
+				a.setRaca(raca);
+				a.setPorte(porte);
+				a.setEspecie(especie);
+				a.setSexo(genero);
+				a.setImgAnimal(imagem);
+				a.setStatus(status);
+				
+				try {
+					if(aDao.inserirAnimal(a)) {
+						System.out.println("Animal inserido com sucesso");
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+
 			}
 		}
 

@@ -33,13 +33,21 @@
         android:layout_marginTop="260dp"
         android:hint="Sobrenome" />
 
-    <EditText android:id="@+id/edtCep"
-        android:layout_width="361dp"
+    <EditText
+        android:id="@+id/edtCep"
+        android:layout_width="181dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="305dp"
         android:hint="CEP" />
 
+    <EditText
+        android:id="@+id/edtReferencia"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="305dp"
+        android:hint="Referencia" />
 
     <EditText android:id="@+id/edtCpf"
         android:layout_width="180dp"

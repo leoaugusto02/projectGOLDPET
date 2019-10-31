@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#93D6D6"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="204dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/adoravel" />
+
     <TextView
-        android:layout_width="375dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp"
+        android:text="Cachorros adoram beijar seus donos"
         android:textColor="#E91C1C"
-        android:textSize="20dp"
-        android:text="Cachorros adoram beijar seus donos"/>
+        android:textSize="22dp" />
 
     <TextView
         android:layout_width="375dp"
@@ -30,4 +38,10 @@
         android:textSize="18dp"
         android:text="No caso dos cães com o ser humano, também pode ser sinal de afeto, mas um ótima forma de descobrir o que comemos."/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="315dp"
+        android:layout_marginTop="10dp"
+        android:text="voltar"/>
 </LinearLayout>

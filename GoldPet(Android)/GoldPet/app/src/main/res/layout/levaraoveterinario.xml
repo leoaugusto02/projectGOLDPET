@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#93D6D6"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="356dp"
+        android:layout_height="162dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/veterinario" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="120dp"
-        android:layout_marginTop="20dp"
         android:text="Levar ao Veterinario"
         android:textColor="#E91A1A"
-        android:textSize="20dp" />
+        android:textSize="22dp" />
 
     <TextView
         android:layout_width="375dp"
@@ -43,5 +51,12 @@
         android:text="Reconhecer a importância de visitar um médico veterinário frequentemente é uma das maiores demonstrações de amor e carinho que pode ter com o peludinho!"
         android:textColor="#000"
         android:textSize="17dp" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="315dp"
+        android:text="voltar"/>
 
 </LinearLayout>
