@@ -95,6 +95,27 @@ body {
 .menu>li {
 	padding-left: 15px;
 }
+ul{
+			list-style: none;
+			padding: 0px;
+			margin: 0px;
+		}
+		li{
+			border-left: 4px solid black;
+			margin-bottom: 2px;
+			text-color:black;
+			display: inline-block;
+			padding: 5px 5px 5px 10px;
+			display: inline-block;
+		
+		}
+		li:hover{
+			border-left: 4px solid grey;
+		}
+		a{
+		color: black;
+		text-decoration : none;
+		}
 </style>
 <html>
 <head>
@@ -106,7 +127,33 @@ body {
 <body>
 	<div class="conteudo">
 
-		<div id="esquerda"></div>
+		<div class="card card-splash" 
+		style="margin-top:11.4%;width: 300px;height:150px;background-color: rgba(199, 252, 255, 0.5);">
+		<div id="esquerda">
+			<div class="menuLateral">
+				<ul>
+					<a href="#">
+						<li>Agenda</li>
+					</a>
+
+					<a href="#">
+						<li>Adoções</li>
+					</a>
+
+					<a href="#">
+						<li>Usuarios</li>
+					</a>
+
+					<a href="#">
+						<li>Gerenciar</li>
+					</a>
+
+				</ul>
+			</div>
+	</div>
+		
+		
+		</div>
 		<div id="meio">
 
 			<div id="cabecalho">
@@ -171,7 +218,6 @@ body {
 								<td>Henry</td>
 								<td>henry@gmai.com</td>
 								<td>38372512</td>
-
 							</tr>
 						</tbody>
 
