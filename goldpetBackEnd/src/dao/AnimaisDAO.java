@@ -158,4 +158,15 @@ public class AnimaisDAO {
 		
 		return ps.executeUpdate() > 0;
 	}
+	
+	public boolean ConfirmarAutorizacao(int codeAnimal) throws SQLException {
+		String sql = "UPDATE Agenda SET confirmar = 'autorizado' SET entregar = 'em adocao' WHERE codeAnimal = ?";
+		
+		con = ConnectionDB.getConnection();
+		
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, codeAnimal);
+		
+		return ps.executeUpdate() > 0;
+	}
 }

@@ -99,7 +99,7 @@
         android:text="Masculino" />
 
     <RadioButton
-        android:id="@+id/rdFemenino"
+        android:id="@+id/rbFemenino"
         android:layout_width="118dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="210dp"
