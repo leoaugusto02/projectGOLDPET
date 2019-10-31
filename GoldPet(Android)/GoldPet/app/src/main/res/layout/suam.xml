@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#93D6D6"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="213dp"
+        android:src="@drawable/peludinho"
+        android:layout_marginTop="25dp"/>
+
     <TextView
-        android:layout_width="375dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
+        android:text="Os cães também suam, sabia?"
         android:textColor="#E41111"
-        android:textSize="20dp"
-        android:text="Os cães também suam, sabia?"/>
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="365dp"
@@ -24,7 +32,6 @@
         android:layout_width="375dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
         android:textColor="#000"
         android:textSize="18dp"
         android:text="Como os cachorros fazem isso? Devido a quantidade de pelo, os cães não suam muito através da pele. Segundo a veterinária, a principal forma para fazer com que o calor evapore é pelos coxins, aquelas almofadinhas das patas. A língua também é um órgão que pode ajudar a eliminar água e refrescar o organismo do animal."/>
@@ -33,9 +40,14 @@
         android:layout_width="375dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
         android:textColor="#000"
         android:textSize="18dp"
         android:text="O suor em excesso pode ser um dos motivos do cachorro lamber as patas. Mas também pode ser estresse."/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="315dp"
+        android:text="voltar"/>
 
 </LinearLayout>

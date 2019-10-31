@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#93D6D6"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="226dp"
+        android:src="@drawable/truques"
+        android:layout_marginTop="25dp"/>
 
     <TextView
         android:layout_width="375dp"
@@ -30,5 +38,9 @@
         android:textSize="18dp"
         android:text="Assim como nós, qualquer cão, em todas as idades, pode aprender coisas novas. Basta ter paciência e persistência. O aprendizado talvez não seja tão rápido quanto seria com um filhote de seis meses, por exemplo. Mas, mais que um desafio para o cão, é uma forma de estreitar laços entre peludos e humanos."/>
 
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="315dp"
+        android:text="voltar"/>
 </LinearLayout>

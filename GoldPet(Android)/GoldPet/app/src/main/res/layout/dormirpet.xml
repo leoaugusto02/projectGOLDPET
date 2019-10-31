@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#93D6D6"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="165dp"
+        android:src="@drawable/dormir"
+        android:layout_marginTop="25dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="120dp"
-        android:layout_marginTop="20dp"
         android:textColor="#DF1818"
         android:textSize="25dp"
         android:text="Dormir com Pet"
@@ -15,22 +22,29 @@
 
     <TextView
         android:layout_width="380dp"
-        android:layout_height="wrap_content"
+        android:layout_height="314dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="2dp"
         android:text="Tem bicho que parece gente, domina a casa toda, desde o sofá até a cama, e ignora todo e qualquer limite de espaço. Mas, convenhamos, há quem não resista dormir de conchinha com o cachorro e sente falta quando o gato não vem para a cama durante a noite. Para a relação afetiva entre o pet e o tutor é ótimo, mas resta a dúvida se dormir com cachorro faz mal para a saúde e se é melhor deixar cada um no seu quadrado.
 Veja bem, mal não faz, mas é preciso cautela e cuidados com o pet para evitar que os membros da família tenham a saúde prejudicada por doenças transmitidas pelos bichos, como verminoses, alergias, a temida toxoplasmose ou até mesmo pela transmissão de ectoparasitas."
         android:textColor="#000"
-        android:textSize="18dp" />
+        android:textSize="17dp" />
 
     <TextView
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="2dp"
-        android:textSize="18dp"
+        android:textSize="17dp"
         android:textColor="#000"
         android:text="Vacinar, vermifugar e manter proteção de pulgas e carrapatos no seu pet, bem como manter sua higiene através de banhos e tosas e levá-lo ao veterinário a qualquer sinal de doença são boas saídas para quem não quer deixar o animal de lado nem na hora de dormir."
         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="315dp"
+        android:layout_marginTop="10dp"
+        android:text="voltar"/>
 
 </LinearLayout>
