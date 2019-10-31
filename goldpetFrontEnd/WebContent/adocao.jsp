@@ -157,7 +157,7 @@ body, html {
 					Adicinar Dog
 				</button>
 			</div>
-
+			<form action="#" method="post">
 			<div class="modal" id="siteModal" tabindex="-1" role="dialog"
 				aria-hidden="true">
 				<div class="modal-dialog" role="document">
@@ -230,18 +230,16 @@ body, html {
 								<img alt="close.png" src="img/close.png"
 									style="height: 20px; width: 20px; margin-left: -0.5;" /> Close
 							</button>
-							<button type="button" class="btn btn-outline-success">
+							<input type="submit" class="btn btn-outline-success" value="Postar"/>
 								<img alt="postar.png" src="img/postar.png"
 									style="height: 20px; width: 20px; margin-left: -0.5;" />
-								Postar
-							</button>
 							<input type="hidden" name="acaoModal" id="acaoModal"
 								value="inserirPet" />
 						</div>
 					</div>
 				</div>
 			</div>
-
+</form>
 			<%
 				String acao = "listaAdocao";
 				String codAnimal = request.getParameter("codAnimal");
@@ -339,5 +337,11 @@ body, html {
 	</div>
 	<!-- <script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script> -->
+	
+	<script>
+		function inserirDog(){
+			$("#acao").val("inserirDog");
+		}
+	</script>
 
 </body>
