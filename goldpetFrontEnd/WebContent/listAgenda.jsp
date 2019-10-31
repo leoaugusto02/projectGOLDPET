@@ -107,7 +107,7 @@ ul{
 			border-left: 4px solid black;
 			margin-bottom: 2px;
 			text-color:black;
-			
+			display: inline-block;
 			padding: 5px 5px 5px 10px;
 			/*display: inline-block;*/
 		
@@ -130,8 +130,10 @@ ul{
 <body>
 	<div class="conteudo">
 
+	<div class="card card-splash" 
+		style="margin-top:11.4%; width: 300px;height:150px;background-color: rgba(199, 252, 255, 0.5);">
 		<div id="esquerda">
-			<div class="menuLateral" style="margin-top: 75%;">
+			<div class="menuLateral">
 				<ul>
 					<a href="#">
 						<li>Agenda</li>
@@ -152,7 +154,7 @@ ul{
 				</ul>
 			</div>
 		</div>
-
+	</div>
 		<div id="meio">
 
 			<div id="cabecalho">
@@ -257,6 +259,7 @@ ul{
 								<td>98752512</td>
 
 							</tr>
+							
 						</tbody>
 
 					</table>
