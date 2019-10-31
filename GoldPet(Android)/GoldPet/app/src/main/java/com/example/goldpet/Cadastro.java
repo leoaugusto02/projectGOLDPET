@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,13 +37,38 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         btnCadastrar = findViewById(R.id.btnCadastrar);
 
         btnCadastrar.setOnClickListener(this);
+        rbMasculino.setOnClickListener(this);
+        rbFemenino.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btnCadastrar:
+
+            case R.id.rbMasculino:
+
             break;
+
+            case R.id.rbFemenino:
+
+            break;
+
+            case R.id.btnCadastrar:
+
+                String rbValue;
+
+                if(rbMasculino.isChecked()){
+                    rbValue = "M";
+                }else if(rbFemenino.isChecked()){
+                    rbValue = "F";
+                }
+                final String c = ConsumirWebService.cadastrar(edtNome, edtSobrenome, edtApelido,);
+
+                Toast.makeText(this, c, Toast.LENGTH_SHORT).show();
+            break;
+
+
         }
     }
+
 }
