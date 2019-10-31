@@ -55,7 +55,7 @@ public class AnimaisDAO {
 
 	public boolean inserirAnimal(Animais a) throws SQLException {
 		
-		String sql = "INSERT INTO Animais VALUES(NULL, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO Animais VALUES(NULL, ?, ?, ?, ?, ?, ?, 'imagem')";
 		
 		con = ConnectionDB.getConnection();
 		
