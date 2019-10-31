@@ -55,7 +55,7 @@ public class AnimaisDAO {
 
 	public boolean inserirAnimal(Animais a) throws SQLException {
 		
-		String sql = "INSERT INTO Animais VALUES(NULL, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO Animais VALUES(NULL, ?, ?, ?, ?, ?, ?, 'imagem')";
 		
 		con = ConnectionDB.getConnection();
 		
@@ -155,6 +155,17 @@ public class AnimaisDAO {
 		ps.setString(4, a.getAgenda().getConfirmar());
 		ps.setDate(5, new java.sql.Date(a.getAgenda().getHorario_marcado().getTime()));
 		ps.setString(6, a.getAgenda().getTransportado());
+		
+		return ps.executeUpdate() > 0;
+	}
+	
+	public boolean ConfirmarAutorizacao(int codeAnimal) throws SQLException {
+		String sql = "UPDATE Agenda SET confirmar = 'autorizado' SET entregar = 'em adocao' WHERE codeAnimal = ?";
+		
+		con = ConnectionDB.getConnection();
+		
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, codeAnimal);
 		
 		return ps.executeUpdate() > 0;
 	}
