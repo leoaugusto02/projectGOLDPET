@@ -28,13 +28,12 @@ body, html {
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
-	 overflow-x: hidden;
+	overflow-x: hidden;
 }
 
-.conteudo{
-	display:flex;
+.conteudo {
+	display: flex;
 	flex-direction: row;
-	
 }
 
 #esquerda {
@@ -67,7 +66,7 @@ body, html {
 #finalPg {
 	float: bottom;
 	width: 100%;
-	height:20%
+	height: 20%
 }
 
 .navC {
@@ -109,6 +108,25 @@ body, html {
 .menu>li {
 	padding-left: 15px;
 }
+
+.bar {
+	display: -ms-flexbox;
+    display: flex;
+    height: 50px;
+    overflow: hidden;
+    font-size: .75rem;
+    background-color: #6c757d;
+    border-radius: .25rem;
+    margin-bottom:10px;
+    animation: progress-bar-stripes 2s linear infinite;
+}
+
+.active{
+
+-webkit-animation: progress-bar-stripes 700ms linear infinite;
+}
+
+
 </style>
 </head>
 <body>
@@ -129,42 +147,54 @@ body, html {
 				</div>
 
 				<div class="navC d-flex w-100 justfy-content-center">
-				
+
 					<div class="w-100">
-			<nav class="navbar navbar-expand-lg navbar-light minhaNav">
-  <a class="navbar-brand" href="#">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="adocao.jsp">adoção<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link " href="Resgate.jsp">resgate</a>
-      <a class="nav-item nav-link active" href="DicasPets">Dicas</a>
-      <a class="nav-item nav-link " href="questionPage">Forun</a>
-      <a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
-      <a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
-    </div>
-  </div>
-</nav>
+						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
+							<a class="navbar-brand" href="#">Home</a>
+							<button class="navbar-toggler" type="button"
+								data-toggle="collapse" data-target="#navbarNavAltMarkup"
+								aria-controls="navbarNavAltMarkup" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+								<div class="navbar-nav">
+									<a class="nav-item nav-link active" href="adocao.jsp">adoção<span
+										class="sr-only">(current)</span></a> <a class="nav-item nav-link "
+										href="Resgate.jsp">resgate</a> <a
+										class="nav-item nav-link active" href="DicasPets">Dicas</a> <a
+										class="nav-item nav-link " href="questionPage">Forun</a> <a
+										class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
+									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
+								</div>
+							</div>
+						</nav>
 					</div>
 				</div>
-				
-				
 
-			</div>
 
- 	<div>
-				<img src="img/Conta.png" style="width: 100%; height: 550px"/> 
-			
+
 			</div>
 
 			<div>
-				<h4 style="margin-top: 20px">Ajude a nossa a ONG  conseguir recursos necessários para dar uma
-  				  vida mais confortável e alegre para os nossos animais. Nossa meta desse 
-  				  mês R$1500,00, ajude-nos!!
-  				 </h4>
-				 <h4>Quantidade arrecada: <img src="img/carregamento.jpg"></h4>
+				<img src="img/Conta.png" style="width: 100%; height: 550px" />
+
+			</div>
+
+			<div>
+				<h4 style="margin-top: 20px">Ajude a nossa a ONG conseguir
+					recursos necessários para dar uma vida mais confortável e alegre
+					para os nossos animais. Nossa meta desse mês R$1500,00, ajude-nos!!
+				</h4>
+				<BR>
+				<br>
+				<br>
+				<h4>Quantidade arrecada:</h4>
+				<div class="bar">
+					<div class="progress-bar progress-bar-striped active " role="progressbar"
+						aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+						style="width: 40%">40% Complete (success)</div>
+				</div>
 			</div>
 		</div>
 
@@ -175,7 +205,7 @@ body, html {
 	</div>
 
 	<div id="finalPg">
-	<img src="img/Rodape2.png" />
+		<img src="img/Rodape2.png" />
 	</div>
 
 
