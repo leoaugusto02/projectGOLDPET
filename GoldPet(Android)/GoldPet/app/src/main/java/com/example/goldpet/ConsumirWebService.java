@@ -28,6 +28,9 @@ public class ConsumirWebService{
 
             URL url = new URL(urlWebService);
             HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
+            conexaoWeb.setRequestMethod("POST");
+            conexaoWeb.setDoOutput(true);
+
 
             DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
             wr.writeBytes(parametros);
