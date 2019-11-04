@@ -212,13 +212,25 @@ body, html {
 
 									<div>
 
-										<button action="upload" type="file"
-											class="btn btn-outline-info" name="imagem"
+										<input type="file" id="upload"
+											name="imagem"
 											style="float: right; margin-top: 2%;">
-											<img alt="petIcon.png" src="img/PetIcon.png"
-												style="height: 20px; width: 20px; margin-left: -1%;">Imagem
-											Pet
-										</button>
+										<img id="img" style="width:300px; margin-left:17%;"/>	
+											
+										</input>
+										
+										<script>
+											$(function(){
+												$('#upload').change(function(){
+													const file = ($(this)[0].files[0])
+													const fileReader = new FileReader()
+													fileReader.onloadend = function(){
+														$('#img').attr('src', fileReader.result)
+													}
+													fileReader.readAsDataURL(file)
+												})	
+											})
+										</script>
 
 									</div>
 								</div>
