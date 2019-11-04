@@ -23,6 +23,11 @@
             android:id="@+id/nav_forum"
             android:icon="@drawable/ic_menu_forum"
             android:title="@string/menu_forum" />
+
+        <item
+            android:id="@+id/nav_cadastro"
+            android:icon="@drawable/ic_menu_pessoa"
+            android:title="@string/menu_cadastro"/>
     </group>
 
 </menu>
