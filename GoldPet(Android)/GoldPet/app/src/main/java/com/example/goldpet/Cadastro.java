@@ -1,9 +1,10 @@
 package com.example.goldpet;
-
 import android.content.ContentValues;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -74,7 +75,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-   private void Cadastro() {
+    private void Cadastro() {
         new Thread() {
             public void run() {
                 runOnUiThread(new Runnable() {
@@ -88,5 +89,4 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
             }
         }.start();
     }
-
 }

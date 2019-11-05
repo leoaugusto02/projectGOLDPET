@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
 
+
     private  int[] mImages = new int[]{
             R.drawable.golden,R.drawable.snow, R.drawable.peludinho
     };
@@ -60,10 +61,12 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void setImageForPosition(int position, ImageView imageView) {
                 imageView.setImageResource(mImages[position]);
+
+                setNavigationViewListener();
             }
         });
 
-        setNavigationViewListener();
+
     }
 
     @Override
@@ -83,6 +86,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    private void setNavigationViewListener() {
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -98,9 +105,7 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    private void setNavigationViewListener() {
-        navigationView.setNavigationItemSelectedListener(this);
-    }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -118,7 +123,6 @@ public class MainActivity extends AppCompatActivity
         }else if (id == R.id.nav_forum){
 
         }else if(id == R.id.nav_cadastro){
-            Log.i("teste", "aaaaaaa");
             Intent it = new Intent(getApplicationContext(), Cadastro.class);
             startActivity(it);
         }

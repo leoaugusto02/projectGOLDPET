@@ -1,5 +1,6 @@
 package com.example.goldpet;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -62,5 +63,41 @@ public class ConsumirWebService{
 
     }
 
+    public static JSONObject login(String login, String senha, String acao){
+        String urlWebService = "http://192.168.56.1:8080/goldpetBackEnd/ProcessaPessoas";
+
+        try{
+
+            String parametros = "login=" + login + "&senha=" + senha + "&acao=" + acao;
+
+            URL url = new URL(urlWebService);
+            HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
+            conexaoWeb.setRequestMethod("POST");
+            conexaoWeb.setDoOutput(true);
+
+            DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
+            wr.writeBytes(parametros);
+
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
+
+            String apnd = "", linha = "";
+
+
+            while((linha = br.readLine()) != null) apnd += linha;
+
+            JSONObject obj = new JSONObject(apnd);
+
+            return obj;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static JSONObject perfil(){
+        return null;
+    }
 
 }
