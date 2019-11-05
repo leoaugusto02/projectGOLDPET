@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="#93D6D6"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#93D6D6"
+    android:fillViewport="true">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,7 +23,6 @@
         android:layout_width="374dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
         android:text="Leve-o todos os dias para passear, o cachorro também precisa se exercitar e andar como nós, ainda mais se sua casa não tem quintal. Eles aproveitam o passeio para curtir sua companhia. Lembre-se que todo dono deve recolher as fezes de seu animalzinho nas ruas, praças e calçadas: é um ato de cidadania e obrigatório por lei."
         android:textColor="#000"
         android:textSize="18dp" />
@@ -27,7 +31,6 @@
         android:layout_width="371dp"
         android:layout_height="325dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
         android:src="@drawable/passeio" />
 
     <Button
@@ -37,3 +40,4 @@
         android:text="voltar"/>
 
 </LinearLayout>
+</ScrollView>

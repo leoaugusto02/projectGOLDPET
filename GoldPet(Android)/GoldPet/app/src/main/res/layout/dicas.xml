@@ -2,10 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="#93D6D6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dicas, Cuorisidades e Cuidados !!"
+        android:textSize="25dp"
+        android:textColor="#FA3434"
+        android:layout_marginLeft="25dp"/>
     <TextView
         android:id="@+id/txtAlimentacao"
         android:layout_width="wrap_content"

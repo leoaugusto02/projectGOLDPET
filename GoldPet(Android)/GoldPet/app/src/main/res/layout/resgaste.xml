@@ -1,45 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#93D6D6"
+    android:fillViewport="true">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <Button
         android:id="@+id/btnImagem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tirar Foto"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="150dp"/>
 
     <ImageView
         android:id="@+id/ivImagem"
         android:layout_width="355dp"
         android:layout_height="228dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="80dp" />
+        android:layout_marginLeft="30dp" />
 
     <EditText
-        android:layout_width="352dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="320dp"
         android:text="Endereço onde se encontra o pet" />
 
     <EditText
-        android:layout_width="352dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="380dp"
         android:text="Estado do pet" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="310dp"
-        android:layout_marginTop="500dp"
         android:text="Salvar"/>
 
-</RelativeLayout>
+    </LinearLayout>
+</ScrollView>
