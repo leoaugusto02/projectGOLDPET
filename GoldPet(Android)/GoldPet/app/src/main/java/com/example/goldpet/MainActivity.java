@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setNavigationViewListener() {
-        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
