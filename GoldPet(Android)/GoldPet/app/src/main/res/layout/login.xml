@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:background="#93D6D6"
+    android:fillViewport="true">
 
-    <ImageView
-        android:layout_width="368dp"
-        android:layout_height="190dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/logopet" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="206dp"
+            android:src="@drawable/logopet" />
 
     <EditText
         android:id="@+id/edtEmail"
-        android:layout_width="328dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="5dp"
         android:text="E-mail"
         android:textSize="20dp" />
 
     <EditText
-        android:layout_width="328dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="45dp"
         android:text="Senha"
         android:textSize="20dp" />
 
@@ -36,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="50dp"
-        android:background="#89D3CC"
+        android:background="#B5D8D6"
         android:text="Login"
         android:textSize="18dp" />
 
@@ -49,3 +50,4 @@
         android:textSize="16dp" />
 
 </LinearLayout>
+</ScrollView>
