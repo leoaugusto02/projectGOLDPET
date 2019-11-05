@@ -222,6 +222,7 @@ body, html {
 										<script>
 											$(function(){
 												$('#upload').change(function(){
+													console.log($(this));
 													const file = ($(this)[0].files[0])
 													const fileReader = new FileReader()
 													fileReader.onloadend = function(){
@@ -271,7 +272,7 @@ body, html {
 					String porte = request.getParameter("porte");
 					String especie = request.getParameter("especie");
 					String genero = request.getParameter("genero");
-					String imagem = "imagem";
+					String imagem = request.getParameter("imagem");
 					String status = request.getParameter("status");
 
 					if ((nome != null) || (idade != null) || (raca != null) || (porte != null) || (especie != null)
@@ -341,6 +342,7 @@ body, html {
 							<p class="card-text">Last updated 3 mins ago</p>
 						</div>
 					</div>
+					<br>
 				</a>
 				<%
 						i++;
