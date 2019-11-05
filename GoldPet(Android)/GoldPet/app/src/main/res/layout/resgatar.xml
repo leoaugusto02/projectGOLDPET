@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="#99CFCF"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#93D6D6"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,7 +33,6 @@
         android:layout_width="127dp"
         android:layout_height="36dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="205dp"
         android:text="Ed:Joaquim
 Pires,Nº:133,
 Jd.Botanico"
@@ -38,7 +43,7 @@ Jd.Botanico"
         android:layout_width="129dp"
         android:layout_height="124dp"
         android:layout_marginLeft="180sp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="-157dp"
         android:background="#D5F5D5"
         android:padding="1dp"
         android:src="@drawable/golden"
@@ -48,19 +53,19 @@ Jd.Botanico"
         android:layout_width="128dp"
         android:layout_height="37dp"
         android:layout_marginLeft="180dp"
-        android:layout_marginTop="205dp"
         android:text="End:Julia Pires, Nº:24,
 Campinas        "
         android:textColor="#000"
         android:textSize="13dp" />
 
-    <TextView
-        android:layout_width="147dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="290dp"
-        android:layout_marginTop="550dp"
-        android:text="Adicionar mais"
-        android:textSize="17dp"
-        android:textColor="#856B6B"/>
+        <TextView
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="290dp"
+            android:layout_marginTop="280dp"
+            android:text="Adicionar mais"
+            android:textColor="#856B6B"
+            android:textSize="17dp" />
 
-</RelativeLayout>
+    </LinearLayout>
+</ScrollView>
