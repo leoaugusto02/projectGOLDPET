@@ -1,5 +1,8 @@
 package com.example.goldpet;
 
+import android.os.AsyncTask;
+import android.util.Log;
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -8,7 +11,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ConsumirWebService {
+public class ConsumirWebService{
 
     public static String cadastrar(String pNome, String sNome, String apelido, String cep, String referencia, String cpf, String rg, String tel1, String tel2,
                             String dataNasc, String email, String senha, String confSenha, String genero, String acao, String acaoConta){
@@ -25,6 +28,10 @@ public class ConsumirWebService {
 
             URL url = new URL(urlWebService);
             HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
+            conexaoWeb.setRequestMethod("POST");
+            conexaoWeb.setDoOutput(true);
+
+
             DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
             wr.writeBytes(parametros);
 
@@ -54,5 +61,6 @@ public class ConsumirWebService {
         }
 
     }
+
 
 }

@@ -37,7 +37,7 @@ Jd.Botanico"
     <ImageView
         android:layout_width="129dp"
         android:layout_height="124dp"
-        android:layout_marginLeft="180"
+        android:layout_marginLeft="180sp"
         android:layout_marginTop="80dp"
         android:background="#D5F5D5"
         android:padding="1dp"

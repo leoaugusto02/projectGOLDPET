@@ -1,10 +1,12 @@
 package com.example.goldpet;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.core.view.GravityCompat;
@@ -29,6 +31,10 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    DrawerLayout drawer;
+    NavigationView navigationView;
+    ActionBarDrawerToggle toggle;
+
     private  int[] mImages = new int[]{
             R.drawable.golden,R.drawable.snow, R.drawable.peludinho
     };
@@ -40,9 +46,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+         drawer = findViewById(R.id.drawer_layout);
+         navigationView = findViewById(R.id.nav_view);
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        setNavigationViewListener();
     }
 
     @Override
@@ -91,12 +98,18 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    private void setNavigationViewListener() {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        Log.i("teste", id+"");
         if (id == R.id.nav_home) {
 
         } else if (id == R.id.nav_gallery) {
@@ -105,10 +118,15 @@ public class MainActivity extends AppCompatActivity
 
         }else if (id == R.id.nav_forum){
 
+        }else if(id == R.id.nav_cadastro){
+            Log.i("teste", "aaaaaaa");
+            Intent it = new Intent(getApplicationContext(), Cadastro.class);
+            startActivity(it);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
