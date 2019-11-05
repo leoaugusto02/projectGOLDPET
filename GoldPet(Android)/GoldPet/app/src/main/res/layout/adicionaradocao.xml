@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#93D6D6"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <Button
         android:id="@+id/btnImagem"
@@ -14,53 +19,42 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="150dp"/>
 
-    <ImageView
-        android:id="@+id/ivImagem"
-        android:layout_width="355dp"
-        android:layout_height="228dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="80dp" />
+        <ImageView
+            android:id="@+id/ivImagem"
+            android:layout_width="match_parent"
+            android:layout_height="228dp" />
 
     <EditText
-        android:layout_width="170dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="310dp"
         android:text="Nome:" />
 
     <EditText
-        android:layout_width="185dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="200dp"
-        android:layout_marginTop="310dp"
         android:text="Idade:" />
 
-    <TextView
-        android:layout_width="356dp"
-        android:layout_height="107dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="410sp"
-        android:text="Laudo do pet..." />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:textSize="18dp"
+            android:text="Laudo do pet..." />
 
     <EditText
-        android:layout_width="171dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="360dp"
         android:text="Genêro:" />
 
     <EditText
-        android:layout_width="186dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="200dp"
-        android:layout_marginTop="360dp"
         android:text="Porte: " />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="300dp"
-        android:layout_marginTop="520dp"
         android:text="Salvar" />
 
-</RelativeLayout>
+    </LinearLayout>
+</ScrollView>
