@@ -5,5 +5,5 @@
     <item name="nav_home" type="id"/>
     <item name="nav_gallery" type="id"/>
     <item name="nav_forum" type="id"/>
-
+    <item name="nav_cadastro" type="id"/>
 </resources>

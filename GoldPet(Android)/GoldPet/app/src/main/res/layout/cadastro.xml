@@ -33,6 +33,7 @@
 
 
     <EditText
+        android:id="@+id/edtDataNasc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="DD/MM/AAAA"/>
