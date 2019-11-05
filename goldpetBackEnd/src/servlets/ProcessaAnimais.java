@@ -29,11 +29,12 @@ public class ProcessaAnimais extends HttpServlet {
 
 		String acao = req.getParameter("acao");
 		String acaoModal = req.getParameter("acaoModal");
-
 		
+		System.out.println("Cheguei no servlet");
+
 		if (acao != null) {
 			if (acao.equals("perfil")) {
-				
+
 				Animais a = new Animais();
 				int codAnimal = Integer.valueOf(req.getParameter("codAnimal"));
 				System.out.println("codAnimal= " + codAnimal);
@@ -41,8 +42,8 @@ public class ProcessaAnimais extends HttpServlet {
 
 				try {
 					a = aDao.perfilDog(codAnimal);
-					//desbugando o commit
-					
+					// desbugando o commit
+
 					objMens.put("especie", a.getEspecie());
 					objMens.put("raca", a.getRaca());
 					objMens.put("porte", a.getPorte());
@@ -54,7 +55,7 @@ public class ProcessaAnimais extends HttpServlet {
 					objMens.put("dataDiag", a.getLaudo().getDataDiagnostico());
 					objMens.put("diagnostico", a.getLaudo().getDiagnostico());
 					objMens.put("imgDiag", a.getLaudo().getImagem());
-					
+
 					out.print(objMens.toString());
 					System.out.println(objMens.toString());
 
@@ -64,60 +65,62 @@ public class ProcessaAnimais extends HttpServlet {
 					out.print(objMens.toString());
 				}
 
-			}else if(acao.equals("listaAdocao")) {
-				
+			} else if (acao.equals("listaAdocao")) {
+
 				try {
-					
+
 					List<Animais> list = aDao.listarAnimaisAdocao();
-					
-					for(Animais a : list) {
-						
-						objMens.put("codAnimal", a.getCodAnimal());
-						objMens.put("nome", a.getNome());
-						objMens.put("status", a.getStatus());
-						objMens.put("raca", a.getRaca());
-						objMens.put("especie", a.getEspecie());
+					if (list != null) {
+						for (Animais a : list) {
 
-						out.print(objMens.toString() + "\n");
+							objMens.put("codAnimal", a.getCodAnimal());
+							objMens.put("nome", a.getNome());
+							objMens.put("status", a.getStatus());
+							objMens.put("raca", a.getRaca());
+							objMens.put("especie", a.getEspecie());
 
+							out.print(objMens.toString() + "\n");
+
+						}
+					} else {
+						objMens.put("Jason deu erro", "Jason deu erro");
 					}
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				
-			}else if(acaoModal.equals("inserirDog")) {
-				
-				String nome = req.getParameter("nome");
-				Integer idade = Integer.valueOf(req.getParameter("idade"));
-				String raca = req.getParameter("raca");
-				String porte = req.getParameter("porte");
-				String especie = req.getParameter("especie");
-				String genero = req.getParameter("genero");
-				String imagem = req.getParameter("imagem");
-				String status = req.getParameter("status");
-				
-				Animais a = new Animais();
-				
-				a.setNome(nome);
-				a.setIdade(idade);
-				a.setRaca(raca);
-				a.setPorte(porte);
-				a.setEspecie(especie);
-				a.setSexo(genero);
-				a.setImgAnimal(imagem);
-				a.setStatus(status);
-				
-				try {
-					if(aDao.inserirAnimal(a)) {
-						System.out.println("Animal inserido com sucesso");
-					}
-					
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 
+			} 
+		}else if (acaoModal.equals("inserirPet")) {
+
+			String nome = req.getParameter("nome");
+			Integer idade = Integer.valueOf(req.getParameter("idade"));
+			String raca = req.getParameter("raca");
+			String porte = req.getParameter("porte");
+			String especie = req.getParameter("especie");
+			String genero = req.getParameter("genero");
+			String imagem = req.getParameter("imagem");
+			String status = req.getParameter("status");
+
+			Animais a = new Animais();
+
+			a.setNome(nome);
+			a.setIdade(idade);
+			a.setRaca(raca);
+			a.setPorte(porte);
+			a.setEspecie(especie);
+			a.setSexo(genero);
+			a.setImgAnimal(imagem);
+			a.setStatus(status);
+
+			try {
+				if (aDao.inserirAnimal(a)) {
+					System.out.println("Animal inserido com sucesso");
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
+
 		}
 
 	}
