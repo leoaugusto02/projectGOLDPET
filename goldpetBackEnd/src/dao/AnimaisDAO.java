@@ -55,18 +55,19 @@ public class AnimaisDAO {
 
 	public boolean inserirAnimal(Animais a) throws SQLException {
 		
-		String sql = "INSERT INTO Animais VALUES(NULL, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO Animais VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		con = ConnectionDB.getConnection();
 		
 		ps = con.prepareStatement(sql);
-		ps.setString(1, a.getEspecie());
-		ps.setString(2, a.getRaca());
+		ps.setString(1, a.getNome());
+		ps.setString(2, a.getEspecie());
+		ps.setString(3, a.getRaca());
 		ps.setString(4, a.getPorte());
-		ps.setInt(4, a.getIdade());
-		ps.setString(5, a.getStatus());
-		ps.setString(6, a.getSexo());
-		ps.setString(7, a.getImgAnimal());
+		ps.setInt(5, a.getIdade());
+		ps.setString(6, a.getStatus());
+		ps.setString(7, a.getSexo());
+		ps.setString(8, a.getImgAnimal());
 		
 		return ps.executeUpdate() > 0;
 	}
