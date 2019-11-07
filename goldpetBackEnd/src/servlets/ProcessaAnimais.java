@@ -11,7 +11,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.RequestContext;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.json.JSONObject;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.List;
+
+import javax.imageio.ImageIO;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import dao.AnimaisDAO;
 import vo.Animais;
@@ -29,8 +46,6 @@ public class ProcessaAnimais extends HttpServlet {
 
 		String acao = req.getParameter("acao");
 		String acaoModal = req.getParameter("acaoModal");
-		
-		System.out.println("Cheguei no servlet");
 
 		if (acao != null) {
 			if (acao.equals("perfil")) {
@@ -70,57 +85,77 @@ public class ProcessaAnimais extends HttpServlet {
 				try {
 
 					List<Animais> list = aDao.listarAnimaisAdocao();
-					if (list != null) {
-						for (Animais a : list) {
 
-							objMens.put("codAnimal", a.getCodAnimal());
-							objMens.put("nome", a.getNome());
-							objMens.put("status", a.getStatus());
-							objMens.put("raca", a.getRaca());
-							objMens.put("especie", a.getEspecie());
+					for (Animais a : list) {
 
-							out.print(objMens.toString() + "\n");
+						objMens.put("codAnimal", a.getCodAnimal());
+						objMens.put("nome", a.getNome());
+						objMens.put("status", a.getStatus());
+						objMens.put("raca", a.getRaca());
+						objMens.put("especie", a.getEspecie());
 
-						}
-					} else {
-						objMens.put("Jason deu erro", "Jason deu erro");
+						out.print(objMens.toString() + "\n");
+
 					}
+
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 
-			} 
-		}else if (acaoModal.equals("inserirPet")) {
+			} else if (acaoModal.equals("inserirDog")) {
+				
+				if (ServletFileUpload.isMultipartContent(req)) {
+					try {
+						List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest((RequestContext) req);
 
-			String nome = req.getParameter("nome");
-			Integer idade = Integer.valueOf(req.getParameter("idade"));
-			String raca = req.getParameter("raca");
-			String porte = req.getParameter("porte");
-			String especie = req.getParameter("especie");
-			String genero = req.getParameter("genero");
-			String imagem = req.getParameter("imagem");
-			String status = req.getParameter("status");
-
-			Animais a = new Animais();
-
-			a.setNome(nome);
-			a.setIdade(idade);
-			a.setRaca(raca);
-			a.setPorte(porte);
-			a.setEspecie(especie);
-			a.setSexo(genero);
-			a.setImgAnimal(imagem);
-			a.setStatus(status);
-
-			try {
-				if (aDao.inserirAnimal(a)) {
-					System.out.println("Animal inserido com sucesso");
+						for (FileItem item : multiparts) {
+							if (!item.isFormField()) {
+								item.write(new File(
+										req.getServletContext().getRealPath("img") + File.separator + "uploadFile"));
+							}
+						}
+						req.setAttribute("message", "Arquivo carregado com sucesso");
+					} catch (Exception e) {
+						req.setAttribute("message", "Upload do arquivo falhou devido a" + e);
+					}
+				} else {
+					req.setAttribute("message", "Desculpe este Servlet lida apenas com pedido de upload de arquivos");
 				}
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			//	req.getRequestDispatcher("/adocao.jsp").forward(req, resp);
 
+				String nome = req.getParameter("nome");
+				Integer idade = Integer.valueOf(req.getParameter("idade"));
+				String raca = req.getParameter("raca");
+				String porte = req.getParameter("porte");
+				String especie = req.getParameter("especie");
+				String genero = req.getParameter("genero");
+				String imagem = req.getParameter("imagem");
+				String status = req.getParameter("status");
+
+				Animais a = new Animais();
+
+				a.setNome(nome);
+				a.setIdade(idade);
+				a.setRaca(raca);
+				a.setPorte(porte);
+				a.setEspecie(especie);
+				a.setSexo(genero);
+				a.setImgAnimal(imagem);
+				a.setStatus(status);
+				
+
+				try {
+					if (aDao.inserirAnimal(a)) {
+						System.out.println("Animal inserido com sucesso");
+					}
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+
+
+			}
 		}
 
 	}
