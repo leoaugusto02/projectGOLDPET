@@ -1,6 +1,5 @@
 package com.example.goldpet;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import android.view.View;
@@ -9,11 +8,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import androidx.appcompat.R;
 
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.levirs.example.goldpet.R;
 
-public class Cadastro extends Activity implements View.OnClickListener {
+public class Cadastro extends AppCompatActivity implements View.OnClickListener {
 
     EditText edtApelido, edtNome, edtSobrenome, edtCep, edtCpf, edtRg, edtTel1, edtTel2, edtEmail, edtDataNasc, edtSenha, edtConfSenha, edtReferencia;
     RadioButton rbMasculino, rbFemenino;
