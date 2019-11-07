@@ -102,59 +102,58 @@ public class ProcessaAnimais extends HttpServlet {
 					e.printStackTrace();
 				}
 
-			} else if (acaoModal.equals("inserirDog")) {
-				
-				if (ServletFileUpload.isMultipartContent(req)) {
-					try {
-						List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest((RequestContext) req);
+			}
 
-						for (FileItem item : multiparts) {
-							if (!item.isFormField()) {
-								item.write(new File(
-										req.getServletContext().getRealPath("img") + File.separator + "uploadFile"));
-							}
-						}
-						req.setAttribute("message", "Arquivo carregado com sucesso");
-					} catch (Exception e) {
-						req.setAttribute("message", "Upload do arquivo falhou devido a" + e);
-					}
-				} else {
-					req.setAttribute("message", "Desculpe este Servlet lida apenas com pedido de upload de arquivos");
-				}
+		} else if (acaoModal.equals("inserirPet")) {
 
-			//	req.getRequestDispatcher("/adocao.jsp").forward(req, resp);
-
-				String nome = req.getParameter("nome");
-				Integer idade = Integer.valueOf(req.getParameter("idade"));
-				String raca = req.getParameter("raca");
-				String porte = req.getParameter("porte");
-				String especie = req.getParameter("especie");
-				String genero = req.getParameter("genero");
-				String imagem = req.getParameter("imagem");
-				String status = req.getParameter("status");
-
-				Animais a = new Animais();
-
-				a.setNome(nome);
-				a.setIdade(idade);
-				a.setRaca(raca);
-				a.setPorte(porte);
-				a.setEspecie(especie);
-				a.setSexo(genero);
-				a.setImgAnimal(imagem);
-				a.setStatus(status);
-				
-
+			if (ServletFileUpload.isMultipartContent(req)) {
 				try {
-					if (aDao.inserirAnimal(a)) {
-						System.out.println("Animal inserido com sucesso");
-					}
+					List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory())
+							.parseRequest((RequestContext) req);
 
-				} catch (SQLException e) {
-					e.printStackTrace();
+					for (FileItem item : multiparts) {
+						if (!item.isFormField()) {
+							item.write(new File(
+									req.getServletContext().getRealPath("img") + File.separator + "uploadFile"));
+						}
+					}
+					req.setAttribute("message", "Arquivo carregado com sucesso");
+				} catch (Exception e) {
+					req.setAttribute("message", "Upload do arquivo falhou devido a" + e);
+				}
+			} else {
+				req.setAttribute("message", "Desculpe este Servlet lida apenas com pedido de upload de arquivos");
+			}
+
+			// req.getRequestDispatcher("/adocao.jsp").forward(req, resp);
+
+			String nome = req.getParameter("nome");
+			Integer idade = Integer.valueOf(req.getParameter("idade"));
+			String raca = req.getParameter("raca");
+			String porte = req.getParameter("porte");
+			String especie = req.getParameter("especie");
+			String genero = req.getParameter("genero");
+			String imagem = req.getParameter("imagem");
+			String status = req.getParameter("status");
+
+			Animais a = new Animais();
+
+			a.setNome(nome);
+			a.setIdade(idade);
+			a.setRaca(raca);
+			a.setPorte(porte);
+			a.setEspecie(especie);
+			a.setSexo(genero);
+			a.setImgAnimal(imagem);
+			a.setStatus(status);
+
+			try {
+				if (aDao.inserirAnimal(a)) {
+					System.out.println("Animal inserido com sucesso");
 				}
 
-
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 
