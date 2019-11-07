@@ -326,7 +326,7 @@ body, html {
 				%>
 				<a href="dataDoguinho.jsp?codAnimal=<%=obj.getInt("codAnimal")%>">
 					<div class="card bg-dark text-white" style="width: 23rem;">
-						<img src="<%=obj.getString("imagem")%>" class="card-img" href="#"
+						<img src="img/slide01.png" class="card-img" href="#"
 							style="height: 500px;">
 						<div class="card-img-overlay">
 							<h5 class="card-title"><%=obj.getString("nome")%></h5>
