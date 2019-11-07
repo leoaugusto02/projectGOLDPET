@@ -57,8 +57,8 @@ public class ProcessaAnimais extends HttpServlet {
 
 				try {
 					a = aDao.perfilDog(codAnimal);
-					// desbugando o commit
 
+					objMens.put("nome", a.getNome());
 					objMens.put("especie", a.getEspecie());
 					objMens.put("raca", a.getRaca());
 					objMens.put("porte", a.getPorte());
