@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -99,4 +100,107 @@
             android:textColor="#000"
             android:textSize="20dp" />
     </LinearLayout>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:text="Bem-Vindos ao app da GoldPet"/>
+
+    <com.synnapps.carouselview.CarouselView
+        android:id="@+id/carousel"
+        android:layout_width="match_parent"
+        android:layout_height="227dp"
+        app:pageColor="#FFFF"
+        app:fillColor="#FFFFFF"
+        app:slideInterval="3000"
+        app:radius="6dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#FE777777"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:text="Dogs para adoção"
+        android:textSize="20dp"
+        android:textColor="#000"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/snow"
+        android:layout_width="86dp"
+        android:layout_height="77dp"
+        android:layout_marginLeft="35dp"
+        android:src="@drawable/snow" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/golden"
+            android:layout_width="86dp"
+            android:layout_height="77dp"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="-77dp"
+            android:src="@drawable/golden" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/peludinho"
+        android:layout_width="86dp"
+        android:layout_height="77dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="-77dp"
+        android:src="@drawable/peludinho"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/lilly"
+            android:layout_width="86dp"
+            android:layout_height="77dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/lily" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/black"
+        android:layout_width="86dp"
+        android:layout_height="77dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="-77"
+        android:src="@drawable/black"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img"
+        android:layout_width="86dp"
+        android:layout_height="77dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="-77dp"
+        android:src="@drawable/snow"/>
+
+        <TextView
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="280dp"
+            android:layout_marginTop="20dp"
+            android:text="Adote"
+            android:textColor="#000"
+            android:textSize="20dp" />
+    </LinearLayout>
+>>>>>>> 5a944d000a4b760d846975b8207a80e72eed0bfb
 </ScrollView>
