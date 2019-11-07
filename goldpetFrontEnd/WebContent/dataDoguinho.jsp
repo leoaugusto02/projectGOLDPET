@@ -18,6 +18,10 @@ body, html {
 	flex-direction: row;
 	width: 100%;
 	height: 100%;
+	height: 1800px;
+	background-color: #8aedc2;
+	background-image: linear-gradient(#8aedc2, white);
+	background-repeat: no-repeat, repeat;
 }
 
 .navC {
@@ -73,7 +77,6 @@ body, html {
 	height: 320px;
 	margin: auto;
 	overflow: visible;
-}
 </style>
 
 <meta charset="ISO-8859-1">
