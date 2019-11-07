@@ -79,7 +79,7 @@
         android:layout_width="86dp"
         android:layout_height="77dp"
         android:layout_marginLeft="140dp"
-        android:layout_marginTop="-77"
+        android:layout_marginTop="-77sp"
         android:src="@drawable/black"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
