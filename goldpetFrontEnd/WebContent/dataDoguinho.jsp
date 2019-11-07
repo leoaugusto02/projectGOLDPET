@@ -91,7 +91,7 @@ body, html {
 <body>
 
 	<%
-	String acao = "perfil";
+	String acao = "perfil"; // olá 
 	String codAnimal = request.getParameter("codAnimal");
 	String parametros = "acao=" + acao + "&codAnimal=" + codAnimal;
 	
