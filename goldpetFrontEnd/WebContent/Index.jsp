@@ -116,9 +116,6 @@ body, html {
 	<div class="conteudo">
 
 
-
-
-
 		<div id="esquerda"></div>
 		<div id="meio">
 

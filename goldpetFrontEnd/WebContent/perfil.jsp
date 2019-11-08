@@ -119,11 +119,11 @@ body, html {
 		
 	%>
 
-		<div id="esquerda"></div>
-		<div id="meio">
+	<div id="esquerda"></div>
+	<div id="meio">
 
-			<div class="container">
-				<form action="#" method="post">
+		<div class="container">
+			<form action="#" method="post">
 				<div id="cabecalho">
 
 					<div id="imgLogo">
@@ -133,124 +133,131 @@ body, html {
 					<div class="navC">
 						<div class="d-flex">
 							<div class="navC d-flex w-100 justfy-content-center">
+
 								<div class="w-100">
-			<nav class="navbar navbar-expand-lg navbar-light minhaNav">
-  <a class="navbar-brand" href="#">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="adocao.jsp">adoção<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link " href="Resgate.jsp">resgate</a>
-      <a class="nav-item nav-link active" href="DicasPets">Dicas</a>
-      <a class="nav-item nav-link " href="questionPage">Forun</a>
-      <a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
-      <a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
-    </div>
-  </div>
-</nav>
+									<nav class="navbar navbar-expand-lg navbar-light minhaNav">
+										<a class="navbar-brand" href="#">Home</a>
+										<button class="navbar-toggler" type="button"
+											data-toggle="collapse" data-target="#navbarNavAltMarkup"
+											aria-controls="navbarNavAltMarkup" aria-expanded="false"
+											aria-label="Toggle navigation">
+											<span class="navbar-toggler-icon"></span>
+										</button>
+										<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+											<div class="navbar-nav">
+												<a class="nav-item nav-link active" href="adocao.jsp">adoção<span
+													class="sr-only">(current)</span></a> <a
+													class="nav-item nav-link " href="Resgate.jsp">resgate</a> <a
+													class="nav-item nav-link active" href="DicasPets">Dicas</a>
+												<a class="nav-item nav-link " href="questionPage">Forun</a>
+												<a class="nav-item nav-link active"
+													href="GerenciarUsuario.jsp">Dashboard</a> <a
+													class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
+											</div>
+										</div>
+									</nav>
+
+								</div>
+							</div>
+
 						</div>
-					</div>
+						<br>
+						<div class="col-xs-12 col-sm-9">
 
-				</div>
-				<br>
-				<div class="col-xs-12 col-sm-9">
+							<!-- User profile -->
+							<div class="container">
+								<div style="text-align: center">
+									<h2>GUARDIÃO</h2>
+									<div style="padding-top: 50px;">
+										<img src="img/male-icon.png"
+											style="width: 300px; height: 300px;" />
+									</div>
+									<div style="margin: -50px 0px 0px 280px">
+										<img src="img/escudo.png" style="width: 85px; height: 60px;" />
+									</div>
+									<br>
+									<h4>NICKNAME</h4>
+								</div>
 
-					<!-- User profile -->
-					<div class="container">
-						<div style="text-align: center">
-							<h2>GUARDIÃO</h2>
-							<div style="padding-top: 50px;">
-								<img src="img/male-icon.png"
-									style="width: 300px; height: 300px;" />
 							</div>
-							<div style="margin: -50px 0px 0px 280px">
-								<img src="img/escudo.png" style="width: 85px; height: 60px;" />
-							</div>
+
 							<br>
-							<h4>NICKNAME</h4>
-						</div>
-
-					</div>
-
-					<br>
-					<!-- User info -->
-					<div class="container">
-						<div class="card  mb-8">
-							<div class="card-header">
-								<h4>Informações Usuario</h4>
-							</div>
-							<div class="panel-body" border="3px">
-								<table class="table profile__table">
-									<tbody>
-										<tr>
-											<th><strong>Apelido:</strong><label></label></th>
-											<td><%=obj.getString("apelido")%></td>
-										</tr>
-										<tr>
-											<th><strong>Nome:</strong><label></label></th>
-											<td><%=obj.getString("nome")%></td>
-										</tr>
-										<tr>
-											<th><strong>Data de Nascimento:</strong></th>
-											<td><%=obj.getString("nascimento")%></td>
-										</tr>
-										<tr>
-											<th><strong>Genero: </strong></th>
-											<td><%=obj.getString("genero")%></td>
-										</tr>
-										<tr>
-											<th><strong>Telefone1: </strong></th>
-											<td><%=obj.getString("tel1")%></td>
-										</tr>
-										<tr>
-											<th><strong>Telefone2:</strong><label></label></th>
-											<td><%=obj.getString("tel2")%></td>
-										</tr>
-										<tr>
-											<th><strong>Email:</strong></th>
-											<td><%=obj.getString("email")%></td>
-										</tr>
-										<tr>
-											<th><strong>Endereço:</strong></th>
-											<td><%=obj.getString("endereco")%></td>
-										</tr>
-										<tr>
-											<th><strong>Rank:</strong></th>
-											<td><%=obj.getString("rank")%></td>
-										</tr>
-										<tr>
-											<th><strong>Animais Resgatados:</strong></th>
-											<td><%=obj.getInt("aniResgatados")%></td>
-										</tr>
-										<tr>
-											<th><strong>Progresso:</strong><label></label></th>
-											<td><%=obj.getInt("progresso")%></td>
-											<td></td>
-										</tr>
-										<%
+							<!-- User info -->
+							<div class="container">
+								<div class="card  mb-8">
+									<div class="card-header">
+										<h4>Informações Usuario</h4>
+									</div>
+									<div class="panel-body" border="3px">
+										<table class="table profile__table">
+											<tbody>
+												<tr>
+													<th><strong>Apelido:</strong><label></label></th>
+													<td><%=obj.getString("apelido")%></td>
+												</tr>
+												<tr>
+													<th><strong>Nome:</strong><label></label></th>
+													<td><%=obj.getString("nome")%></td>
+												</tr>
+												<tr>
+													<th><strong>Data de Nascimento:</strong></th>
+													<td><%=obj.getString("nascimento")%></td>
+												</tr>
+												<tr>
+													<th><strong>Genero: </strong></th>
+													<td><%=obj.getString("genero")%></td>
+												</tr>
+												<tr>
+													<th><strong>Telefone1: </strong></th>
+													<td><%=obj.getString("tel1")%></td>
+												</tr>
+												<tr>
+													<th><strong>Telefone2:</strong><label></label></th>
+													<td><%=obj.getString("tel2")%></td>
+												</tr>
+												<tr>
+													<th><strong>Email:</strong></th>
+													<td><%=obj.getString("email")%></td>
+												</tr>
+												<tr>
+													<th><strong>Endereço:</strong></th>
+													<td><%=obj.getString("endereco")%></td>
+												</tr>
+												<tr>
+													<th><strong>Rank:</strong></th>
+													<td><%=obj.getString("rank")%></td>
+												</tr>
+												<tr>
+													<th><strong>Animais Resgatados:</strong></th>
+													<td><%=obj.getInt("aniResgatados")%></td>
+												</tr>
+												<tr>
+													<th><strong>Progresso:</strong><label></label></th>
+													<td><%=obj.getInt("progresso")%></td>
+													<td></td>
+												</tr>
+												<%
 											}
 										%>
-									</tbody>
-								</table>
+											</tbody>
+										</table>
+
+									</div>
+								</div>
 
 							</div>
 						</div>
+						<div id="botao" style="margin-top: 5%; margin-left: 28%">
+							<button type="button" class="btn btn-outline-success"
+								data-toggle="modal" data-target="#siteModal">Alterar
+								Informações</button>
+			</form>
+		</div>
 
-					</div>
-				</div>
-				<div id="botao" style="margin-top: 5%; margin-left: 28%">
-					<button type="button" class="btn btn-outline-success"
-						data-toggle="modal" data-target="#siteModal">Alterar
-						Informações</button>
- 				</form>
-			</div>
-		
 
-				
-			</div>
-		
+
+	</div>
+
 	<div class="modal" id="siteModal" tabindex="-1" role="dialog"
 		aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -350,7 +357,7 @@ body, html {
 	</div>
 	<div id="direita"></div>
 
-			<script src="js/jquery-3.3.1.min.js"></script>
-			<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

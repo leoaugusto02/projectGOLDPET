@@ -210,11 +210,21 @@ body, html {
 											style="margin-top: 2px; margin-bottom: 0px; height: 80px; width: 470px;"></textarea>
 									</div>
 
-									<div>
+									<div id="sendFile">
+									
+										<label>Enviar laudo medico</label>
+										<input type="file" id="upload" name="arquivo"
+										style="float: right; margin-top: 6%">
+										
+										</input>
+									
+									</div>
+									
+									<div id="sendImg">
 
 										<input type="file" id="upload"
 											name="imagem"
-											style="float: right; margin-top: 2%;">
+											style="float: right; margin-top: 6%;">
 										<img id="img" style="width:300px; margin-left:17%;"/>	
 											
 										</input>
