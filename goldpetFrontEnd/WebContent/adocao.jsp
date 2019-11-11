@@ -164,7 +164,7 @@ body, html {
 						<div class="modal-content">
 
 							<div class="modal-header" style="background-color: #139F97;">
-								<h5 class="modal-title">Adicionar Pet</h5>
+								<h5 class="modal-title">Cadastro</h5>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<span>x</span>
@@ -175,7 +175,7 @@ body, html {
 								<div>
 
 									<input class="form-control" type="text"
-										placeholder="nome do pet" style="margin-bottom: 3%;"
+										placeholder="Nome do animal" style="margin-bottom: 3%;"
 										name="nome" /> <input class="form-control" type="number"
 										placeholder="Idade" name="idade" style="margin-bottom: 3%;" />
 									<input class="form-control" type="text" placeholder="Raça"
