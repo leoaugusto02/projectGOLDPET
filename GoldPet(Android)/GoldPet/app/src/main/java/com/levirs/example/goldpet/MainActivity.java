@@ -1,11 +1,11 @@
 package com.levirs.example.goldpet;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.goldpet.Cadastro;
 
-import android.view.View;
+import android.util.Log;
 
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -27,6 +27,10 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    DrawerLayout drawer;
+    NavigationView navigationView;
+    ActionBarDrawerToggle toggle;
+
     private  int[] mImages = new int[]{
             R.drawable.golden,R.drawable.snow, R.drawable.peludinho
     };
@@ -34,12 +38,12 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -51,8 +55,12 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void setImageForPosition(int position, ImageView imageView) {
                 imageView.setImageResource(mImages[position]);
+
+                setNavigationViewListener();
             }
         });
+
+
     }
 
     @Override
@@ -72,6 +80,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    private void setNavigationViewListener() {
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -87,24 +99,32 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_login) {
-            // Handle the camera action
+
+        Log.i("teste", id+"");
+        if (id == R.id.nav_home) {
+
         } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_dicas){
+        } else if (id == R.id.nav_login) {
 
         }else if (id == R.id.nav_forum){
 
+        }else if(id == R.id.nav_cadastro){
+            Intent it = new Intent(this, Cadastro.class);
+            startActivity(it);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
