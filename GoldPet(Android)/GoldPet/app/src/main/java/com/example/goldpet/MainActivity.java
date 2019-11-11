@@ -1,5 +1,6 @@
 package com.example.goldpet;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -34,7 +35,6 @@ public class MainActivity extends AppCompatActivity
     DrawerLayout drawer;
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
-
 
     private  int[] mImages = new int[]{
             R.drawable.golden,R.drawable.snow, R.drawable.peludinho
@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+
         Log.i("teste", id+"");
         if (id == R.id.nav_home) {
 
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity
         }else if (id == R.id.nav_forum){
 
         }else if(id == R.id.nav_cadastro){
-            Intent it = new Intent(getApplicationContext(), Cadastro.class);
+            Intent it = new Intent(this, Cadastro.class);
             startActivity(it);
         }
 

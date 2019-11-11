@@ -1,8 +1,13 @@
 package com.example.goldpet;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
+
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.view.View;
+import android.webkit.HttpAuthHandler;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -46,7 +51,6 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         rbMasculino.setOnClickListener(this);
         rbFemenino.setOnClickListener(this);
 
-
         Cadastro();
     }
 
@@ -72,7 +76,8 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-    private void Cadastro() {
+    private String Cadastro() {
+       final String c = "";
         new Thread() {
             public void run() {
                 runOnUiThread(new Runnable() {
@@ -84,6 +89,10 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
                     }
                 });
             }
+
         }.start();
+        return c;
     }
+
+
 }
