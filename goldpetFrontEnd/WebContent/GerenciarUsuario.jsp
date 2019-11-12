@@ -143,16 +143,12 @@ a {
 							<li>Agenda</li>
 						</a>
 
-						<a href="#">
+						<a href="listPets.jsp">
 							<li>Adoções</li>
 						</a>
 
 						<a href="GerenciarUsuario.jsp">
 							<li>Usuarios</li>
-						</a>
-
-						<a href="#">
-							<li>Gerenciar</li>
 						</a>
 
 					</ul>
