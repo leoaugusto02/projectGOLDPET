@@ -234,6 +234,14 @@ body, html {
 									<tr>
 										<th><strong>Diagnostico completo:</strong></th>
 										<td><%=obj.getString("imgDiag")%></td>
+											<div id="sendFile">
+											
+												<label>Enviar laudo medico</label>
+											
+												<input type="file" id="upload" name="arquivo"
+												style="float: right; margin-top: 6%">
+											</div>
+										</input>
 									</tr>
 								</tbody>
 							</table>
