@@ -12,7 +12,7 @@ public class ConsumirWebService{
 
     public static String cadastrar(String pNome, String sNome, String apelido, String cep, String referencia, String cpf, String rg, String tel1, String tel2,
                             String dataNasc, String email, String senha, String confSenha, String genero, String acao, String acaoConta){
-        String urlWebService = "http://192.168.56.1:8080/goldpetBackEnd/ProcessaPessoas";
+        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaPessoas";
 
         try{
 
