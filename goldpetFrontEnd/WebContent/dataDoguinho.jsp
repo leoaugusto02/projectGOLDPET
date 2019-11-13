@@ -77,6 +77,7 @@ body, html {
 	height: 320px;
 	margin: auto;
 	overflow: visible;
+}
 </style>
 
 <meta charset="ISO-8859-1">
@@ -85,13 +86,13 @@ body, html {
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
-	<script src="js/jquery.js"></script>
-	<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 
 	<%
-	String acao = "perfil";
+	String acao = "perfil"; // olá 
 	String codAnimal = request.getParameter("codAnimal");
 	String parametros = "acao=" + acao + "&codAnimal=" + codAnimal;
 	
@@ -126,31 +127,35 @@ body, html {
 					<img src="img/LogoPet.png" style="width: 220px; height: 220px;" />
 				</div>
 
-							<div class="navC d-flex w-100 justfy-content-center">
-				
+				<div class="navC d-flex w-100 justfy-content-center">
+
 					<div class="w-100">
-			<nav class="navbar navbar-expand-lg navbar-light minhaNav">
-  <a class="navbar-brand" href="#">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="adocao.jsp">adoção<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link " href="Resgate.jsp">resgate</a>
-      <a class="nav-item nav-link active" href="DicasPets">Dicas</a>
-      <a class="nav-item nav-link " href="questionPage">Forun</a>
-      <a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
-      <a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
-    </div>
-  </div>
-</nav>
+						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
+							<a class="navbar-brand" href="#">Home</a>
+							<button class="navbar-toggler" type="button"
+								data-toggle="collapse" data-target="#navbarNavAltMarkup"
+								aria-controls="navbarNavAltMarkup" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+								<div class="navbar-nav">
+									<a class="nav-item nav-link active" href="adocao.jsp">adoção<span
+										class="sr-only">(current)</span></a> <a class="nav-item nav-link "
+										href="Resgate.jsp">resgate</a> <a
+										class="nav-item nav-link active" href="DicasPets">Dicas</a> <a
+										class="nav-item nav-link " href="questionPage">Forun</a> <a
+										class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
+									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
+								</div>
+							</div>
+						</nav>
 					</div>
 				</div>
-				
+
 			</div>
 			<br>
-			<div class="col-xs-12 col-sm-9">
+			<div class="col-xs-12 col-sm-9" style="margin-left:15%;">
 
 				<!-- User profile -->
 				<div class="container">
@@ -199,7 +204,7 @@ body, html {
 										<th><strong>Imagem:</strong></th>
 										<td><%=obj.getString("imgAnimal")%></td>
 									</tr>
-									
+
 								</tbody>
 							</table>
 
@@ -264,46 +269,64 @@ body, html {
 										</div>
 										<div class="custom-control custom-radio">
 											<input type="radio" id="customRadio2" name="customRadio"
-												class="custom-control-input" > <label
-												class="custom-control-label" for="customRadio2" style="margin-bottom: 3%;">Levar
-												até na casa</label>
+												class="custom-control-input"> <label
+												class="custom-control-label" for="customRadio2"
+												style="margin-bottom: 3%;">Levar até na casa</label>
 										</div>
 									</div>
 
 									<div id="levarNaCasa">
-										<input class="form-control" type="text" placeholder="CEP" id="cep"
-											style="margin-bottom: 3%;" /> 
-											
-											<script>
-											 $(document).ready(function(){ 
-										            $("#cep").keyup(function(){
-										            	var cep = $("#cep").val();
-										            	if(cep.length == 8){
-										            		
-										                $.get("https://viacep.com.br/ws/"+cep+"/json/",
-										                		function(data, status){
-										                    console.log(data);
-										                    $("#cidade").val(data.localidade);
-										                    $("#nomeRua").val(data.logradouro);
-										                    $("#bairro").val(data.bairro);
-										                });
-										            	}
-										            });
-										        });
-											
-											</script>
-											
-											<input class="form-control" type="text" placeholder="Cidade" id="cidade"
-											 style="margin-bottom: 3%;" /> 
-											
-											<input class="form-control" type="text" placeholder="Rua" id="nomeRua"
-											 style="margin-bottom: 3%;" /> 
-											
-											<input class="form-control" type="number" placeholder="N° casa"
-											 style="margin-bottom: 3%;" /> 
-											
-											<input class="form-control" type="text" placeholder="Bairro" id="bairro"
-											 style="margin-bottom: 3%;" />
+										<input class="form-control" type="text" placeholder="CEP"
+											id="cep" style="margin-bottom: 3%;" />
+
+										<script>
+											$(document)
+													.ready(
+															function() {
+																$("#cep")
+																		.keyup(
+																				function() {
+																					var cep = $(
+																							"#cep")
+																							.val();
+																					if (cep.length == 8) {
+
+																						$
+																								.get(
+																										"https://viacep.com.br/ws/"
+																												+ cep
+																												+ "/json/",
+																										function(
+																												data,
+																												status) {
+																											console
+																													.log(data);
+																											$(
+																													"#cidade")
+																													.val(
+																															data.localidade);
+																											$(
+																													"#nomeRua")
+																													.val(
+																															data.logradouro);
+																											$(
+																													"#bairro")
+																													.val(
+																															data.bairro);
+																										});
+																					}
+																				});
+															});
+										</script>
+
+										<input class="form-control" type="text" placeholder="Cidade"
+											id="cidade" style="margin-bottom: 3%;" /> <input
+											class="form-control" type="text" placeholder="Rua"
+											id="nomeRua" style="margin-bottom: 3%;" /> <input
+											class="form-control" type="number" placeholder="N° casa"
+											style="margin-bottom: 3%;" /> <input class="form-control"
+											type="text" placeholder="Bairro" id="bairro"
+											style="margin-bottom: 3%;" />
 
 									</div>
 
@@ -325,7 +348,7 @@ body, html {
 												</select>
 											</div>
 										</div>
-										
+
 										<div class="form-group">
 											<label class="col-md-4 control-label" for="dia">Dia</label>
 											<div class="col-md-4">
@@ -366,7 +389,7 @@ body, html {
 		</div>
 	</div>
 	<div id="direita"></div>
-	
+
 	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

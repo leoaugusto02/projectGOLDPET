@@ -19,7 +19,7 @@ public class AnimaisDAO {
 
 	public Animais perfilDog(int codeAnimal) throws SQLException {
 
-		String sql = "SELECT especie, raca, porte, idade, sexo, status, imgAnimal, nomeVeterinario, dataDiagnostico, diagnostico, imagem "
+		String sql = "SELECT nome, especie, raca, porte, idade, sexo, status, imgAnimal, nomeVeterinario, dataDiagnostico, diagnostico, imagem "
 				+ " FROM Animais a INNER JOIN Laudo l ON a.codeAnimal = l.codeAnimal WHERE a.codeAnimal = ?";
 
 		con = ConnectionDB.getConnection();
@@ -33,6 +33,7 @@ public class AnimaisDAO {
 			Animais a = new Animais();
 			Laudo l = new Laudo();
 
+			a.setNome(rs.getString("nome"));
 			a.setEspecie(rs.getString("especie"));
 			a.setRaca(rs.getString("raca"));
 			a.setPorte(rs.getString("porte"));
