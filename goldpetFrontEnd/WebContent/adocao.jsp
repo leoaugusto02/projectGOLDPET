@@ -157,7 +157,7 @@ body, html {
 					Adicinar Dog
 				</button>
 			</div>
-			<form action="#" method="post">
+			<form action="#" enctype="multipart/form-data" method="post">
 				<div class="modal" id="siteModal" tabindex="-1" role="dialog"
 					aria-hidden="true">
 					<div class="modal-dialog" role="document">
@@ -212,7 +212,7 @@ body, html {
 
 									<div id="sendImg">
 
-										<input type="file" id="upload" name="imagem"
+										<input type="file" id="upload" name="imgCao"
 											style="float: right; margin-top: 6%;"> <img id="img"
 											style="width: 300px; margin-left: 17%;" />
 

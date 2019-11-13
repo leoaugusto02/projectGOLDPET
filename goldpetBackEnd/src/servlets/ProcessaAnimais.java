@@ -130,7 +130,10 @@ public class ProcessaAnimais extends HttpServlet {
 			String nome = req.getParameter("nome");
 			Integer idade = Integer.valueOf(req.getParameter("idade"));
 			String raca = req.getParameter("raca");
-			String porte = req.getParameter("porte");
+			String porte
+			
+			
+			= req.getParameter("porte");
 			String especie = req.getParameter("especie");
 			String genero = req.getParameter("genero");
 			String imagem = req.getParameter("imagem");
