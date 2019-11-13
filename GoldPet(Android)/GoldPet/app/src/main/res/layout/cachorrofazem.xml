@@ -5,6 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <ImageView
         android:layout_width="341dp"
@@ -41,12 +45,11 @@
         android:text="Segundo a veterinário, cachorros machos preferem as superfícies verticais e se esforçam para alcançar o ponto mais alto. É possível observar também que esses animais urinam menos, mas mais vezes durante o passeio, para marcar um maior número de locais. A urina de um animal contém muitos feromônios, que passam diversas informações e atraem outros animais. Esse sistema faz parte da natureza e da comunicação do pet. Por isso, no passeio,  deixe-o fazer todo xixi que quiser, sem acelerar"/>
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="315dp"
-        android:layout_marginTop="550dp"
-        android:text="voltar"/>
-
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="315dp"
+            android:text="voltar" />
+    </LinearLayout>
 
 </ScrollView>

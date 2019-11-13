@@ -3,7 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/menu_lateral"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_cadastro"
+            android:icon="@drawable/ic_menu_pessoa"
+            android:title="@string/menu_cadastro"/>
 
         <item
             android:id="@+id/nav_login"
@@ -24,10 +31,6 @@
             android:icon="@drawable/ic_menu_forum"
             android:title="@string/menu_forum" />
 
-        <item
-            android:id="@+id/nav_cadastro"
-            android:icon="@drawable/ic_menu_pessoa"
-            android:title="@string/menu_cadastro"/>
     </group>
 
 </menu>
