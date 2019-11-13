@@ -164,7 +164,7 @@ body, html {
 						<div class="modal-content">
 
 							<div class="modal-header" style="background-color: #139F97;">
-								<h5 class="modal-title">Adicionar Pet</h5>
+								<h5 class="modal-title">Cadastro</h5>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<span>x</span>
@@ -175,7 +175,7 @@ body, html {
 								<div>
 
 									<input class="form-control" type="text"
-										placeholder="nome do pet" style="margin-bottom: 3%;"
+										placeholder="Nome do animal" style="margin-bottom: 3%;"
 										name="nome" /> <input class="form-control" type="number"
 										placeholder="Idade" name="idade" style="margin-bottom: 3%;" />
 									<input class="form-control" type="text" placeholder="Raça"
@@ -210,40 +210,53 @@ body, html {
 											style="margin-top: 2px; margin-bottom: 0px; height: 80px; width: 470px;"></textarea>
 									</div>
 
-									<div id="sendFile">
-									
-										<label>Enviar laudo medico</label>
-										<input type="file" id="upload" name="arquivo"
-										style="float: right; margin-top: 6%">
-										
-										</input>
-									
-									</div>
-									
 									<div id="sendImg">
 
-										<input type="file" id="upload"
-											name="imagem"
-											style="float: right; margin-top: 6%;">
-										<img id="img" style="width:300px; margin-left:17%;"/>	
-											
-										</input>
-										
+										<input type="file" id="upload" name="imagem"
+											style="float: right; margin-top: 6%;"> <img id="img"
+											style="width: 300px; margin-left: 17%;" />
+
 										<script>
-											$(function(){
-												$('#upload').change(function(){
-													console.log($(this));
-													const file = ($(this)[0].files[0])
-													const fileReader = new FileReader()
-													fileReader.onloadend = function(){
-														$('#img').attr('src', fileReader.result)
-													}
-													fileReader.readAsDataURL(file)
-												})	
+											$(function() {
+												$('#upload')
+														.change(
+																function() {
+																	console
+																			.log($(this));
+																	const file = ($(this)[0].files[0])
+																	const fileReader = new FileReader()
+																	fileReader.onloadend = function() {
+																		$(
+																				'#img')
+																				.attr(
+																						'src',
+																						fileReader.result)
+																	}
+																	fileReader
+																			.readAsDataURL(file)
+																})
 											})
 										</script>
 
 									</div>
+								</div>
+							</div>
+							<div class="modal-header" style="background-color: #139F97;">
+								<h5 class="modal-title">Laudo</h5>
+							</div>
+							<div class="modal-body">
+								<div>
+
+									<input class="form-control" type="text"
+										placeholder="Nome do veterinário" style="margin-bottom: 3%;"
+										name="nomeVet" />
+									<div class="form-group">
+										<input type="date" class="form-group col-md-6"
+											name="nascimento">
+									</div>
+									<input class="form-control" type="text"
+										placeholder="Diagnóstico breve" name="diagnostico"
+										style="margin-bottom: 3%;" />
 								</div>
 							</div>
 
@@ -284,6 +297,7 @@ body, html {
 					String genero = request.getParameter("genero");
 					String imagem = request.getParameter("imagem");
 					String status = request.getParameter("status");
+					String nomeVet = request.getParameter("nomeVet");
 
 					if ((nome != null) || (idade != null) || (raca != null) || (porte != null) || (especie != null)
 							|| (genero != null) || (imagem != null) || (status != null)) {
@@ -291,7 +305,7 @@ body, html {
 						parametros = "acaoModal=" + acaoModal + "&nome=" + nome + "&idade=" + idade + "&raca=" + raca
 								+ "&porte=" + porte + "&especie=" + especie + "&genero=" + genero + "&imagem=" + imagem
 								+ "&status=" + status;
-					
+
 						response.sendRedirect("adocao.jsp");
 
 					}
@@ -324,58 +338,60 @@ body, html {
 
 					int i = 0;
 					boolean fimWhile = false;
-				
+
 					while ((linha = br.readLine()) != null) {
 						System.out.println("Tô aqui " + linha);
 						obj = new JSONObject(linha);
-						if(i == 0){
-							%>
-								<div class="d-flex justify-content-around">
-							<%
-						}
+						if (i == 0) {
 				%>
-				<a href="dataDoguinho.jsp?codAnimal=<%=obj.getInt("codAnimal")%>">
-					<div class="card bg-dark text-white" style="width: 23rem;">
-						<img src="img/slide01.png" class="card-img" href="#"
-							style="height: 500px;">
-						<div class="card-img-overlay">
-							<h5 class="card-title"><%=obj.getString("nome")%></h5>
-							<p class="card-text">
-								Código:
-								<%=obj.getInt("codAnimal")%>
-								<br> Status:
-								<%=obj.getString("nome")%><br> Raça:
-								<%=obj.getString("raca")%><br> Espécie:
-								<%=obj.getString("especie")%><br>
+				<div class="d-flex justify-content-around">
+					<%
+						}
+					%>
+					<a href="dataDoguinho.jsp?codAnimal=<%=obj.getInt("codAnimal")%>">
+						<div class="card bg-dark text-white" style="width: 23rem;">
+							<img src="img/slide01.png" class="card-img" href="#"
+								style="height: 500px;">
+							<div class="card-img-overlay">
+								<h5 class="card-title"><%=obj.getString("nome")%></h5>
+								<p class="card-text">
+									Código:
+									<%=obj.getInt("codAnimal")%>
+									<br> Status:
+									<%=obj.getString("nome")%><br> Raça:
+									<%=obj.getString("raca")%><br> Espécie:
+									<%=obj.getString("especie")%><br>
 
-							</p>
-							<p class="card-text">Last updated 3 mins ago</p>
-						</div>
-					</div>
-					<br>
-				</a>
-				<%
+								</p>
+								<p class="card-text">Last updated 3 mins ago</p>
+							</div>
+						</div> <br>
+					</a>
+					<%
 						i++;
-						if(i==3){
-							fimWhile = false;
-							
-							%></div><%
-							
-							i=0;
-						}else{
+							if (i == 3) {
+								fimWhile = false;
+					%>
+				</div>
+				<%
+					i = 0;
+						} else {
 							fimWhile = true;
 						}
-						
+
 					}
 					System.out.println("Tô aqui dps do while");
-					if(fimWhile){
-						%></div><%
-					}
+					if (fimWhile) {
 				%>
-				</form>
+			
 		</div>
+		<%
+			}
+		%>
+		</form>
+	</div>
 
-		<div id="direita"></div>
+	<div id="direita"></div>
 
 	</div>
 	<!-- <script src="js/bootstrap.min.js"></script>

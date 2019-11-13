@@ -83,13 +83,13 @@
 						<input name="login" type="text"
 							class="form-control form-control-lg login-email"
 							placeholder="Digite seu email/usuario" required autofocus
-							autocomplete="on">
+							autocomplete="on" required="required">
 					</div>
 					<div class="form-group form-group-icon">
 						<span class="component-hint block"> <input
 							class="form-control form-control-lg login-password can-be-visible"
 							type="password" maxlength="40" placeholder="Digite sua senha"
-							required name="senha">
+							required name="senha" required="required">
 						</span>
 
 					</div>

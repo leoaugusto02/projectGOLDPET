@@ -88,7 +88,7 @@ body, html {
 	<%
 		if (request.getSession().getAttribute("codigoUsuario") == null) {
 			System.out.println("Por favor Realize o login");
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("Login.jsp");
 			return;
 		} else {
 			Integer codeUser = (Integer) request.getSession().getAttribute("codigoUsuario");

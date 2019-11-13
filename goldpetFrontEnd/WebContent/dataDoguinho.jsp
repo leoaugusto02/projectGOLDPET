@@ -211,6 +211,7 @@ body, html {
 						</div>
 					</div>
 
+
 					<div class="card  mb-8">
 
 						<h4 class="card-header">Laudo</h4>
@@ -233,6 +234,13 @@ body, html {
 									<tr>
 										<th><strong>Diagnostico completo:</strong></th>
 										<td><%=obj.getString("imgDiag")%></td>
+										<div id="sendFile">
+											
+											<label>Enviar laudo medico</label>
+											
+											<input type="file" id="upload" name="arquivo" value=""
+											style="float: right; margin-top: 6%"/>
+										</div>
 									</tr>
 								</tbody>
 							</table>

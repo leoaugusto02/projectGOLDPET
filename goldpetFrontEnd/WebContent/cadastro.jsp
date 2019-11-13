@@ -130,7 +130,7 @@
 				(senha != null) && (confSenha != null) && (genero != null) && (acao != null)) {
 
 			if(tel2.equals("")){
-				tel2 = "-";
+				tel2 = "-"; //comit pro Correa
 			}
 			
 			String parametros = "pNome=" + pNome + "&sNome=" + sNome + "&apelido=" + apelido +
