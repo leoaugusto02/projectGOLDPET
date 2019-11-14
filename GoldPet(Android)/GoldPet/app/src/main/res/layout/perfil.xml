@@ -9,19 +9,19 @@
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="130dp"
-        android:text="Cadastrar Perfil"
+        android:text="Perfil Pet's"
         android:textSize="25dp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:hint="Nome do Pet" />
 
     <EditText
         android:layout_width="194dp"
         android:layout_height="wrap_content"
-        android:hint="Porte" />
+        android:hint="Especie" />
 
     <EditText
         android:layout_width="214dp"
@@ -31,27 +31,40 @@
         android:hint="Porte" />
 
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="194dp"
         android:layout_height="wrap_content"
-        android:hint="Adotado Por..." />
-
-    <EditText
-        android:layout_width="191dp"
-        android:layout_height="wrap_content"
-        android:hint="E-mail" />
+        android:hint="Idade" />
 
     <EditText
         android:layout_width="218dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="190dp"
+        android:layout_marginLeft="195dp"
         android:layout_marginTop="-45dp"
-        android:hint="Telefone" />
+        android:hint="Status" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Genêro" />
+
+    <ImageView
+        android:id="@+id/ivImagem"
+        android:layout_width="match_parent"
+        android:layout_height="228dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="280dp"
+        android:text="Adicionar Foto"
+        android:textSize="18dp" />
 
     <Button
         android:layout_width="181dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="115dp"
+        android:layout_marginLeft="120dp"
         android:layout_marginTop="50dp"
-        android:text="Cadastrar" />
+        android:text="Listar Pet" />
 
 </LinearLayout>

@@ -3,8 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#93D6D6"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context="com.example.goldpet.Login">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +16,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="253dp"
+            android:layout_height="206dp"
             android:src="@drawable/logopet" />
 
     <EditText
@@ -25,6 +27,7 @@
         android:textSize="20dp" />
 
     <EditText
+        android:id="@+id/edtSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Senha"
@@ -42,6 +45,7 @@
         android:textSize="18dp" />
 
     <TextView
+        android:id="@+id/txtLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="162dp"
@@ -50,4 +54,5 @@
         android:textSize="16dp" />
 
 </LinearLayout>
+>>>>>>> c528a0bf733e966fa5fd9cd5e24d161df4567e62
 </ScrollView>
