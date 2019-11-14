@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:text="Dogs para adoção"
+        android:text="Últimos animais lançados para adoção"
         android:textSize="20dp"
         android:textColor="#000"/>
 
@@ -90,12 +90,12 @@
         android:layout_marginTop="-77dp"
         android:src="@drawable/snow"/>
 
-        <TextView
-            android:layout_width="76dp"
+        <TextView android:id="@+id/verMais"
+            android:layout_width="109dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="280dp"
             android:layout_marginTop="20dp"
-            android:text="Adote"
+            android:text="Veja mais!"
             android:textColor="#000"
             android:textSize="20dp" />
     </LinearLayout>

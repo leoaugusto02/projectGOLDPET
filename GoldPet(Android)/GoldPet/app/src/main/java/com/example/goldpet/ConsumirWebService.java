@@ -148,7 +148,6 @@ public class ConsumirWebService{
                 System.out.println("Tô aqui " + linha);
                 obj = new JSONObject(linha);
             }
-
             return obj;
         }catch (Exception e) {
             e.printStackTrace();
