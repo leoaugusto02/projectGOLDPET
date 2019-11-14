@@ -1,5 +1,6 @@
 package com.example.goldpet;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -58,6 +59,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
                         editor.putInt("name", json.getInt("codeUser"));
                         editor.apply();
+                        Toast.makeText(Login.this, "Bem Vindo!", Toast.LENGTH_LONG).show();
+                        Intent it = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(it);
                     }else{
                         Toast.makeText(Login.this, "Usuário não existe", Toast.LENGTH_SHORT).show();
                     }
