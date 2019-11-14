@@ -18,6 +18,8 @@ import com.levirs.example.goldpet.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static xdroid.toaster.Toaster.toast;
+
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
     EditText edtEmail, edtSenha;
@@ -55,15 +57,23 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 String acao = "login";
                 JSONObject json = ConsumirWebService.login(edtEmail.getText().toString(), edtSenha.getText().toString(), acao);
                 try {
-                    if(json.getString("mensagem").equals("0")){
-                        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                        editor.putInt("name", json.getInt("codeUser"));
-                        editor.apply();
-                        Toast.makeText(Login.this, "Bem Vindo!", Toast.LENGTH_LONG).show();
+                    SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+                    int codigoUsuario = prefs.getInt("codigoUsuario", 0);
+                    if(codigoUsuario == 0){
+                        if(json.getString("mensagem").equals("0")){
+                            SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                            editor.putInt("codigoUsuario", json.getInt("codeUser"));
+                            editor.apply();
+                            toast("Bem Vindo!", this.getClass().getSimpleName(), this.hashCode());
+                            Intent it = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(it);
+                        }else{
+                            toast("Usuário não existe", this.getClass().getSimpleName(), this.hashCode());
+                        }
+                    }else{
+                        toast("Alguém já está logado", this.getClass().getSimpleName(), this.hashCode());
                         Intent it = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(it);
-                    }else{
-                        Toast.makeText(Login.this, "Usuário não existe", Toast.LENGTH_SHORT).show();
                     }
                 }catch (JSONException jse){
                     jse.printStackTrace();
