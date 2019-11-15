@@ -82,11 +82,20 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
                 final String c = ConsumirWebService.cadastrar(edtNome.getText().toString(), edtSobrenome.getText().toString(), edtApelido.getText().toString(), edtCep.getText().toString(), edtReferencia.getText().toString(), edtCpf.getText().toString(),
                         edtRg.getText().toString(), edtTel1.getText().toString(), edtTel2.getText().toString(), edtDataNasc.getText().toString(), edtEmail.getText().toString(), edtSenha.getText().toString(), edtConfSenha.getText().toString(),
                         rbValue, acao, acaoConta);
-                if(c != null){
-                    Toast.makeText(Cadastro.this, "" + c, Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(Cadastro.this, "Algo", Toast.LENGTH_SHORT).show();
-                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(c != null){
+                            Toast.makeText(Cadastro.this, "" + c, Toast.LENGTH_SHORT).show();
+                            Intent it = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(it);
+                        }else{
+                            Toast.makeText(Cadastro.this, "Algo", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
             }
 
         }.start();
