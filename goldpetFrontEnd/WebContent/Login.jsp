@@ -1,4 +1,3 @@
-
 <%@page import="org.json.JSONObject"%>
 <%@page import="java.io.InputStreamReader"%>
 <%@page import="java.io.BufferedReader"%>
@@ -106,9 +105,14 @@
 					</div>
 				</form>
 			</div>
-			<div style="padding-left: 50%;">
-				<a href="#" class="link-forgot-password">Esqueceu sua senha?</a>
+			<div class="criacao" style="padding-bottom:10%;">
+				<a href="#" class="link-forgot-password" style="padding-left: 50%;">Esqueceu sua senha?</a>
+				<a href="cadastro.jsp" style="padding-right:50%;">Criar Conta</a>
 			</div>
+			
+			<div style="margin-bottom:10%;">
+			</div>
+			
 		</div>
 	</div>
 	<div class="card-base">
