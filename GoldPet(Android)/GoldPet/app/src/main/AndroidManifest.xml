@@ -24,8 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.goldpet.Cadastro" />
         <activity android:name="com.example.goldpet.Login" />
+        <activity android:name="com.example.goldpet.Cadastro" />
     </application>
 
 </manifest>
