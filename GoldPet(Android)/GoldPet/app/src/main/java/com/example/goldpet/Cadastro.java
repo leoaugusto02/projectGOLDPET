@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.levirs.example.goldpet.R;
 
 public class Cadastro extends AppCompatActivity implements View.OnClickListener {
@@ -53,6 +55,11 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         btnCadastrar.setOnClickListener(this);
         rbMasculino.setOnClickListener(this);
         rbFemenino.setOnClickListener(this);
+
+        SimpleMaskFormatter smf =  new SimpleMaskFormatter("(NN)NNNNN-NNNN");
+        MaskTextWatcher mtw = new MaskTextWatcher(edtTel1, smf);
+        edtTel1.addTextChangedListener(mtw);
+        //fim da mascara
 
     }
 
