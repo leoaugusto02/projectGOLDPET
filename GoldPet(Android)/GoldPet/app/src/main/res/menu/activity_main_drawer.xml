@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -31,6 +32,69 @@
             android:icon="@drawable/ic_menu_forum"
             android:title="@string/menu_forum" />
 
+        <item
+            android:id="@+id/nav_adocao"
+            android:icon="@drawable/ic_menu_adocao"
+            android:title="Adoção"
+            />
     </group>
 
 </menu>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+<<<<<<< HEAD
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/ic_menu_pessoa"
+            android:title="@string/menu_login" />
+        <item
+            android:id="@+id/nav_cadastro"
+            android:icon="@drawable/ic_menu_pessoa"
+            android:title="@string/menu_cadastro"/>
+=======
+    <group
+        android:id="@+id/menu_lateral"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_cadastro"
+            android:icon="@drawable/ic_menu_pessoa"
+            android:title="@string/menu_cadastro"/>
+
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/ic_menu_pessoa"
+            android:title="@string/menu_login" />
+>>>>>>> 996bf1d5afe0a08323491eac5265a50d0d7d43e2
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_gallery" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 996bf1d5afe0a08323491eac5265a50d0d7d43e2
+        <item
+            android:id="@+id/nav_dicas"
+            android:icon="@drawable/ic_menu_estrela"
+            android:title="@string/menu_dicas" />
+
+        <item
+            android:id="@+id/nav_forum"
+            android:icon="@drawable/ic_menu_forum"
+            android:title="@string/menu_forum" />
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> 996bf1d5afe0a08323491eac5265a50d0d7d43e2
+    </group>
+
+</menu>
+>>>>>>> d1394273c90a784ceecb7f9b43780f985f095179
