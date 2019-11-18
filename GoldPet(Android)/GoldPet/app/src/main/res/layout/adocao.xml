@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#93D6D6"
-    tools:context=".Adocao"
+    tools:context="com.example.goldpet.Adocao"
     android:fillViewport="true">
 
     <LinearLayout
@@ -21,7 +21,7 @@
         android:text="Adote uma vida !!"
         android:textColor="#000"/>
 
-        <ImageView
+        <ImageView android:id="@+id/imgAnimal"
             android:layout_width="127dp"
             android:layout_height="121dp"
             android:layout_marginLeft="25dp"
@@ -30,32 +30,11 @@
             android:padding="1dp"
             android:src="@drawable/snow" />
 
-        <TextView
+        <TextView android:id="@+id/infoAnimal"
             android:layout_width="127dp"
             android:layout_height="36dp"
             android:layout_marginLeft="25dp"
-            android:text="Ed:Joaquim
-Pires,Nº:133,
-Jd.Botanico"
-            android:textColor="#000"
-            android:textSize="13dp" />
-
-        <ImageView
-            android:layout_width="129dp"
-            android:layout_height="124dp"
-            android:layout_marginLeft="180sp"
-            android:layout_marginTop="-157dp"
-            android:background="#D5F5D5"
-            android:padding="1dp"
-            android:src="@drawable/golden"
-            />
-
-        <TextView
-            android:layout_width="128dp"
-            android:layout_height="37dp"
-            android:layout_marginLeft="180dp"
-            android:text="End:Julia Pires, Nº:24,
-Campinas        "
+            android:text="Ed:Joaquim Pires,Nº:133, Jd.Botanico"
             android:textColor="#000"
             android:textSize="13dp" />
 

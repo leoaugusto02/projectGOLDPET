@@ -123,16 +123,19 @@ public class ConsumirWebService{
 =======
 package com.example.goldpet;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class ConsumirWebService{
 
+    //                                  ---WEB SERVICE PARA PESSOA---
     public static String cadastrar(String pNome, String sNome, String apelido, String cep, String referencia, String cpf, String rg, String tel1, String tel2,
                             String dataNasc, String email, String senha, String confSenha, String genero, String acao, String acaoConta){
         String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaPessoas";
@@ -242,5 +245,42 @@ public class ConsumirWebService{
 
     }
 
+<<<<<<< HEAD
 >>>>>>> 996bf1d5afe0a08323491eac5265a50d0d7d43e2
+=======
+    //                                  ---WEB SERVICE PARA ANIMAL---
+
+    public static JSONObject listarAnimaisAdocao(String acao){
+        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais";
+
+        try {
+            String parametros = "acao=" + acao;
+
+            URL url = new URL(urlWebService);
+            HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
+            conexaoWeb.setRequestMethod("POST");
+            conexaoWeb.setDoOutput(true);
+
+            DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
+            wr.writeBytes(parametros);
+
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
+
+            String linha = "";
+            JSONObject obj = new JSONObject();
+
+            while ((linha = br.readLine()) != null) {
+                System.out.println("Tô aqui " + linha);
+                obj = new JSONObject(linha);
+            }
+            return obj;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+>>>>>>> b94daa3925dfec8c52c307df94904f7c73c21d7d
 }

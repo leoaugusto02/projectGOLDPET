@@ -169,15 +169,17 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.Menu;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     DrawerLayout drawer;
 
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
+    TextView verMais;
 
     private  int[] mImages = new int[]{
             R.drawable.golden,R.drawable.snow, R.drawable.peludinho
@@ -198,8 +200,12 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        verMais = findViewById(R.id.verMais);
+
+        verMais.setOnClickListener(this);
 
         CarouselView carouselView = findViewById(R.id.carousel);
         carouselView.setPageCount(mImages.length);
@@ -265,7 +271,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_login) {
-            Intent it = new Intent(getApplicationContext(), Login.class);
+            Intent it = new Intent(this, Login.class);
             startActivity(it);
         }else if (id == R.id.nav_forum){
 
@@ -280,6 +286,15 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.verMais:
+                Intent it = new Intent(getApplicationContext(), Adocao.class);
+                startActivity(it);
+            break;
+        }
+    }
 }
 
 >>>>>>> 996bf1d5afe0a08323491eac5265a50d0d7d43e2

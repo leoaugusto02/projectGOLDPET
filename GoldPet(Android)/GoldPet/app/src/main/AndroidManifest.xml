@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.levirs.example.goldpet">
@@ -27,4 +28,37 @@
         <activity android:name="com.example.goldpet.Cadastro" />
     </application>
 
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.levirs.example.goldpet">
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera2"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.example.goldpet.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.goldpet.Login" />
+        <activity android:name="com.example.goldpet.Cadastro" />
+        <activity android:name="com.example.goldpet.Adocao" />
+    </application>
+
+>>>>>>> b94daa3925dfec8c52c307df94904f7c73c21d7d
 </manifest>
