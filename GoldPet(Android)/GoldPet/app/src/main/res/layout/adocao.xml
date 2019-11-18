@@ -1,3 +1,44 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#93D6D6"
+    tools:context="com.example.goldpet.Adocao"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="100dp"
+        android:textSize="25dp"
+        android:text="Adote uma vida !!"
+        android:textColor="#000"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAdocao"
+            android:layout_width="match_parent"
+            android:layout_height="598dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="290dp"
+            android:layout_marginTop="20dp"
+            android:text="Adicionar mais"
+            android:textColor="#856B6B"
+            android:textSize="17dp" />
+
+    </LinearLayout>
+=======
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -48,4 +89,5 @@
             android:textSize="17dp" />
 
     </LinearLayout>
+>>>>>>> 300e5da72eb8685329594e1a1201da49f6224530
 </ScrollView>

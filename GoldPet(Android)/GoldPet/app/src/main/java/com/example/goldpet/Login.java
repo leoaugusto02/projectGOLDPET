@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 package com.example.goldpet;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -59,6 +60,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
                         editor.putInt("name", json.getInt("codeUser"));
                         editor.apply();
+                        Toast.makeText(Login.this, "Bem Vindo!", Toast.LENGTH_LONG).show();
+                        Intent it = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(it);
                     }else{
                         Toast.makeText(Login.this, "Usuário não existe", Toast.LENGTH_SHORT).show();
                     }
@@ -72,21 +76,21 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 }
 =======
+
 package com.example.goldpet;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.goldpet.model.ConsumirWebService;
 import com.levirs.example.goldpet.R;
 
 import org.json.JSONException;
@@ -158,4 +162,4 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }.start();
     }
 }
->>>>>>> b94daa3925dfec8c52c307df94904f7c73c21d7d
+>>>>>>> d1394273c90a784ceecb7f9b43780f985f095179

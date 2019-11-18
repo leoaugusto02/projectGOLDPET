@@ -1,7 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package com.example.goldpet;
 
-import android.content.Context;
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar;
 import android.util.Log;
 import android.view.View;
 
+import androidx.constraintlayout.widget.Group;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -28,12 +30,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.Menu;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawer;
+
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
 
@@ -48,12 +53,15 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
          drawer = findViewById(R.id.drawer_layout);
          navigationView = findViewById(R.id.nav_view);
-        toggle = new ActionBarDrawerToggle(
+         toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         CarouselView carouselView = findViewById(R.id.carousel);
@@ -107,16 +115,15 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-
-        Log.i("teste", id+"");
+       // Log.i("teste", id+"");
         if (id == R.id.nav_home) {
+            Toast.makeText(this, "This is home", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_gallery) {
 
@@ -125,18 +132,22 @@ public class MainActivity extends AppCompatActivity
         }else if (id == R.id.nav_forum){
 
         }else if(id == R.id.nav_cadastro){
-            Intent it = new Intent(this, Cadastro.class);
+            Intent it = new Intent(getApplicationContext(), Cadastro.class);
             startActivity(it);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+
     }
 
 }
 
 =======
+=======
+
+>>>>>>> d1394273c90a784ceecb7f9b43780f985f095179
 package com.example.goldpet;
 
 import android.content.ClipData;
@@ -156,6 +167,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+
 import com.levirs.example.goldpet.R;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
@@ -191,7 +203,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
          drawer = findViewById(R.id.drawer_layout);
          navigationView = findViewById(R.id.nav_view);
@@ -286,6 +297,11 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+<<<<<<< HEAD
+}
+
+>>>>>>> c528a0bf733e966fa5fd9cd5e24d161df4567e62
+=======
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -296,5 +312,4 @@ public class MainActivity extends AppCompatActivity
         }
     }
 }
-
->>>>>>> 996bf1d5afe0a08323491eac5265a50d0d7d43e2
+>>>>>>> d1394273c90a784ceecb7f9b43780f985f095179

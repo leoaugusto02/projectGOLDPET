@@ -1,3 +1,6 @@
+<<<<<<< HEAD:GoldPet(Android)/GoldPet/app/src/main/java/com/example/goldpet/model/ConsumirWebService.java
+package com.example.goldpet.model;
+=======
 <<<<<<< HEAD
 package com.example.goldpet;
 
@@ -13,7 +16,7 @@ public class ConsumirWebService{
 
     public static String cadastrar(String pNome, String sNome, String apelido, String cep, String referencia, String cpf, String rg, String tel1, String tel2,
                             String dataNasc, String email, String senha, String confSenha, String genero, String acao, String acaoConta){
-        String urlWebService = "http://192.168.56.1:8080/goldpetBackEnd/ProcessaPessoas";
+        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaPessoas";
 
         try{
 
@@ -121,7 +124,9 @@ public class ConsumirWebService{
     }
 
 =======
+
 package com.example.goldpet;
+>>>>>>> 300e5da72eb8685329594e1a1201da49f6224530:GoldPet(Android)/GoldPet/app/src/main/java/com/example/goldpet/ConsumirWebService.java
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -245,9 +250,6 @@ public class ConsumirWebService{
 
     }
 
-<<<<<<< HEAD
->>>>>>> 996bf1d5afe0a08323491eac5265a50d0d7d43e2
-=======
     //                                  ---WEB SERVICE PARA ANIMAL---
 
     public static JSONObject listarAnimaisAdocao(String acao){
@@ -282,5 +284,5 @@ public class ConsumirWebService{
     }
 
 
->>>>>>> b94daa3925dfec8c52c307df94904f7c73c21d7d
+>>>>>>> d1394273c90a784ceecb7f9b43780f985f095179
 }
