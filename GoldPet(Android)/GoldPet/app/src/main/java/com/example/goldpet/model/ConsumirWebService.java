@@ -1,4 +1,4 @@
-package com.example.goldpet;
+package com.example.goldpet.model;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,14 +1,11 @@
 package com.example.goldpet;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.view.View;
-import android.webkit.HttpAuthHandler;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -17,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.goldpet.model.ConsumirWebService;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.levirs.example.goldpet.R;
