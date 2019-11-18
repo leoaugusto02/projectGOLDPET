@@ -112,10 +112,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.levirs.example.goldpet.R;
+
 
 public class Cadastro extends AppCompatActivity implements View.OnClickListener {
 
@@ -151,6 +153,41 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         btnCadastrar.setOnClickListener(this);
         rbMasculino.setOnClickListener(this);
         rbFemenino.setOnClickListener(this);
+
+
+        //celular
+        SimpleMaskFormatter smf =  new SimpleMaskFormatter("(NN)NNNNN-NNNN");
+        MaskTextWatcher mtw = new MaskTextWatcher(edtTel1, smf);
+        edtTel1.addTextChangedListener(mtw);
+
+        //telefone
+        SimpleMaskFormatter smft = new SimpleMaskFormatter("NNNN-NNNN");
+        MaskTextWatcher mtwt = new MaskTextWatcher(edtTel2,smft);
+        edtTel2.addTextChangedListener(mtwt);
+
+        //Data
+        SimpleMaskFormatter smfd = new SimpleMaskFormatter("NN/NN/NNNN");
+        MaskTextWatcher mtwd = new MaskTextWatcher(edtDataNasc,smfd);
+        edtDataNasc.addTextChangedListener(mtwd);
+
+        //CEP
+        SimpleMaskFormatter smfc = new SimpleMaskFormatter("NNNNN-NNN");
+        MaskTextWatcher mtwc = new MaskTextWatcher(edtCep,smfc);
+        edtCep.addTextChangedListener(mtwc);
+
+        //CPF
+        SimpleMaskFormatter smfcpf = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
+        MaskTextWatcher mtwcpf = new MaskTextWatcher(edtCpf,smfcpf);
+        edtCpf.addTextChangedListener(mtwcpf);
+
+        //RG
+        SimpleMaskFormatter smfrg = new SimpleMaskFormatter("NN.NNN.NNN-NN");
+        MaskTextWatcher mtwrg = new MaskTextWatcher(edtRg,smfrg);
+        edtRg.addTextChangedListener(mtwrg);
+
+
+
+        //fim da mascara
 
     }
 
@@ -200,6 +237,9 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         return null;
     }
 
+<<<<<<< HEAD
 
 >>>>>>> c528a0bf733e966fa5fd9cd5e24d161df4567e62
+=======
+>>>>>>> d1394273c90a784ceecb7f9b43780f985f095179
 }

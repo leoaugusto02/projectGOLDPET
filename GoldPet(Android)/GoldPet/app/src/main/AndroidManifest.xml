@@ -55,9 +55,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.goldpet.Cadastro" />
         <activity android:name="com.example.goldpet.Login" />
+        <activity android:name="com.example.goldpet.Cadastro" />
+        <activity android:name="com.example.goldpet.Adocao" />
     </application>
+<<<<<<< HEAD
 
 >>>>>>> c528a0bf733e966fa5fd9cd5e24d161df4567e62
+=======
+>>>>>>> d1394273c90a784ceecb7f9b43780f985f095179
 </manifest>

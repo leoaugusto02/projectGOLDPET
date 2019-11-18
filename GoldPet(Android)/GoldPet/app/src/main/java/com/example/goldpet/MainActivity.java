@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package com.example.goldpet;
 
 import android.content.ClipData;
@@ -144,6 +145,9 @@ public class MainActivity extends AppCompatActivity
 }
 
 =======
+=======
+
+>>>>>>> d1394273c90a784ceecb7f9b43780f985f095179
 package com.example.goldpet;
 
 import android.content.ClipData;
@@ -163,6 +167,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+
 import com.levirs.example.goldpet.R;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
@@ -176,15 +181,17 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.Menu;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     DrawerLayout drawer;
 
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
+    TextView verMais;
 
     private  int[] mImages = new int[]{
             R.drawable.golden,R.drawable.snow, R.drawable.peludinho
@@ -205,8 +212,12 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        verMais = findViewById(R.id.verMais);
+
+        verMais.setOnClickListener(this);
 
         CarouselView carouselView = findViewById(R.id.carousel);
         carouselView.setPageCount(mImages.length);
@@ -272,7 +283,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_login) {
-            Intent it = new Intent(getApplicationContext(), Login.class);
+            Intent it = new Intent(this, Login.class);
             startActivity(it);
         }else if (id == R.id.nav_forum){
 
@@ -287,6 +298,19 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+<<<<<<< HEAD
 }
 
 >>>>>>> c528a0bf733e966fa5fd9cd5e24d161df4567e62
+=======
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.verMais:
+                Intent it = new Intent(getApplicationContext(), Adocao.class);
+                startActivity(it);
+            break;
+        }
+    }
+}
+>>>>>>> d1394273c90a784ceecb7f9b43780f985f095179
