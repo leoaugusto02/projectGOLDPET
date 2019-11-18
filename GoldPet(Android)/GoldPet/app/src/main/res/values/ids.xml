@@ -6,4 +6,5 @@
     <item name="nav_gallery" type="id"/>
     <item name="nav_forum" type="id"/>
     <item name="nav_cadastro" type="id"/>
+    <item name="nav_adocao" type="id"/>
 </resources>
