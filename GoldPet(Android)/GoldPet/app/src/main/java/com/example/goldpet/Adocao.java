@@ -63,7 +63,7 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
         new Thread(){
             public void run(){
                 String acao = "listaAdocao";
-                final JSONObject jsonAnimais = ConsumirWebService.listarAnimaisAdocao(acao);
+                final JSONArray jsonAnimais = ConsumirWebService.listarAnimaisAdocao(acao);
 
                 if(jsonAnimais == null){
                     handler.post(new Runnable() {
@@ -86,20 +86,24 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
         }.start();
     }
 
-    private void exibirAnimais(JSONObject jsonAnimais){
+    private void exibirAnimais(JSONArray jsonAnimais){
         try {
-            Animais animais = new Animais();
-            animais.setCodAnimal(jsonAnimais.getInt("codAnimal"));
-            animais.setNome(jsonAnimais.getString("nome"));
-            animais.setStatus(jsonAnimais.getString("status"));
-            animais.setRaca(jsonAnimais.getString("raca"));
-            animais.setEspecie(jsonAnimais.getString("especie"));
+            for(int i = 0; i < jsonAnimais.length(); i++){
+                JSONObject jsonAnimal = jsonAnimais.getJSONObject(i);
 
-            animaisList.add(animais);
+                Animais animais = new Animais();
+
+                animais.setCodAnimal(jsonAnimal.getInt("codAnimal"));
+                animais.setNome(jsonAnimal.getString("nome"));
+                animais.setStatus(jsonAnimal.getString("status"));
+                animais.setRaca(jsonAnimal.getString("raca"));
+                animais.setEspecie(jsonAnimal.getString("especie"));
+                animaisList.add(animais);
+            }
+
         }catch (Exception e){
             e.printStackTrace();
         }
         adocaoAdapter.notifyDataSetChanged();
     }
-
 }
