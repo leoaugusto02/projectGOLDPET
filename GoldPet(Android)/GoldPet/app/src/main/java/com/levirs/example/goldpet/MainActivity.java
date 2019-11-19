@@ -1,9 +1,6 @@
 package com.levirs.example.goldpet;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.goldpet.Cadastro;
 
 import android.util.Log;
 
@@ -119,8 +116,7 @@ public class MainActivity extends AppCompatActivity
         }else if (id == R.id.nav_forum){
 
         }else if(id == R.id.nav_cadastro){
-            Intent it = new Intent(this, Cadastro.class);
-            startActivity(it);
+
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
