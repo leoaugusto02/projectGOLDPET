@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.example.goldpet;
 
 import android.os.Bundle;
@@ -88,46 +87,19 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void exibirAnimais(JSONObject jsonAnimais){
-        Animais animais = new Animais();
-    }
+        try {
+            Animais animais = new Animais();
+            animais.setCodAnimal(jsonAnimais.getInt("codAnimal"));
+            animais.setNome(jsonAnimais.getString("nome"));
+            animais.setStatus(jsonAnimais.getString("status"));
+            animais.setRaca(jsonAnimais.getString("raca"));
+            animais.setEspecie(jsonAnimais.getString("especie"));
 
-}
-=======
-package com.example.goldpet;
-
-import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.levirs.example.goldpet.R;
-
-public class Adocao extends AppCompatActivity implements View.OnClickListener {
-
-    ImageView imgAnimal;
-    TextView infoAnimal;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.adocao);
-
-        imgAnimal = findViewById(R.id.imgAnimal);
-        infoAnimal = findViewById(R.id.infoAnimal);
-
-        imgAnimal.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.imgAnimal:
-                finish();
-            break;
+            animaisList.add(animais);
+        }catch (Exception e){
+            e.printStackTrace();
         }
+        adocaoAdapter.notifyDataSetChanged();
     }
+
 }
->>>>>>> 300e5da72eb8685329594e1a1201da49f6224530
