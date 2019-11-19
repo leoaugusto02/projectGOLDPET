@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import android.view.View;
 
-
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity
     ActionBarDrawerToggle toggle;
     TextView verMais;
 
-    private int[] mImages = new int[]{
+    private  int[] mImages = new int[]{
             R.drawable.golden, R.drawable.snow, R.drawable.peludinho
     };
 
@@ -47,9 +46,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        drawer = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        toggle = new ActionBarDrawerToggle(
+         drawer = findViewById(R.id.drawer_layout);
+         navigationView = findViewById(R.id.nav_view);
+         toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -112,12 +111,13 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        // Log.i("teste", id+"");
+       // Log.i("teste", id+"");
         if (id == R.id.nav_home) {
             Toast.makeText(this, "This is home", Toast.LENGTH_SHORT).show();
 
@@ -126,12 +126,12 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_login) {
             Intent it = new Intent(this, Login.class);
             startActivity(it);
-        } else if (id == R.id.nav_forum) {
+        }else if (id == R.id.nav_forum){
 
-        } else if (id == R.id.nav_cadastro) {
+        }else if(id == R.id.nav_cadastro){
             Intent it = new Intent(getApplicationContext(), Cadastro.class);
             startActivity(it);
-        } else if (id == R.id.nav_adocao) {
+        }else if (id == R.id.nav_adocao) {
             Intent it = new Intent(getApplicationContext(), Adocao.class);
             startActivity(it);
         }
@@ -145,12 +145,11 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
+        switch (view.getId()){
             case R.id.verMais:
                 Intent it = new Intent(getApplicationContext(), Adocao.class);
                 startActivity(it);
-                break;
+            break;
         }
     }
 }
-

@@ -1,4 +1,5 @@
 package com.example.goldpet.model;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -123,7 +124,7 @@ public class ConsumirWebService{
 
     //                                  ---WEB SERVICE PARA ANIMAL---
 
-    public static JSONObject listarAnimaisAdocao(String acao){
+    public static JSONArray listarAnimaisAdocao(String acao){
         String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais";
 
         try {
@@ -142,12 +143,14 @@ public class ConsumirWebService{
 
             String linha = "";
             JSONObject obj = new JSONObject();
+            JSONArray arr = new JSONArray();
 
             while ((linha = br.readLine()) != null) {
                 System.out.println("Tô aqui " + linha);
                 obj = new JSONObject(linha);
+                arr.put(obj);
             }
-            return obj;
+            return arr;
         }catch (Exception e) {
             e.printStackTrace();
             return null;

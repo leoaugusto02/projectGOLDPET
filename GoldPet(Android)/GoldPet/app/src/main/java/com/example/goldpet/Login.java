@@ -1,4 +1,3 @@
-
 package com.example.goldpet;
 
 import android.content.Intent;
