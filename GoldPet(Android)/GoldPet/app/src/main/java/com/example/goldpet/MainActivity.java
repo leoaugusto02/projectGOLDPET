@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.constraintlayout.widget.Group;
+import androidx.core.R;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -139,6 +140,7 @@ public class MainActivity extends AppCompatActivity
         }else if(id == R.id.nav_cadastro){
             Intent it = new Intent(getApplicationContext(), Cadastro.class);
             startActivity(it);
+        }else if (id = R.id.nav_adocao) {
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -146,6 +148,10 @@ public class MainActivity extends AppCompatActivity
         return true;
 
     }
+<<<<<<< HEAD
+=======
+}
+>>>>>>> 7b9c12926e2a9ec446537b2f3026b41056d17cd9
 
     @Override
     public void onClick(View view) {
