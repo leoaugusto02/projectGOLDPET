@@ -12,40 +12,47 @@
         android:text="Perfil Pet's"
         android:textSize="25dp" />
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:hint="Nome do Pet" />
+        android:hint="Nome do Pet"
+        android:textSize="20dp" />
 
-    <EditText
+    <TextView
         android:layout_width="194dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
         android:hint="Especie" />
 
-    <EditText
+    <TextView
         android:layout_width="214dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="195dp"
-        android:layout_marginTop="-45dp"
+        android:layout_marginTop="-30dp"
+        android:textSize="20dp"
         android:hint="Porte" />
 
-    <EditText
+    <TextView
         android:layout_width="194dp"
         android:layout_height="wrap_content"
+        android:textSize="20dp"
         android:hint="Idade" />
 
-    <EditText
+    <TextView
         android:layout_width="218dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="195dp"
-        android:layout_marginTop="-45dp"
+        android:layout_marginTop="-25dp"
+        android:textSize="20dp"
         android:hint="Status" />
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Genêro" />
+        android:hint="Genêro"
+        android:textSize="20dp" />
 
     <ImageView
         android:id="@+id/ivImagem"
