@@ -1,126 +1,4 @@
-<<<<<<< HEAD
-package com.example.goldpet;
 
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-public class ConsumirWebService{
-
-    public static String cadastrar(String pNome, String sNome, String apelido, String cep, String referencia, String cpf, String rg, String tel1, String tel2,
-                            String dataNasc, String email, String senha, String confSenha, String genero, String acao, String acaoConta){
-        String urlWebService = "http://192.168.56.1:8080/goldpetBackEnd/ProcessaPessoas";
-
-        try{
-
-            String parametros = "pNome=" + pNome + "&sNome=" + sNome + "&apelido=" + apelido +
-                    "&cep=" + cep + "&referencia=" + referencia + "&cpf="+ cpf + "&rg=" + rg +
-                    "&tel1=" + tel1 + "&tel2=" + tel2 + "&nascimento=" + dataNasc + "&email=" + email +
-                    "&senha=" + senha + "&confSenha=" + confSenha + "&genero=" + genero
-                    + "&acao=" + acao + "&acaoConta=" + acaoConta;
-
-
-            URL url = new URL(urlWebService);
-            HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
-            conexaoWeb.setRequestMethod("POST");
-            conexaoWeb.setDoOutput(true);
-
-
-            DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
-            wr.writeBytes(parametros);
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
-            String apnd = "", linha = "";
-
-            while((linha = br.readLine()) != null) apnd += linha;
-
-            JSONObject obj = new JSONObject(apnd);
-
-            String mensagem;
-
-            if(obj.getString("mensagem").equals("0")){
-                mensagem = "Cadastro concluido com sucesso";
-            }else if(obj.getString("mensagem").equals("2")){
-                mensagem = "As senhas precisam ser iguais";
-            }else if(obj.getString("mensagem").equals("3")){
-                mensagem = "Usuario já existe";
-            }else{
-                mensagem = "OPS! Algo deu errado";
-            }
-
-            return mensagem;
-        }catch(Exception e){
-            e.printStackTrace();
-            return null;
-        }
-
-    }
-
-    public static JSONObject login(String login, String senha, String acao){
-        String urlWebService = "http://192.168.56.1:8080/goldpetBackEnd/ProcessaPessoas";
-
-        try{
-            String parametros = "login=" + login + "&senha=" + senha + "&acao=" + acao;
-
-            URL url = new URL(urlWebService);
-            HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
-            conexaoWeb.setRequestMethod("POST");
-            conexaoWeb.setDoOutput(true);
-
-            DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
-            wr.writeBytes(parametros);
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
-
-            String apnd = "", linha = "";
-
-            while((linha = br.readLine()) != null) apnd += linha;
-
-            JSONObject obj = new JSONObject(apnd);
-
-            return obj;
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public static JSONObject perfil(int codeUser){
-        String urlWebService = "http://192.168.56.1:8080/goldpetBackEnd/ProcessaPessoas";
-        String acao = "mostrarCredencial";
-        try{
-            String parametros = "codeUser=" + codeUser + "&acao=" + acao;
-
-            URL url = new URL(urlWebService);
-            HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
-            conexaoWeb.setRequestMethod("POST");
-            conexaoWeb.setDoOutput(true);
-
-            DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
-            wr.writeBytes(parametros);
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
-
-            String apnd = "", linha = "";
-
-            while ((linha = br.readLine()) != null)
-                apnd += linha;
-
-            JSONObject obj = new JSONObject(apnd);
-
-            return obj;
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
-
-    }
-
-=======
 package com.example.goldpet;
 
 import org.json.JSONException;
@@ -245,9 +123,6 @@ public class ConsumirWebService{
 
     }
 
-<<<<<<< HEAD
->>>>>>> 996bf1d5afe0a08323491eac5265a50d0d7d43e2
-=======
     //                                  ---WEB SERVICE PARA ANIMAL---
 
     public static JSONObject listarAnimaisAdocao(String acao){
@@ -282,5 +157,4 @@ public class ConsumirWebService{
     }
 
 
->>>>>>> b94daa3925dfec8c52c307df94904f7c73c21d7d
 }
