@@ -57,7 +57,7 @@ public class ProcessaAnimais extends HttpServlet {
 		String acao = req.getParameter("acao");
 		String acaoModal = req.getParameter("acaoModal");
 		
-		System.out.println("ACAO MODAL");
+		System.out.println("ACAO MODAL" + acaoModal);
 
 		if (acao != null) {
 			if (acao.equals("perfil")) {
@@ -169,7 +169,7 @@ public class ProcessaAnimais extends HttpServlet {
 			try {
 				if (aDao.inserirAnimal(a)) {
 					System.out.println("Animal inserido com sucesso");
-					
+					resp.sendRedirect("adocao.jsp");
 				}
 
 			} catch (SQLException e) {
