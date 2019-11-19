@@ -19,8 +19,7 @@ public class AnimaisDAO {
 
 	public Animais perfilDog(int codeAnimal) throws SQLException {
 
-		String sql = "SELECT nome, especie, raca, porte, idade, sexo, status, imgAnimal, nomeVeterinario, dataDiagnostico, diagnostico, imagem "
-				+ " FROM Animais a INNER JOIN Laudo l ON a.codeAnimal = l.codeAnimal WHERE a.codeAnimal = ?";
+		String sql = "SELECT nome, especie, raca, porte, idade, sexo, status, imgAnimal FROM Animais WHERE codeAnimal = ?";
 
 		con = ConnectionDB.getConnection();
 
@@ -52,6 +51,28 @@ public class AnimaisDAO {
 		}
 
 		return null;
+	}
+	
+	public void laudo(int codeAnimal) throws SQLException {
+		String sql = "SELECT nomeVeterinario, dataDiagnostico, diagnostico, imagem FROM Laudo WHERE codeAnimal = ?";
+		
+		con = ConnectionDB.getConnection();
+
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, codeAnimal);
+
+		ResultSet rs = ps.executeQuery();
+		
+		if (rs.next()) {
+			Laudo l = new Laudo();
+			l.setNomeVeterinario(rs.getString("nomeVeterinario"));
+			l.setDataDiagnostico(rs.getString("dataDiagnostico"));
+			l.setDiagnostico(rs.getString("diagnostico"));
+			l.setImagem(rs.getString("imagem"));
+			
+		}
+
+	
 	}
 
 	public boolean inserirAnimal(Animais a) throws SQLException {
@@ -90,7 +111,7 @@ public class AnimaisDAO {
 	}
 	
 	public List<Animais> listarAnimaisAdocao() throws SQLException{
-		String sql="SELECT codeAnimal ,nome, status, raca, especie FROM Animais a";
+		String sql="SELECT codeAnimal ,nome, status, raca, especie, imgAnimal FROM Animais a";
 		
 		con = ConnectionDB.getConnection();
 		
@@ -107,6 +128,7 @@ public class AnimaisDAO {
 			a.setStatus(rs.getString("status"));
 			a.setRaca(rs.getString("raca"));
 			a.setEspecie(rs.getString("especie"));
+			a.setImgAnimal(rs.getString("imgAnimal"));
 			
 			lstAnimais.add(a);
 		}
@@ -171,4 +193,5 @@ public class AnimaisDAO {
 		
 		return ps.executeUpdate() > 0;
 	}
+	
 }
