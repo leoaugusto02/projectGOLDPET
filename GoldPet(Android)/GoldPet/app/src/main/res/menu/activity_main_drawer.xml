@@ -3,6 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+<<<<<<< HEAD
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/ic_menu_pessoa"
+            android:title="@string/menu_login" />
+        <item
+            android:id="@+id/nav_cadastro"
+            android:icon="@drawable/ic_menu_pessoa"
+            android:title="@string/menu_cadastro"/>
+=======
     <group
         android:id="@+id/menu_lateral"
         android:checkableBehavior="single">
@@ -16,11 +28,15 @@
             android:id="@+id/nav_login"
             android:icon="@drawable/ic_menu_pessoa"
             android:title="@string/menu_login" />
+>>>>>>> 996bf1d5afe0a08323491eac5265a50d0d7d43e2
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_gallery" />
+<<<<<<< HEAD
+=======
 
+>>>>>>> 996bf1d5afe0a08323491eac5265a50d0d7d43e2
         <item
             android:id="@+id/nav_dicas"
             android:icon="@drawable/ic_menu_estrela"
@@ -31,6 +47,10 @@
             android:icon="@drawable/ic_menu_forum"
             android:title="@string/menu_forum" />
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 996bf1d5afe0a08323491eac5265a50d0d7d43e2
     </group>
 
 </menu>
