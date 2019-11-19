@@ -56,9 +56,39 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         rbMasculino.setOnClickListener(this);
         rbFemenino.setOnClickListener(this);
 
+
+        //celular
         SimpleMaskFormatter smf =  new SimpleMaskFormatter("(NN)NNNNN-NNNN");
         MaskTextWatcher mtw = new MaskTextWatcher(edtTel1, smf);
         edtTel1.addTextChangedListener(mtw);
+
+        //telefone
+        SimpleMaskFormatter smft = new SimpleMaskFormatter("NNNN-NNNN");
+        MaskTextWatcher mtwt = new MaskTextWatcher(edtTel2,smft);
+        edtTel2.addTextChangedListener(mtwt);
+
+        //Data
+        SimpleMaskFormatter smfd = new SimpleMaskFormatter("NN/NN/NNNN");
+        MaskTextWatcher mtwd = new MaskTextWatcher(edtDataNasc,smfd);
+        edtDataNasc.addTextChangedListener(mtwd);
+
+        //CEP
+        SimpleMaskFormatter smfc = new SimpleMaskFormatter("NNNNN-NNN");
+        MaskTextWatcher mtwc = new MaskTextWatcher(edtCep,smfc);
+        edtCep.addTextChangedListener(mtwc);
+
+        //CPF
+        SimpleMaskFormatter smfcpf = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
+        MaskTextWatcher mtwcpf = new MaskTextWatcher(edtCpf,smfcpf);
+        edtCpf.addTextChangedListener(mtwcpf);
+
+        //RG
+        SimpleMaskFormatter smfrg = new SimpleMaskFormatter("NN.NNN.NNN-NN");
+        MaskTextWatcher mtwrg = new MaskTextWatcher(edtRg,smfrg);
+        edtRg.addTextChangedListener(mtwrg);
+
+
+
         //fim da mascara
 
     }
