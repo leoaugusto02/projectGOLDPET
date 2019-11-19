@@ -22,11 +22,6 @@
         android:textColor="#000"/>
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvAdocao"
-            android:layout_width="match_parent"
-            android:layout_height="598dp" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,6 +30,11 @@
             android:text="Adicionar mais"
             android:textColor="#856B6B"
             android:textSize="17dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAdocao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 </ScrollView>
