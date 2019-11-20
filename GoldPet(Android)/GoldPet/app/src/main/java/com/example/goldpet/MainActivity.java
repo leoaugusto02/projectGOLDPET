@@ -1,17 +1,10 @@
 package com.example.goldpet;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.util.Log;
 import android.view.View;
 
-import androidx.constraintlayout.widget.Group;
-import androidx.core.R;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -27,10 +20,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
 
 import android.view.Menu;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +36,7 @@ public class MainActivity extends AppCompatActivity
     TextView verMais;
 
     private  int[] mImages = new int[]{
-            R.drawable.golden,R.drawable.snow, R.drawable.peludinho
+            R.drawable.golden, R.drawable.snow, R.drawable.peludinho
     };
 
     @Override
@@ -140,7 +131,9 @@ public class MainActivity extends AppCompatActivity
         }else if(id == R.id.nav_cadastro){
             Intent it = new Intent(getApplicationContext(), Cadastro.class);
             startActivity(it);
-        }else if (id = R.id.nav_adocao) {
+        }else if (id == R.id.nav_adocao) {
+            Intent it = new Intent(getApplicationContext(), Adocao.class);
+            startActivity(it);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -148,10 +141,7 @@ public class MainActivity extends AppCompatActivity
         return true;
 
     }
-<<<<<<< HEAD
-=======
-}
->>>>>>> 7b9c12926e2a9ec446537b2f3026b41056d17cd9
+
 
     @Override
     public void onClick(View view) {

@@ -63,11 +63,7 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
         new Thread(){
             public void run(){
                 String acao = "listaAdocao";
-<<<<<<< HEAD
-                final JSONObject jsonAnimais = ConsumirWebService.listarAnimaisAdocao(acao);
-=======
                 final JSONArray jsonAnimais = ConsumirWebService.listarAnimaisAdocao(acao);
->>>>>>> fea21e69b18a0d6f80e3b6616c7330515d86d0eb
 
                 if(jsonAnimais == null){
                     handler.post(new Runnable() {
@@ -90,21 +86,10 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
         }.start();
     }
 
-<<<<<<< HEAD
-    private void exibirAnimais(JSONObject jsonAnimais){
-        try {
-            Animais animais = new Animais();
-            animais.setCodAnimal(jsonAnimais.getInt("codAnimal"));
-            animais.setNome(jsonAnimais.getString("nome"));
-            animais.setStatus(jsonAnimais.getString("status"));
-            animais.setRaca(jsonAnimais.getString("raca"));
-            animais.setEspecie(jsonAnimais.getString("especie"));
 
-            animaisList.add(animais);
-=======
-    private void exibirAnimais(JSONArray jsonAnimais){
+    private void exibirAnimais (JSONArray jsonAnimais){
         try {
-            for(int i = 0; i < jsonAnimais.length(); i++){
+            for (int i = 0; i < jsonAnimais.length(); i++) {
                 JSONObject jsonAnimal = jsonAnimais.getJSONObject(i);
 
                 Animais animais = new Animais();
@@ -117,15 +102,11 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
                 animaisList.add(animais);
             }
 
->>>>>>> fea21e69b18a0d6f80e3b6616c7330515d86d0eb
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         adocaoAdapter.notifyDataSetChanged();
     }
-<<<<<<< HEAD
 
 }
-=======
-}
->>>>>>> fea21e69b18a0d6f80e3b6616c7330515d86d0eb
+
