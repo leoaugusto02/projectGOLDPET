@@ -173,6 +173,25 @@ public class ConsumirWebService{
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
 
+<<<<<<< HEAD
+    public static JSONObject perfilAnimal(String codAnimal){
+        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais";
+        String acao = "perfil";
+        try{
+            String parametros = "codeUser=" + codAnimal + "&acao=" + acao;
+
+            URL url = new URL(urlWebService);
+            HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
+            conexaoWeb.setRequestMethod("POST");
+            conexaoWeb.setDoOutput(true);
+
+            DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
+            wr.writeBytes(parametros);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
+
+=======
+>>>>>>> ccec72d1b205f232a92219e300d75b2e06b5a20f
             String apnd = "", linha = "";
 
             while ((linha = br.readLine()) != null)
@@ -187,4 +206,8 @@ public class ConsumirWebService{
         }
 
     }
+<<<<<<< HEAD
+
+=======
+>>>>>>> ccec72d1b205f232a92219e300d75b2e06b5a20f
 }

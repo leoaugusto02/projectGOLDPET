@@ -4,5 +4,6 @@
     <item name="ic_menu_estrela" type="drawable">@drawable/ic_menu_estrela</item>
     <item name="ic_menu_forum" type="drawable">@drawable/ic_menu_forum</item>
     <item name="ic_menu_adocao" type="drawable">@drawable/ic_menu_adocao</item>
+    <item name="ic_menu_resgate" type="drawable">@drawable/ic_menu_resgate</item>
 
 </resources>
