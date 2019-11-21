@@ -25,8 +25,7 @@ body {
 	width: 15%;
 	display: flex;
 	flex-direction: column;
-/*	background-image: url("img/bgLados.png")*/
-	
+	/*	background-image: url("img/bgLados.png")*/
 }
 
 #meio {
@@ -98,27 +97,30 @@ body {
 .menu>li {
 	padding-left: 15px;
 }
-ul{
-			list-style: none;
-			padding: 0px;
-			margin: 0px;
-		}
-		li{
-			border-left: 4px solid black;
-			margin-bottom: 2px;
-			text-color:black;
-			display: inline-block;
-			padding: 5px 5px 5px 10px;
-			/*display: inline-block;*/
-		
-		}
-		li:hover{
-			border-left: 4px solid grey;
-		}
-		a{
-		color: black;
-		text-decoration : none;
-		}
+
+ul {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+li {
+	border-left: 4px solid black;
+	margin-bottom: 2px;
+	text-color: black;
+	display: inline-block;
+	padding: 5px 5px 5px 10px;
+	/*display: inline-block;*/
+}
+
+li:hover {
+	border-left: 4px solid grey;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
 </style>
 <html>
 <head>
@@ -130,31 +132,31 @@ ul{
 <body>
 	<div class="conteudo">
 
-	<div class="card card-splash" 
-		style="margin-top:11.4%; width: 300px;height:150px;background-color: rgba(199, 252, 255, 0.5);">
-		<div id="esquerda">
-			<div class="menuLateral">
-				<ul>
-					<a href="#">
-						<li>Agenda</li>
-					</a>
+		<div class="card card-splash"
+			style="margin-top: 11.4%; width: 300px; height: 150px; background-color: rgba(199, 252, 255, 0.5);">
+			<div id="esquerda">
+				<div class="menuLateral">
+					<ul>
+						<a href="#">
+							<li>Agenda</li>
+						</a>
 
-					<a href="#">
-						<li>Adoções</li>
-					</a>
+						<a href="#">
+							<li>Adoções</li>
+						</a>
 
-					<a href="#">
-						<li>Usuarios</li>
-					</a>
+						<a href="#">
+							<li>Usuarios</li>
+						</a>
 
-					<a href="#">
-						<li>Gerenciar</li>
-					</a>
+						<a href="#">
+							<li>Gerenciar</li>
+						</a>
 
-				</ul>
+					</ul>
+				</div>
 			</div>
 		</div>
-	</div>
 		<div id="meio">
 
 			<div id="cabecalho">
@@ -167,7 +169,7 @@ ul{
 
 					<div class="w-100">
 						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
-							<a class="navbar-brand" href="#">Home</a>
+							<a class="navbar-brand" href="Index.jsp">Home</a>
 							<button class="navbar-toggler" type="button"
 								data-toggle="collapse" data-target="#navbarNavAltMarkup"
 								aria-controls="navbarNavAltMarkup" aria-expanded="false"
@@ -179,9 +181,9 @@ ul{
 									<a class="nav-item nav-link active" href="adocao.jsp">adoção<span
 										class="sr-only">(current)</span></a> <a class="nav-item nav-link "
 										href="Resgate.jsp">resgate</a> <a
-										class="nav-item nav-link active" href="DicasPets">Dicas</a> <a
-										class="nav-item nav-link " href="questionPage">Forun</a> <a
-										class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
+										class="nav-item nav-link active" href="DicasPets.jsp">Dicas</a>
+									<a class="nav-item nav-link " href="questionPage.jsp">Forun</a>
+									<a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
 									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
 								</div>
 							</div>
@@ -258,7 +260,7 @@ ul{
 								<td>98752512</td>
 
 							</tr>
-							
+
 						</tbody>
 
 					</table>

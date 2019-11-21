@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="#93D6D6"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#93D6D6"
+    android:fillViewport="true"
+    tools:context="">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
 
     <TextView
         android:layout_width="280dp"
@@ -54,24 +62,25 @@
         android:hint="Genêro"
         android:textSize="20dp" />
 
-    <ImageView
-        android:id="@+id/ivImagem"
-        android:layout_width="match_parent"
-        android:layout_height="228dp"
-        android:layout_marginTop="20dp"/>
+        <Button
+            android:layout_width="186dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Inserir Laudo " />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="280dp"
-        android:text="Adicionar Foto"
-        android:textSize="18dp" />
+        <ImageView
+            android:id="@+id/ivImagem"
+            android:layout_width="match_parent"
+            android:layout_height="228dp"
+            android:layout_marginTop="25dp"/>
 
-    <Button
-        android:layout_width="181dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="50dp"
-        android:text="Listar Pet" />
+        <Button
+            android:id="@+id/txtLaudo"
+            android:layout_width="181dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="25dp"
+            android:text="Adotar" />
 
 </LinearLayout>
+</ScrollView>
