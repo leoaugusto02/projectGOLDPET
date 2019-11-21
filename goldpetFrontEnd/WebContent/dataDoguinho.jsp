@@ -92,10 +92,15 @@ body, html {
 <body>
 
 	<%
-		String acao = "perfil"; // olá 
+		String acao = "perfil";
+		String acaoInserir = request.getParameter("acaoInserir");
 		String codAnimal = request.getParameter("codAnimal");
 		String parametros = "acao=" + acao + "&codAnimal=" + codAnimal;
-
+		
+		if(acaoInserir != null){
+			
+			
+		}
 		URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
 
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -215,8 +220,7 @@ body, html {
 					</div>
 
 					<%
-						if(obj.getString("nomeVet") != null || obj.getString("diagnostico") != null){
-						
+						if (obj.getString("mensagem").equals("temLaudo")) {
 					%>
 					<div class="card  mb-8">
 
@@ -241,20 +245,79 @@ body, html {
 										<th><strong>Diagnostico completo:</strong></th>
 										<td><%=obj.getString("imgDiag")%></td>
 									</tr>
-									<%// if (request.getSession().getAttribute("codigoUsuario") == null) {
-										
-									//}%>
-									
-									<tr style=" visibility: hidden;">
+									<%
+										// if (request.getSession().getAttribute("codigoUsuario") == null) {
+
+											//}
+									%>
+
+									<tr style="visibility: hidden;">
 										<th><strong>Enviar laudo medico</strong></th>
-										<td><input type="file" id="upload" name="arquivo" /></td>
+										<td></td>
 									</tr>
 								</tbody>
 							</table>
 
 						</div>
 					</div>
-					<%} %>
+					<%
+						} else if (obj.getString("mensagem").equals("semLaudo")) {
+					%>
+					<br>
+					<button type="button" class="btn btn-outline-success"
+						data-toggle="modal" data-target="#laudoModal">Inserir
+						Laudo</button>
+
+					<div class="modal" id="laudoModal" tabindex="-1" role="dialog"
+						aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content" style="width: 565px;">
+
+								<div class="modal-header" style="background-color: #139F97;">
+									<h5 class="modal-title">Inserir Laudo</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span>x</span>
+									</button>
+								</div>
+
+								<div class="modal-body">
+									<div class="form-group">
+										<label>Data do diagnóstico:</label> <input type="date"
+											class="form-group col-md-6" name="dataDiagnostico"
+											style="margin-left: 3%;">
+									</div>
+									<div id="textArea">
+										<textarea class="form-control" id="textarea"
+											placeholder="Breve diagnóstico" rows="3" name="breveDiagnostico"
+											style="margin-top: 2px; margin-bottom: 3%; height: 80px; width: 470px;"></textarea>
+									</div>
+									<div class="form-group">
+									<label>Diagnóstico completo: </label>
+									<input type="file" id="upload" name="arquivo" style="float: right;"  />
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-outline-success">
+										<img alt="postar.png" src="img/postar.png"
+											style="height: 20px; width: 20px; margin-left: -0.5;" />
+										Confirmar
+									</button>
+									<input type="hidden" name="acaoInserir" value="inserirLaudo">
+									<button type="button" class="btn btn-outline-danger"
+										data-dismiss="modal">
+										<img alt="close.png" src="img/close.png"
+											style="height: 20px; width: 20px; margin-left: -0.5;" />
+										Cancelar
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<%
+						}
+					%>
 					<br>
 
 					<div id="buttonAdd">
