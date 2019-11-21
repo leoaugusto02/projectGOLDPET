@@ -80,10 +80,19 @@ public class ProcessaAnimais extends HttpServlet {
 					objMens.put("status", a.getStatus());
 					objMens.put("sexo", a.getSexo());
 					objMens.put("imgAnimal", a.getImgAnimal());
-					objMens.put("nomeVet", a.getLaudo().getNomeVeterinario());
-					objMens.put("dataDiag", a.getLaudo().getDataDiagnostico());
-					objMens.put("diagnostico", a.getLaudo().getDiagnostico());
-					objMens.put("imgDiag", a.getLaudo().getImagem());
+					
+					if(aDao.laudo(codAnimal) != null) {
+						Animais ani = new Animais();
+						ani = aDao.laudo(codAnimal);
+						objMens.put("nomeVet", ani.getLaudo().getNomeVeterinario());
+						objMens.put("dataDiag", ani.getLaudo().getDataDiagnostico());
+						objMens.put("diagnostico", ani.getLaudo().getDiagnostico());
+						objMens.put("imgDiag", ani.getLaudo().getImagem());
+						
+						objMens.put("mensagem", "temLaudo");
+					}else {
+						objMens.put("mensagem", "semLaudo");
+					}
 
 					out.print(objMens.toString());
 					System.out.println(objMens.toString());

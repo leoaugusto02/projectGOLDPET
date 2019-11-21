@@ -114,22 +114,26 @@ p.round {
 				<div class="navC d-flex w-100 justfy-content-center">
 
 					<div class="w-100">
-			<nav class="navbar navbar-expand-lg navbar-light minhaNav">
-  <a class="navbar-brand" href="#">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="adocao.jsp">adoção<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link " href="Resgate.jsp">resgate</a>
-      <a class="nav-item nav-link active" href="DicasPets">Dicas</a>
-      <a class="nav-item nav-link " href="questionPage">Forun</a>
-      <a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
-      <a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
-    </div>
-  </div>
-</nav>
+						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
+							<a class="navbar-brand" href="Index.jsp">Home</a>
+							<button class="navbar-toggler" type="button"
+								data-toggle="collapse" data-target="#navbarNavAltMarkup"
+								aria-controls="navbarNavAltMarkup" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+								<div class="navbar-nav">
+									<a class="nav-item nav-link active" href="adocao.jsp">adoção<span
+										class="sr-only">(current)</span></a> <a class="nav-item nav-link "
+										href="Resgate.jsp">resgate</a> <a
+										class="nav-item nav-link active" href="DicasPets.jsp">Dicas</a>
+									<a class="nav-item nav-link " href="questionPage.jsp">Forun</a>
+									<a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
+									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
+								</div>
+							</div>
+						</nav>
 					</div>
 				</div>
 			</div>
@@ -154,16 +158,12 @@ p.round {
 					frequentemente é uma das maiores demonstrações de amor e carinho
 					que pode ter com o peludinho!
 				</p>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<a href="DicasPets"><button type="button" class="btn btn-primary">Voltar</button></a>
-			
+				<br> <br> <br> <br> <br> <a
+					href="DicasPets"><button type="button" class="btn btn-primary">Voltar</button></a>
+
 			</div>
-			</div>
-			</div>
+		</div>
+	</div>
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

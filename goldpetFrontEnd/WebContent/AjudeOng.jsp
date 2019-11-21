@@ -111,22 +111,19 @@ body, html {
 
 .bar {
 	display: -ms-flexbox;
-    display: flex;
-    height: 50px;
-    overflow: hidden;
-    font-size: .75rem;
-    background-color: #6c757d;
-    border-radius: .25rem;
-    margin-bottom:10px;
-    animation: progress-bar-stripes 2s linear infinite;
+	display: flex;
+	height: 50px;
+	overflow: hidden;
+	font-size: .75rem;
+	background-color: #6c757d;
+	border-radius: .25rem;
+	margin-bottom: 10px;
+	animation: progress-bar-stripes 2s linear infinite;
 }
 
-.active{
-
--webkit-animation: progress-bar-stripes 700ms linear infinite;
+.active {
+	-webkit-animation: progress-bar-stripes 700ms linear infinite;
 }
-
-
 </style>
 </head>
 <body>
@@ -150,7 +147,7 @@ body, html {
 
 					<div class="w-100">
 						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
-							<a class="navbar-brand" href="#">Home</a>
+							<a class="navbar-brand" href="Index.jsp">Home</a>
 							<button class="navbar-toggler" type="button"
 								data-toggle="collapse" data-target="#navbarNavAltMarkup"
 								aria-controls="navbarNavAltMarkup" aria-expanded="false"
@@ -162,9 +159,9 @@ body, html {
 									<a class="nav-item nav-link active" href="adocao.jsp">adoção<span
 										class="sr-only">(current)</span></a> <a class="nav-item nav-link "
 										href="Resgate.jsp">resgate</a> <a
-										class="nav-item nav-link active" href="DicasPets">Dicas</a> <a
-										class="nav-item nav-link " href="questionPage">Forun</a> <a
-										class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
+										class="nav-item nav-link active" href="DicasPets.jsp">Dicas</a>
+									<a class="nav-item nav-link " href="questionPage.jsp">Forun</a>
+									<a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
 									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
 								</div>
 							</div>
@@ -186,14 +183,13 @@ body, html {
 					recursos necessários para dar uma vida mais confortável e alegre
 					para os nossos animais. Nossa meta desse mês R$1500,00, ajude-nos!!
 				</h4>
-				<BR>
-				<br>
-				<br>
+				<BR> <br> <br>
 				<h4>Quantidade arrecada:</h4>
 				<div class="bar">
-					<div class="progress-bar progress-bar-striped active " role="progressbar"
-						aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
-						style="width: 40%">40% Complete (success)</div>
+					<div class="progress-bar progress-bar-striped active "
+						role="progressbar" aria-valuenow="40" aria-valuemin="0"
+						aria-valuemax="100" style="width: 40%">40% Complete
+						(success)</div>
 				</div>
 			</div>
 		</div>
