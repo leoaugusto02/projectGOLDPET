@@ -40,7 +40,7 @@ public class Perfil extends AppCompatActivity {
                 JSONObject jsonPerfilAnimal = ConsumirWebService.perfilAnimal(codeAnimal);
 
                 if(jsonPerfilAnimal != null){
-                    
+
                 }
 
             }
