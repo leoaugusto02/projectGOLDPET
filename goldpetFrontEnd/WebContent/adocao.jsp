@@ -248,23 +248,6 @@ body, html {
 							</div>
 						</div>
 					</div>
-					<div class="modal-header" style="background-color: #139F97;">
-						<h5 class="modal-title">Laudo</h5>
-					</div>
-					<div class="modal-body">
-						<div>
-
-							<input class="form-control" type="text"
-								placeholder="Nome do veterinário" style="margin-bottom: 3%;"
-								name="nomeVet" />
-							<div class="form-group">
-								<input type="date" class="form-group col-md-6" name="nascimento">
-							</div>
-							<input class="form-control" type="text"
-								placeholder="Diagnóstico breve" name="diagnostico"
-								style="margin-bottom: 3%;" />
-						</div>
-					</div>
 
 					<div class="modal-footer">
 						<button type="button" class="btn btn-outline-danger"
