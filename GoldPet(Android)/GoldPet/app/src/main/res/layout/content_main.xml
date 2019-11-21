@@ -90,10 +90,11 @@
         android:layout_marginTop="-77dp"
         android:src="@drawable/snow"/>
 
-        <TextView android:id="@+id/verMais"
-            android:layout_width="109dp"
+        <TextView
+            android:id="@+id/verMais"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="280dp"
+            android:layout_marginLeft="250dp"
             android:layout_marginTop="20dp"
             android:text="Veja mais!"
             android:textColor="#000"
