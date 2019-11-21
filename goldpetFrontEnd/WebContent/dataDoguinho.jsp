@@ -97,10 +97,12 @@ body, html {
 		String codAnimal = request.getParameter("codAnimal");
 		String parametros = "acao=" + acao + "&codAnimal=" + codAnimal;
 		
-		if(acaoInserir != null){
-			
-			
-		}
+		
+			if(acaoInserir != null){
+				
+				
+			}
+		
 		URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
 
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -262,6 +264,7 @@ body, html {
 					</div>
 					<%
 						} else if (obj.getString("mensagem").equals("semLaudo")) {
+							if(request.getSession().getAttribute("codigoUsuario") != null){
 					%>
 					<br>
 					<button type="button" class="btn btn-outline-success"
@@ -289,12 +292,13 @@ body, html {
 									</div>
 									<div id="textArea">
 										<textarea class="form-control" id="textarea"
-											placeholder="Breve diagnóstico" rows="3" name="breveDiagnostico"
+											placeholder="Breve diagnóstico" rows="3"
+											name="breveDiagnostico"
 											style="margin-top: 2px; margin-bottom: 3%; height: 80px; width: 470px;"></textarea>
 									</div>
 									<div class="form-group">
-									<label>Diagnóstico completo: </label>
-									<input type="file" id="upload" name="arquivo" style="float: right;"  />
+										<label>Diagnóstico completo: </label> <input type="file"
+											id="upload" name="arquivo" style="float: right;" />
 									</div>
 								</div>
 								<div class="modal-footer">
@@ -316,6 +320,8 @@ body, html {
 					</div>
 
 					<%
+							
+							}
 						}
 					%>
 					<br>

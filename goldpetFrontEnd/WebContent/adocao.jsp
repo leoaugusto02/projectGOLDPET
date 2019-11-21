@@ -106,7 +106,7 @@ body, html {
 </style>
 </head>
 <body>
-
+<!--  ATUALIZAR ADOÇÃO -->
 	<div class="conteudo">
 
 		<div id="esquerda"></div>
@@ -150,126 +150,128 @@ body, html {
 
 			</div>
 
-	<!--  INICIO BUTTON ADD -->
-	<div id="buttonAdd"
-		style="margin-left: 86%; margin-bottom: 2%; width: 15%;">
-		<button type="button" class="btn btn-outline-success"
-			data-toggle="modal" data-target="#siteModal">
-			<img alt="add.png" src="img/add.png"
-				style="height: 20px; width: 20px; margin-left: -0.5;">
-			Adicinar Dog
-		</button>
-	</div>
-	<!--  FIM BUTTON ADD -->
+			<!--  INICIO BUTTON ADD -->
+			<div id="buttonAdd"
+				style="margin-left: 86%; margin-bottom: 2%; width: 15%;">
+				<button type="button" class="btn btn-outline-success"
+					data-toggle="modal" data-target="#siteModal">
+					<img alt="add.png" src="img/add.png"
+						style="height: 20px; width: 20px; margin-left: -0.5;">
+					Adicinar Dog
+				</button>
+			</div>
+			<!--  FIM BUTTON ADD -->
 
-	<!--  INICIO FORM MODAL -->
+			<!--  INICIO FORM MODAL -->
 
-	<form action="http://localhost:8080/goldpetBackEnd/ProcessaAnimais"
-		method="POST" enctype="multipart/form-data">
+			<form action="http://localhost:8080/goldpetBackEnd/ProcessaAnimais"
+				method="POST" enctype="multipart/form-data">
 
-		<div class="modal" id="siteModal" tabindex="-1" role="dialog"
-			aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
+				<div class="modal" id="siteModal" tabindex="-1" role="dialog"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
 
-					<div class="modal-header" style="background-color: #139F97;">
-						<h5 class="modal-title">Cadastro</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span>x</span>
-						</button>
-					</div>
-
-					<div class="modal-body">
-						<div>
-
-							<input class="form-control" type="text"
-								placeholder="Nome do animal" style="margin-bottom: 3%;"
-								name="nome" /> <input class="form-control" type="number"
-								placeholder="Idade" name="idade" style="margin-bottom: 3%;" />
-							<input class="form-control" type="text" placeholder="Raça"
-								name="raca" style="margin-bottom: 3%;" /> <input
-								class="form-control" type="text" placeholder="Porte"
-								name="porte" style="margin-bottom: 3%;" /> <input
-								class="form-control" type="text" placeholder="Espécie"
-								name="especie" style="margin-bottom: 3%;" />
-
-							<div class="form-check form-check-inline"
-								style="margin-bottom: 2%;">
-								<input class="form-check-input" type="radio" name="genero"
-									id="inlineRadio1" value="Fêmea"> <label
-									class="form-check-label" for="inlineRadio1"> <img
-									alt="feminino.png" src="img/feminino.png"
-									style="height: 25px; width: 25px; margin-left: -0.5;">Fêmea
-								</label>
-							</div>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="genero"
-									id="inlineRadio2" value="Macho"> <label
-									class="form-check-label" for="inlineRadio2"> <img
-									alt="masculino.png" src="img/masculino.png"
-									style="height: 25px; width: 25px; margin-left: -0.5;">Macho
-								</label>
-
+							<div class="modal-header" style="background-color: #139F97;">
+								<h5 class="modal-title">Cadastro</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span>x</span>
+								</button>
 							</div>
 
-							<div id="textArea">
-								<textarea class="form-control" id="textarea"
-									placeholder="Status do Pet" rows="3" name="status"
-									style="margin-top: 2px; margin-bottom: 0px; height: 80px; width: 470px;"></textarea>
+							<div class="modal-body">
+								<div>
+
+									<input class="form-control" type="text"
+										placeholder="Nome do animal" style="margin-bottom: 3%;"
+										name="nome" /> <input class="form-control" type="number"
+										placeholder="Idade" name="idade" style="margin-bottom: 3%;" />
+									<input class="form-control" type="text" placeholder="Raça"
+										name="raca" style="margin-bottom: 3%;" /> <input
+										class="form-control" type="text" placeholder="Porte"
+										name="porte" style="margin-bottom: 3%;" /> <input
+										class="form-control" type="text" placeholder="Espécie"
+										name="especie" style="margin-bottom: 3%;" />
+
+									<div class="form-check form-check-inline"
+										style="margin-bottom: 2%;">
+										<input class="form-check-input" type="radio" name="genero"
+											id="inlineRadio1" value="Fêmea"> <label
+											class="form-check-label" for="inlineRadio1"> <img
+											alt="feminino.png" src="img/feminino.png"
+											style="height: 25px; width: 25px; margin-left: -0.5;">Fêmea
+										</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="genero"
+											id="inlineRadio2" value="Macho"> <label
+											class="form-check-label" for="inlineRadio2"> <img
+											alt="masculino.png" src="img/masculino.png"
+											style="height: 25px; width: 25px; margin-left: -0.5;">Macho
+										</label>
+
+									</div>
+
+									<div id="textArea">
+										<textarea class="form-control" id="textarea"
+											placeholder="Status do Pet" rows="3" name="status"
+											style="margin-top: 2px; margin-bottom: 0px; height: 80px; width: 470px;"></textarea>
+									</div>
+									<div>
+
+										<input type="file" id="upload" name="imagem"
+											style="float: right; margin-top: 6%;"> <img id="img"
+											style="width: 300px; margin-left: 17%;" />
+										<script>
+											$(function() {
+												$('#upload')
+														.change(
+																function() {
+																	console
+																			.log($(this));
+																	const file = ($(this)[0].files[0])
+																	const fileReader = new FileReader()
+																	fileReader.onloadend = function() {
+																		$(
+																				'#img')
+																				.attr(
+																						'src',
+																						fileReader.result)
+																	}
+																	fileReader
+																			.readAsDataURL(file)
+																})
+											})
+										</script>
+
+
+									</div>
+								</div>
 							</div>
-							<div>
 
-								<input type="file" id="upload" name="imagem"
-									style="float: right; margin-top: 6%;"> <img id="img"
-									style="width: 300px; margin-left: 17%;" />
-								<script>
-									$(function() {
-										$('#upload')
-												.change(
-														function() {
-															console
-																	.log($(this));
-															const file = ($(this)[0].files[0])
-															const fileReader = new FileReader()
-															fileReader.onloadend = function() {
-																$('#img')
-																		.attr(
-																				'src',
-																				fileReader.result)
-															}
-															fileReader
-																	.readAsDataURL(file)
-														})
-									})
-								</script>
-
-
+							<div class="modal-footer">
+								<button type="button" class="btn btn-outline-danger"
+									data-dismiss="modal">
+									<img alt="close.png" src="img/close.png"
+										style="height: 20px; width: 20px; margin-left: -0.5;" />
+									Close
+								</button>
+								<input type="submit" class="btn btn-outline-success"
+									value="Postar" />
+								<!-- 	<img alt="postar.png" src="img/postar.png"
+									style="height: 20px; width: 20px; margin-left: -0.5;" /> -->
+								<input type="hidden" name="acaoModal" id="acaoModal"
+									value="inserirPet" /> <input type="hidden" name="pathFile"
+									value="<%=getServletContext().getRealPath("/").replace('\\', '/')%>" />
 							</div>
 						</div>
 					</div>
-
-					<div class="modal-footer">
-						<button type="button" class="btn btn-outline-danger"
-							data-dismiss="modal">
-							<img alt="close.png" src="img/close.png"
-								style="height: 20px; width: 20px; margin-left: -0.5;" /> Close
-						</button>
-						<input type="submit" class="btn btn-outline-success"
-							value="Postar" />
-						<!-- 	<img alt="postar.png" src="img/postar.png"
-									style="height: 20px; width: 20px; margin-left: -0.5;" /> -->
-						<input type="hidden" name="acaoModal" id="acaoModal"
-							value="inserirPet" /> <input type="hidden" name="pathFile"
-							value="<%=getServletContext().getRealPath("/").replace('\\', '/')%>" />
-					</div>
 				</div>
-			</div>
-		</div>
-	</form>
-	<!--  FIM FORM MODAL -->
+			</form>
+			<!--  FIM FORM MODAL -->
 
-	<%
+			<%
 				String acao = "listaAdocao";
 				String codAnimal = request.getParameter("codAnimal");
 				String acaoModal = request.getParameter("acaoModal");
@@ -321,54 +323,53 @@ body, html {
 				JSONObject obj;
 			%>
 
-	<!-- FORM LISTA ANIMAL-->
+			<!-- FORM LISTA ANIMAL-->
 
-	<form action="#" method="post">
-		<%
+			<form action="#" method="post">
+				<%
 					System.out.println("Tô aqui antes do while");
 
 					int i = 0;
 					boolean fimWhile = false;
-					
 
 					while ((linha = br.readLine()) != null) {
 						//System.out.println("Tô aqui " + linha);
 						obj = new JSONObject(linha);
 
 						System.out.println("img/" + obj.getString("imgAnimal"));
-						
+
 						if (i == 0) {
 				%>
-		<div class="d-flex justify-content-around">
-			<%
+				<div class="d-flex justify-content-around">
+					<%
 						}
 					%>
-			<a href="dataDoguinho.jsp?codAnimal=<%=obj.getInt("codAnimal")%>">
-				<div class="card bg-dark text-white" style="width: 23rem;">
-					<img src="img/<%=obj.getString("imgAnimal")%>" class="card-img"
-						href="#" style="height: 500px;">
-					<div class="card-img-overlay">
-						<h5 class="card-title"><%=obj.getString("nome")%></h5>
-						<p class="card-text">
-							Código:
-							<%=obj.getInt("codAnimal")%>
-							<br> Status:
-							<%=obj.getString("nome")%><br> Raça:
-							<%=obj.getString("raca")%><br> Espécie:
-							<%=obj.getString("especie")%><br>
+					<a href="dataDoguinho.jsp?codAnimal=<%=obj.getInt("codAnimal")%>">
+						<div class="card bg-dark text-white" style="width: 23rem;">
+							<img src="img/<%=obj.getString("imgAnimal")%>" class="card-img"
+								href="#" style="height: 500px;">
+							<div class="card-img-overlay">
+								<h5 class="card-title"><%=obj.getString("nome")%></h5>
+								<p class="card-text">
+									Código:
+									<%=obj.getInt("codAnimal")%>
+									<br> Status:
+									<%=obj.getString("nome")%><br> Raça:
+									<%=obj.getString("raca")%><br> Espécie:
+									<%=obj.getString("especie")%><br>
 
-						</p>
-						<p class="card-text">Last updated 3 mins ago</p>
-					</div>
-				</div> <br>
-			</a>
-			<%
+								</p>
+								<p class="card-text">Last updated 3 mins ago</p>
+							</div>
+						</div> <br>
+					</a>
+					<%
 						i++;
 							if (i == 3) {
 								fimWhile = false;
 					%>
-		</div>
-		<%
+				</div>
+				<%
 					i = 0;
 						} else {
 							fimWhile = true;
@@ -378,14 +379,14 @@ body, html {
 					System.out.println("Tô aqui dps do while");
 					if (fimWhile) {
 				%>
-	
-	</div>
-	<%
+			
+		</div>
+		<%
 			}
 		%>
-	</form>
+		</form>
 
-	<!--  FIM FORM LISTA -->
+		<!--  FIM FORM LISTA -->
 	</div>
 
 	<div id="direita"></div>

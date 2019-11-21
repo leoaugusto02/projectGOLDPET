@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import vo.Funcionario;
 import vo.Guardiao;
 import vo.Pessoa;
 
@@ -181,42 +182,51 @@ public class PessoaDAO {
 		con = ConnectionDB.getConnection();
 
 		if (acao.equals("1")) {
-			sql = "INSERT INTO Funcionario(codePerson, cargo)"
-					+ " SELECT * FROM (SELECT "+codePerson+",'"+cargo+"') AS func"
-					+ " WHERE NOT EXISTS ("
-					+ "	SELECT codePerson FROM Funcionario WHERE codePerson ="+ codePerson
-					+ ") LIMIT 1;";
-			sql2 = "UPDATE Pessoa p INNER JOIN Funcionario f ON p.codePerson = f.codePerson INNER JOIN Guardiao g ON p.codePerson = f.codePerson SET p.tipo = 'Funcionário', f.status='ativo', g.status='desativo' WHERE p.codePerson =" + codePerson;
+			sql = "INSERT INTO Funcionario(codePerson, cargo)" + " SELECT * FROM (SELECT " + codePerson + ",'" + cargo
+					+ "') AS func" + " WHERE NOT EXISTS (" + "	SELECT codePerson FROM Funcionario WHERE codePerson ="
+					+ codePerson + ") LIMIT 1;";
+			sql2 = "UPDATE Pessoa p INNER JOIN Funcionario f ON p.codePerson = f.codePerson INNER JOIN Guardiao g ON p.codePerson = f.codePerson SET p.tipo = 'Funcionário', f.status='ativo', g.status='desativo' WHERE p.codePerson ="
+					+ codePerson;
 		} else {
-			sql = "INSERT INTO Guardiao(codePerson, animais_resgatados, rank, progresso)"
-					+ " SELECT * FROM (SELECT "+codePerson+", 0, 'Iniciante', 0) AS guard"
-					+ " WHERE NOT EXISTS ("
-					+ "	SELECT codePerson FROM Guardiao WHERE codePerson ="+ codePerson
-					+ ") LIMIT 1;";
-			sql2 = "UPDATE Pessoa p INNER JOIN Funcionario f ON p.codePerson = f.codePerson INNER JOIN Guardiao g ON p.codePerson = f.codePerson SET p.tipo = 'Guardião', f.status='demetido', g.status='ativo' WHERE p.codePerson =" + codePerson;
+			sql = "INSERT INTO Guardiao(codePerson, animais_resgatados, rank, progresso)" + " SELECT * FROM (SELECT "
+					+ codePerson + ", 0, 'Iniciante', 0) AS guard" + " WHERE NOT EXISTS ("
+					+ "	SELECT codePerson FROM Guardiao WHERE codePerson =" + codePerson + ") LIMIT 1;";
+			sql2 = "UPDATE Pessoa p INNER JOIN Funcionario f ON p.codePerson = f.codePerson INNER JOIN Guardiao g ON p.codePerson = f.codePerson SET p.tipo = 'Guardião', f.status='demetido', g.status='ativo' WHERE p.codePerson ="
+					+ codePerson;
 		}
-		
+
 		con.setAutoCommit(false);
 		ps = con.prepareStatement(sql);
 		PreparedStatement ps2 = con.prepareStatement(sql2);
-		
+
 		if ((ps.executeUpdate() > 0) && (ps2.executeUpdate() > 0)) {
 			con.commit();
 			return true;
 		}
-		
+
 		return false;
 	}
-	public Pessoa verificaTipo(int codigo) throws SQLException{
+
+	public Pessoa verificaTipo(int codigo) throws SQLException {
 		String sql = "SELECT * FROM Pessoa WHERE codePerson = ?";
 
 		con = ConnectionDB.getConnection();
 
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, codigo);
-		
-		
+
 		return null;
 	}
-	
+
+	public Funcionario verificaCargo(int codUsuario) throws SQLException {
+
+		String sql = "SELECT cargo FROM Pessoa WHERE codFunc = ? ";
+
+		con = ConnectionDB.getConnection();
+
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, codUsuario);
+
+		return null;
+	}
 }
