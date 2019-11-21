@@ -87,7 +87,7 @@ public class ProcessaAnimais extends HttpServlet {
 						objMens.put("nomeVet", ani.getLaudo().getNomeVeterinario());
 						objMens.put("dataDiag", ani.getLaudo().getDataDiagnostico());
 						objMens.put("diagnostico", ani.getLaudo().getDiagnostico());
-						objMens.put("imgDiag", ani.getLaudo().getImagem());
+						objMens.put("imgDiag", ani.getLaudo().getImagem()); 
 						
 						objMens.put("mensagem", "temLaudo");
 					}else {
