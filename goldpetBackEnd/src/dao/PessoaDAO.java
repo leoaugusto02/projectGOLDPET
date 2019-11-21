@@ -207,5 +207,16 @@ public class PessoaDAO {
 		
 		return false;
 	}
+	public Pessoa verificaTipo(int codigo) throws SQLException{
+		String sql = "SELECT * FROM Pessoa WHERE codePerson = ?";
+
+		con = ConnectionDB.getConnection();
+
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, codigo);
+		
+		
+		return null;
+	}
 	
 }

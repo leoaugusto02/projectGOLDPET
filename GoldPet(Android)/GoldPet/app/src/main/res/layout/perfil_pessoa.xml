@@ -43,7 +43,7 @@
         android:textSize="20dp" />
 
     <TextView
-        android:layout_width="200dp"
+        android:layout_width="202dp"
         android:layout_height="wrap_content"
         android:text="Telefone 1"
         android:textSize="20dp" />
@@ -72,7 +72,7 @@
         android:layout_width="205dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="205dp"
-        android:layout_marginTop="-25dp"
+        android:layout_marginTop="-28dp"
         android:text="Progresso"
         android:textSize="20dp" />
 
@@ -88,6 +88,5 @@
         android:layout_marginTop="25dp"
         android:layout_marginLeft="200dp"
         android:text="Alterar" />
-
 
 </LinearLayout>
