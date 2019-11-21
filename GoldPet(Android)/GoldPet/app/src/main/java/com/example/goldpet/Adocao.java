@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
 package com.example.goldpet;
 
 import android.os.Bundle;
@@ -64,7 +67,11 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
         new Thread(){
             public void run(){
                 String acao = "listaAdocao";
+<<<<<<< HEAD
                 final JSONObject jsonAnimais = ConsumirWebService.listarAnimaisAdocao(acao);
+=======
+                final JSONArray jsonAnimais = ConsumirWebService.listarAnimaisAdocao(acao);
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
 
                 if(jsonAnimais == null){
                     handler.post(new Runnable() {
@@ -87,6 +94,7 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
         }.start();
     }
 
+<<<<<<< HEAD
     private void exibirAnimais(JSONObject jsonAnimais){
         try {
             Animais animais = new Animais();
@@ -98,12 +106,32 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
 
             animaisList.add(animais);
         }catch (Exception e){
+=======
+
+    private void exibirAnimais (JSONArray jsonAnimais){
+        try {
+            for (int i = 0; i < jsonAnimais.length(); i++) {
+                JSONObject jsonAnimal = jsonAnimais.getJSONObject(i);
+
+                Animais animais = new Animais();
+
+                animais.setCodAnimal(jsonAnimal.getInt("codAnimal"));
+                animais.setNome(jsonAnimal.getString("nome"));
+                animais.setStatus(jsonAnimal.getString("status"));
+                animais.setRaca(jsonAnimal.getString("raca"));
+                animais.setEspecie(jsonAnimal.getString("especie"));
+                animaisList.add(animais);
+            }
+
+        } catch (Exception e) {
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
             e.printStackTrace();
         }
         adocaoAdapter.notifyDataSetChanged();
     }
 
 }
+<<<<<<< HEAD
 =======
 package com.example.goldpet;
 
@@ -218,3 +246,6 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
 }
 
 >>>>>>> a1b88e85e9961c40e9717f07d33b7e7f07e604cd
+=======
+
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e

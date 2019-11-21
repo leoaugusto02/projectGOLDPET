@@ -1,5 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package com.example.goldpet.model;
+=======
+package com.example.goldpet.model;
+import org.json.JSONArray;
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -63,7 +68,11 @@ public class ConsumirWebService{
     }
 
     public static JSONObject login(String login, String senha, String acao){
+<<<<<<< HEAD
         String urlWebService = "http://192.168.56.1:8080/goldpetBackEnd/ProcessaPessoas";
+=======
+        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaPessoas";
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
 
         try{
             String parametros = "login=" + login + "&senha=" + senha + "&acao=" + acao;
@@ -92,7 +101,11 @@ public class ConsumirWebService{
     }
 
     public static JSONObject perfil(int codeUser){
+<<<<<<< HEAD
         String urlWebService = "http://192.168.56.1:8080/goldpetBackEnd/ProcessaPessoas";
+=======
+        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaPessoas";
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
         String acao = "mostrarCredencial";
         try{
             String parametros = "codeUser=" + codeUser + "&acao=" + acao;
@@ -124,7 +137,11 @@ public class ConsumirWebService{
 
     //                                  ---WEB SERVICE PARA ANIMAL---
 
+<<<<<<< HEAD
     public static JSONObject listarAnimaisAdocao(String acao){
+=======
+    public static JSONArray listarAnimaisAdocao(String acao){
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
         String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais";
 
         try {
@@ -143,18 +160,29 @@ public class ConsumirWebService{
 
             String linha = "";
             JSONObject obj = new JSONObject();
+<<<<<<< HEAD
+=======
+            JSONArray arr = new JSONArray();
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
 
             while ((linha = br.readLine()) != null) {
                 System.out.println("Tô aqui " + linha);
                 obj = new JSONObject(linha);
+<<<<<<< HEAD
             }
             return obj;
+=======
+                arr.put(obj);
+            }
+            return arr;
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
         }catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
+<<<<<<< HEAD
 
 =======
 package com.example.goldpet.model;
@@ -318,4 +346,38 @@ public class ConsumirWebService{
 
 
 >>>>>>> a1b88e85e9961c40e9717f07d33b7e7f07e604cd
+=======
+    public static JSONObject perfilAnimal(String nome, String especie, String porte, String idade, String status, String sexo){
+        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaPessoas";
+        String acao = "mostrarCredencial";
+        try{
+            String parametros = "codeUser=" + codeUser + "&acao=" + acao;
+0
+            URL url = new URL(urlWebService);
+            HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
+            conexaoWeb.setRequestMethod("POST");
+            conexaoWeb.setDoOutput(true);
+
+            DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
+            wr.writeBytes(parametros);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
+
+            String apnd = "", linha = "";
+
+            while ((linha = br.readLine()) != null)
+                apnd += linha;
+
+            JSONObject obj = new JSONObject(apnd);
+
+            return obj;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
 }

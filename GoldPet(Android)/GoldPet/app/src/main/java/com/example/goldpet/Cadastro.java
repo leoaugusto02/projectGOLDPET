@@ -1,10 +1,16 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
 package com.example.goldpet;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
@@ -137,6 +143,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         }.start();
         return null;
     }
+<<<<<<< HEAD
 =======
 package com.example.goldpet;
 
@@ -276,4 +283,6 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         return null;
     }
 >>>>>>> a1b88e85e9961c40e9717f07d33b7e7f07e604cd
+=======
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
 }

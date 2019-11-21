@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
 package com.example.goldpet;
 
 import android.content.Intent;
@@ -6,7 +9,10 @@ import android.os.Bundle;
 
 import android.view.View;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -37,7 +43,11 @@ public class MainActivity extends AppCompatActivity
     ActionBarDrawerToggle toggle;
     TextView verMais;
 
+<<<<<<< HEAD
     private int[] mImages = new int[]{
+=======
+    private  int[] mImages = new int[]{
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
             R.drawable.golden, R.drawable.snow, R.drawable.peludinho
     };
 
@@ -48,9 +58,15 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+<<<<<<< HEAD
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toggle = new ActionBarDrawerToggle(
+=======
+         drawer = findViewById(R.id.drawer_layout);
+         navigationView = findViewById(R.id.nav_view);
+         toggle = new ActionBarDrawerToggle(
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -113,12 +129,20 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+<<<<<<< HEAD
+=======
+    @SuppressWarnings("StatementWithEmptyBody")
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+<<<<<<< HEAD
         // Log.i("teste", id+"");
+=======
+       // Log.i("teste", id+"");
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
         if (id == R.id.nav_home) {
             Toast.makeText(this, "This is home", Toast.LENGTH_SHORT).show();
 
@@ -127,12 +151,21 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_login) {
             Intent it = new Intent(this, Login.class);
             startActivity(it);
+<<<<<<< HEAD
         } else if (id == R.id.nav_forum) {
 
         } else if (id == R.id.nav_cadastro) {
             Intent it = new Intent(getApplicationContext(), Cadastro.class);
             startActivity(it);
         } else if (id == R.id.nav_adocao) {
+=======
+        }else if (id == R.id.nav_forum){
+
+        }else if(id == R.id.nav_cadastro){
+            Intent it = new Intent(getApplicationContext(), Cadastro.class);
+            startActivity(it);
+        }else if (id == R.id.nav_adocao) {
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
             Intent it = new Intent(getApplicationContext(), Adocao.class);
             startActivity(it);
         }
@@ -146,6 +179,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClick(View view) {
+<<<<<<< HEAD
         switch (view.getId()) {
             case R.id.verMais:
                 Intent it = new Intent(getApplicationContext(), Adocao.class);
@@ -312,3 +346,13 @@ public class MainActivity extends AppCompatActivity
     }
 }
 >>>>>>> a1b88e85e9961c40e9717f07d33b7e7f07e604cd
+=======
+        switch (view.getId()){
+            case R.id.verMais:
+                Intent it = new Intent(getApplicationContext(), Adocao.class);
+                startActivity(it);
+            break;
+        }
+    }
+}
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e

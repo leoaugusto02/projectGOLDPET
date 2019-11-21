@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
 package com.example.goldpet;
 
 import android.content.Intent;
@@ -85,6 +88,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }.start();
     }
 }
+<<<<<<< HEAD
 =======
 package com.example.goldpet;
 
@@ -172,3 +176,5 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 }
 >>>>>>> a1b88e85e9961c40e9717f07d33b7e7f07e604cd
+=======
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
