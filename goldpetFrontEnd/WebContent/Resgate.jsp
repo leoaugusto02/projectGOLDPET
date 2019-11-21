@@ -269,8 +269,14 @@ body, html {
 
 
 
-		<div id="direita"></div>
+			<div id="direita"></div>
+		
 
+	</div>
+	
+	
+	<div id="finalPg">
+	<img src="img/Rodape2.png" />
 	</div>
 	<!-- <script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script> -->
