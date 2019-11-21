@@ -82,4 +82,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
         }.start();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ccec72d1b205f232a92219e300d75b2e06b5a20f
