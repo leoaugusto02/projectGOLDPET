@@ -54,22 +54,30 @@
         android:hint="Genêro"
         android:textSize="20dp" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="181dp"
+        android:hint="Laudo..."
+        android:textSize="20dp" />
+
+    <Button
+        android:layout_width="181dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="10dp"
+        android:text="escolher foto" />
+
     <ImageView
         android:id="@+id/ivImagem"
         android:layout_width="match_parent"
         android:layout_height="228dp"
-        android:layout_marginTop="90dp" />
-
-    <Button
-        android:layout_width="181dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="120dp"
-        android:text="Adotar" />
+        android:layout_marginTop="10dp" />
 
     <Button
         android:id="@+id/txtLaudo"
         android:layout_width="181dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="listar"
+        android:layout_marginLeft="110dp"/>
 
 </LinearLayout>
