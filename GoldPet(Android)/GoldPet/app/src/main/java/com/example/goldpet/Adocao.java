@@ -108,9 +108,4 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
         adocaoAdapter.notifyDataSetChanged();
     }
 
-<<<<<<< HEAD
 }
-
-=======
-}
->>>>>>> ccec72d1b205f232a92219e300d75b2e06b5a20f
