@@ -1,6 +1,8 @@
 package com.example.goldpet.adapter;
 
+
 import android.content.Context;
+
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,13 +10,13 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.goldpet.Adocao;
+import com.example.goldpet.PerfilAnimal;
 import com.example.goldpet.model.vo.Animais;
 import com.levirs.example.goldpet.R;
 
 import java.util.List;
 
-public class AdocaoAdapter extends RecyclerView.Adapter<AdocaoViewHolder> {
+public class AdocaoAdapter extends RecyclerView.Adapter<AdocaoViewHolder>{
     private Context context;
     private List<Animais> lstAnimais;
 
@@ -44,6 +46,9 @@ public class AdocaoAdapter extends RecyclerView.Adapter<AdocaoViewHolder> {
             public void onClick(View v) {
                 switch (v.getId()){
                     case R.id.imgAnimal:
+                        Intent it = new Intent(context, PerfilAnimal.class);
+                        it.putExtra("codeAnimal", animais.getCodAnimal());
+                        context.startActivity(it);
                     break;
                 }
             }

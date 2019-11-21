@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#93D6D6"
     android:fillViewport="true"
-    tools:context="">
+    tools:context="com.example.goldpet.PerfilAnimal">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,21 +20,21 @@
         android:text="Perfil Pet's"
         android:textSize="25dp" />
 
-    <TextView
+    <TextView android:id="@+id/txtNomePet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:hint="Nome do Pet"
         android:textSize="20dp" />
 
-    <TextView
+    <TextView android:id="@+id/txtEspecie"
         android:layout_width="194dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:textSize="20dp"
         android:hint="Especie" />
 
-    <TextView
+    <TextView android:id="@+id/txtPorte"
         android:layout_width="214dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="195dp"
@@ -42,13 +42,13 @@
         android:textSize="20dp"
         android:hint="Porte" />
 
-    <TextView
+    <TextView android:id="@+id/txtIdade"
         android:layout_width="194dp"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:hint="Idade" />
 
-    <TextView
+    <TextView android:id="@+id/txtStatus"
         android:layout_width="218dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="195dp"
@@ -56,30 +56,62 @@
         android:textSize="20dp"
         android:hint="Status" />
 
-    <TextView
+    <TextView android:id="@+id/txtGenero"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Genêro"
         android:textSize="20dp" />
 
-        <Button
-            android:layout_width="186dp"
+        <TextView
+            android:id="@+id/txtNomeVet"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Inserir Laudo " />
+            android:hint="Nome do Veterinario:"
+            android:layout_marginTop="25dp"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/txtDataDiagnostico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="20dp"
+            android:hint="Data do Diagnostico:"/>
+
+        <TextView
+            android:id="@+id/txtBreveDiagnostico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Breve Diagnostico:"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/txtDiagnosticoCompleto"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginTop="5dp"
+            android:hint="Diagnostico completo:"
+            android:textSize="20dp" />
 
         <ImageView
-            android:id="@+id/ivImagem"
+            android:id="@+id/ivAnimal"
             android:layout_width="match_parent"
             android:layout_height="228dp"
             android:layout_marginTop="25dp"/>
 
         <Button
-            android:id="@+id/txtLaudo"
-            android:layout_width="181dp"
+            android:layout_width="194dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
+            android:text="Inserir Laudo " />
+
+        <Button
+            android:id="@+id/txtLaudo"
+            android:layout_width="203dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="-48dp"
             android:text="Adotar" />
 
 </LinearLayout>

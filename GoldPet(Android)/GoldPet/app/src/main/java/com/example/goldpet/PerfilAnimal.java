@@ -3,6 +3,7 @@ package com.example.goldpet;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,11 +14,11 @@ import com.levirs.example.goldpet.R;
 
 import org.json.JSONObject;
 
-public class Perfil extends AppCompatActivity {
+public class PerfilAnimal extends AppCompatActivity {
 
-    LinearLayout lLaudo;
-    TextView txtNomePet, txtEspecie, txtRaca, txtStatus, txtGenero, txtIdade;
+    TextView txtNomePet, txtEspecie, txtRaca, txtStatus, txtGenero, txtIdade, txtNomeVet, txtDataDiagnostico, txtBreveDiagnostico, txtDiagnosticoCompleto;
     Button btnAdotar, btnLaudo;
+    ImageView ivAnimal;
     String MY_PREFS_NAME;
 
 
@@ -33,9 +34,14 @@ public class Perfil extends AppCompatActivity {
         new Thread(){
             public void run(){
                 SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+                int codeAnimal = getIntent().getIntExtra("codeAnimal" ,0);
 
+                JSONObject jsonPerfilAnimal = ConsumirWebService.perfilAnimal(codeAnimal);
 
-                JSONObject json;
+                if(jsonPerfilAnimal != null){
+                    
+                }
+
             }
         }.start();
     }
