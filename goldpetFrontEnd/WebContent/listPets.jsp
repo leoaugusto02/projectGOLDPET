@@ -166,7 +166,7 @@ a {
 
 					<div class="w-100">
 						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
-							<a class="navbar-brand" href="#">Home</a>
+							<a class="navbar-brand" href="Index.jsp">Home</a>
 							<button class="navbar-toggler" type="button"
 								data-toggle="collapse" data-target="#navbarNavAltMarkup"
 								aria-controls="navbarNavAltMarkup" aria-expanded="false"
@@ -178,14 +178,13 @@ a {
 									<a class="nav-item nav-link active" href="adocao.jsp">adoção<span
 										class="sr-only">(current)</span></a> <a class="nav-item nav-link "
 										href="Resgate.jsp">resgate</a> <a
-										class="nav-item nav-link active" href="DicasPets">Dicas</a> <a
-										class="nav-item nav-link " href="questionPage">Forun</a> <a
-										class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
+										class="nav-item nav-link active" href="DicasPets.jsp">Dicas</a>
+									<a class="nav-item nav-link " href="questionPage.jsp">Forun</a>
+									<a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
 									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
 								</div>
 							</div>
 						</nav>
-
 					</div>
 				</div>
 			</div>
