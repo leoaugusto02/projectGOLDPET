@@ -14,10 +14,9 @@ import com.levirs.example.goldpet.R;
 
 import org.json.JSONObject;
 
-public class Perfil extends AppCompatActivity {
+public class PerfilAnimal extends AppCompatActivity {
 
-    LinearLayout lLaudo;
-    TextView txtNomePet, txtEspecie, txtRaca, txtStatus, txtGenero, txtIdade;
+    TextView txtNomePet, txtEspecie, txtRaca, txtStatus, txtGenero, txtIdade, txtNomeVet, txtDataDiagnostico, txtBreveDiagnostico, txtDiagnosticoCompleto;
     Button btnAdotar, btnLaudo;
     ImageView ivAnimal;
     String MY_PREFS_NAME;
@@ -40,7 +39,7 @@ public class Perfil extends AppCompatActivity {
                 JSONObject jsonPerfilAnimal = ConsumirWebService.perfilAnimal(codeAnimal);
 
                 if(jsonPerfilAnimal != null){
-
+                    
                 }
 
             }

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.goldpet.Perfil;
+import com.example.goldpet.PerfilAnimal;
 import com.example.goldpet.model.vo.Animais;
 import com.levirs.example.goldpet.R;
 
@@ -46,7 +46,7 @@ public class AdocaoAdapter extends RecyclerView.Adapter<AdocaoViewHolder>{
             public void onClick(View v) {
                 switch (v.getId()){
                     case R.id.imgAnimal:
-                        Intent it = new Intent(context, Perfil.class);
+                        Intent it = new Intent(context, PerfilAnimal.class);
                         it.putExtra("codeAnimal", animais.getCodAnimal());
                         context.startActivity(it);
                     break;
