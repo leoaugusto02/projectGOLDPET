@@ -62,17 +62,49 @@
         android:hint="Genêro"
         android:textSize="20dp" />
 
-        <Button
-            android:layout_width="186dp"
+        <TextView
+            android:id="@+id/txtNomeVet"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Inserir Laudo " />
+            android:hint="Nome do Veterinario:"
+            android:layout_marginTop="25dp"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/txtDataDiagnostico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="20dp"
+            android:hint="Data do Diagnostico:"/>
+
+        <TextView
+            android:id="@+id/txtBreveDiagnostico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Breve Diagnostico:"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/txtDiagnosticoCompleto"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginTop="5dp"
+            android:hint="Diagnostico completo:"
+            android:textSize="20dp" />
 
         <ImageView
             android:id="@+id/ivImagem"
             android:layout_width="match_parent"
             android:layout_height="228dp"
             android:layout_marginTop="25dp"/>
+
+        <Button
+            android:layout_width="186dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Inserir Laudo " />
 
         <Button
             android:id="@+id/txtLaudo"
