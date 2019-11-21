@@ -11,70 +11,51 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imagem1"
-        android:layout_width="wrap_content"
-        android:layout_height="282dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/golden" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Laudo"
+            android:textSize="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="120dp"/>
 
-    <EditText
-        android:id="@+id/edtNome"
-        android:layout_width="358dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="20dp"
-        android:hint="Nome"
-        android:textColor="#000"
-        android:textSize="18dp" />
+        <EditText
+            android:id="@+id/edtNomeVet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome do Veterinario:"
+            android:layout_marginTop="25dp"
+            android:textSize="20dp" />
 
-    <EditText
-        android:id="@+id/edtIdade"
-        android:layout_width="358dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="1dp"
-        android:hint="Idade"
-        android:textColor="#000"
-        android:textSize="18dp" />
+        <EditText
+            android:id="@+id/dataDiagnostica"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="20dp"
+            android:hint="Data do Diagnostico:"/>
 
-    <EditText
-        android:id="@+id/edtGenero"
-        android:layout_width="359dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="1dp"
-        android:hint="Gênero"
-        android:textColor="#000"
-        android:textSize="18dp" />
+        <EditText
+            android:id="@+id/breveDiagnostico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Breve Diagnostico:"
+            android:textSize="20dp" />
 
-    <EditText
-        android:id="@+id/edtPorte"
-        android:layout_width="359dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="1dp"
-        android:hint="Porte"
-        android:textColor="#000"
-        android:textSize="18dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="5dp"
+            android:hint="Breve Diagnostico:"
+            android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/txtLaudo"
-        android:layout_width="370dp"
-        android:layout_height="116dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="12dp"
-        android:hint="Laudo do bichino"
-        android:textColor="#4D3D3D"
-        android:textSize="18dp" />
-
-    <Button
-        android:id="@+id/btAdotar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Adotar"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="310dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="100dp"
+            android:text="Enviar laudo medico"/>
 
 </LinearLayout>
 </ScrollView>
