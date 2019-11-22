@@ -240,7 +240,7 @@
 			<div class="new-forget ">
 				<a href="cadastro.jsp">Cadastre-se</a> 
 				
-				<a href="#" class="link-forgot-password" style="padding-left:19.8%;">Esqueceu sua senha?</a>
+				<a href="cadastro.jsp" class="link-forgot-password" style="padding-left:19.8%;">Esqueceu sua senha?</a>
 			</div>
 		</div>
 	</div>
