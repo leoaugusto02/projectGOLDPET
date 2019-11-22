@@ -30,7 +30,6 @@ public class AnimaisDAO {
 
 		if (rs.next()) {
 			Animais a = new Animais();
-			Laudo l = new Laudo();
 
 			a.setNome(rs.getString("nome"));
 			a.setEspecie(rs.getString("especie"));
@@ -41,19 +40,13 @@ public class AnimaisDAO {
 			a.setStatus(rs.getString("status"));
 			a.setImgAnimal(rs.getString("imgAnimal"));
 
-			l.setNomeVeterinario(rs.getString("nomeVeterinario"));
-			l.setDataDiagnostico(rs.getString("dataDiagnostico"));
-			l.setDiagnostico(rs.getString("diagnostico"));
-			l.setImagem(rs.getString("imagem"));
-			a.setLaudo(l);
-
 			return a;
 		}
 
 		return null;
 	}
 	
-	public void laudo(int codeAnimal) throws SQLException {
+	public Animais laudo(int codeAnimal) throws SQLException {
 		String sql = "SELECT nomeVeterinario, dataDiagnostico, diagnostico, imagem FROM Laudo WHERE codeAnimal = ?";
 		
 		con = ConnectionDB.getConnection();
@@ -65,14 +58,19 @@ public class AnimaisDAO {
 		
 		if (rs.next()) {
 			Laudo l = new Laudo();
+			Animais a = new Animais();
+			
 			l.setNomeVeterinario(rs.getString("nomeVeterinario"));
 			l.setDataDiagnostico(rs.getString("dataDiagnostico"));
 			l.setDiagnostico(rs.getString("diagnostico"));
 			l.setImagem(rs.getString("imagem"));
 			
+			a.setLaudo(l);
+			
+			return a;
 		}
-
 	
+		return null;
 	}
 
 	public boolean inserirAnimal(Animais a) throws SQLException {
