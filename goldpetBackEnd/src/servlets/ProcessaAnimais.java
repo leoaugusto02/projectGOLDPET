@@ -50,6 +50,8 @@ public class ProcessaAnimais extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		
+		String ext = "";
 		PrintWriter out = resp.getWriter();
 		AnimaisDAO aDao = new AnimaisDAO();
 		JSONObject objMens = new JSONObject();
@@ -93,6 +95,7 @@ public class ProcessaAnimais extends HttpServlet {
 				}
 
 			} else if (acao.equals("listaAdocao")) {
+				
 
 				try {
 
@@ -105,6 +108,7 @@ public class ProcessaAnimais extends HttpServlet {
 						objMens.put("status", a.getStatus());
 						objMens.put("raca", a.getRaca());
 						objMens.put("especie", a.getEspecie());
+						objMens.put("imgAnimal", a.getImgAnimal());
 
 						out.print(objMens.toString() + "\n");
 
@@ -125,21 +129,22 @@ public class ProcessaAnimais extends HttpServlet {
 			String especie = req.getParameter("especie");
 			String genero = req.getParameter("genero");
 			String status = req.getParameter("status");
-			
-			Part file = req.getPart("imagem");
-			String fileName = file.getSubmittedFileName();
-			System.out.println("FN - " + fileName);
-
-			int posInicial = fileName.lastIndexOf('.');
-			int posFinal = fileName.length();
-			String ext = fileName.substring(posInicial, posFinal);
+			String filePath = req.getParameter("pathFile");
 			
 			try {
-				
+
+				Part file = req.getPart("imagem");
+				String fileName = file.getSubmittedFileName();
+				System.out.println("FN - " + fileName);
+
+				int posInicial = fileName.lastIndexOf('.');
+				int posFinal = fileName.length();
+				ext = fileName.substring(posInicial, posFinal);
+								
 				InputStream fileContent = file.getInputStream();
 				System.out.println("NOME - " + nome.trim() + ext);
 				//OutputStream os = new FileOutputStream("D:\\Documentos\\Workspace\\Eclipse\\UpLoad\\WebContent\\images\\" + nome + ext);
-				OutputStream os = new FileOutputStream("C:\\Users\\Aluno\\Desktop\\Thaís\\projectGOLDPET\\goldpetFrontEnd\\WebContent\\img\\" + nome.trim() + ext);
+				OutputStream os = new FileOutputStream(filePath + "img//" + nome.trim() + ext);
 				
 				int data = fileContent.read();
 				
@@ -169,7 +174,7 @@ public class ProcessaAnimais extends HttpServlet {
 			try {
 				if (aDao.inserirAnimal(a)) {
 					System.out.println("Animal inserido com sucesso");
-					resp.sendRedirect("adocao.jsp");
+					resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/adocao.jsp");
 				}
 
 			} catch (SQLException e) {

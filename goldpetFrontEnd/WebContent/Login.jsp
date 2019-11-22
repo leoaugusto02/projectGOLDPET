@@ -56,6 +56,8 @@
 			
 			if(obj.getString("mensagem").equals("0")){
 				request.getSession().setAttribute("codigoUsuario", obj.getInt("codeUser"));
+				request.getSession().setAttribute("tipo", obj.getString("tipo"));
+				
 
 				response.sendRedirect("perfil.jsp");
 			}else{
