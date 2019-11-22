@@ -21,31 +21,20 @@
         android:text="Adote uma vida !!"
         android:textColor="#000"/>
 
-        <ImageView android:id="@+id/imgAnimal"
-            android:layout_width="127dp"
-            android:layout_height="121dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="25dp"
-            android:background="#D5F5D5"
-            android:padding="1dp"
-            android:src="@drawable/snow" />
-
-        <TextView android:id="@+id/infoAnimal"
-            android:layout_width="127dp"
-            android:layout_height="36dp"
-            android:layout_marginLeft="25dp"
-            android:text="Ed:Joaquim Pires,Nº:133, Jd.Botanico"
-            android:textColor="#000"
-            android:textSize="13dp" />
 
         <TextView
-            android:layout_width="147dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="290dp"
-            android:layout_marginTop="280dp"
+            android:layout_marginTop="20dp"
             android:text="Adicionar mais"
             android:textColor="#856B6B"
             android:textSize="17dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAdocao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 </ScrollView>

@@ -1,24 +1,25 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
 package com.example.goldpet;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.util.Log;
 import android.view.View;
 
-import androidx.constraintlayout.widget.Group;
+<<<<<<< HEAD
+
+=======
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+
 import com.levirs.example.goldpet.R;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
@@ -27,23 +28,27 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
 
 import android.view.Menu;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     DrawerLayout drawer;
 
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
+    TextView verMais;
 
+<<<<<<< HEAD
+    private int[] mImages = new int[]{
+=======
     private  int[] mImages = new int[]{
-            R.drawable.golden,R.drawable.snow, R.drawable.peludinho
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
+            R.drawable.golden, R.drawable.snow, R.drawable.peludinho
     };
 
     @Override
@@ -53,16 +58,25 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+<<<<<<< HEAD
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        toggle = new ActionBarDrawerToggle(
+=======
          drawer = findViewById(R.id.drawer_layout);
          navigationView = findViewById(R.id.nav_view);
          toggle = new ActionBarDrawerToggle(
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        verMais = findViewById(R.id.verMais);
+
+        verMais.setOnClickListener(this);
 
         CarouselView carouselView = findViewById(R.id.carousel);
         carouselView.setPageCount(mImages.length);
@@ -115,24 +129,44 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+<<<<<<< HEAD
+=======
     @SuppressWarnings("StatementWithEmptyBody")
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+<<<<<<< HEAD
+        // Log.i("teste", id+"");
+=======
        // Log.i("teste", id+"");
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
         if (id == R.id.nav_home) {
             Toast.makeText(this, "This is home", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_login) {
+            Intent it = new Intent(this, Login.class);
+            startActivity(it);
+<<<<<<< HEAD
+        } else if (id == R.id.nav_forum) {
 
+        } else if (id == R.id.nav_cadastro) {
+            Intent it = new Intent(getApplicationContext(), Cadastro.class);
+            startActivity(it);
+        } else if (id == R.id.nav_adocao) {
+=======
         }else if (id == R.id.nav_forum){
 
         }else if(id == R.id.nav_cadastro){
             Intent it = new Intent(getApplicationContext(), Cadastro.class);
+            startActivity(it);
+        }else if (id == R.id.nav_adocao) {
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e
+            Intent it = new Intent(getApplicationContext(), Adocao.class);
             startActivity(it);
         }
 
@@ -142,25 +176,27 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+
+    @Override
+    public void onClick(View view) {
+<<<<<<< HEAD
+        switch (view.getId()) {
+            case R.id.verMais:
+                Intent it = new Intent(getApplicationContext(), Adocao.class);
+                startActivity(it);
+                break;
+        }
+    }
 }
 
 =======
-=======
-
->>>>>>> d1394273c90a784ceecb7f9b43780f985f095179
 package com.example.goldpet;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.util.Log;
 import android.view.View;
 
-import androidx.constraintlayout.widget.Group;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -176,10 +212,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
 
 import android.view.Menu;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -194,7 +228,7 @@ public class MainActivity extends AppCompatActivity
     TextView verMais;
 
     private  int[] mImages = new int[]{
-            R.drawable.golden,R.drawable.snow, R.drawable.peludinho
+            R.drawable.golden, R.drawable.snow, R.drawable.peludinho
     };
 
     @Override
@@ -203,7 +237,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
          drawer = findViewById(R.id.drawer_layout);
          navigationView = findViewById(R.id.nav_view);
@@ -290,6 +323,9 @@ public class MainActivity extends AppCompatActivity
         }else if(id == R.id.nav_cadastro){
             Intent it = new Intent(getApplicationContext(), Cadastro.class);
             startActivity(it);
+        }else if (id == R.id.nav_adocao) {
+            Intent it = new Intent(getApplicationContext(), Adocao.class);
+            startActivity(it);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -298,11 +334,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-<<<<<<< HEAD
-}
 
->>>>>>> c528a0bf733e966fa5fd9cd5e24d161df4567e62
-=======
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -313,4 +345,14 @@ public class MainActivity extends AppCompatActivity
         }
     }
 }
->>>>>>> d1394273c90a784ceecb7f9b43780f985f095179
+>>>>>>> a1b88e85e9961c40e9717f07d33b7e7f07e604cd
+=======
+        switch (view.getId()){
+            case R.id.verMais:
+                Intent it = new Intent(getApplicationContext(), Adocao.class);
+                startActivity(it);
+            break;
+        }
+    }
+}
+>>>>>>> 198291a942942e99b0f5979908b578ddd5f0969e

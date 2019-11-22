@@ -92,30 +92,29 @@ body, html {
 <body>
 
 	<%
-	String acao = "perfil"; // olá 
-	String codAnimal = request.getParameter("codAnimal");
-	String parametros = "acao=" + acao + "&codAnimal=" + codAnimal;
-	
-	URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
+		String acao = "perfil"; // olá 
+		String codAnimal = request.getParameter("codAnimal");
+		String parametros = "acao=" + acao + "&codAnimal=" + codAnimal;
 
-	HttpURLConnection con = (HttpURLConnection) url.openConnection();
-	con.setRequestMethod("POST");
-	con.setDoOutput(true);
+		URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
 
-	System.out.println(parametros);
+		HttpURLConnection con = (HttpURLConnection) url.openConnection();
+		con.setRequestMethod("POST");
+		con.setDoOutput(true);
 
-	DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-	wr.writeBytes(parametros);
+		System.out.println(parametros);
 
-	BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+		wr.writeBytes(parametros);
 
-	String apnd = "", linha = "";
-	
-	while ((linha = br.readLine()) != null)
-		apnd += linha;
+		BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
-	JSONObject obj = new JSONObject(apnd);
-	
+		String apnd = "", linha = "";
+
+		while ((linha = br.readLine()) != null)
+			apnd += linha;
+
+		JSONObject obj = new JSONObject(apnd);
 	%>
 	<div id="esquerda"></div>
 	<div id="meio">
@@ -155,7 +154,7 @@ body, html {
 
 			</div>
 			<br>
-			<div class="col-xs-12 col-sm-9" style="margin-left:15%;">
+			<div class="col-xs-12 col-sm-9" style="margin-left: 15%;">
 
 				<!-- User profile -->
 				<div class="container">
@@ -175,7 +174,11 @@ body, html {
 
 						<div class="panel-body" border="3px">
 							<table class="table profile__table">
-								<tbody s>
+								<tbody>
+									<tr>
+										<th><strong>Nome:</strong><label></label></th>
+										<td><%=obj.getString("nome")%></td>
+									</tr>
 									<tr>
 										<th><strong>Espécie:</strong><label></label></th>
 										<td><%=obj.getString("especie")%></td>
@@ -211,7 +214,10 @@ body, html {
 						</div>
 					</div>
 
-
+					<%
+						if(obj.getString("nomeVet") != null || obj.getString("diagnostico") != null){
+						
+					%>
 					<div class="card  mb-8">
 
 						<h4 class="card-header">Laudo</h4>
@@ -234,19 +240,21 @@ body, html {
 									<tr>
 										<th><strong>Diagnostico completo:</strong></th>
 										<td><%=obj.getString("imgDiag")%></td>
-										<div id="sendFile">
-											
-											<label>Enviar laudo medico</label>
-											
-											<input type="file" id="upload" name="arquivo" value=""
-											style="float: right; margin-top: 6%"/>
-										</div>
+									</tr>
+									<%// if (request.getSession().getAttribute("codigoUsuario") == null) {
+										
+									//}%>
+									
+									<tr style=" visibility: hidden;">
+										<th><strong>Enviar laudo medico</strong></th>
+										<td><input type="file" id="upload" name="arquivo" /></td>
 									</tr>
 								</tbody>
 							</table>
 
 						</div>
 					</div>
+					<%} %>
 					<br>
 
 					<div id="buttonAdd">

@@ -1,15 +1,18 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.RequestContext;
@@ -19,6 +22,7 @@ import org.json.JSONObject;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
@@ -33,19 +37,29 @@ import javax.servlet.http.HttpServletResponse;
 import dao.AnimaisDAO;
 import vo.Animais;
 
-@WebServlet("/ProcessaAnimais")
+@MultipartConfig
+
+@WebServlet(
+		name = "FileUploadServlet",
+        urlPatterns = {"/ProcessaAnimais"},
+        loadOnStartup = 1
+		)
 public class ProcessaAnimais extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		
+		String ext = "";
 		PrintWriter out = resp.getWriter();
 		AnimaisDAO aDao = new AnimaisDAO();
 		JSONObject objMens = new JSONObject();
 
 		String acao = req.getParameter("acao");
 		String acaoModal = req.getParameter("acaoModal");
+		
+		System.out.println("ACAO MODAL" + acaoModal);
 
 		if (acao != null) {
 			if (acao.equals("perfil")) {
@@ -81,6 +95,7 @@ public class ProcessaAnimais extends HttpServlet {
 				}
 
 			} else if (acao.equals("listaAdocao")) {
+				
 
 				try {
 
@@ -93,6 +108,7 @@ public class ProcessaAnimais extends HttpServlet {
 						objMens.put("status", a.getStatus());
 						objMens.put("raca", a.getRaca());
 						objMens.put("especie", a.getEspecie());
+						objMens.put("imgAnimal", a.getImgAnimal());
 
 						out.print(objMens.toString() + "\n");
 
@@ -106,38 +122,43 @@ public class ProcessaAnimais extends HttpServlet {
 
 		} else if (acaoModal.equals("inserirPet")) {
 
-			if (ServletFileUpload.isMultipartContent(req)) {
-				try {
-					List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory())
-							.parseRequest((RequestContext) req);
-
-					for (FileItem item : multiparts) {
-						if (!item.isFormField()) {
-							item.write(new File(
-									req.getServletContext().getRealPath("img") + File.separator + "uploadFile"));
-						}
-					}
-					req.setAttribute("message", "Arquivo carregado com sucesso");
-				} catch (Exception e) {
-					req.setAttribute("message", "Upload do arquivo falhou devido a" + e);
-				}
-			} else {
-				req.setAttribute("message", "Desculpe este Servlet lida apenas com pedido de upload de arquivos");
-			}
-
-			// req.getRequestDispatcher("/adocao.jsp").forward(req, resp);
-
 			String nome = req.getParameter("nome");
 			Integer idade = Integer.valueOf(req.getParameter("idade"));
 			String raca = req.getParameter("raca");
-			String porte
-			
-			
-			= req.getParameter("porte");
+			String porte = req.getParameter("porte");
 			String especie = req.getParameter("especie");
 			String genero = req.getParameter("genero");
-			String imagem = req.getParameter("imagem");
 			String status = req.getParameter("status");
+			String filePath = req.getParameter("pathFile");
+			
+			try {
+
+				Part file = req.getPart("imagem");
+				String fileName = file.getSubmittedFileName();
+				System.out.println("FN - " + fileName);
+
+				int posInicial = fileName.lastIndexOf('.');
+				int posFinal = fileName.length();
+				ext = fileName.substring(posInicial, posFinal);
+								
+				InputStream fileContent = file.getInputStream();
+				System.out.println("NOME - " + nome.trim() + ext);
+				//OutputStream os = new FileOutputStream("D:\\Documentos\\Workspace\\Eclipse\\UpLoad\\WebContent\\images\\" + nome + ext);
+				OutputStream os = new FileOutputStream(filePath + "img//" + nome.trim() + ext);
+				
+				int data = fileContent.read();
+				
+				while(data != -1) {
+					os.write(data);
+					data = fileContent.read();
+				}
+				
+				os.close();
+				fileContent.close();
+			
+			}catch(Exception e) {
+				System.out.println("E - " + e);
+			}
 
 			Animais a = new Animais();
 
@@ -147,12 +168,13 @@ public class ProcessaAnimais extends HttpServlet {
 			a.setPorte(porte);
 			a.setEspecie(especie);
 			a.setSexo(genero);
-			a.setImgAnimal(imagem);
+			a.setImgAnimal(nome.trim() + ext);
 			a.setStatus(status);
 
 			try {
 				if (aDao.inserirAnimal(a)) {
 					System.out.println("Animal inserido com sucesso");
+					resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/adocao.jsp");
 				}
 
 			} catch (SQLException e) {
