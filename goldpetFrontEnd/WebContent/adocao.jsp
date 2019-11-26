@@ -275,6 +275,7 @@ body, html {
 				String acao = "listaAdocao";
 				String codAnimal = request.getParameter("codAnimal");
 				String acaoModal = request.getParameter("acaoModal");
+				String acaoVerifica = request.getParameter("acaoVerifica");
 
 				String parametros = "";
 
@@ -293,11 +294,11 @@ body, html {
 					String nomeVet = request.getParameter("nomeVet");
 
 					if ((nome != null) || (idade != null) || (raca != null) || (porte != null) || (especie != null)
-							|| (genero != null) || (imagem != null) || (status != null)) {
+							|| (genero != null) || (imagem != null) || (status != null) || (acaoVerifica != null)) {
 
 						parametros = "acaoModal=" + acaoModal + "&nome=" + nome + "&idade=" + idade + "&raca=" + raca
 								+ "&porte=" + porte + "&especie=" + especie + "&genero=" + genero + "&imagem=" + imagem
-								+ "&status=" + status;
+								+ "&status=" + status + "&acaoVerifica=" + acaoVerifica;
 
 						response.sendRedirect("adocao.jsp");
 
@@ -363,6 +364,7 @@ body, html {
 							</div>
 						</div> <br>
 					</a>
+					<input type="hidden" name="acaoVerifica" id="acaoVerifica" value="verificaSessao">
 					<%
 						i++;
 							if (i == 3) {
@@ -396,8 +398,11 @@ body, html {
 	<script src="js/jquery-3.3.1.min.js"></script> -->
 
 	<script>
-		function inserirDog() {
+		function inserirPet() {
 			$("#acaoModal").val("inserirPet");
+		}
+		function verificaSessao() {
+			$("#acaoVerifica").val("verificaSessao");
 		}
 	</script>
 </body>

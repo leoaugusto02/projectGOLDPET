@@ -35,7 +35,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.AnimaisDAO;
+import dao.PessoaDAO;
 import vo.Animais;
+import vo.Funcionario;
 
 @MultipartConfig
 
@@ -58,6 +60,7 @@ public class ProcessaAnimais extends HttpServlet {
 
 		String acao = req.getParameter("acao");
 		String acaoModal = req.getParameter("acaoModal");
+		String acaoVerifica = req.getParameter("acaoVerifica");
 		
 		System.out.println("ACAO MODAL" + acaoModal);
 
@@ -189,8 +192,21 @@ public class ProcessaAnimais extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}else if(acaoVerifica.equals("verificaSessao")) {
+			
+			int usuSessao = Integer.valueOf((String) req.getSession().getAttribute("codigoUsuario"));
+			
+			if(usuSessao != 0) {
+				PessoaDAO pDao = new PessoaDAO();
+				try {
+					Funcionario f = pDao.verificaCargo(usuSessao);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
 		}
-
 	}
 
 }

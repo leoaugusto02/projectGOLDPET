@@ -220,7 +220,7 @@ public class PessoaDAO {
 
 	public Funcionario verificaCargo(int codUsuario) throws SQLException {
 
-		String sql = "SELECT cargo FROM Pessoa WHERE codFunc = ? ";
+		String sql = "SELECT cargo FROM Funcionario, Pessoa p WHERE p.codePerson = ? ";
 
 		con = ConnectionDB.getConnection();
 
