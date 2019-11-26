@@ -56,12 +56,20 @@
         android:textSize="20dp"
         android:hint="Status" />
 
-    <TextView android:id="@+id/txtGenero"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Genêro"
-        android:textSize="20dp" />
+        <TextView
+            android:id="@+id/txtGenero"
+            android:layout_width="192dp"
+            android:layout_height="wrap_content"
+            android:hint="Genêro"
+            android:textSize="20dp" />
 
+        <TextView
+            android:layout_width="214dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="195dp"
+            android:layout_marginTop="-25dp"
+            android:hint="Raça"
+            android:textSize="20dp" />
         <TextView
             android:id="@+id/txtNomeVet"
             android:layout_width="match_parent"
