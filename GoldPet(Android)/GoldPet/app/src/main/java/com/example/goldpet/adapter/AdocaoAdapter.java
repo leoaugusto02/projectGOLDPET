@@ -39,7 +39,7 @@ public class AdocaoAdapter extends RecyclerView.Adapter<AdocaoViewHolder>{
     public void onBindViewHolder(AdocaoViewHolder holder, int position) {
         final Animais animais = lstAnimais.get(position);
 
-        holder.infoAnimal.setText(animais.getNome() + "" + animais.getStatus() + "" + animais.getRaca() + "" + animais.getEspecie());
+        holder.infoAnimal.setText(animais.getNome() + "\r\n" + animais.getStatus() + "\r\n" + animais.getRaca() + "\r\n"+ animais.getEspecie());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

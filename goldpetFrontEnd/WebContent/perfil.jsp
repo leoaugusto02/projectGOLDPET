@@ -116,7 +116,6 @@ body, html {
 				apnd += linha;
 
 			JSONObject obj = new JSONObject(apnd);
-		
 	%>
 
 	<div id="esquerda"></div>
@@ -158,98 +157,99 @@ body, html {
 									</nav>
 								</div>
 							</div>
-
 						</div>
-						<br>
-						<div class="col-xs-12 col-sm-9">
+					</div>
+				</div>
+				<br>
+				<div class="col-xs-12 col-sm-9">
 
-							<!-- User profile -->
-							<div class="container">
-								<div style="text-align: center">
-									<h2>GUARDIÃO</h2>
-									<div style="padding-top: 50px;">
-										<img src="img/male-icon.png"
-											style="width: 300px; height: 300px;" />
-									</div>
-									<div style="margin: -50px 0px 0px 280px">
-										<img src="img/escudo.png" style="width: 85px; height: 60px;" />
-									</div>
-									<br>
-									<h4>NICKNAME</h4>
-								</div>
-
+					<!-- User profile -->
+					<div class="container">
+						<div style="text-align: center">
+							<h2>GUARDIÃO</h2>
+							<div style="padding-top: 50px;">
+								<img src="img/male-icon.png"
+									style="width: 300px; height: 300px;" />
 							</div>
-
+							<div style="margin: -50px 0px 0px 280px">
+								<img src="img/escudo.png" style="width: 85px; height: 60px;" />
+							</div>
 							<br>
-							<!-- User info -->
-							<div class="container">
-								<div class="card  mb-8">
-									<div class="card-header">
-										<h4>Informações Usuario</h4>
-									</div>
-									<div class="panel-body" border="3px">
-										<table class="table profile__table">
-											<tbody>
-												<tr>
-													<th><strong>Apelido:</strong><label></label></th>
-													<td><%=obj.getString("apelido")%></td>
-												</tr>
-												<tr>
-													<th><strong>Nome:</strong><label></label></th>
-													<td><%=obj.getString("nome")%></td>
-												</tr>
-												<tr>
-													<th><strong>Data de Nascimento:</strong></th>
-													<td><%=obj.getString("nascimento")%></td>
-												</tr>
-												<tr>
-													<th><strong>Genero: </strong></th>
-													<td><%=obj.getString("genero")%></td>
-												</tr>
-												<tr>
-													<th><strong>Telefone1: </strong></th>
-													<td><%=obj.getString("tel1")%></td>
-												</tr>
-												<tr>
-													<th><strong>Telefone2:</strong><label></label></th>
-													<td><%=obj.getString("tel2")%></td>
-												</tr>
-												<tr>
-													<th><strong>Email:</strong></th>
-													<td><%=obj.getString("email")%></td>
-												</tr>
-												<tr>
-													<th><strong>Endereço:</strong></th>
-													<td><%=obj.getString("endereco")%></td>
-												</tr>
-												<tr>
-													<th><strong>Rank:</strong></th>
-													<td><%=obj.getString("rank")%></td>
-												</tr>
-												<tr>
-													<th><strong>Animais Resgatados:</strong></th>
-													<td><%=obj.getInt("aniResgatados")%></td>
-												</tr>
-												<tr>
-													<th><strong>Progresso:</strong><label></label></th>
-													<td><%=obj.getInt("progresso")%></td>
-													<td></td>
-												</tr>
-												<%
+							<h4>NICKNAME</h4>
+						</div>
+
+					</div>
+
+					<br>
+					<!-- User info -->
+					<div class="container">
+						<div class="card  mb-8">
+							<div class="card-header">
+								<h4>Informações Usuario</h4>
+							</div>
+							<div class="panel-body" border="3px">
+								<table class="table profile__table">
+									<tbody>
+										<tr>
+											<th><strong>Apelido:</strong><label></label></th>
+											<td><%=obj.getString("apelido")%></td>
+										</tr>
+										<tr>
+											<th><strong>Nome:</strong><label></label></th>
+											<td><%=obj.getString("nome")%></td>
+										</tr>
+										<tr>
+											<th><strong>Data de Nascimento:</strong></th>
+											<td><%=obj.getString("nascimento")%></td>
+										</tr>
+										<tr>
+											<th><strong>Genero: </strong></th>
+											<td><%=obj.getString("genero")%></td>
+										</tr>
+										<tr>
+											<th><strong>Telefone1: </strong></th>
+											<td><%=obj.getString("tel1")%></td>
+										</tr>
+										<tr>
+											<th><strong>Telefone2:</strong><label></label></th>
+											<td><%=obj.getString("tel2")%></td>
+										</tr>
+										<tr>
+											<th><strong>Email:</strong></th>
+											<td><%=obj.getString("email")%></td>
+										</tr>
+										<tr>
+											<th><strong>Endereço:</strong></th>
+											<td><%=obj.getString("endereco")%></td>
+										</tr>
+										<tr>
+											<th><strong>Rank:</strong></th>
+											<td><%=obj.getString("rank")%></td>
+										</tr>
+										<tr>
+											<th><strong>Animais Resgatados:</strong></th>
+											<td><%=obj.getInt("aniResgatados")%></td>
+										</tr>
+										<tr>
+											<th><strong>Progresso:</strong><label></label></th>
+											<td><%=obj.getInt("progresso")%></td>
+											<td></td>
+										</tr>
+										<%
 											}
 										%>
-											</tbody>
-										</table>
-
-									</div>
-								</div>
+									</tbody>
+								</table>
 
 							</div>
 						</div>
-						<div id="botao" style="margin-top: 5%; margin-left: 28%">
-							<button type="button" class="btn btn-outline-success"
-								data-toggle="modal" data-target="#siteModal">Alterar
-								Informações</button>
+
+					</div>
+				</div>
+				<div id="botao" style="margin-top: 5%; margin-left: 28%">
+					<button type="button" class="btn btn-outline-success"
+						data-toggle="modal" data-target="#siteModal">Alterar
+						Informações</button>
 			</form>
 		</div>
 

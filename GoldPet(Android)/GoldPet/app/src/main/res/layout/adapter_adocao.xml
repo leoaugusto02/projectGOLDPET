@@ -18,10 +18,7 @@
         android:layout_height="93dp"
         android:layout_marginLeft="159dp"
         android:layout_marginTop="-120dp"
-        android:text="Nome: Mike
-        Status: Adotado
-        Raça:Maltes
-        Especie:"
+        android:text="Nome "
         android:textColor="#000"
         android:textSize="15dp" />
 
