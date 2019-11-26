@@ -38,21 +38,17 @@ import dao.AnimaisDAO;
 import dao.PessoaDAO;
 import vo.Animais;
 import vo.Funcionario;
+import vo.Pessoa;
 
 @MultipartConfig
 
-@WebServlet(
-		name = "FileUploadServlet",
-        urlPatterns = {"/ProcessaAnimais"},
-        loadOnStartup = 1
-		)
+@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaAnimais" }, loadOnStartup = 1)
 public class ProcessaAnimais extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		
 		String ext = "";
 		PrintWriter out = resp.getWriter();
 		AnimaisDAO aDao = new AnimaisDAO();
@@ -61,8 +57,6 @@ public class ProcessaAnimais extends HttpServlet {
 		String acao = req.getParameter("acao");
 		String acaoModal = req.getParameter("acaoModal");
 		String acaoVerifica = req.getParameter("acaoVerifica");
-		
-	
 
 		if (acao != null) {
 			if (acao.equals("perfil")) {
@@ -83,17 +77,17 @@ public class ProcessaAnimais extends HttpServlet {
 					objMens.put("status", a.getStatus());
 					objMens.put("sexo", a.getSexo());
 					objMens.put("imgAnimal", a.getImgAnimal());
-					
-					if(aDao.laudo(codAnimal) != null) {
+
+					if (aDao.laudo(codAnimal) != null) {
 						Animais ani = new Animais();
 						ani = aDao.laudo(codAnimal);
 						objMens.put("nomeVet", ani.getLaudo().getNomeVeterinario());
 						objMens.put("dataDiag", ani.getLaudo().getDataDiagnostico());
 						objMens.put("diagnostico", ani.getLaudo().getDiagnostico());
-						objMens.put("imgDiag", ani.getLaudo().getImagem()); 
-						
+						objMens.put("imgDiag", ani.getLaudo().getImagem());
+
 						objMens.put("mensagem", "temLaudo");
-					}else {
+					} else {
 						objMens.put("mensagem", "semLaudo");
 					}
 
@@ -107,7 +101,6 @@ public class ProcessaAnimais extends HttpServlet {
 				}
 
 			} else if (acao.equals("listaAdocao")) {
-				
 
 				try {
 
@@ -142,7 +135,7 @@ public class ProcessaAnimais extends HttpServlet {
 			String genero = req.getParameter("genero");
 			String status = req.getParameter("status");
 			String filePath = req.getParameter("pathFile");
-			
+
 			try {
 
 				Part file = req.getPart("imagem");
@@ -152,23 +145,25 @@ public class ProcessaAnimais extends HttpServlet {
 				int posInicial = fileName.lastIndexOf('.');
 				int posFinal = fileName.length();
 				ext = fileName.substring(posInicial, posFinal);
-								
+
 				InputStream fileContent = file.getInputStream();
 				System.out.println("NOME - " + nome.trim() + ext);
-				//OutputStream os = new FileOutputStream("D:\\Documentos\\Workspace\\Eclipse\\UpLoad\\WebContent\\images\\" + nome + ext);
+				// OutputStream os = new
+				// FileOutputStream("D:\\Documentos\\Workspace\\Eclipse\\UpLoad\\WebContent\\images\\"
+				// + nome + ext);
 				OutputStream os = new FileOutputStream(filePath + "img//" + nome.trim() + ext);
-				
+
 				int data = fileContent.read();
-				
-				while(data != -1) {
+
+				while (data != -1) {
 					os.write(data);
 					data = fileContent.read();
 				}
-				
+
 				os.close();
 				fileContent.close();
-			
-			}catch(Exception e) {
+
+			} catch (Exception e) {
 				System.out.println("E - " + e);
 			}
 
@@ -192,19 +187,32 @@ public class ProcessaAnimais extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}else if(acaoVerifica.equals("verificaSessao")) {
-			
+		} else if (acaoVerifica.equals("verificaSessao")) {
+
 			int usuSessao = Integer.valueOf((String) req.getSession().getAttribute("codigoUsuario"));
-			
-			if(usuSessao != 0) {
+
+			if (usuSessao != 0) {
 				PessoaDAO pDao = new PessoaDAO();
+				Pessoa p = new Pessoa();
+
 				try {
-					Funcionario f = pDao.verificaCargo(usuSessao);
+					if (p.getTipo().equals("Funcionário")) {
+						
+						Funcionario f = pDao.verificaCargo(usuSessao);
+
+						if (f.getCargo().equals("Veterinário")) {
+							objMens.put("mensagem", "veterinario");
+						}
+					}else {
+						objMens.put("mensagem", "guardiao");
+					}
+
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
+
+			} else {
+				objMens.put("mensagem", "nenhumUsuario");
 			}
 		}
 	}

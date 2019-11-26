@@ -96,13 +96,11 @@ body, html {
 		String acaoInserir = request.getParameter("acaoInserir");
 		String codAnimal = request.getParameter("codAnimal");
 		String parametros = "acao=" + acao + "&codAnimal=" + codAnimal;
-		
-		
-			if(acaoInserir != null){
-				
-				
-			}
-		
+
+		if (acaoInserir != null) {
+
+		}
+
 		URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
 
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -264,7 +262,8 @@ body, html {
 					</div>
 					<%
 						} else if (obj.getString("mensagem").equals("semLaudo")) {
-							if(request.getSession().getAttribute("codigoUsuario") != null){
+							if (request.getSession().getAttribute("codigoUsuario") != null) {
+								if (obj.getString("mensagem").equals("veterinario")) {
 					%>
 					<br>
 					<button type="button" class="btn btn-outline-success"
@@ -320,12 +319,9 @@ body, html {
 					</div>
 
 					<%
-							
-							}
-						}
+						} else if (("mensagem").equals("guardiao")) {
 					%>
 					<br>
-
 					<div id="buttonAdd">
 						<button type="button" class="btn btn-outline-success"
 							data-toggle="modal" data-target="#siteModal">Adotar</button>
@@ -468,13 +464,28 @@ body, html {
 						</div>
 
 					</div>
+					<%
+						}
+							} else {
+					%>
+					<div class="alert alert-info" role="alert">
+						Para agendar uma visita para adotar este animalzinho,<a
+							href="cadastro.jsp" class="alert-link">clique aqui</a>, e faça
+						seu cadastro no nosso site!
+						<%
+						}
+						}
+					%>
 
+
+
+
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div id="direita"></div>
+		<div id="direita"></div>
 
-	<script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

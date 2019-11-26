@@ -126,7 +126,7 @@ public class ProcessaPessoas extends HttpServlet {
 			} else if (acao.equals("cadastrar")) {
 				Pessoa p = new Pessoa();
 
-				String apelido, p_nome, s_nome, tipo, senha, confSenha, email, cep, cpf, rg, genero, referencia, tel1,
+				String apelido, p_nome, s_nome, senha, confSenha, email, cep, cpf, rg, genero, referencia, tel1,
 						tel2;
 
 				apelido = req.getParameter("apelido");
@@ -214,11 +214,11 @@ public class ProcessaPessoas extends HttpServlet {
 						objMens.put("mensagem", "0");
 						out.print(objMens.toString());
 						System.out.println(objMens.toString());
-
+						//resp.sendRedirect("/goldpetFrontEnd/perfil.jsp");
 					} else {
 						objMens.put("mensagem", "1");
 						out.print(objMens.toString());
-						System.out.println("Usuario já existe");
+						System.out.println("Senha e/ou incorretos!");
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
