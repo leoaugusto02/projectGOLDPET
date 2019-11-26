@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_login) {
             Intent it = new Intent(this, Login.class);
+            startActivity(it);
         } else if (id == R.id.nav_forum) {
 
         }else if(id == R.id.nav_cadastro){

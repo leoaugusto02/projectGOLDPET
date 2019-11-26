@@ -56,12 +56,21 @@
         android:textSize="20dp"
         android:hint="Status" />
 
-    <TextView android:id="@+id/txtGenero"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Genêro"
-        android:textSize="20dp" />
+        <TextView
+            android:id="@+id/txtGenero"
+            android:layout_width="192dp"
+            android:layout_height="wrap_content"
+            android:hint="Genêro"
+            android:textSize="20dp" />
 
+        <TextView
+            android:id="@+id/txtRaca"
+            android:layout_width="214dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="195dp"
+            android:layout_marginTop="-25dp"
+            android:hint="Raça"
+            android:textSize="20dp" />
         <TextView
             android:id="@+id/txtNomeVet"
             android:layout_width="match_parent"
@@ -101,13 +110,14 @@
             android:layout_marginTop="25dp"/>
 
         <Button
+            android:id="@+id/btnLaudo"
             android:layout_width="194dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Inserir Laudo " />
 
         <Button
-            android:id="@+id/txtLaudo"
+            android:id="@+id/btnAdotar"
             android:layout_width="203dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="190dp"
