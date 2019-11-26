@@ -125,7 +125,8 @@ public class ConsumirWebService{
     //                                  ---WEB SERVICE PARA ANIMAL---
 
     public static JSONArray listarAnimaisAdocao(String acao){
-        String urlWebService = "http://10.87.202.178:8080/goldpetBackEnd/ProcessaAnimais";
+        //http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais?acao=listaAdocao
+        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais";
 
         try {
             String parametros = "acao=" + acao;

@@ -15,11 +15,14 @@
     <TextView
         android:id="@+id/infoAnimal"
         android:layout_width="127dp"
-        android:layout_height="36dp"
+        android:layout_height="93dp"
         android:layout_marginLeft="159dp"
         android:layout_marginTop="-120dp"
-        android:text="Ed:Joaquim Pires,Nº:133, Jd.Botanico"
+        android:text="Nome: Mike
+        Status: Adotado
+        Raça:Maltes
+        Especie:"
         android:textColor="#000"
-        android:textSize="13dp" />
+        android:textSize="15dp" />
 
 </LinearLayout>
