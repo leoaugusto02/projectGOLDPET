@@ -125,7 +125,7 @@ public class ConsumirWebService{
     //                                  ---WEB SERVICE PARA ANIMAL---
 
     public static JSONArray listarAnimaisAdocao(String acao){
-        String urlWebService = "http://10.87.202.178:8080/goldpetBackEnd/ProcessaAnimais";
+        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais";
 
         try {
             String parametros = "acao=" + acao;
@@ -162,7 +162,7 @@ public class ConsumirWebService{
         String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais";
         String acao = "perfil";
         try{
-            String parametros = "codeUser=" + codAnimal + "&acao=" + acao;
+            String parametros = "codAnimal=" + codAnimal + "&acao=" + acao;
 
             URL url = new URL(urlWebService);
             HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
