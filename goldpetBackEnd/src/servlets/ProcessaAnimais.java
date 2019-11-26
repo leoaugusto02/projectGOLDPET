@@ -62,7 +62,7 @@ public class ProcessaAnimais extends HttpServlet {
 		String acaoModal = req.getParameter("acaoModal");
 		String acaoVerifica = req.getParameter("acaoVerifica");
 		
-		System.out.println("ACAO MODAL" + acaoModal);
+	
 
 		if (acao != null) {
 			if (acao.equals("perfil")) {
