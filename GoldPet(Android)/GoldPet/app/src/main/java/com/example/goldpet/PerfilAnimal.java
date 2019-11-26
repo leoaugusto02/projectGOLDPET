@@ -63,7 +63,6 @@ public class PerfilAnimal extends AppCompatActivity {
     private void exibirpet(JSONObject jsonObject) {
         try{
             txtNomePet.setText("ufs");
-
         }catch (Exception e){
             e.printStackTrace();
         }

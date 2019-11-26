@@ -44,14 +44,11 @@ public class AdocaoAdapter extends RecyclerView.Adapter<AdocaoViewHolder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()){
-                    case R.id.imgAnimal:
-                        Intent it = new Intent(context, PerfilAnimal.class);
-                        it.putExtra("codeAnimal", animais.getCodAnimal());
-                        context.startActivity(it);
-                    break;
-                }
+                Intent it = new Intent(context, PerfilAnimal.class);
+                it.putExtra("codeAnimal", animais.getCodAnimal());
+                context.startActivity(it);
             }
+
         });
     }
 
