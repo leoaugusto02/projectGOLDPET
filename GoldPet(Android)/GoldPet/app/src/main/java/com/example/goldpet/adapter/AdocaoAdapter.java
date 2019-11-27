@@ -39,7 +39,7 @@ public class AdocaoAdapter extends RecyclerView.Adapter<AdocaoViewHolder>{
     public void onBindViewHolder(AdocaoViewHolder holder, int position) {
         final Animais animais = lstAnimais.get(position);
 
-        holder.infoAnimal.setText(animais.getNome() + "\r\n" + animais.getStatus() + "\r\n" + animais.getRaca() + "\r\n"+ animais.getEspecie());
+        holder.infoAnimal.setText("Nome do pet: " + animais.getNome() + "\r\n" + "Status: " + animais.getStatus() + "\r\n" + "Raça: " + animais.getRaca() + "\r\n"+ "Espécie: " + animais.getEspecie());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +48,6 @@ public class AdocaoAdapter extends RecyclerView.Adapter<AdocaoViewHolder>{
                 it.putExtra("codeAnimal", animais.getCodAnimal());
                 context.startActivity(it);
             }
-
         });
     }
 

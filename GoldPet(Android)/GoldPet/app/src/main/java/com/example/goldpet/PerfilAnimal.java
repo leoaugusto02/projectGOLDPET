@@ -110,7 +110,6 @@ public class PerfilAnimal extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
             case R.id.btnLaudo:
                 Intent it = new Intent(getApplicationContext(), RealizarLaudo.class);
-                it.putExtra("codAnimal", codAnimal);
                 startActivity(it);
             break;
         }
