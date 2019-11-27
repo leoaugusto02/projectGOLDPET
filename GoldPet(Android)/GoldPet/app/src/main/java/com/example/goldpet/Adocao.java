@@ -1,8 +1,10 @@
 package com.example.goldpet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.goldpet.adapter.AdocaoAdapter;
 import com.example.goldpet.model.ConsumirWebService;
 import com.example.goldpet.model.vo.Animais;
+import com.levirs.example.goldpet.MainActivity;
 import com.levirs.example.goldpet.R;
 
 import org.json.JSONArray;
@@ -56,7 +59,18 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
             case R.id.imgAnimal:
                 finish();
             break;
+
+            case R.id.btnVoltar:
+                Intent it = new Intent(this, MainActivity.class);
+                startActivity(it);
+                break;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.adocao,menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void listarAnimaisAdocao() {
