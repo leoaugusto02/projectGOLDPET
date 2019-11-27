@@ -126,7 +126,7 @@
             android:id="@+id/btnCadastrar"
             android:layout_width="193dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
+            android:layout_marginLeft="100dp"
             android:text="Cadastrar" />
 
     </LinearLayout>
