@@ -14,7 +14,7 @@ public class RealizarLaudo extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.laudo);
 
-
+        
     }
 
     @Override

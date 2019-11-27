@@ -42,7 +42,7 @@ import vo.Pessoa;
 
 @MultipartConfig
 
-@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaAnimais" }, loadOnStartup = 1)
+@WebServlet(name = "FileUploadServlet", urlPatterns = {"/ProcessaAnimais"}, loadOnStartup = 1)
 public class ProcessaAnimais extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -58,7 +58,7 @@ public class ProcessaAnimais extends HttpServlet {
 		String acaoModal = req.getParameter("acaoModal");
 		String acaoVerifica = req.getParameter("acaoVerifica");
 
-		if (acao != null) {
+		if(acao != null) {
 			if (acao.equals("perfil")) {
 
 				Animais a = new Animais();
@@ -123,98 +123,99 @@ public class ProcessaAnimais extends HttpServlet {
 					e.printStackTrace();
 				}
 
-			}
+			} else if (acaoModal.equals("inserirPet")) {
 
-		} else if (acaoModal.equals("inserirPet")) {
-
-			String nome = req.getParameter("nome");
-			Integer idade = Integer.valueOf(req.getParameter("idade"));
-			String raca = req.getParameter("raca");
-			String porte = req.getParameter("porte");
-			String especie = req.getParameter("especie");
-			String genero = req.getParameter("genero");
-			String status = req.getParameter("status");
-			String filePath = req.getParameter("pathFile");
-
-			try {
-
-				Part file = req.getPart("imagem");
-				String fileName = file.getSubmittedFileName();
-				System.out.println("FN - " + fileName);
-
-				int posInicial = fileName.lastIndexOf('.');
-				int posFinal = fileName.length();
-				ext = fileName.substring(posInicial, posFinal);
-
-				InputStream fileContent = file.getInputStream();
-				System.out.println("NOME - " + nome.trim() + ext);
-				// OutputStream os = new
-				// FileOutputStream("D:\\Documentos\\Workspace\\Eclipse\\UpLoad\\WebContent\\images\\"
-				// + nome + ext);
-				OutputStream os = new FileOutputStream(filePath + "img//" + nome.trim() + ext);
-
-				int data = fileContent.read();
-
-				while (data != -1) {
-					os.write(data);
-					data = fileContent.read();
-				}
-
-				os.close();
-				fileContent.close();
-
-			} catch (Exception e) {
-				System.out.println("E - " + e);
-			}
-
-			Animais a = new Animais();
-
-			a.setNome(nome);
-			a.setIdade(idade);
-			a.setRaca(raca);
-			a.setPorte(porte);
-			a.setEspecie(especie);
-			a.setSexo(genero);
-			a.setImgAnimal(nome.trim() + ext);
-			a.setStatus(status);
-
-			try {
-				if (aDao.inserirAnimal(a)) {
-					System.out.println("Animal inserido com sucesso");
-					resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/adocao.jsp");
-				}
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		} else if (acaoVerifica.equals("verificaSessao")) {
-
-			int usuSessao = Integer.valueOf((String) req.getSession().getAttribute("codigoUsuario"));
-
-			if (usuSessao != 0) {
-				PessoaDAO pDao = new PessoaDAO();
-				Pessoa p = new Pessoa();
+				String nome = req.getParameter("nome");
+				Integer idade = Integer.valueOf(req.getParameter("idade"));
+				String raca = req.getParameter("raca");
+				String porte = req.getParameter("porte");
+				String especie = req.getParameter("especie");
+				String genero = req.getParameter("genero");
+				String status = req.getParameter("status");
+				String filePath = req.getParameter("pathFile");
 
 				try {
-					if (p.getTipo().equals("Funcionário")) {
-						
-						Funcionario f = pDao.verificaCargo(usuSessao);
 
-						if (f.getCargo().equals("Veterinário")) {
-							objMens.put("mensagem", "veterinario");
-						}
-					}else {
-						objMens.put("mensagem", "guardiao");
+					Part file = req.getPart("imagem");
+					String fileName = file.getSubmittedFileName();
+					System.out.println("FN - " + fileName);
+
+					int posInicial = fileName.lastIndexOf('.');
+					int posFinal = fileName.length();
+					ext = fileName.substring(posInicial, posFinal);
+
+					InputStream fileContent = file.getInputStream();
+					System.out.println("NOME - " + nome.trim() + ext);
+					// OutputStream os = new
+					// FileOutputStream("D:\\Documentos\\Workspace\\Eclipse\\UpLoad\\WebContent\\images\\"
+					// + nome + ext);
+					OutputStream os = new FileOutputStream(filePath + "img//" + nome.trim() + ext);
+
+					int data = fileContent.read();
+
+					while (data != -1) {
+						os.write(data);
+						data = fileContent.read();
+					}
+
+					os.close();
+					fileContent.close();
+
+				} catch (Exception e) {
+					System.out.println("E - " + e);
+				}
+
+				Animais a = new Animais();
+
+				a.setNome(nome);
+				a.setIdade(idade);
+				a.setRaca(raca);
+				a.setPorte(porte);
+				a.setEspecie(especie);
+				a.setSexo(genero);
+				a.setImgAnimal(nome.trim() + ext);
+				a.setStatus(status);
+
+				try {
+					if (aDao.inserirAnimal(a)) {
+						System.out.println("Animal inserido com sucesso");
+						resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/adocao.jsp");
 					}
 
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+			} else if (acaoVerifica.equals("verificaSessao")) {
 
-			} else {
-				objMens.put("mensagem", "nenhumUsuario");
+				int usuSessao = Integer.valueOf((String) req.getSession().getAttribute("codigoUsuario"));
+
+				if (usuSessao != 0) {
+					PessoaDAO pDao = new PessoaDAO();
+					Pessoa p = new Pessoa();
+
+					try {
+						if (p.getTipo().equals("Funcionário")) {
+
+							Funcionario f = pDao.verificaCargo(usuSessao);
+
+							if (f.getCargo().equals("Veterinário")) {
+								objMens.put("mensagem", "veterinario");
+							}
+						} else {
+							objMens.put("mensagem", "guardiao");
+						}
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+
+				} else {
+					objMens.put("mensagem", "nenhumUsuario");
+				}
 			}
+		}else {
+			objMens.put("mensagem", "aguardando requisição");
+			out.print(objMens.toString());
 		}
 	}
-
 }
