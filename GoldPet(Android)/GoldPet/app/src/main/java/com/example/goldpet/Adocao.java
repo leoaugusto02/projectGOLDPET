@@ -1,8 +1,10 @@
 package com.example.goldpet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,6 +31,8 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
     private AdocaoAdapter adocaoAdapter;
     private Handler handler;
     private List<Animais> animaisList;
+    private TextView txtAddMais;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,9 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.adocao);
 
         rvAnimais = findViewById(R.id.rvAdocao);
+        txtAddMais = findViewById(R.id.txtAdicionarMais);
+
+        txtAddMais.setOnClickListener(this);
 
         handler = new Handler();
 
@@ -53,8 +60,9 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.imgAnimal:
-                finish();
+            case R.id.txtAdicionarMais:
+               Intent it = new Intent(getApplicationContext(), AcordoAdocao.class);
+               startActivity(it);
             break;
         }
     }
@@ -85,6 +93,8 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
             }
         }.start();
     }
+
+
 
 
     private void exibirAnimais (JSONArray jsonAnimais){
