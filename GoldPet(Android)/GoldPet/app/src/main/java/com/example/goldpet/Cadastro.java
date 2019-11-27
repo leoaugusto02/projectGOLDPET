@@ -100,7 +100,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-    private String Cadastro() {
+    private void Cadastro() {
         new Thread() {
             public void run() {
                 String rbValue = "";
@@ -133,6 +133,5 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
             }
 
         }.start();
-        return null;
     }
 }

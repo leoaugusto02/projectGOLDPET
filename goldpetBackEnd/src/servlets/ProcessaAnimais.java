@@ -123,7 +123,7 @@ public class ProcessaAnimais extends HttpServlet {
 					e.printStackTrace();
 				}
 
-			} else if (acaoModal.equals("inserirPet")) {
+			} else if (acao.equals("inserirPet")) {
 
 				String nome = req.getParameter("nome");
 				Integer idade = Integer.valueOf(req.getParameter("idade"));
@@ -212,6 +212,34 @@ public class ProcessaAnimais extends HttpServlet {
 				} else {
 					objMens.put("mensagem", "nenhumUsuario");
 				}
+			} else if(acao.equals("inserirLaudo")) {
+				int codAnimal = Integer.valueOf(req.getParameter("codAnimal"));
+				String nomeVet = req.getParameter("nomeVet");
+				String dataDiagnostico = req.getParameter("dataDiagnostico");
+				String breveDiagnostico = req.getParameter("breveDiagnostico");
+				String diagnosticoCompleto = req.getParameter("diagnosticoCompleto");
+				
+				Animais a = new Animais();
+				
+				
+				a.setCodAnimal(codAnimal);
+				a.getLaudo().setNomeVeterinario(nomeVet);
+				a.getLaudo().setDataDiagnostico(dataDiagnostico);
+				a.getLaudo().setDiagnostico(breveDiagnostico);
+				a.getLaudo().setImagem(diagnosticoCompleto);
+				
+				try {
+					if(aDao.inserirLaudo(a)){
+						objMens.put("mensagem", "Laudo realizado com sucesso");
+						out.print(objMens.toString());
+					}else {
+						objMens.put("mensagem", "Algo deu errado");
+						out.print(objMens.toString());
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
 			}
 		}else {
 			objMens.put("mensagem", "aguardando requisição");

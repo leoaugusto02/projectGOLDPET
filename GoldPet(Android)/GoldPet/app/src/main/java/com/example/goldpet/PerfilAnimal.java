@@ -21,7 +21,7 @@ public class PerfilAnimal extends AppCompatActivity implements View.OnClickListe
     TextView txtNomePet, txtEspecie, txtRaca, txtStatus, txtGenero, txtIdade, txtPorte, txtNomeVet, txtDataDiagnostico, txtBreveDiagnostico, txtDiagnosticoCompleto;
     Button btnAdotar, btnLaudo;
     ImageView ivAnimal;
-    Integer codAnimal;
+    Integer codeAnimal;
     private Handler handler;
 
 
@@ -49,13 +49,15 @@ public class PerfilAnimal extends AppCompatActivity implements View.OnClickListe
 
         ivAnimal = findViewById(R.id.ivAnimal);
 
+        btnLaudo.setOnClickListener(this);
+
         perfilAnimal();
     }
 
     private void perfilAnimal() {
         new Thread(){
             public void run(){
-                int codeAnimal = getIntent().getIntExtra("codeAnimal" ,0);
+                codeAnimal = getIntent().getIntExtra("codeAnimal" ,0);
 
                 final JSONObject jsonPerfilAnimal = ConsumirWebService.perfilAnimal(codeAnimal);
 
@@ -110,6 +112,7 @@ public class PerfilAnimal extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
             case R.id.btnLaudo:
                 Intent it = new Intent(getApplicationContext(), RealizarLaudo.class);
+                it.putExtra("codeAnimal", codeAnimal);
                 startActivity(it);
             break;
         }

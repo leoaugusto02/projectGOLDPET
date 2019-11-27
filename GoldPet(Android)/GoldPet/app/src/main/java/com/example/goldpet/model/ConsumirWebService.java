@@ -89,9 +89,7 @@ public class ConsumirWebService{
             e.printStackTrace();
             return null;
         }
-    }
-
-    public static JSONObject perfil(int codeUser){
+    } public static JSONObject perfil(int codeUser){
         String urlWebService = "http://192.168.56.1:8080/goldpetBackEnd/ProcessaPessoas";
         String acao = "mostrarCredencial";
         try{
@@ -187,6 +185,46 @@ public class ConsumirWebService{
             return null;
         }
 
+    }
+
+    public static String inserirLaudo(int codAnimal, String nomeVet, String dataDiagnostico, String breveDiagnostico, String diagnosticoCompleto){
+        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais";
+        String acao = "inserirLaudo";
+
+        try {
+            String parametros = "acao=" +  acao + "&codAnimal=" + codAnimal + "&nomeVet=" + nomeVet + "&dataDiagnostico=" + dataDiagnostico
+                    + "&breveDiagnostico=" + breveDiagnostico + "&diagnosticoCompleto=" + diagnosticoCompleto;
+
+            URL url = new URL(urlWebService);
+            HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
+            conexaoWeb.setRequestMethod("POST");
+            conexaoWeb.setDoOutput(true);
+
+            DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
+            wr.writeBytes(parametros);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
+
+            String apnd = "", linha = "";
+
+            while ((linha = br.readLine()) != null)
+                apnd += linha;
+
+            JSONObject obj = new JSONObject(apnd);
+
+            String mensagem = null;
+
+            if(obj.getString("mensagem").equals("Laudo realizado com sucesso")){
+                mensagem = "Laudo concluido com sucesso";
+            }else if(obj.getString("mensagem").equals("Algo deu errado")){
+                mensagem = "Algo deu errado";
+            }
+
+            return mensagem;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
