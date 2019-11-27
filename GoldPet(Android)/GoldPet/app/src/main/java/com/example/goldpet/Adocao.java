@@ -67,8 +67,8 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
             break;
 
             case R.id.btnVoltar:
-                Intent it = new Intent(this, MainActivity.class);
-                startActivity(it);
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
                 break;
         }
     }
