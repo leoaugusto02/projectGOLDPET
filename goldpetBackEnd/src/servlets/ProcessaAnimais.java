@@ -185,7 +185,7 @@ public class ProcessaAnimais extends HttpServlet {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-			} else if (acaoVerifica.equals("verificaSessao")) {
+			} else if (acaoVerifica != null && acaoVerifica.equals("verificaSessao")) {
 
 				int usuSessao = Integer.valueOf((String) req.getSession().getAttribute("codigoUsuario"));
 
