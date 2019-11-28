@@ -32,6 +32,24 @@
             android:textSize="24dp" />
 
         <TextView
+            android:id="@+id/txtNivelUrgente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Nivel de urgencia"
+            android:textSize="24dp" />
+
+
+
+        <TextView
+            android:id="@+id/txtStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Status"
+            android:textSize="24dp" />
+
+        <TextView
             android:id="@+id/txtEstado"
             android:layout_width="match_parent"
             android:layout_height="80dp"
