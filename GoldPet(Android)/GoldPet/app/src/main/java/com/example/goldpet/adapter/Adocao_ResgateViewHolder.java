@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.levirs.example.goldpet.R;
 
-public class AdocaoViewHolder extends RecyclerView.ViewHolder {
+public class Adocao_ResgateViewHolder extends RecyclerView.ViewHolder {
     ImageView imgAnimal;
     TextView infoAnimal;
-    public AdocaoViewHolder(View itemView) {
+    public Adocao_ResgateViewHolder(View itemView) {
         super(itemView);
 
         imgAnimal = itemView.findViewById(R.id.imgAnimal);

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#93D6D6"
+    tools:context="com.example.goldpet.Resgatar"
     android:fillViewport="true">
 
     <LinearLayout
@@ -11,61 +12,30 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="140dp"
-        android:textSize="25dp"
-        android:text="Resgatar"
-        android:textColor="#000"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="25dp"
+            android:text="Resgatar"
+            android:textColor="#000"
+            android:textSize="25dp" />
 
-    <ImageView
-        android:layout_width="127dp"
-        android:layout_height="121dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="80dp"
-        android:background="#D5F5D5"
-        android:padding="1dp"
-        android:src="@drawable/snow" />
-
-    <TextView
-        android:layout_width="127dp"
-        android:layout_height="36dp"
-        android:layout_marginLeft="25dp"
-        android:text="Ed:Joaquim
-Pires,Nº:133,
-Jd.Botanico"
-        android:textColor="#000"
-        android:textSize="13dp" />
-
-    <ImageView
-        android:layout_width="129dp"
-        android:layout_height="124dp"
-        android:layout_marginLeft="180sp"
-        android:layout_marginTop="-157dp"
-        android:background="#D5F5D5"
-        android:padding="1dp"
-        android:src="@drawable/golden"
-        />
-
-    <TextView
-        android:layout_width="128dp"
-        android:layout_height="37dp"
-        android:layout_marginLeft="180dp"
-        android:text="End:Julia Pires, Nº:24,
-Campinas        "
-        android:textColor="#000"
-        android:textSize="13dp" />
 
         <TextView
-            android:layout_width="147dp"
+            android:id="@+id/txtAdicionarMais"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="290dp"
-            android:layout_marginTop="280dp"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="20dp"
             android:text="Adicionar mais"
             android:textColor="#856B6B"
             android:textSize="17dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvResgate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 </ScrollView>

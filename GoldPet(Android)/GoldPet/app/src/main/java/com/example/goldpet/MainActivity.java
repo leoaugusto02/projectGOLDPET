@@ -135,7 +135,8 @@ public class MainActivity extends AppCompatActivity
             Intent it = new Intent(getApplicationContext(), Adocao.class);
             startActivity(it);
         }else if (id == R.id.nav_resgate) {
-
+            Intent it = new Intent(getApplicationContext(), Resgatar.class);
+            startActivity(it);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

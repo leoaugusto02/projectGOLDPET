@@ -227,4 +227,38 @@ public class ConsumirWebService{
         }
     }
 
+    //                                  ---WEB SERVICE PARA RESGATE---
+
+    public static JSONArray listarAnimaisResgate(){
+        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaResgate";
+        String acao = "listarAnimaisResgate";
+        try {
+            String parametros = "acao=" + acao;
+
+            URL url = new URL(urlWebService);
+            HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
+            conexaoWeb.setRequestMethod("POST");
+            conexaoWeb.setDoOutput(true);
+
+            DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
+            wr.writeBytes(parametros);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
+
+            String linha;
+            JSONObject obj;
+            JSONArray arr = new JSONArray();
+
+            while ((linha = br.readLine()) != null) {
+                System.out.println("Tô aqui " + linha);
+                obj = new JSONObject(linha);
+                arr.put(obj);
+            }
+            return arr;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

@@ -101,6 +101,7 @@ public class PerfilAnimal extends AppCompatActivity implements View.OnClickListe
                 txtDataDiagnostico.setText("Data do Diagnostico: " + jsonObject.getString("dataDiag"));
                 txtBreveDiagnostico.setText("Breve Diagnostico: " + jsonObject.getString("diagnostico"));
                 txtDiagnosticoCompleto.setVisibility(View.GONE);
+                btnLaudo.setVisibility(View.GONE);
             }
         }catch (Exception e){
             e.printStackTrace();

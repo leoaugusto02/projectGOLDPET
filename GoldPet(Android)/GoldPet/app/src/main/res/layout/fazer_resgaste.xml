@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#93D6D6"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <Button
+        android:id="@+id/btnImagem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Imagem Pet"
+        android:layout_marginLeft="150dp"/>
+
+    <ImageView
+        android:id="@+id/ivImagem"
+        android:layout_width="355dp"
+        android:layout_height="228dp"
+        android:layout_marginLeft="30dp" />
+
+        <TextView
+            android:id="@+id/txtEspecie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Especie"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/txtNivelUrgente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Nivel de urgencia"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/txtEstado"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="5dp"
+            android:hint="Observaçoes sobre o Pet"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/txtEndereco"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginTop="5dp"
+            android:hint="Localização do Pet"
+            android:textSize="24dp" />
+
+        <Button
+         android:id="@+id/btnPostar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="310dp"
+        android:text="Postar"/>
+
+    </LinearLayout>
+</ScrollView>

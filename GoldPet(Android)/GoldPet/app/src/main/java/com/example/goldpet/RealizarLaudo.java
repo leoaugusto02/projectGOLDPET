@@ -52,12 +52,18 @@ public class RealizarLaudo extends AppCompatActivity implements View.OnClickList
                 final String l = ConsumirWebService.inserirLaudo(codeAnimal, edtNomeVet.getText().toString(),
                         edtDataDiagnostico.getText().toString(), edtBreveDiagnostico.getText().toString(), "imagem");
 
-                if(l != null){
-                    Toast.makeText(RealizarLaudo.this, "" + l, Toast.LENGTH_SHORT).show();
-                    finish();
-                }else{
-                    Toast.makeText(RealizarLaudo.this, "Algo deu errado" + l, Toast.LENGTH_SHORT).show();
-                }
+
+               runOnUiThread(new Runnable() {
+                   @Override
+                   public void run() {
+                       if(l != null){
+                           Toast.makeText(RealizarLaudo.this, "" + l, Toast.LENGTH_SHORT).show();
+                           finish();
+                       }else{
+                           Toast.makeText(RealizarLaudo.this, "Algo deu errado" + l, Toast.LENGTH_SHORT).show();
+                       }
+                   }
+               });
             }
         }.start();
     }
