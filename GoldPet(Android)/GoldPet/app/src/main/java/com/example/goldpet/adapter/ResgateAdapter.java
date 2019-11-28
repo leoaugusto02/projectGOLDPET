@@ -12,19 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.goldpet.PerfilAnimal;
 import com.example.goldpet.model.vo.Animais;
+import com.example.goldpet.model.vo.Resgate;
 import com.levirs.example.goldpet.R;
 
 import java.util.List;
 
-public class AdocaoAdapter extends RecyclerView.Adapter<Adocao_ResgateViewHolder>{
+public class ResgateAdapter extends RecyclerView.Adapter<Adocao_ResgateViewHolder>{
     private Context context;
-    private List<Animais> lstAnimais;
+    private List<Resgate> lstResgate;
 
-    public AdocaoAdapter(Context context, List<Animais> lstAnimais){
+    public ResgateAdapter(Context context, List<Resgate> lstResgate){
         this.context = context;
-        this.lstAnimais = lstAnimais;
+        this.lstResgate = lstResgate;
     }
-
 
     @Override
     public Adocao_ResgateViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -37,20 +37,18 @@ public class AdocaoAdapter extends RecyclerView.Adapter<Adocao_ResgateViewHolder
 
     @Override
     public void onBindViewHolder(Adocao_ResgateViewHolder holder, int position) {
-        final Animais animais = lstAnimais.get(position);
+        final Resgate resgate = lstResgate.get(position);
 
-        holder.infoAnimal.setText("Nome do pet: " + animais.getNome() + "\r\n" + "Status: " + animais.getStatus() + "\r\n" + "Raça: " + animais.getRaca() + "\r\n"+ "Espécie: " + animais.getEspecie());
+        holder.infoAnimal.setText("Nível : " + resgate.getNivelUrgencia() + "\r\n" + "Status: " + resgate.getStatus());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(context, PerfilAnimal.class);
-                it.putExtra("codeAnimal", animais.getCodAnimal());
-                context.startActivity(it);
+                
             }
         });
     }
 
     @Override
-    public int getItemCount() {return lstAnimais != null ? lstAnimais.size() : 0;}
+    public int getItemCount() {return lstResgate != null ? lstResgate.size() : 0;}
 }

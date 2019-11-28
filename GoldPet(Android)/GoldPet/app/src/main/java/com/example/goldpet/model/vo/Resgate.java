@@ -1,4 +1,4 @@
-package vo;
+package com.example.goldpet.model.vo;
 
 public class Resgate {
 

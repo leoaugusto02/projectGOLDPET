@@ -30,5 +30,6 @@
         <activity android:name="com.example.goldpet.Adocao" />
         <activity android:name="com.example.goldpet.PerfilAnimal" />
         <activity android:name="com.example.goldpet.RealizarLaudo" />
+        <activity android:name="com.example.goldpet.Resgatar" />
     </application>
 </manifest>
