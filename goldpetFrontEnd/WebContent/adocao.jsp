@@ -275,8 +275,8 @@ body, html {
 				String acao = "listaAdocao";
 				String codAnimal = request.getParameter("codAnimal");
 				String acaoModal = request.getParameter("acaoModal");
-				String acaoVerifica = request.getParameter("acaoVerifica");
-
+				String acaoVerifica = "verificaSessao";
+				String codUser = "";
 				String parametros = "";
 
 				if (acaoModal != null) {
@@ -294,19 +294,20 @@ body, html {
 					String nomeVet = request.getParameter("nomeVet");
 
 					if ((nome != null) || (idade != null) || (raca != null) || (porte != null) || (especie != null)
-							|| (genero != null) || (imagem != null) || (status != null) || (acaoVerifica != null)) {
+							|| (genero != null) || (imagem != null) || (status != null)) {
 
 						parametros = "acaoModal=" + acaoModal + "&nome=" + nome + "&idade=" + idade + "&raca=" + raca
 								+ "&porte=" + porte + "&especie=" + especie + "&genero=" + genero + "&imagem=" + imagem
-								+ "&status=" + status + "&acaoVerifica=" + acaoVerifica;
+								+ "&status=" + status;
 
 						response.sendRedirect("adocao.jsp");
 
 					}
 				} else {
-					parametros = "acao=" + acao;
-				}
+					parametros = "acao=" + acao + "&acaoVerifica=" + acaoVerifica + "&codUser=" + request.getSession().getAttribute("codigoUsuario");
 
+				}
+		
 				URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
 
 				HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -364,7 +365,7 @@ body, html {
 							</div>
 						</div> <br>
 					</a>
-					<input type="hidden" name="acaoVerifica" id="acaoVerifica" value="verificaSessao">
+			<!--  	  	<input type="hidden" name="acaoVerifica" id="acaoVerifica" value="verificaSessao">-->
 					<%
 						i++;
 							if (i == 3) {

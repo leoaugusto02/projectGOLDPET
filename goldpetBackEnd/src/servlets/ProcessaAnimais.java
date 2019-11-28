@@ -58,6 +58,10 @@ public class ProcessaAnimais extends HttpServlet {
 		String acao = req.getParameter("acao");
 		String acaoModal = req.getParameter("acaoModal");
 		String acaoVerifica = req.getParameter("acaoVerifica");
+		System.out.println("acaoVerifica= " + acaoVerifica);
+		
+		String codUser = req.getParameter("codUser");
+		System.out.println("codUser= " + codUser);
 
 		if(acao != null) {
 			if (acao.equals("perfil")) {
@@ -124,7 +128,7 @@ public class ProcessaAnimais extends HttpServlet {
 					e.printStackTrace();
 				}
 
-			} else if (acao.equals("inserirPet")) {
+			} else if (acaoModal.equals("inserirPet")) {
 
 				String nome = req.getParameter("nome");
 				Integer idade = Integer.valueOf(req.getParameter("idade"));
@@ -186,34 +190,7 @@ public class ProcessaAnimais extends HttpServlet {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-			} else if (acaoVerifica != null && acaoVerifica.equals("verificaSessao")) {
-
-				int usuSessao = Integer.valueOf((String) req.getSession().getAttribute("codigoUsuario"));
-
-				if (usuSessao != 0) {
-					PessoaDAO pDao = new PessoaDAO();
-					Pessoa p = new Pessoa();
-
-					try {
-						if (p.getTipo().equals("Funcionário")) {
-
-							Funcionario f = pDao.verificaCargo(usuSessao);
-
-							if (f.getCargo().equals("Veterinário")) {
-								objMens.put("mensagem", "veterinario");
-							}
-						} else {
-							objMens.put("mensagem", "guardiao");
-						}
-
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-
-				} else {
-					objMens.put("mensagem", "nenhumUsuario");
-				}
-			} else if(acao.equals("inserirLaudo")) {
+			}  else if(acao.equals("inserirLaudo")) {
 				int codAnimal = Integer.valueOf(req.getParameter("codAnimal"));
 				String nomeVet = req.getParameter("nomeVet");
 				String dataDiagnostico = req.getParameter("dataDiagnostico");
@@ -246,6 +223,33 @@ public class ProcessaAnimais extends HttpServlet {
 		}else {
 			objMens.put("mensagem", "aguardando requisição");
 			out.print(objMens.toString());
+		} if (acaoVerifica != null && acaoVerifica.equals("verificaSessao")) {
+
+			int usuSessao = Integer.valueOf(req.getParameter("codUser"));
+
+			if (usuSessao != 0) {
+				PessoaDAO pDao = new PessoaDAO();
+				Pessoa p = new Pessoa();
+
+				try {
+					if (p.getTipo().equals("Funcionário")) {
+
+						Funcionario f = pDao.verificaCargo(usuSessao);
+
+						if (f.getCargo().equals("Veterinário")) {
+							objMens.put("mensagem", "veterinario");
+						}
+					} else {
+						objMens.put("mensagem", "guardiao");
+					}
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+
+			} else {
+				objMens.put("mensagem", "nenhumUsuario");
+			}
 		}
 	}
 }

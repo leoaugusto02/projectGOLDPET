@@ -95,6 +95,8 @@ body, html {
 		String acao = "perfil";
 		String acaoInserir = request.getParameter("acaoInserir");
 		String codAnimal = request.getParameter("codAnimal");
+		String acaoVerifica = request.getParameter("acaoVerifica");
+		String codUser = request.getParameter("codUser");
 		String parametros = "acao=" + acao + "&codAnimal=" + codAnimal;
 
 		if (acaoInserir != null) {
