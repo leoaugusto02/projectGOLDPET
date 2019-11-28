@@ -63,7 +63,7 @@ public class Resgatar extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.txtAdicionarMais:
-                Intent it = new Intent(getApplicationContext(), AcordoAdocao.class);
+                Intent it = new Intent(getApplicationContext(), Resgate.class);
                 startActivity(it);
                 break;
 
@@ -83,7 +83,6 @@ public class Resgatar extends AppCompatActivity implements View.OnClickListener 
     private void listarAnimaisResgate() {
         new Thread(){
             public void run(){
-                String acao = "listaAdocao";
                 final JSONArray jsonResgates = ConsumirWebService.listarAnimaisResgate();
 
                 if(jsonResgates == null){
@@ -106,9 +105,6 @@ public class Resgatar extends AppCompatActivity implements View.OnClickListener 
             }
         }.start();
     }
-
-
-
 
     private void exibirAnimaisResgate (JSONArray jsonResgates){
         try {
