@@ -38,6 +38,7 @@ import dao.AnimaisDAO;
 import dao.PessoaDAO;
 import vo.Animais;
 import vo.Funcionario;
+import vo.Laudo;
 import vo.Pessoa;
 
 @MultipartConfig
@@ -185,7 +186,7 @@ public class ProcessaAnimais extends HttpServlet {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-			} else if (acaoVerifica.equals("verificaSessao")) {
+			} else if (acaoVerifica != null && acaoVerifica.equals("verificaSessao")) {
 
 				int usuSessao = Integer.valueOf((String) req.getSession().getAttribute("codigoUsuario"));
 
@@ -220,13 +221,14 @@ public class ProcessaAnimais extends HttpServlet {
 				String diagnosticoCompleto = req.getParameter("diagnosticoCompleto");
 				
 				Animais a = new Animais();
-				
+				Laudo l = new Laudo();
 				
 				a.setCodAnimal(codAnimal);
-				a.getLaudo().setNomeVeterinario(nomeVet);
-				a.getLaudo().setDataDiagnostico(dataDiagnostico);
-				a.getLaudo().setDiagnostico(breveDiagnostico);
-				a.getLaudo().setImagem(diagnosticoCompleto);
+				l.setNomeVeterinario(nomeVet);
+				l.setDataDiagnostico(dataDiagnostico);
+				l.setDiagnostico(breveDiagnostico);
+				l.setImagem(diagnosticoCompleto);
+				a.setLaudo(l);;
 				
 				try {
 					if(aDao.inserirLaudo(a)){
