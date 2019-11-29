@@ -129,29 +129,6 @@ body {
 			</div>
 			<div class="pergunta">
 
-				<div class="card">
-					<div class="card-header"></div>
-					<div class="card-body">
-						<blockquote class="blockquote mb-0"></blockquote>
-					</div>
-				</div>
-
-
-				<div class="resposta" style="width: 100%;">
-					<div class="card-header"></div>
-
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item">
-							<div class="userDiv"></div>
-							<div class="answerDiv"></div>
-						</li>
-
-						<li class="list-group-item"></li>
-						<li class="list-group-item"></li>
-
-					</ul>
-				</div>
-
 				<div class="resposta" style="width: 100%;">
 					<div class="card-header"></div>
 					<textarea id="textarea" name="textResp" rows="4"
