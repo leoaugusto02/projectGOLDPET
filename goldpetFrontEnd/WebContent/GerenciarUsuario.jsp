@@ -134,7 +134,7 @@ a {
 <body>
 	<div class="conteudo">
 
-		<div class="card card-splash"
+	<div class="card card-splash"
 			style="margin-top: 11.4%; width: 300px; height: 150px; background-color: rgba(199, 252, 255, 0.5);">
 			<div id="esquerda">
 				<div class="menuLateral">
@@ -151,13 +151,12 @@ a {
 							<li>Usuarios</li>
 						</a>
 
-						<a href="cadastro.jsp" data-target="#modalCadastro" data-toggle="modal">
-							<li>NovoUsuario</li>
-						</a>
 
 					</ul>
 				</div>
 			</div>
+
+
 		</div>
 
 		<!-- Modal -->

@@ -132,30 +132,29 @@ a {
 <body>
 	<div class="conteudo">
 
-		<div class="card card-splash"
+			<div class="card card-splash"
 			style="margin-top: 11.4%; width: 300px; height: 150px; background-color: rgba(199, 252, 255, 0.5);">
 			<div id="esquerda">
 				<div class="menuLateral">
 					<ul>
-						<a href="#">
+						<a href="listAgenda.jsp">
 							<li>Agenda</li>
 						</a>
 
-						<a href="#">
+						<a href="listPets.jsp">
 							<li>Adoções</li>
 						</a>
 
-						<a href="#">
+						<a href="GerenciarUsuario.jsp">
 							<li>Usuarios</li>
 						</a>
 
-						<a href="#">
-							<li>Gerenciar</li>
-						</a>
 
 					</ul>
 				</div>
 			</div>
+
+
 		</div>
 		<div id="meio">
 
