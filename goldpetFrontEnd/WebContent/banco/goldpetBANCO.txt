@@ -7,7 +7,7 @@ CREATE TABLE Pessoa(
 	p_nome varchar(15) not null,
 	s_nome varchar(15) not null,
 	nascimento date not null,
-	tipo varchar(10) not null,
+	tipo varchar(11) not null,
 	senha varchar(15) not null,
 	email varchar(50) not null,
 	cpf varchar(14) not null, 

@@ -108,9 +108,11 @@ public class ProcessaAnimais extends HttpServlet {
 			} else if (acao.equals("listaAdocao")) {
 
 				try {
-
+					
+					if(aDao.listarAnimaisAdocao() != null) {
+						
 					List<Animais> list = aDao.listarAnimaisAdocao();
-
+					
 					for (Animais a : list) {
 
 						objMens.put("codAnimal", a.getCodAnimal());
@@ -121,7 +123,13 @@ public class ProcessaAnimais extends HttpServlet {
 						objMens.put("imgAnimal", a.getImgAnimal());
 
 						out.print(objMens.toString() + "\n");
+						
+						
 
+					}
+					}else {
+						objMens.put("mensagem", "Falta animais");
+						out.print(objMens.toString());
 					}
 
 				} catch (SQLException e) {
@@ -232,9 +240,10 @@ public class ProcessaAnimais extends HttpServlet {
 				Pessoa p = new Pessoa();
 
 				try {
+					pDao.verificaTipo(usuSessao);
 					if (p.getTipo().equals("Funcionário")) {
 
-						Funcionario f = pDao.verificaCargo(usuSessao);
+						Pessoa f = pDao.verificaCargo(usuSessao);
 
 						if (f.getCargo().equals("Veterinário")) {
 							objMens.put("mensagem", "veterinario");
