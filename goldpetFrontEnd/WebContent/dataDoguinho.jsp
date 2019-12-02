@@ -263,9 +263,9 @@ body, html {
 						</div>
 					</div>
 					<%
-						} else if (obj.getString("mensagem").equals("semLaudo")) {
+						} /*else if (obj.getString("mensagem").equals("semLaudo")) {
 							if (request.getSession().getAttribute("codigoUsuario") != null) {
-								if (obj.getString("mensagem").equals("veterinario")) {
+								if (obj.getString("mensagem").equals("veterinario")) {*/
 					%>
 					<br>
 					<button type="button" class="btn btn-outline-success"
@@ -321,7 +321,7 @@ body, html {
 					</div>
 
 					<%
-						} else if (("mensagem").equals("guardiao")) {
+						//} else if (("mensagem").equals("guardiao")) {
 					%>
 					<br>
 					<div id="buttonAdd">
@@ -467,16 +467,16 @@ body, html {
 
 					</div>
 					<%
-						}
-							} else {
+						//}
+							//} else {
 					%>
-					<div class="alert alert-info" role="alert">
+				<!--  	<div class="alert alert-info" role="alert">
 						Para agendar uma visita para adotar este animalzinho,<a
 							href="cadastro.jsp" class="alert-link">clique aqui</a>, e faça
-						seu cadastro no nosso site!
+						seu cadastro no nosso site!-->
 						<%
-						}
-						}
+					//	}
+					//	}
 					%>
 
 

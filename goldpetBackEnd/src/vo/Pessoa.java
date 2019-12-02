@@ -6,7 +6,7 @@ import java.util.List;
 public class Pessoa {
 
 	private Integer codePerson;
-	private String apelido, p_nome, s_nome, tipo, senha, email, cep, cpf, rg, genero, referencia, imgPerfil, tel1, tel2;
+	private String apelido, p_nome, cargo, s_nome, tipo, senha, email, cep, cpf, rg, genero, referencia, imgPerfil, tel1, tel2;
 	private Date nascimento;
 	private Guardiao guardiao;
 	private Funcionario funcionario;
@@ -15,7 +15,7 @@ public class Pessoa {
 
 	public Pessoa(Integer codePerson, String apelido, String p_nome, String s_nome, String tipo, String senha,
 			String email, String cep, String cpf, String rg, String genero, String referencia, String imgPerfil,
-			String tel1, String tel2, Date nascimento, Guardiao guardiao, Funcionario funcionario) {
+			String tel1, String tel2, Date nascimento, Guardiao guardiao, Funcionario funcionario, String cargo) {
 		super();
 		this.codePerson = codePerson;
 		this.apelido = apelido;
@@ -35,6 +35,7 @@ public class Pessoa {
 		this.nascimento = nascimento;
 		this.guardiao = guardiao;
 		this.funcionario = funcionario;
+		this.cargo = cargo;
 	}
 
 	public Integer getCodePerson() {
@@ -179,5 +180,13 @@ public class Pessoa {
 
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 }

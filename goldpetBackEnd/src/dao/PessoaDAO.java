@@ -207,26 +207,38 @@ public class PessoaDAO {
 		return false;
 	}
 
-	public Pessoa verificaTipo(int codigo) throws SQLException {
-		String sql = "SELECT * FROM Pessoa WHERE codePerson = ?";
+	public boolean verificaTipo(int codigo) throws SQLException {
+		String sql = "SELECT tipo FROM Pessoa WHERE codePerson = ? AND tipo = 'Funcionario'";
 
 		con = ConnectionDB.getConnection();
 
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, codigo);
 
-		return null;
+		ResultSet rs = ps.executeQuery();
+		
+		if(rs.next()) {
+			return true;
+		}
+		return false;
 	}
 
-	public Funcionario verificaCargo(int codUsuario) throws SQLException {
+	public Pessoa verificaCargo(int codUsuario) throws SQLException {
 
-		String sql = "SELECT cargo FROM Funcionario, Pessoa p WHERE p.codePerson = ? ";
+		String sql = "SELECT cargo FROM Funcionario, Pessoa p WHERE p.codePerson = ?";
 
 		con = ConnectionDB.getConnection();
 
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, codUsuario);
+		
+		ResultSet rs = ps.executeQuery();
 
+		if(rs.next()) {
+			Pessoa p = new Pessoa();
+			p.setCargo(rs.getString("cargo"));
+			return p;
+		}
 		return null;
 	}
 }

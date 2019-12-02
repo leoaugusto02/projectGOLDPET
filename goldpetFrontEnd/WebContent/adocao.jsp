@@ -365,7 +365,7 @@ body, html {
 							</div>
 						</div> <br>
 					</a>
-			<!--  	  	<input type="hidden" name="acaoVerifica" id="acaoVerifica" value="verificaSessao">-->
+			  	  	<input type="hidden" name="acaoVerifica" id="acaoVerifica" value="verificaSessao">
 					<%
 						i++;
 							if (i == 3) {
