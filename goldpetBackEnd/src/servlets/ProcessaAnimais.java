@@ -43,7 +43,7 @@ import vo.Pessoa;
 
 @MultipartConfig
 
-@WebServlet(name = "FileUploadServlet", urlPatterns = {"/ProcessaAnimais"}, loadOnStartup = 1)
+@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaAnimais" }, loadOnStartup = 1)
 public class ProcessaAnimais extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -59,11 +59,11 @@ public class ProcessaAnimais extends HttpServlet {
 		String acaoModal = req.getParameter("acaoModal");
 		String acaoVerifica = req.getParameter("acaoVerifica");
 		System.out.println("acaoVerifica= " + acaoVerifica);
-		
+
 		String codUser = req.getParameter("codUser");
 		System.out.println("codUser= " + codUser);
 
-		if(acao != null) {
+		if (acao != null) {
 			if (acao.equals("perfil")) {
 
 				Animais a = new Animais();
@@ -108,26 +108,24 @@ public class ProcessaAnimais extends HttpServlet {
 			} else if (acao.equals("listaAdocao")) {
 
 				try {
-					
-					if(aDao.listarAnimaisAdocao() != null) {
-						
-					List<Animais> list = aDao.listarAnimaisAdocao();
-					
-					for (Animais a : list) {
 
-						objMens.put("codAnimal", a.getCodAnimal());
-						objMens.put("nome", a.getNome());
-						objMens.put("status", a.getStatus());
-						objMens.put("raca", a.getRaca());
-						objMens.put("especie", a.getEspecie());
-						objMens.put("imgAnimal", a.getImgAnimal());
+					if (aDao.listarAnimaisAdocao() != null) {
 
-						out.print(objMens.toString() + "\n");
-						
-						
+						List<Animais> list = aDao.listarAnimaisAdocao();
 
-					}
-					}else {
+						for (Animais a : list) {
+
+							objMens.put("codAnimal", a.getCodAnimal());
+							objMens.put("nome", a.getNome());
+							objMens.put("status", a.getStatus());
+							objMens.put("raca", a.getRaca());
+							objMens.put("especie", a.getEspecie());
+							objMens.put("imgAnimal", a.getImgAnimal());
+
+							out.print(objMens.toString() + "\n");
+
+						}
+					} else {
 						objMens.put("mensagem", "Falta animais");
 						out.print(objMens.toString());
 					}
@@ -198,55 +196,58 @@ public class ProcessaAnimais extends HttpServlet {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-			}  else if(acao.equals("inserirLaudo")) {
+			} else if (acao.equals("inserirLaudo")) {
 				int codAnimal = Integer.valueOf(req.getParameter("codAnimal"));
 				String nomeVet = req.getParameter("nomeVet");
 				String dataDiagnostico = req.getParameter("dataDiagnostico");
 				String breveDiagnostico = req.getParameter("breveDiagnostico");
 				String diagnosticoCompleto = req.getParameter("diagnosticoCompleto");
-				
+
 				Animais a = new Animais();
 				Laudo l = new Laudo();
-				
+
 				a.setCodAnimal(codAnimal);
 				l.setNomeVeterinario(nomeVet);
 				l.setDataDiagnostico(dataDiagnostico);
 				l.setDiagnostico(breveDiagnostico);
 				l.setImagem(diagnosticoCompleto);
-				a.setLaudo(l);;
-				
+				a.setLaudo(l);
+				;
+
 				try {
-					if(aDao.inserirLaudo(a)){
+					if (aDao.inserirLaudo(a)) {
 						objMens.put("mensagem", "Laudo realizado com sucesso");
 						out.print(objMens.toString());
-					}else {
+					} else {
 						objMens.put("mensagem", "Algo deu errado");
 						out.print(objMens.toString());
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				
+
 			}
-		}else {
+		} else {
 			objMens.put("mensagem", "aguardando requisição");
 			out.print(objMens.toString());
-		} if (acaoVerifica != null && acaoVerifica.equals("verificaSessao")) {
+		}
+		if (acaoVerifica != null && acaoVerifica.equals("verificaSessao")) {
 
-			int usuSessao = Integer.valueOf(req.getParameter("codUser"));
+			Integer usuSessao = Integer.valueOf(req.getParameter("codUser"));
 
-			if (usuSessao != 0) {
+			if (usuSessao != null) {
 				PessoaDAO pDao = new PessoaDAO();
 				Pessoa p = new Pessoa();
 
 				try {
-					pDao.verificaTipo(usuSessao);
-					if (p.getTipo().equals("Funcionário")) {
+					if (pDao.verificaTipo(usuSessao)) {
 
 						Pessoa f = pDao.verificaCargo(usuSessao);
 
-						if (f.getCargo().equals("Veterinário")) {
+						if (f.getCargo().equals("Veterinario")) {
 							objMens.put("mensagem", "veterinario");
+						}else {
+							objMens.put("mensagem", "funcionario");
 						}
 					} else {
 						objMens.put("mensagem", "guardiao");

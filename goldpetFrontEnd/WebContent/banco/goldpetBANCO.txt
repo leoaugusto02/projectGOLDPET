@@ -54,6 +54,7 @@ CREATE TABLE Laudo(
 	codeAnimal integer not null,
 	nomeVeterinario varchar(40),
 	dataDiagnostico date not null,
+	dataPostagen date not null,
 	diagnostico varchar(100) not null,
 	imagem varchar(30),
 	constraint fkCodeAnimalLaudo foreign key (codeAnimal) references Animais (codeAnimal)
