@@ -16,7 +16,7 @@
         android:id="@+id/btnImagem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tirar Foto"
+        android:text="escolher arquivo"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="150dp"/>
 
@@ -43,7 +43,7 @@
             android:id="@+id/edtGenero"
             android:layout_width="189dp"
             android:layout_height="wrap_content"
-            android:hint="Genêro:" />
+            android:hint="Raça:" />
 
         <EditText
             android:id="@+id/edtPorte"
@@ -60,6 +60,21 @@
             android:hint="Especie:"
             />
 
+        <RadioButton
+            android:layout_width="96dp"
+            android:layout_height="47dp"
+            android:layout_marginLeft="90dp"
+            android:text="Fêmea"
+            android:textSize="17dp" />
+
+        <RadioButton
+            android:layout_width="96dp"
+            android:layout_height="47dp"
+            android:layout_marginTop="-45dp"
+            android:layout_marginLeft="190dp"
+            android:text="Macho"
+            android:textSize="17dp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="160dp"
@@ -70,7 +85,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="280dp"
-        android:text="Salvar" />
+        android:text="Postar" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-50dp"
+            android:layout_marginLeft="190dp"
+            android:text="Close" />
 
     </LinearLayout>
 </ScrollView>
