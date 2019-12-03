@@ -345,7 +345,7 @@ body, html {
 					<%
 						}
 					%>
-					<a href="dataDoguinho.jsp?codAnimal=<%=obj.getInt("codAnimal")%>&acaoVerifica=<%=acaoVerifica%>">
+					<a href="dataDoguinho.jsp?codAnimal=<%=obj.getInt("codAnimal")%>">
 						<div class="card bg-dark text-white" style="width: 23rem;">
 							<img src="img/<%=obj.getString("imgAnimal")%>" class="card-img"
 								href="#" style="height: 500px;">
