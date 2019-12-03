@@ -43,7 +43,7 @@ public class PessoaDAO {
 
 		sql = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?,'" + acao + "', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-		if (acao.equals("Guardião")) {
+		if (acao.equals("Guardiao")) {
 			sqlCondicao = "INSERT INTO Guardiao VALUES(null, "
 					+ "(SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,'Iniciante',0,'ativo')";
 		} else {
@@ -191,7 +191,7 @@ public class PessoaDAO {
 			sql = "INSERT INTO Guardiao(codePerson, animais_resgatados, rank, progresso)" + " SELECT * FROM (SELECT "
 					+ codePerson + ", 0, 'Iniciante', 0) AS guard" + " WHERE NOT EXISTS ("
 					+ "	SELECT codePerson FROM Guardiao WHERE codePerson =" + codePerson + ") LIMIT 1;";
-			sql2 = "UPDATE Pessoa p INNER JOIN Funcionario f ON p.codePerson = f.codePerson INNER JOIN Guardiao g ON p.codePerson = f.codePerson SET p.tipo = 'Guardião', f.status='demetido', g.status='ativo' WHERE p.codePerson ="
+			sql2 = "UPDATE Pessoa p INNER JOIN Funcionario f ON p.codePerson = f.codePerson INNER JOIN Guardiao g ON p.codePerson = f.codePerson SET p.tipo = 'Guardiao', f.status='demetido', g.status='ativo' WHERE p.codePerson ="
 					+ codePerson;
 		}
 
@@ -207,8 +207,8 @@ public class PessoaDAO {
 		return false;
 	}
 
-	public boolean verificaTipo(int codigo) throws SQLException {
-		String sql = "SELECT tipo FROM Pessoa WHERE codePerson = ? AND tipo = 'Funcionario'";
+	public Pessoa verificaTipo(int codigo) throws SQLException {
+		String sql = "SELECT tipo FROM Pessoa WHERE codePerson = ?";
 
 		con = ConnectionDB.getConnection();
 
@@ -218,9 +218,11 @@ public class PessoaDAO {
 		ResultSet rs = ps.executeQuery();
 		
 		if(rs.next()) {
-			return true;
+			Pessoa p = new Pessoa();
+			p.setTipo(rs.getString("tipo"));
+			return p;
 		}
-		return false;
+		return null;
 	}
 
 	public Pessoa verificaCargo(int codUsuario) throws SQLException {
