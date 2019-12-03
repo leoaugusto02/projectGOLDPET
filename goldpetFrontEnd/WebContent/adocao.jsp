@@ -304,7 +304,7 @@ body, html {
 
 					}
 				} else {
-					parametros = "acao=" + acao + "&codUser=" + request.getSession().getAttribute("codigoUsuario");
+					parametros = "acao=" + acao + "&acaoVerifica=" + acaoVerifica + "&codUser=" + request.getSession().getAttribute("codigoUsuario");
 				}
 		
 				URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
@@ -345,7 +345,7 @@ body, html {
 					<%
 						}
 					%>
-					<a href="dataDoguinho.jsp?codAnimal=<%=obj.getInt("codAnimal")%>&acaoVerifica=<%=acaoVerifica%>">
+					<a href="dataDoguinho.jsp?codAnimal=<%=obj.getInt("codAnimal")%>">
 						<div class="card bg-dark text-white" style="width: 23rem;">
 							<img src="img/<%=obj.getString("imgAnimal")%>" class="card-img"
 								href="#" style="height: 500px;">
@@ -364,7 +364,7 @@ body, html {
 							</div>
 						</div> <br>
 					</a>
-			  	<!--    	<input type="hidden" name="acaoVerifica" id="acaoVerifica" value="verificaSessao">-->
+			  	  	<input type="hidden" name="acaoVerifica" id="acaoVerifica" value="verificaSessao">
 					<%
 						i++;
 							if (i == 3) {
