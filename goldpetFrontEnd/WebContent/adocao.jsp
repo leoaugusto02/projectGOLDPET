@@ -304,7 +304,7 @@ body, html {
 
 					}
 				} else {
-					parametros = "acao=" + acao + "&codUser=" + request.getSession().getAttribute("codigoUsuario");
+					parametros = "acao=" + acao + "&acaoVerifica=" + acaoVerifica + "&codUser=" + request.getSession().getAttribute("codigoUsuario");
 				}
 		
 				URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
@@ -364,7 +364,7 @@ body, html {
 							</div>
 						</div> <br>
 					</a>
-			  	<!--    	<input type="hidden" name="acaoVerifica" id="acaoVerifica" value="verificaSessao">-->
+			  	  	<input type="hidden" name="acaoVerifica" id="acaoVerifica" value="verificaSessao">
 					<%
 						i++;
 							if (i == 3) {

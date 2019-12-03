@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#93D6D6"
-    tools:context="AdicionarAdocao"
+    tools:context=""
     android:fillViewport="true">
 
     <LinearLayout
