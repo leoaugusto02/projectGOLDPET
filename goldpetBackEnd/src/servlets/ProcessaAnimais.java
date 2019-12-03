@@ -186,6 +186,8 @@ public class ProcessaAnimais extends HttpServlet {
 						
 						if (p.getTipo().equals("Guardiao")) {
 							objMens.put("mensagem", "guardiao");
+							out.print(objMens.toString());
+							System.out.println(objMens.toString());
 						}else {
 							p = pDao.verificaCargo(usuSessao);
 							if(p.getCargo().equals("Veterinario")) {

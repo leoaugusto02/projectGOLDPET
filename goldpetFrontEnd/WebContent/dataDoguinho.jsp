@@ -95,13 +95,9 @@ body, html {
 		String acao = "perfil";
 		String acaoInserir = request.getParameter("acaoInserir");
 		String codAnimal = request.getParameter("codAnimal");
-		String acaoVerifica = request.getParameter("acaoVerifica");
-		String codUser = String.valueOf(request.getSession().getAttribute("codigoUsuario"));
-		String parametros = "acao=" + acao + "&codAnimal=" + codAnimal;
-
-		if (acaoInserir != null) {
-
-		}
+		String acaoVerifica = "verificaSessao";
+		String parametros = "acao=" + acao + "&codUser=" + request.getSession().getAttribute("codigoUsuario")
+				+ "&codAnimal=" + codAnimal + "&acaoVerifica=" + acaoVerifica;
 
 		URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
 
@@ -122,6 +118,7 @@ body, html {
 			apnd += linha;
 
 		JSONObject obj = new JSONObject(apnd);
+		
 	%>
 	<div id="esquerda"></div>
 	<div id="meio">
@@ -248,9 +245,8 @@ body, html {
 										<td><%=obj.getString("imgDiag")%></td>
 									</tr>
 									<%
-									if (request.getSession().getAttribute("codigoUsuario") == null) {
-
-										%>
+										if (request.getSession().getAttribute("codigoUsuario") == null) {
+									%>
 									<div class="alert alert-info" role="alert">
 										Para agendar uma visita para adotar este animalzinho,<a
 											href="cadastro.jsp" class="alert-link">clique aqui</a>, e
@@ -258,11 +254,11 @@ body, html {
 										<%
 										}
 									%>
-									
-									<tr style="visibility: hidden;">
-										<th><strong>Enviar laudo medico</strong></th>
-										<td></td>
-									</tr>
+
+										<tr style="visibility: hidden;">
+											<th><strong>Enviar laudo medico</strong></th>
+											<td></td>
+										</tr>
 								</tbody>
 							</table>
 
@@ -328,8 +324,12 @@ body, html {
 
 					<%
 						}
-						}
-						} else if (("mensagem").equals("guardiao")) {
+							}
+						} 
+							/*System.out.println("OBJ - " + obj.toString());
+							System.out.println("MSG - " + obj.getString("mensagem"));
+							if (obj.getString("mensagem").equals("guardiao")) {*/
+							if(request.getSession().getAttribute("codigoUsuario") != null){
 					%>
 					<br>
 					<div id="buttonAdd">
@@ -475,6 +475,9 @@ body, html {
 
 					</div>
 					<%
+							
+							}else{
+							System.out.println("oq");
 						}
 					%>
 				</div>
