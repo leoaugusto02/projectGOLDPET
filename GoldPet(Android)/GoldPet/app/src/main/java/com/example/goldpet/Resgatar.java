@@ -63,7 +63,7 @@ public class Resgatar extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.txtAdicionarMais:
-                Intent it = new Intent(getApplicationContext(), Resgate.class);
+                Intent it = new Intent(getApplicationContext(), InserirPetResgate.class);
                 startActivity(it);
                 break;
 
