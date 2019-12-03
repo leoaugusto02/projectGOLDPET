@@ -305,7 +305,6 @@ body, html {
 					}
 				} else {
 					parametros = "acao=" + acao + "&acaoVerifica=" + acaoVerifica + "&codUser=" + request.getSession().getAttribute("codigoUsuario");
-
 				}
 		
 				URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");

@@ -13,6 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/Tamara/projectGOLDPET/goldpetBackEnd/WebContent/WEB-INF/lib/cos-multipart.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aluno/JavaWEB/4inf/projectGOLDPET/goldpetBackEnd/WebContent/WEB-INF/lib/cos-multipart.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
