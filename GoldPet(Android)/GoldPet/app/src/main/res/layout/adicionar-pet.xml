@@ -59,11 +59,18 @@
             android:text="Status do pet" />
 
         <Button
+            android:id="@+id/btnFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:text="Tirar foto" />
+
+        <Button
             android:id="@+id/btnArquivo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="180dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="-50dp"
+            android:layout_marginLeft="165dp"
             android:text="escolher arquivo" />
 
         <ImageView
