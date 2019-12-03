@@ -29,6 +29,7 @@ public class AnimaisDAO {
 		ResultSet rs = ps.executeQuery();
 
 		if (rs.next()) {
+			
 			Animais a = new Animais();
 
 			a.setNome(rs.getString("nome"));
@@ -41,6 +42,7 @@ public class AnimaisDAO {
 			a.setImgAnimal(rs.getString("imgAnimal"));
 
 			return a;
+			
 		}
 
 		return null;

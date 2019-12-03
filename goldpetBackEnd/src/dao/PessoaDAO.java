@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONObject;
+
 import vo.Funcionario;
 import vo.Guardiao;
 import vo.Pessoa;
@@ -16,10 +18,13 @@ public class PessoaDAO {
 	private Connection con;
 	private PreparedStatement ps;
 
-	public Integer login(Pessoa p) throws SQLException {
+	public String login(Pessoa p) throws SQLException {
 
-		String sql = "SELECT codePerson FROM Pessoa WHERE email = ? OR nick_name = ? AND senha = ?";
+		//String sql = "SELECT codePerson FROM Pessoa WHERE email = ? OR nick_name = ? AND senha = ?";
 
+		String sql = "SELECT Pessoa.codePerson, cargo FROM Pessoa LEFT JOIN Funcionario ON Pessoa.codePerson = Funcionario.codePerson " + 
+		"WHERE email = ? OR nick_name = ? AND senha = ?";
+		
 		con = ConnectionDB.getConnection();
 
 		ps = con.prepareStatement(sql);
@@ -30,11 +35,39 @@ public class PessoaDAO {
 		ResultSet rs = ps.executeQuery();
 
 		if (rs.next()) {
-			p.setCodePerson(rs.getInt("codePerson"));
-			return p.getCodePerson();
+			String ret = rs.getInt("codePerson") + ";" + rs.getString("cargo");
+			System.out.print("RET - " + ret);
+			return ret;
+			//p.setCodePerson(rs.getInt("codePerson"));
+			//return p.getCodePerson();
+			//return rs.getInt("codePerson");
 		}
 		return null;
 	}
+	
+	/*public JSONObject login(Pessoa p) throws SQLException {
+
+		String sql = "SELECT * FROM Pessoa WHERE email = ? OR nick_name = ? AND senha = ?";
+
+		con = ConnectionDB.getConnection();
+
+		JSONObject obj = new JSONObject();
+		
+		ps = con.prepareStatement(sql);
+		ps.setString(1, p.getEmail());
+		ps.setString(2, p.getApelido());
+		ps.setString(3, p.getSenha());
+
+		ResultSet rs = ps.executeQuery();
+
+		if (rs.next()) {
+			//p.setCodePerson(rs.getInt("codePerson"));
+			obj.put("cod", rs.getInt("codePerson"));
+			obj.put("profissao", rs.getObject(columnIndex));
+			return obj;
+		}
+		return null;
+	}*/
 
 	public boolean cadastrar(Pessoa p, String acao) throws SQLException {
 

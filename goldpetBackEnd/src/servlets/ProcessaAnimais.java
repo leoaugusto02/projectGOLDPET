@@ -191,9 +191,11 @@ public class ProcessaAnimais extends HttpServlet {
 						}else {
 							p = pDao.verificaCargo(usuSessao);
 							if(p.getCargo().equals("Veterinario")) {
-								objMens.put("mensagem", "veterinario");
+								req.getSession().setAttribute("cargo", "veterinario");
+								objMens.put("mensagemFunc", "veterinario");
+								System.out.println("mensagem funcionario = " + objMens.toString());
 							}else {
-								objMens.put("mensagem", "funcionario");
+								objMens.put("mensagemFunc", "funcionario");
 							}
 						}
 					} else {

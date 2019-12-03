@@ -208,13 +208,16 @@ public class ProcessaPessoas extends HttpServlet {
 
 					if (pDao.login(p) != null) {
 
-						Integer CodeUser = pDao.login(p);
+						//Integer CodeUser = pDao.login(p);
+						String[] recebe = pDao.login(p).split(";");
 
-						objMens.put("codeUser", CodeUser);
+						objMens.put("codeUser", recebe[0]);
 						objMens.put("mensagem", "0");
+						objMens.put("cargo", recebe[1]);
 						out.print(objMens.toString());
 						System.out.println(objMens.toString());
 						//resp.sendRedirect("/goldpetFrontEnd/perfil.jsp");
+						
 					} else {
 						objMens.put("mensagem", "1");
 						out.print(objMens.toString());
