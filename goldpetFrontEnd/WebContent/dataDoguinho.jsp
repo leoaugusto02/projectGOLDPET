@@ -96,17 +96,24 @@ body, html {
 		String acaoModal = request.getParameter("acaoModal");
 		String codAnimal = request.getParameter("codAnimal");
 		String acaoVerifica = "verificaSessao";
-		
+
 		String parametros = "";
-		
-		if(acaoModal != null){
-			
+
+		if (acaoModal != null) {
+
 			String dataDiagnostico = request.getParameter("dataDiagnostico");
 			String breveDiagnostico = request.getParameter("breveDiagnostico");
-			String arquivo = request.getParameter("arquivo");
-		}else{
-		parametros = "acao=" + acao + "&codUser=" + request.getSession().getAttribute("codigoUsuario")
-				+ "&codAnimal=" + codAnimal + "&acaoVerifica=" + acaoVerifica;
+			String diagnosticoCompleto = request.getParameter("diagnosticoCompleto");
+
+			if ((dataDiagnostico != null) || (breveDiagnostico != null) || (diagnosticoCompleto != null)) {
+				parametros = "dataDiagnostico=" + dataDiagnostico + "&breveDiagnostico=" + breveDiagnostico
+						+ "&diagnosticoCompleto=" + diagnosticoCompleto + "&acaoModal=" + acaoModal;
+
+				System.out.println(parametros);
+			}
+		} else {
+			parametros = "acao=" + acao + "&codUser=" + request.getSession().getAttribute("codigoUsuario")
+					+ "&codAnimal=" + codAnimal + "&acaoVerifica=" + acaoVerifica;
 		}
 
 		URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
@@ -175,7 +182,8 @@ body, html {
 						<h2>Doguinho</h2>
 						<div class="circulo square">
 							<img src="img/<%=obj.getString("imgAnimal")%>" class="card-img"
-								href="#"> <!-- style="height: 500px;"-->
+								href="#">
+							<!-- style="height: 500px;"-->
 						</div>
 					</div>
 
@@ -269,63 +277,70 @@ body, html {
 				<%
 					} else if (obj.getString("mensagem").equals("semLaudo")) {
 						//System.out.println("OBJ 2 - " + request.getSession().getAttribute("cargo"));
-						
-						if(request.getSession().getAttribute("cargo").equals("Veterinario")){
-						//if (obj.getString("mensagemFunc").equals("veterinario")) {
+
+						if (request.getSession().getAttribute("cargo").equals("Veterinario")) {
+							//if (obj.getString("mensagemFunc").equals("veterinario")) {
 				%>
 				<br>
 				<button type="button" class="btn btn-outline-success"
 					data-toggle="modal" data-target="#laudoModal">Inserir
 					Laudo</button>
 
-				<div class="modal" id="laudoModal" tabindex="-1" role="dialog"
-					aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content" style="width: 565px;">
+				<form action="http://localhost:8080/goldpetBackEnd/ProcessaAnimais"
+					method="POST" enctype="multipart/form-data">
 
-							<div class="modal-header" style="background-color: #139F97;">
-								<h5 class="modal-title">Inserir Laudo</h5>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span>x</span>
-								</button>
-							</div>
+					<div class="modal" id="laudoModal" tabindex="-1" role="dialog"
+						aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content" style="width: 565px;">
 
-							<div class="modal-body">
-								<div class="form-group">
-									<label>Data do diagnóstico:</label> <input type="date"
-										class="form-group col-md-6" name="dataDiagnostico"
-										style="margin-left: 3%;">
+								<div class="modal-header" style="background-color: #139F97;">
+									<h5 class="modal-title">Inserir Laudo</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span>x</span>
+									</button>
 								</div>
-								<div id="textArea">
-									<textarea class="form-control" id="textarea"
-										placeholder="Breve diagnóstico" rows="3"
-										name="breveDiagnostico"
-										style="margin-top: 2px; margin-bottom: 3%; height: 80px; width: 470px;"></textarea>
+
+								<div class="modal-body">
+									<div class="form-group">
+										<label>Data do diagnóstico:</label> <input type="date"
+											class="form-group col-md-6" name="dataDiagnostico"
+											style="margin-left: 3%;">
+									</div>
+									<div id="textArea">
+										<textarea class="form-control" id="textarea"
+											placeholder="Breve diagnóstico" rows="3"
+											name="breveDiagnostico"
+											style="margin-top: 2px; margin-bottom: 3%; height: 80px; width: 470px;"></textarea>
+									</div>
+									<div class="form-group">
+										<label>Diagnóstico completo: </label> <input type="file"
+											id="upload" name="diagnosticoCompleto" style="float: right;" />
+									</div>
 								</div>
-								<div class="form-group">
-									<label>Diagnóstico completo: </label> <input type="file"
-										id="upload" name="arquivo" style="float: right;" />
+								<div class="modal-footer">
+									<input type="submit" class="btn btn-outline-success"
+										value="Confirmar" />
+									<!--  <img alt="postar.png" src="img/postar.png"
+										style="height: 20px; width: 20px; margin-left: -0.5;" />-->
+
+									<input type="hidden" name="codUser" value="<%=request.getSession().getAttribute("codigoUsuario")%>"/>
+									<input type="hidden" id="acaoModal" name="acaoModal"
+										value="inserirLaudo" />
+									<input type="hidden" name="pathFile"
+										value="<%=getServletContext().getRealPath("/").replace('\\', '/')%>" />
+									<button type="button" class="btn btn-outline-danger"
+										data-dismiss="modal">
+										<img alt="close.png" src="img/close.png"
+											style="height: 20px; width: 20px; margin-left: -0.5;" />
+										Cancelar
+									</button>
 								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-outline-success">
-									<img alt="postar.png" src="img/postar.png"
-										style="height: 20px; width: 20px; margin-left: -0.5;" />
-									Confirmar
-								</button>
-								<input type="hidden" id="acaoModal" name="acaoModal" value="inserirLaudo">
-								<button type="button" class="btn btn-outline-danger"
-									data-dismiss="modal">
-									<img alt="close.png" src="img/close.png"
-										style="height: 20px; width: 20px; margin-left: -0.5;" />
-									Cancelar
-								</button>
 							</div>
 						</div>
 					</div>
-				</div>
-
+				</form>
 				<%
 					}
 					}
@@ -494,12 +509,12 @@ body, html {
 	<div id="direita"></div>
 
 	<script src="js/bootstrap.min.js"></script>
-	
-		<script>
+
+	<script>
 		function inserirLaudo() {
 			$("#acaoModal").val("inserirLaudo");
 		}
 	</script>
-	
+
 </body>
 </html>
