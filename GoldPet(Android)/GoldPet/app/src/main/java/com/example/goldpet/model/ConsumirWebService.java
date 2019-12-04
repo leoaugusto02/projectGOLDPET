@@ -1,4 +1,6 @@
 package com.example.goldpet.model;
+import android.net.Uri;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -261,5 +263,55 @@ public class ConsumirWebService{
         }
     }
 
-    public void 
+    public static boolean inserirResgate(String raca,String porte, String especie, String status,String path){
+        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaResgate";
+        String acaoModal = "inserirResgate";
+
+        try{
+            String parametros = "acaoModal=" + acaoModal + "&path=" + path;
+
+            URL url = new URL(urlWebService);
+            HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
+            conexaoWeb.setRequestMethod("POST");
+            conexaoWeb.setDoOutput(true);
+
+            DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
+
+            wr.writeBytes(parametros);
+
+            return true;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean soImagem(byte[] image){
+        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaResgate";
+        String acaoModal = "inserirResgate";
+
+        try{
+            String parametros = "acao=testeImage&image=";
+
+            URL url = new URL(urlWebService);
+            HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
+            conexaoWeb.setRequestMethod("POST");
+            conexaoWeb.setDoOutput(true);
+
+            DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
+
+            wr.writeBytes(parametros);
+
+            for(int i = 0; i < image.length; i++){
+                wr.write(image[i]);
+            }
+
+            return true;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
