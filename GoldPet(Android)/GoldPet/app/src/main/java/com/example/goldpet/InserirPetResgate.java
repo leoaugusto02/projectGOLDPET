@@ -1,6 +1,8 @@
 package com.example.goldpet;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,12 +14,14 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.levirs.example.goldpet.R;
 
 public class InserirPetResgate extends AppCompatActivity implements View.OnClickListener {
 
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int CAMERA = 1;
+    static final int GALERIA = 2;
 
     EditText edtRaca, edtPorte, edtEspecie, edtStatus;
     RadioButton rdbFemea, rdbMacho;
@@ -28,6 +32,14 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adicionar_pet);
+
+        if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED){
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA},
+                    0);
+        }
 
         edtRaca = findViewById(R.id.edtRaca);
         edtPorte = findViewById(R.id.edtPorte);
@@ -55,24 +67,33 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
         switch (view.getId()){
             case R.id.btnFoto:
                 TirarFotoIntent();
-            break;    
+            break;
+            case R.id.btnArquivo:
+                AcessarGaleria();
+             break;   
         }
     }
 
     private void TirarFotoIntent() {
         Intent tirarFoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if(tirarFoto.resolveActivity(getPackageManager()) != null){
-            startActivityForResult(tirarFoto, REQUEST_IMAGE_CAPTURE);
-        }
+        startActivityForResult(tirarFoto, CAMERA);
+    }
+
+    private void AcessarGaleria() {
+        Intent acessarGaleria = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(Intent.createChooser(acessarGaleria, "Selecione uma imagem"), GALERIA);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && requestCode == RESULT_OK) {
+        if (requestCode == CAMERA && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             ivImagem.setImageBitmap(imageBitmap);
+        }else if(requestCode == GALERIA && resultCode == RESULT_OK){
+            Uri img = data.getData();
+            ivImagem.setImageURI(img);
         }
     }
 }
