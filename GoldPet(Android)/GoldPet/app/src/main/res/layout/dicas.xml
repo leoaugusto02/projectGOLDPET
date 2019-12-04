@@ -46,6 +46,7 @@
 
 
         <Button
+            android:id="@+id/btnAlimentacao"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Leia mais..."/>
@@ -74,6 +75,7 @@
             android:textSize="18dp" />
 
         <Button
+            android:id="@+id/btnHigiene"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Leia mais..."/>
@@ -92,16 +94,17 @@
             android:layout_marginLeft="165dp"
             android:textSize="25dp"
             android:textColor="#000"
-            android:text="Higiêne"/>
+            android:text="Passeio"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="94dp"
             android:layout_marginLeft="165dp"
-            android:text="Dê banho em seu cachorro pelo menos uma vez ao mês e se possível peça em ..."
+            android:text="Leve-o todos os dias para passear, o cachorro também precisa se exercitar e andar ..."
             android:textSize="18dp" />
 
         <Button
+            android:id="@+id/btnPasseio"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Leia mais..."/>
@@ -131,6 +134,7 @@
             android:text="Sabe com que frequência deve levar seu cãozinho ao veterinário? Essa é uma pergunta muito comum..." />
 
         <Button
+            android:id="@+id/btnVeterinario"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Leia mais..."/>
@@ -160,6 +164,7 @@
             android:text="Você sabia que os cachorros percebem os cheiros 1 milhão de vezes..." />
 
         <Button
+            android:id="@+id/btnOlfato"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="Leia Mais..." />
@@ -190,6 +195,7 @@
             android:textSize="18dp" />
 
         <Button
+            android:id="@+id/btnDormir"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Leia mais..."
@@ -219,6 +225,7 @@
             android:textSize="16dp" />
 
         <Button
+            android:id="@+id/btnCachorroFaz"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Leia mais..."/>
@@ -247,6 +254,7 @@
             />
 
         <Button
+            android:id="@+id/Beijam"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="40dp"
@@ -277,6 +285,7 @@
             />
 
         <Button
+            android:id="@+id/btnSuam"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Leia mais..."
@@ -306,6 +315,7 @@
             />
 
         <Button
+            android:id="@+id/btnTruques"
             android:layout_width="match_parent"
             android:layout_height="47dp"
             android:layout_marginTop="15dp"
