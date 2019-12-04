@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.levirs.example.goldpet">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
     <uses-feature android:name="android.hardware.camera2"/>
     <uses-feature android:name="android.hardware.camera" android:required="true"/>
     <uses-permission android:name="android.permission.INTERNET" />
@@ -37,4 +36,5 @@
         <activity android:name="com.example.goldpet.Resgatar" />
         <activity android:name="com.example.goldpet.InserirPetResgate" />
     </application>
+    <uses-permission android:name="android.permission.CAMERA"/>
 </manifest>
