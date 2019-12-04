@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:background="@drawable/fundoandroid"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
@@ -40,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:text="Últimos animais lançados para adoção"
-        android:textSize="20dp"
+        android:textSize="18dp"
         android:textColor="#000"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -98,6 +100,6 @@
             android:layout_marginTop="20dp"
             android:text="Veja mais!"
             android:textColor="#000"
-            android:textSize="20dp" />
+            android:textSize="18dp" />
     </LinearLayout>
 </ScrollView>
