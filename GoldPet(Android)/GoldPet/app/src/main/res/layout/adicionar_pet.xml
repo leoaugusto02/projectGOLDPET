@@ -13,11 +13,11 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/edtRaca"
+            android:id="@+id/edtNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:hint="Raça"
+            android:hint="Nome"
             android:textSize="20dp" />
 
         <EditText
@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="118dp"
             android:textSize="20dp"
-            android:hint="Status do pet" />
+            android:hint="Situação do pet" />
 
         <Button
             android:id="@+id/btnFoto"

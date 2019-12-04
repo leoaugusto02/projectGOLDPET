@@ -38,7 +38,7 @@
         android:id="@+id/btnLogin"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="150dp"
+        android:layout_marginLeft="120dp"
         android:layout_marginTop="50dp"
         android:background="#B5D8D6"
         android:text="Login"
