@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.json.JSONObject;
@@ -31,7 +30,6 @@ import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.AnimaisDAO;
@@ -58,12 +56,18 @@ public class ProcessaAnimais extends HttpServlet {
 		String acao = req.getParameter("acao");
 		String acaoModal = req.getParameter("acaoModal");
 		String acaoVerifica = req.getParameter("acaoVerifica");
-		System.out.println("acaoVerifica= " + acaoVerifica);
 
+		Integer usuSessao = Integer.valueOf(req.getParameter("codUser"));
+		
+		System.out.println("acaoVerifica= " + acaoVerifica);
+		
 		String codUser = req.getParameter("codUser");
+		
 		System.out.println("codUser= " + codUser);
+		
 
 		if (acao != null) {
+			
 			if (acao.equals("perfil")) {
 
 				Animais a = new Animais();
@@ -92,8 +96,11 @@ public class ProcessaAnimais extends HttpServlet {
 						objMens.put("imgDiag", ani.getLaudo().getImagem());
 
 						objMens.put("mensagem", "temLaudo");
+						
 					} else {
+						
 						objMens.put("mensagem", "semLaudo");
+						
 					}
 
 					out.print(objMens.toString());
@@ -135,7 +142,7 @@ public class ProcessaAnimais extends HttpServlet {
 				}
 
 			
-			} else if (acao.equals("inserirLaudo")) {
+			}	 /*	else if (acao.equals("inserirLaudo")) {
 				int codAnimal = Integer.valueOf(req.getParameter("codAnimal"));
 				String nomeVet = req.getParameter("nomeVet");
 				String dataDiagnostico = req.getParameter("dataDiagnostico");
@@ -151,7 +158,6 @@ public class ProcessaAnimais extends HttpServlet {
 				l.setDiagnostico(breveDiagnostico);
 				l.setImagem(diagnosticoCompleto);
 				a.setLaudo(l);
-				;
 
 				try {
 					if (aDao.inserirLaudo(a)) {
@@ -166,14 +172,13 @@ public class ProcessaAnimais extends HttpServlet {
 				}
 
 			}
-	
+	*/
 		} else {
 			objMens.put("mensagem", "aguardando requisição");
 			out.print(objMens.toString());
 		}
 		if (acaoVerifica != null && acaoVerifica.equals("verificaSessao")) {
 
-			Integer usuSessao = Integer.valueOf(req.getParameter("codUser"));
 
 			if (usuSessao != null) {
 				PessoaDAO pDao = new PessoaDAO();
@@ -271,6 +276,66 @@ public class ProcessaAnimais extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}else if (acaoModal!= null && acaoModal.equals("inserirLaudo")) {
+			
+			int codAnimal = Integer.valueOf(req.getParameter("codAnimal"));
+			
+			String dataDiagnostico = req.getParameter("dataDiagnostico");
+			String breveDiagnostico = req.getParameter("breveDiagnostico");
+			String diagnosticoCompleto = req.getParameter("diagnosticoCompleto");
+			String filePath = req.getParameter("pathFile");
+			
+			Animais a = new Animais();
+			Laudo l = new Laudo();
+
+			
+			Pessoa p = new Pessoa();
+			PessoaDAO pDao = new PessoaDAO();
+			
+			try {
+				
+
+				Part file = req.getPart("imagem");
+				String fileName = file.getSubmittedFileName();
+				System.out.println("FN - " + fileName);
+
+				int posInicial = fileName.lastIndexOf('.');
+				int posFinal = fileName.length();
+				ext = fileName.substring(posInicial, posFinal);
+
+				InputStream fileContent = file.getInputStream();
+				System.out.println("NOME - " + diagnosticoCompleto.trim() + ext);
+				// OutputStream os = new
+				// FileOutputStream("D:\\Documentos\\Workspace\\Eclipse\\UpLoad\\WebContent\\images\\"
+				// + nome + ext);
+	
+		//		OutputStream os = new FileOutputStream(filePath + "img//" + nome.trim() + ext);
+
+				int data = fileContent.read();
+
+				while (data != -1) {
+		//			os.write(data);
+					data = fileContent.read();
+				}
+
+		//		os.close();
+				fileContent.close();
+				//p = pDao.verificaFuncionario(usuSessao);
+				
+				a.setCodAnimal(codAnimal);
+				l.setNomeVeterinario(p.getP_nome() + p.getS_nome());
+				l.setDataDiagnostico(dataDiagnostico);
+				l.setDiagnostico(breveDiagnostico);
+				l.setImagem(diagnosticoCompleto);
+				a.setLaudo(l);
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		
+			
 		}
 	}
 }
