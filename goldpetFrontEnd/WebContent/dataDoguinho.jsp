@@ -105,8 +105,9 @@ body, html {
 			String breveDiagnostico = request.getParameter("breveDiagnostico");
 			String diagnosticoCompleto = request.getParameter("diagnosticoCompleto");
 
-			if ((dataDiagnostico != null) || (breveDiagnostico != null) || (diagnosticoCompleto != null)) {
-				parametros = "dataDiagnostico=" + dataDiagnostico + "&breveDiagnostico=" + breveDiagnostico
+			if (/*codAnimale != null) ||*/ (dataDiagnostico != null) || (breveDiagnostico != null) || (diagnosticoCompleto != null)) {
+				System.out.println("codAnimal= " + codAnimal);
+				parametros = "codAnimal=" + codAnimal + "&dataDiagnostico=" + dataDiagnostico + "&breveDiagnostico=" + breveDiagnostico
 						+ "&diagnosticoCompleto=" + diagnosticoCompleto + "&acaoModal=" + acaoModal;
 
 				System.out.println(parametros);
@@ -326,6 +327,7 @@ body, html {
 										style="height: 20px; width: 20px; margin-left: -0.5;" />-->
 
 									<input type="hidden" name="codUser" value="<%=request.getSession().getAttribute("codigoUsuario")%>"/>
+									<input type="hidden" name="codAnimal" value="<%=codAnimal%>"/>
 									<input type="hidden" id="acaoModal" name="acaoModal"
 										value="inserirLaudo" />
 									<input type="hidden" name="pathFile"

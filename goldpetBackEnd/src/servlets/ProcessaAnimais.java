@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.json.JSONObject;
@@ -31,7 +32,6 @@ import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.AnimaisDAO;
@@ -56,12 +56,23 @@ public class ProcessaAnimais extends HttpServlet {
 		JSONObject objMens = new JSONObject();
 
 		String acao = req.getParameter("acao");
+		
+
+		
+		
+		
+		
 		String acaoModal = req.getParameter("acaoModal");
 		String acaoVerifica = req.getParameter("acaoVerifica");
-		System.out.println("acaoVerifica= " + acaoVerifica);
 
+		Integer usuSessao = Integer.valueOf(req.getParameter("codUser"));
+		
+		System.out.println("acaoVerifica= " + acaoVerifica);
+		
 		String codUser = req.getParameter("codUser");
+		
 		System.out.println("codUser= " + codUser);
+		
 
 		if (acao != null) {
 			
@@ -93,8 +104,11 @@ public class ProcessaAnimais extends HttpServlet {
 						objMens.put("imgDiag", ani.getLaudo().getImagem());
 
 						objMens.put("mensagem", "temLaudo");
+						
 					} else {
+						
 						objMens.put("mensagem", "semLaudo");
+						
 					}
 
 					out.print(objMens.toString());
@@ -136,7 +150,7 @@ public class ProcessaAnimais extends HttpServlet {
 				}
 
 			
-			} else if (acao.equals("inserirLaudo")) {
+			}	 /*	else if (acao.equals("inserirLaudo")) {
 				int codAnimal = Integer.valueOf(req.getParameter("codAnimal"));
 				String nomeVet = req.getParameter("nomeVet");
 				String dataDiagnostico = req.getParameter("dataDiagnostico");
@@ -152,7 +166,6 @@ public class ProcessaAnimais extends HttpServlet {
 				l.setDiagnostico(breveDiagnostico);
 				l.setImagem(diagnosticoCompleto);
 				a.setLaudo(l);
-				;
 
 				try {
 					if (aDao.inserirLaudo(a)) {
@@ -167,14 +180,13 @@ public class ProcessaAnimais extends HttpServlet {
 				}
 
 			}
-	
+	*/
 		} else {
 			objMens.put("mensagem", "aguardando requisição");
 			out.print(objMens.toString());
 		}
 		if (acaoVerifica != null && acaoVerifica.equals("verificaSessao")) {
 
-			Integer usuSessao = Integer.valueOf(req.getParameter("codUser"));
 
 			if (usuSessao != null) {
 				PessoaDAO pDao = new PessoaDAO();
@@ -272,6 +284,66 @@ public class ProcessaAnimais extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}else if (acaoModal!= null && acaoModal.equals("inserirLaudo")) {
+			
+			String codigoAnimal = req.getParameter("codAnimal");
+			String breveDiagnostico = req.getParameter("breveDiagnostico");
+			String diagnosticoCompleto = req.getParameter("diagnosticoCompleto");
+			String filePath = req.getParameter("pathFile");
+		
+			Laudo l = new Laudo();
+			Animais a = new Animais();
+			Pessoa p = new Pessoa();
+			PessoaDAO pDao = new PessoaDAO();
+			
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-MM");
+			Date dataDiagnostico;
+
+			try {
+				dataDiagnostico = format.parse(req.getParameter("dataDiagnostico"));
+				l.setDataDiagnostico(dataDiagnostico);
+	
+				Part file = req.getPart("diagnosticoCompleto");
+				String fileName = file.getSubmittedFileName();
+				System.out.println("FN - " + fileName);
+
+				int posInicial = fileName.lastIndexOf('.');
+				int posFinal = fileName.length();
+				ext = fileName.substring(posInicial, posFinal);
+
+				InputStream fileContent = file.getInputStream();
+	
+				OutputStream os = new FileOutputStream(filePath + "img//" + fileName.trim() + ext);
+
+				int data = fileContent.read();
+
+				while (data != -1) {
+				os.write(data);
+					data = fileContent.read();
+				}
+
+				os.close();
+				fileContent.close();
+				p = pDao.verificaFuncionario(usuSessao);
+				
+				a.setCodAnimal(Integer.valueOf(codigoAnimal));
+				l.setNomeVeterinario(p.getP_nome() + p.getS_nome());
+				l.setDataDiagnostico(dataDiagnostico);
+				l.setDiagnostico(breveDiagnostico);
+				l.setImagem(fileName.trim());
+				a.setLaudo(l);
+				
+				if(aDao.inserirLaudo(a)) {
+					System.out.println("Laudo inserido com sucesso");
+					resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/dataDoguinho.jsp");
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		
+			
 		}
 	}
 }
