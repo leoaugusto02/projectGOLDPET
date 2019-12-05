@@ -16,7 +16,7 @@
             android:id="@+id/txtDescricao"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:hint="Descricao"
             android:textSize="20dp" />
 
@@ -27,36 +27,13 @@
             android:hint="Endereco"
             android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/txtNivelUrgencia"
+        <Spinner
+            android:id="@+id/spnNiverUrgencia"
             android:layout_width="match_parent"
             android:layout_height="49dp"
-            android:hint="Nivel de Urgência"
+            android:layout_marginTop="15dp"
+            android:text="Nivel de Urgência"
             android:textSize="20dp" />
-
-        <RadioButton
-            android:id="@+id/rdbFemea"
-            android:layout_width="109dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="80dp"
-            android:textSize="20dp"
-            android:text="Fêmea" />
-
-        <RadioButton
-            android:id="@+id/rdbMacho"
-            android:layout_width="109dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="190dp"
-            android:layout_marginTop="-50dp"
-            android:textSize="20dp"
-            android:text="Macho" />
-
-        <EditText
-            android:id="@+id/edtStatus"
-            android:layout_width="match_parent"
-            android:layout_height="118dp"
-            android:textSize="20dp"
-            android:hint="Situação do pet" />
 
         <Button
             android:id="@+id/btnFoto"
