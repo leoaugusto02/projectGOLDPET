@@ -1,6 +1,9 @@
 package servlets;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +33,10 @@ public class ProcessaResgate extends HttpServlet {
 		ResgateDAO rDao = new ResgateDAO();
 		
 		String acao = req.getParameter("acao");
-
+		String acaoModal = req.getParameter("acaoModal");
+		String ext = "";
+		
+		
 		if(acao != null) {
 			if(acao.equals("listarAnimaisResgate")) {
 				
@@ -56,6 +63,53 @@ public class ProcessaResgate extends HttpServlet {
 		}else {
 			objMens.put("mensagem", "aguardando requisição");
 			out.print(objMens.toString());
+		}
+		
+		if(acaoModal != null) {
+			if(acaoModal.equals("inserirResgate")) {
+				String raca = req.getParameter("raca");
+				String porte = req.getParameter("porte");
+				String especie = req.getParameter("especie");
+				String status = req.getParameter("status");
+				String filePath = req.getParameter("pathFile");
+				
+				
+				try {
+
+					Part file = req.getPart("imagem");
+					String fileName = file.getSubmittedFileName();
+					System.out.println("FN - " + fileName);
+
+					int posInicial = fileName.lastIndexOf('.');
+					int posFinal = fileName.length();
+					ext = fileName.substring(posInicial, posFinal);
+
+					InputStream fileContent = file.getInputStream();
+					System.out.println("NOME - " + raca.trim() +" PORTE - " + porte.trim() + ext);
+					// OutputStream os = new
+					// FileOutputStream("D:\\Documentos\\Workspace\\Eclipse\\UpLoad\\WebContent\\images\\"
+					// + nome + ext);
+					OutputStream os = new FileOutputStream(filePath + "img//" + raca.trim() + porte.trim() + ext);
+
+					int data = fileContent.read();
+
+					while (data != -1) {
+						os.write(data);
+						data = fileContent.read();
+					}
+
+					os.close();
+					fileContent.close();
+
+				} catch (Exception e) {
+					System.out.println("E - " + e);
+				}
+				
+				Resgate r = new Resgate();
+				
+				r.set
+				
+			}
 		}
     	
     }

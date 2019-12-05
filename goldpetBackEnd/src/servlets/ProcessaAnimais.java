@@ -65,12 +65,6 @@ public class ProcessaAnimais extends HttpServlet {
 
 		if (acao != null) {
 			
-			if (acao.equals("testeImage")) {
-			
-				System.out.println(req.getParameter("image"));
-				
-			}
-			
 			if (acao.equals("perfil")) {
 
 				Animais a = new Animais();
