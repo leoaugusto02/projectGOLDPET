@@ -39,7 +39,7 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.adicionar_pet);
+        setContentView(R.layout.resgate_pet);
 
         if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED){
