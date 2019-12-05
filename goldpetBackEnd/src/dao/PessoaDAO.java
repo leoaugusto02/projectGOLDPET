@@ -276,4 +276,24 @@ public class PessoaDAO {
 		}
 		return null;
 	}
+	
+	public Pessoa verificaFuncionario(int codigo) throws SQLException {
+		String sql = "SELECT p_nome, s_nome"
+				+ " FROM Pessoa WHERE codePerson = ?";
+
+		con = ConnectionDB.getConnection();
+
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, codigo);
+
+		ResultSet rs = ps.executeQuery();
+		
+		if(rs.next()) {
+			Pessoa p = new Pessoa();
+			p.setP_nome(rs.getString("p_nome"));
+			p.setS_nome(rs.getString("s_nome"));
+			return p;
+		}
+		return null;
+	}
 }
