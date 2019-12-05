@@ -96,7 +96,7 @@ public class AnimaisDAO {
 	
 	public boolean inserirLaudo(Animais a) throws SQLException {
 		
-		String sql = "INSERT INTO Laudo VALUES(?, ?, ?, CURDATE(), ?, ?)";
+		String sql = "INSERT INTO Laudo VALUES(?, ?, ?, ?, ?, CURDATE())";
 		
 		
 		
@@ -104,10 +104,10 @@ public class AnimaisDAO {
 		
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, a.getCodAnimal());
-		ps.setString(2, a.getLaudo().getNomeVeterinario());
+		ps.setString(2, a.getLaudo().getNomeVeterinario().toString());
 		ps.setDate(3, new java.sql.Date(a.getLaudo().getDataDiagnostico().getTime()));
-		ps.setString(4, a.getLaudo().getDiagnostico());
-		ps.setString(5, a.getLaudo().getImagem());
+		ps.setString(4, a.getLaudo().getDiagnostico().toString());
+		ps.setString(5, a.getLaudo().getImagem().toString());
 		
 		return ps.executeUpdate() > 0;
 	}

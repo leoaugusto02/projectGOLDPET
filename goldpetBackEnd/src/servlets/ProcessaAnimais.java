@@ -286,12 +286,11 @@ public class ProcessaAnimais extends HttpServlet {
 			}
 		}else if (acaoModal!= null && acaoModal.equals("inserirLaudo")) {
 			
-			String codigoAnimal =req.getParameter("codigoAnimal");
+			String codigoAnimal = req.getParameter("codAnimal");
 			String breveDiagnostico = req.getParameter("breveDiagnostico");
 			String diagnosticoCompleto = req.getParameter("diagnosticoCompleto");
 			String filePath = req.getParameter("pathFile");
 		
-			
 			Laudo l = new Laudo();
 			Animais a = new Animais();
 			Pessoa p = new Pessoa();
@@ -325,7 +324,7 @@ public class ProcessaAnimais extends HttpServlet {
 
 				os.close();
 				fileContent.close();
-				//p = pDao.verificaFuncionario(usuSessao);
+				p = pDao.verificaFuncionario(usuSessao);
 				
 				a.setCodAnimal(Integer.valueOf(codigoAnimal));
 				l.setNomeVeterinario(p.getP_nome() + p.getS_nome());
