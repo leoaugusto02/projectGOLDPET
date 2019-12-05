@@ -165,36 +165,16 @@ body, html {
 
 						<div class="modal-body">
 							<div>
+									
+								<input class="form-control"
+									type="text" placeholder="endereço" style="margin-bottom: 3%;" />
 
-								<input class="form-control" type="text" placeholder="Raça"
-									style="margin-bottom: 3%;" /> <input class="form-control"
-									type="text" placeholder="Porte" style="margin-bottom: 3%;" />
-
-								<input class="form-control" type="text" placeholder="Espécie"
+								<input class="form-control" type="text" placeholder="Nivel de Urgencia"
 									style="margin-bottom: 3%;" />
-
-								<div class="form-check form-check-inline"
-									style="margin-bottom: 2%;">
-									<input class="form-check-input" type="radio"
-										name="inlineRadioOptions" id="inlineRadio1" value="option1">
-									<label class="form-check-label" for="inlineRadio1"> <img
-										alt="feminino.png" src="img/feminino.png"
-										style="height: 25px; width: 25px; margin-left: -0.5;">Fêmea
-									</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio"
-										name="inlineRadioOptions" id="inlineRadio2" value="option2">
-									<label class="form-check-label" for="inlineRadio2"> <img
-										alt="masculino.png" src="img/masculino.png"
-										style="height: 25px; width: 25px; margin-left: -0.5;">Macho
-									</label>
-
-								</div>
 
 								<div id="textArea">
 									<textarea class="form-control" id="textarea"
-										placeholder="Status do Pet" rows="3"
+										placeholder="Descrição do Pet" rows="3"
 										style="margin-top: 2px; margin-bottom: 0px; height: 80px; width: 470px;"></textarea>
 								</div>
 
