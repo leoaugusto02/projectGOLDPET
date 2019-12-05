@@ -287,12 +287,12 @@ public class ConsumirWebService{
         }
     }
 
-    public static boolean inserirResgate(String raca, String porte, String especie, String status ,byte[] image){
+    public static boolean inserirResgate(String descricao, String endereco, int nivel, byte[] image){
         String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaResgate";
         String acaoModal = "inserirResgate";
 
         try{
-            String parametros = "acaoModal=" + acaoModal + "&raca=" + raca + "&porte=" + porte + "&especie" + especie + "&status=" + status + "&pathFile=" + image;
+            String parametros = "acaoModal=" + acaoModal + "&descricao=" + descricao + "&endereco=" + endereco + "&nivel" + nivel + "&pathFile=" + image;
 
             URL url = new URL(urlWebService);
             HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();

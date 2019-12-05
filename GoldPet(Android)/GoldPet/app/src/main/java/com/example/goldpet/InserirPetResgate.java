@@ -10,10 +10,13 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,17 +27,30 @@ import com.levirs.example.goldpet.R;
 
 import java.io.ByteArrayOutputStream;
 
-public class InserirPetResgate extends AppCompatActivity implements View.OnClickListener {
+public class InserirPetResgate extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     static final int CAMERA = 1;
     static final int GALERIA = 2;
 
-    EditText edtRaca, edtPorte, edtEspecie, edtStatus;
-    RadioButton rdbFemea, rdbMacho;
+    EditText edtDescricao, edtEndereco;
+    Spinner spnNiverUrgencia;
     Button btnFoto, btnArquivo, btnClose, btnPostar;
     ImageView ivImagem;
     Handler handler;
     byte[] byteArray;
+    ArrayAdapter<String> adtNivelUrgencia;
+    LinearLayout layout;
+
+    int nivel;
+
+    private static final int[] lstNivelUrgencia = {
+            -1,
+            1,
+            2,
+            3,
+            4,
+            5
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,22 +65,23 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
                     0);
         }
 
-        edtRaca = findViewById(R.id.edtRaca);
-        edtPorte = findViewById(R.id.edtPorte);
-        edtEspecie = findViewById(R.id.edtEspecie);
-        edtStatus = findViewById(R.id.edtStatus);
-        rdbFemea = findViewById(R.id.rdbFemea);
-        rdbMacho = findViewById(R.id.rdbMacho);
+        layout = findViewById(R.id.layout);
+        spnNiverUrgencia = findViewById(R.id.spnNiverUrgencia);
+        edtDescricao = findViewById(R.id.edtDescricao);
+        edtEndereco = findViewById(R.id.edtEndereco);
         btnFoto = findViewById(R.id.btnFoto);
         btnArquivo = findViewById(R.id.btnArquivo);
         btnClose = findViewById(R.id.btnClose);
         btnPostar = findViewById(R.id.btnPostar);
         ivImagem = findViewById(R.id.ivImagem);
 
+        adtNivelUrgencia = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.niveisUrgencia));
+
+        spnNiverUrgencia.setAdapter(adtNivelUrgencia);
+
         handler = new Handler();
 
-        rdbFemea.setOnClickListener(this);
-        rdbMacho.setOnClickListener(this);
+        spnNiverUrgencia.setOnItemSelectedListener(this);
         btnFoto.setOnClickListener(this);
         btnArquivo.setOnClickListener(this);
         btnClose.setOnClickListener(this);
@@ -115,9 +132,6 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
 
             byte[] byteArray = stream.toByteArray();
 
-            ConsumirWebService.inserirResgate(edtRaca.getText().toString(), edtPorte.getText().toString(), edtEspecie.getText().toString(),
-                    edtStatus.getText().toString(), byteArray);
-
             ivImagem.setImageBitmap(imageBitmap);
 
             imageBitmap.recycle();
@@ -135,8 +149,7 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
         new Thread(){
             @Override
             public void run() {
-                if(ConsumirWebService.inserirResgate(edtRaca.getText().toString(), edtPorte.getText().toString(), edtEspecie.getText().toString(),
-                        edtStatus.getText().toString() , byteArray)){
+                if(ConsumirWebService.inserirResgate(edtDescricao.getText().toString(), edtEndereco.getText().toString(), nivel, byteArray)){
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -155,4 +168,31 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
             }
         }.start();
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch (parent.getId()){
+            case R.id.spnNiverUrgencia:
+                if(position != 0){
+                    if(position == 1){
+                        nivel = lstNivelUrgencia[position];
+                    }else if(position == 2){
+                        nivel = lstNivelUrgencia[position];
+                    }else if(position == 3){
+                        nivel = lstNivelUrgencia[position];
+                    }else if(position == 4){
+                        nivel = lstNivelUrgencia[position];
+                    }else if(position == 5){
+                        nivel = lstNivelUrgencia[position];
+                    }
+                }
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
 }

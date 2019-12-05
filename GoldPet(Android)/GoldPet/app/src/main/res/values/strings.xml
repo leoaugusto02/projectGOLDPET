@@ -15,6 +15,14 @@
     <string name="menu_adocao">Adoção</string>
     <string name="menu_resgate">Resgate</string>
 
+    <string-array name="niveisUrgencia">
+        <item>Selecione um nivel de Urgencia</item>
+        <item>Não urgente</item>
+        <item>Pouco machucado</item>
+        <item>Machucado</item>
+        <item>Perigo</item>
+        <item>Muito Urgente</item>
+    </string-array>
 </resources>
 
 

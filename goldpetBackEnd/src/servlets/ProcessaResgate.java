@@ -67,10 +67,9 @@ public class ProcessaResgate extends HttpServlet {
 		
 		if(acaoModal != null) {
 			if(acaoModal.equals("inserirResgate")) {
-				String raca = req.getParameter("raca");
-				String porte = req.getParameter("porte");
-				String especie = req.getParameter("especie");
-				String status = req.getParameter("status");
+				String descricao = req.getParameter("descricao");
+				String endereco = req.getParameter("endereco");
+				int nivel = Integer.valueOf(req.getParameter("nivel"));
 				String filePath = req.getParameter("pathFile");
 				
 				
@@ -85,11 +84,11 @@ public class ProcessaResgate extends HttpServlet {
 					ext = fileName.substring(posInicial, posFinal);
 
 					InputStream fileContent = file.getInputStream();
-					System.out.println("NOME - " + raca.trim() +" PORTE - " + porte.trim() + ext);
+					System.out.println("Descricao - " + descricao.trim() +" Endereco - " + endereco.trim() + ext);
 					// OutputStream os = new
 					// FileOutputStream("D:\\Documentos\\Workspace\\Eclipse\\UpLoad\\WebContent\\images\\"
 					// + nome + ext);
-					OutputStream os = new FileOutputStream(filePath + "img//" + raca.trim() + porte.trim() + ext);
+					OutputStream os = new FileOutputStream(filePath + "img//" + descricao.trim() + endereco.trim() + ext);
 
 					int data = fileContent.read();
 
@@ -106,8 +105,23 @@ public class ProcessaResgate extends HttpServlet {
 				}
 				
 				Resgate r = new Resgate();
+
+				r.setDescricao(descricao);
+				r.setEndereco(endereco);
+				r.setNivelUrgencia(nivel);
+				r.setDogeImagem(descricao.trim() + endereco.trim() + ext);
 				
-				r.set
+				try {
+					if (rDao.inserirResgate(r)) {
+						System.out.println("Resgate inserido com sucesso");
+						resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/Resgate.jsp");
+					}else {
+						System.out.println("Algo deu errado");
+					}
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				
 			}
 		}
