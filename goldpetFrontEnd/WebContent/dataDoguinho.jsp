@@ -105,8 +105,9 @@ body, html {
 			String breveDiagnostico = request.getParameter("breveDiagnostico");
 			String diagnosticoCompleto = request.getParameter("diagnosticoCompleto");
 
-			if ((dataDiagnostico != null) || (breveDiagnostico != null) || (diagnosticoCompleto != null)) {
-				parametros = "dataDiagnostico=" + dataDiagnostico + "&breveDiagnostico=" + breveDiagnostico
+			if (/*codAnimale != null) ||*/ (dataDiagnostico != null) || (breveDiagnostico != null) || (diagnosticoCompleto != null)) {
+				System.out.println("codAnimal= " + codAnimal);
+				parametros = "codAnimal=" + codAnimal + "&dataDiagnostico=" + dataDiagnostico + "&breveDiagnostico=" + breveDiagnostico
 						+ "&diagnosticoCompleto=" + diagnosticoCompleto + "&acaoModal=" + acaoModal;
 
 				System.out.println(parametros);

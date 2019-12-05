@@ -1,14 +1,17 @@
 package vo;
 
+import java.util.Date;
+
 public class Laudo {
 
-	private String nomeVeterinario, dataDiagnostico, dataPostagen,diagnostico, imagem;
+	private String nomeVeterinario, diagnostico, imagem;
+	private Date dataDiagnostico, dataPostagen;
 
 	public Laudo() {
 		super();
 	}
 
-	public Laudo(String nomeVeterinario, String dataDiagnostico, String dataPostagen, String diagnostico,
+	public Laudo(String nomeVeterinario, Date dataDiagnostico, Date dataPostagen, String diagnostico,
 			String imagem) {
 		super();
 		this.nomeVeterinario = nomeVeterinario;
@@ -26,11 +29,11 @@ public class Laudo {
 		this.nomeVeterinario = nomeVeterinario;
 	}
 
-	public String getDataDiagnostico() {
+	public Date getDataDiagnostico() {
 		return dataDiagnostico;
 	}
 
-	public void setDataDiagnostico(String dataDiagnostico) {
+	public void setDataDiagnostico(Date dataDiagnostico) {
 		this.dataDiagnostico = dataDiagnostico;
 	}
 
@@ -50,11 +53,11 @@ public class Laudo {
 		this.imagem = imagem;
 	}
 
-	public String getDataPostagen() {
+	public Date getDataPostagen() {
 		return dataPostagen;
 	}
 
-	public void setDataPostagen(String dataPostagen) {
+	public void setDataPostagen(Date dataPostagen) {
 		this.dataPostagen = dataPostagen;
 	}
 
