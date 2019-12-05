@@ -12,51 +12,28 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edtRaca"
+        <TextView
+            android:id="@+id/txtDescricao"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:hint="Nome"
+            android:layout_height="75dp"
+            android:layout_marginTop="30dp"
+            android:hint="Descricao"
             android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/edtPorte"
+        <TextView
+            android:id="@+id/txtendereco"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:hint="Porte" />
+            android:layout_height="72dp"
+            android:hint="Endereco"
+            android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/edtEspecie"
+        <Spinner
+            android:id="@+id/spnNiverUrgencia"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:hint="Especie" />
-
-        <RadioButton
-            android:id="@+id/rdbFemea"
-            android:layout_width="109dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="80dp"
-            android:textSize="20dp"
-            android:text="Fêmea" />
-
-        <RadioButton
-            android:id="@+id/rdbMacho"
-            android:layout_width="109dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="190dp"
-            android:layout_marginTop="-50dp"
-            android:textSize="20dp"
-            android:text="Macho" />
-
-        <EditText
-            android:id="@+id/edtStatus"
-            android:layout_width="match_parent"
-            android:layout_height="118dp"
-            android:textSize="20dp"
-            android:hint="Situação do pet" />
+            android:layout_height="49dp"
+            android:layout_marginTop="15dp"
+            android:text="Nivel de Urgência"
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/btnFoto"
