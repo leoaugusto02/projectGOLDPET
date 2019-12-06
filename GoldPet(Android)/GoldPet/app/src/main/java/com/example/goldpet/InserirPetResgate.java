@@ -34,12 +34,12 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
     Button btnFoto, btnArquivo, btnClose, btnPostar;
     ImageView ivImagem;
     Handler handler;
-    String pathFile = "";
+    byte[] byteArray;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.adicionar_pet);
+        setContentView(R.layout.resgate_pet);
 
         if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED){
@@ -115,14 +115,14 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
 
             byte[] byteArray = stream.toByteArray();
 
-            ConsumirWebService.soImagem(byteArray);
+            ConsumirWebService.inserirResgate(edtRaca.getText().toString(), edtPorte.getText().toString(), edtEspecie.getText().toString(),
+                    edtStatus.getText().toString(), byteArray);
 
             ivImagem.setImageBitmap(imageBitmap);
 
             imageBitmap.recycle();
 
-            Log.i("Pudim", extras.get("data").toString());
-            pathFile = imageBitmap.toString();
+            Log.i("Pudim", byteArray.toString());
 
         }else if(requestCode == GALERIA && resultCode == RESULT_OK){
             Uri img = data.getData();
@@ -136,7 +136,7 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
             @Override
             public void run() {
                 if(ConsumirWebService.inserirResgate(edtRaca.getText().toString(), edtPorte.getText().toString(), edtEspecie.getText().toString(),
-                        edtStatus.getText().toString() , pathFile)){
+                        edtStatus.getText().toString() , byteArray)){
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
