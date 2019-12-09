@@ -121,8 +121,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             Toast.makeText(this, "This is home", Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.nav_gallery) {
-
         } else if (id == R.id.nav_login) {
             Intent it = new Intent(this, Login.class);
             startActivity(it);
