@@ -263,36 +263,13 @@ public class ConsumirWebService{
         }
     }
 
-    public static boolean inserirResgate(String raca,String porte, String especie, String status,String path){
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaResgate";
-        String acaoModal = "inserirResgate";
-
-        try{
-            String parametros = "acaoModal=" + acaoModal + "&path=" + path;
-
-            URL url = new URL(urlWebService);
-            HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
-            conexaoWeb.setRequestMethod("POST");
-            conexaoWeb.setDoOutput(true);
-
-            DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
-
-            wr.writeBytes(parametros);
-
-            return true;
-
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
 
     public static boolean inserirResgate(String descricao, String endereco, int nivel, byte[] image){
         String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaResgate";
         String acaoModal = "inserirResgate";
 
         try{
-            String parametros = "acaoModal=" + acaoModal + "&descricao=" + descricao + "&endereco=" + endereco + "&nivel" + nivel + "&pathFile=" + image;
+            String parametros = "acaoModal=" + acaoModal + "&descricao=" + descricao + "&endereco=" + endereco + "&nivel=" + nivel + "&pathFile=" + image;
 
             URL url = new URL(urlWebService);
             HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();

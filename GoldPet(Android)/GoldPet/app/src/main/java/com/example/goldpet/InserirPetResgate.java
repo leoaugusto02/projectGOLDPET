@@ -86,6 +86,7 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
         btnArquivo.setOnClickListener(this);
         btnClose.setOnClickListener(this);
         btnPostar.setOnClickListener(this);
+
     }
 
     @Override
@@ -98,7 +99,7 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
                 AcessarGaleria();
              break;
 
-            case R.id.btnEnviar:
+            case R.id.btnPostar:
                 postar();
             break;
 
@@ -127,21 +128,18 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
 
+            ivImagem.setImageBitmap(imageBitmap);
+
+
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
 
-            byte[] byteArray = stream.toByteArray();
-
-            ivImagem.setImageBitmap(imageBitmap);
-
-            imageBitmap.recycle();
-
-            Log.i("Pudim", byteArray.toString());
+            byteArray = stream.toByteArray();
 
         }else if(requestCode == GALERIA && resultCode == RESULT_OK){
             Uri img = data.getData();
             ivImagem.setImageURI(img);
-            Log.i("Pudim", data.getData().toString());
+
         }
     }
 
