@@ -11,7 +11,6 @@ import vo.Animais;
 import vo.Laudo;
 import vo.Pessoa;
 
-
 public class AnimaisDAO {
 
 	private Connection con;
@@ -29,7 +28,7 @@ public class AnimaisDAO {
 		ResultSet rs = ps.executeQuery();
 
 		if (rs.next()) {
-			
+
 			Animais a = new Animais();
 
 			a.setNome(rs.getString("nome"));
@@ -42,45 +41,46 @@ public class AnimaisDAO {
 			a.setImgAnimal(rs.getString("imgAnimal"));
 
 			return a;
-			
+
 		}
 
 		return null;
 	}
-	
+
 	public Animais laudo(int codeAnimal) throws SQLException {
-		String sql = "SELECT nomeVeterinario, dataDiagnostico, diagnostico, imagem FROM Laudo WHERE codeAnimal = ?";
-		
+		String sql = "SELECT nomeVeterinario, dataDiagnostico, diagnostico, imagem, datapostagem FROM Laudo WHERE codeAnimal = ?";
+
 		con = ConnectionDB.getConnection();
 
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, codeAnimal);
 
 		ResultSet rs = ps.executeQuery();
-		
+
 		if (rs.next()) {
 			Laudo l = new Laudo();
 			Animais a = new Animais();
-			
-			l.setNomeVeterinario(rs.getString("nomeVeterinario")); 
+
+			l.setNomeVeterinario(rs.getString("nomeVeterinario"));
 			l.setDataDiagnostico(rs.getDate("dataDiagnostico"));
 			l.setDiagnostico(rs.getString("diagnostico"));
 			l.setImagem(rs.getString("imagem"));
+			l.setDataPostagen(rs.getDate("datapostagem"));
 			
 			a.setLaudo(l);
-			
+
 			return a;
 		}
-	
+
 		return null;
 	}
 
 	public boolean inserirAnimal(Animais a) throws SQLException {
-		
+
 		String sql = "INSERT INTO Animais VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
-		
+
 		con = ConnectionDB.getConnection();
-		
+
 		ps = con.prepareStatement(sql);
 		ps.setString(1, a.getNome());
 		ps.setString(2, a.getEspecie());
@@ -90,68 +90,66 @@ public class AnimaisDAO {
 		ps.setString(6, a.getStatus());
 		ps.setString(7, a.getSexo());
 		ps.setString(8, a.getImgAnimal());
-		
+
 		return ps.executeUpdate() > 0;
 	}
-	
+
 	public boolean inserirLaudo(Animais a) throws SQLException {
-		
+
 		String sql = "INSERT INTO Laudo VALUES(?, ?, ?, ?, ?, CURDATE())";
-		
-		
-		
+
 		con = ConnectionDB.getConnection();
-		
+
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, a.getCodAnimal());
 		ps.setString(2, a.getLaudo().getNomeVeterinario().toString());
 		ps.setDate(3, new java.sql.Date(a.getLaudo().getDataDiagnostico().getTime()));
 		ps.setString(4, a.getLaudo().getDiagnostico().toString());
 		ps.setString(5, a.getLaudo().getImagem().toString());
-		
+
 		return ps.executeUpdate() > 0;
 	}
-	
-	public List<Animais> listarAnimaisAdocao() throws SQLException{
-		String sql="SELECT codeAnimal ,nome, status, raca, especie, imgAnimal FROM Animais a";
-		
+
+	public List<Animais> listarAnimaisAdocao() throws SQLException {
+		String sql = "SELECT codeAnimal ,nome, status, raca, especie, imgAnimal FROM Animais a";
+
 		con = ConnectionDB.getConnection();
-		
+
 		ps = con.prepareStatement(sql);
-		
+
 		ResultSet rs = ps.executeQuery();
-		
+
 		List<Animais> lstAnimais = new ArrayList<>();
-		while(rs.next()) {
+		while (rs.next()) {
 			Animais a = new Animais();
-			
+
 			a.setCodAnimal(rs.getInt("codeAnimal"));
 			a.setNome(rs.getString("nome"));
 			a.setStatus(rs.getString("status"));
 			a.setRaca(rs.getString("raca"));
 			a.setEspecie(rs.getString("especie"));
 			a.setImgAnimal(rs.getString("imgAnimal"));
-			
+
 			lstAnimais.add(a);
 		}
-		
+
 		return lstAnimais;
 	}
-	
-	public List<Animais> ListarAnimaisDashBoard() throws SQLException{
+
+	public List<Animais> ListarAnimaisDashBoard() throws SQLException {
 		String sql = "SELECT an.nome, porte, raca, p_nome, s_nome, p.email, p.telefone1, p.telefone2 FROM Animais an INNER JOIN Pessoa p INNER JOIN Agenda ag ON an.codeAnimal = ag.codeAnimal";
-		
+
 		con = ConnectionDB.getConnection();
-		
+
 		ps = con.prepareStatement(sql);
-		
+
 		ResultSet rs = ps.executeQuery();
-		
+
 		List<Animais> lstAnimais = new ArrayList<>();
-		while(rs.next()) {
+		while (rs.next()) {
 			Animais a = new Animais();
 			Pessoa p = new Pessoa();
-			
+
 			a.setNome(rs.getString("an.nome"));
 			a.setPorte(rs.getString("porte"));
 			a.setRaca(rs.getString("raca"));
@@ -160,20 +158,20 @@ public class AnimaisDAO {
 			p.setEmail(rs.getString("p.email"));
 			p.setTel1(rs.getString("p.telefone1"));
 			p.setTel2(rs.getString("p.telefone2"));
-			
+
 			a.setPessoa(p);
 			lstAnimais.add(a);
 
 		}
-		
+
 		return lstAnimais;
 	}
-	
+
 	public boolean AdotarAnimal(Animais a) throws SQLException {
 		String sql = "INSERT INTO Agenda(codeAnimal, codePerson, data_adocao, confirmar, horario_marcado, transportado) VALUES (?, ?, ?, 'não confirmado', ?, ?);";
-				
+
 		con = ConnectionDB.getConnection();
-		
+
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, a.getCodAnimal());
 		ps.setInt(2, a.getPessoa().getCodePerson());
@@ -181,21 +179,37 @@ public class AnimaisDAO {
 		ps.setString(4, a.getAgenda().getConfirmar());
 		ps.setDate(5, new java.sql.Date(a.getAgenda().getHorario_marcado().getTime()));
 		ps.setString(6, a.getAgenda().getTransportado());
-		
+
 		return ps.executeUpdate() > 0;
 	}
-	
+
 	public boolean ConfirmarAutorizacao(int codeAnimal) throws SQLException {
 		String sql = "UPDATE Agenda SET confirmar = 'autorizado' SET entregar = 'em adocao' WHERE codeAnimal = ?";
-		
+
 		con = ConnectionDB.getConnection();
-		
+
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, codeAnimal);
-		
+
 		return ps.executeUpdate() > 0;
 	}
-	
-	
-	
+
+	public boolean AtualizarLaudo(int codAnimal, Animais a) throws SQLException {
+
+		String sql = "UPDATE Laudo SET nomeVeterinario = ?, dataDiagnostico = ?, diagnostico = ?, imagem = ?, datapostagem = CURDATE() WHERE codeAnimal = ?";
+		
+		con = ConnectionDB.getConnection();
+
+		ps = con.prepareStatement(sql);
+		ps.setString(1, a.getLaudo().getNomeVeterinario());
+		ps.setDate(2, new java.sql.Date(a.getLaudo().getDataDiagnostico().getTime()));
+		ps.setString(3, a.getLaudo().getDiagnostico());
+		ps.setString(4, a.getLaudo().getImagem());
+		ps.setInt(5, codAnimal);
+		
+
+		return ps.executeUpdate() > 0;
+
+	}
+
 }

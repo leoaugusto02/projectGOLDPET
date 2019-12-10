@@ -56,21 +56,17 @@ public class ProcessaAnimais extends HttpServlet {
 		JSONObject objMens = new JSONObject();
 
 		String acao = req.getParameter("acao");
-				
+
 		String acaoModal = req.getParameter("acaoModal");
 		String acaoVerifica = req.getParameter("acaoVerifica");
-
-		Integer usuSessao = Integer.valueOf(req.getParameter("codUser"));
-		
-		System.out.println("acaoVerifica= " + acaoVerifica);
-		
 		String codUser = req.getParameter("codUser");
-		
+
+		System.out.println("acaoVerifica= " + acaoVerifica);
+
 		System.out.println("codUser= " + codUser);
-		
 
 		if (acao != null) {
-			
+
 			if (acao.equals("perfil")) {
 
 				Animais a = new Animais();
@@ -95,15 +91,16 @@ public class ProcessaAnimais extends HttpServlet {
 						ani = aDao.laudo(codAnimal);
 						objMens.put("nomeVet", ani.getLaudo().getNomeVeterinario());
 						objMens.put("dataDiag", ani.getLaudo().getDataDiagnostico());
+						objMens.put("dataPost", ani.getLaudo().getDataPostagen());
 						objMens.put("diagnostico", ani.getLaudo().getDiagnostico());
 						objMens.put("imgDiag", ani.getLaudo().getImagem());
 
 						objMens.put("mensagem", "temLaudo");
-						
+
 					} else {
-						
+
 						objMens.put("mensagem", "semLaudo");
-						
+
 					}
 
 					out.print(objMens.toString());
@@ -144,44 +141,33 @@ public class ProcessaAnimais extends HttpServlet {
 					e.printStackTrace();
 				}
 
-			
-			}	 /*	else if (acao.equals("inserirLaudo")) {
-				int codAnimal = Integer.valueOf(req.getParameter("codAnimal"));
-				String nomeVet = req.getParameter("nomeVet");
-				String dataDiagnostico = req.getParameter("dataDiagnostico");
-				String breveDiagnostico = req.getParameter("breveDiagnostico");
-				String diagnosticoCompleto = req.getParameter("diagnosticoCompleto");
-
-				Animais a = new Animais();
-				Laudo l = new Laudo();
-
-				a.setCodAnimal(codAnimal);
-				l.setNomeVeterinario(nomeVet);
-				l.setDataDiagnostico(dataDiagnostico);
-				l.setDiagnostico(breveDiagnostico);
-				l.setImagem(diagnosticoCompleto);
-				a.setLaudo(l);
-
-				try {
-					if (aDao.inserirLaudo(a)) {
-						objMens.put("mensagem", "Laudo realizado com sucesso");
-						out.print(objMens.toString());
-					} else {
-						objMens.put("mensagem", "Algo deu errado");
-						out.print(objMens.toString());
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-
-			}
-	*/
+			} /*
+				 * else if (acao.equals("inserirLaudo")) { int codAnimal =
+				 * Integer.valueOf(req.getParameter("codAnimal")); String nomeVet =
+				 * req.getParameter("nomeVet"); String dataDiagnostico =
+				 * req.getParameter("dataDiagnostico"); String breveDiagnostico =
+				 * req.getParameter("breveDiagnostico"); String diagnosticoCompleto =
+				 * req.getParameter("diagnosticoCompleto");
+				 * 
+				 * Animais a = new Animais(); Laudo l = new Laudo();
+				 * 
+				 * a.setCodAnimal(codAnimal); l.setNomeVeterinario(nomeVet);
+				 * l.setDataDiagnostico(dataDiagnostico); l.setDiagnostico(breveDiagnostico);
+				 * l.setImagem(diagnosticoCompleto); a.setLaudo(l);
+				 * 
+				 * try { if (aDao.inserirLaudo(a)) { objMens.put("mensagem",
+				 * "Laudo realizado com sucesso"); out.print(objMens.toString()); } else {
+				 * objMens.put("mensagem", "Algo deu errado"); out.print(objMens.toString()); }
+				 * } catch (SQLException e) { e.printStackTrace(); }
+				 * 
+				 * }
+				 */
 		} else {
 			objMens.put("mensagem", "aguardando requisição");
 			out.print(objMens.toString());
 		}
 		if (acaoVerifica != null && acaoVerifica.equals("verificaSessao")) {
-
+			Integer usuSessao = Integer.parseInt(codUser);
 
 			if (usuSessao != null) {
 				PessoaDAO pDao = new PessoaDAO();
@@ -189,20 +175,20 @@ public class ProcessaAnimais extends HttpServlet {
 
 				try {
 					if (pDao.verificaTipo(usuSessao) != null) {
-						
+
 						p = pDao.verificaTipo(usuSessao);
-						
+
 						if (p.getTipo().equals("Guardiao")) {
 							objMens.put("mensagem", "guardiao");
 							out.print(objMens.toString());
 							System.out.println(objMens.toString());
-						}else {
+						} else {
 							p = pDao.verificaCargo(usuSessao);
-							if(p.getCargo().equals("Veterinario")) {
+							if (p.getCargo().equals("Veterinario")) {
 								req.getSession().setAttribute("cargo", "veterinario");
 								objMens.put("mensagemFunc", "veterinario");
 								System.out.println("mensagem funcionario = " + objMens.toString());
-							}else {
+							} else {
 								objMens.put("mensagemFunc", "funcionario");
 							}
 						}
@@ -217,7 +203,7 @@ public class ProcessaAnimais extends HttpServlet {
 			} else {
 				objMens.put("mensagem", "nenhumUsuario");
 			}
-		}else if (acaoModal!= null && acaoModal.equals("inserirPet")) {
+		} else if (acaoModal != null && acaoModal.equals("inserirPet")) {
 
 			String nome = req.getParameter("nome");
 			Integer idade = Integer.valueOf(req.getParameter("idade"));
@@ -279,25 +265,30 @@ public class ProcessaAnimais extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}else if (acaoModal!= null && acaoModal.equals("inserirLaudo")) {
-			
+		} else if (acaoModal != null && acaoModal.equals("inserirLaudo")) {
+
+			// System.out.println("COD USER - " + codUser);
+
+			Integer usuSessao = Integer.parseInt(codUser);
+
+			// System.out.println("COD USER2 - " + usuSessao);
+
 			String codigoAnimal = req.getParameter("codAnimal");
 			String breveDiagnostico = req.getParameter("breveDiagnostico");
 			String diagnosticoCompleto = req.getParameter("diagnosticoCompleto");
 			String filePath = req.getParameter("pathFile");
-		
+
 			Laudo l = new Laudo();
 			Animais a = new Animais();
 			Pessoa p = new Pessoa();
 			PessoaDAO pDao = new PessoaDAO();
-			
+
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-MM");
 			Date dataDiagnostico;
 
 			try {
 				dataDiagnostico = format.parse(req.getParameter("dataDiagnostico"));
-				l.setDataDiagnostico(dataDiagnostico);
-	
+
 				Part file = req.getPart("diagnosticoCompleto");
 				String fileName = file.getSubmittedFileName();
 				System.out.println("FN - " + fileName);
@@ -307,44 +298,113 @@ public class ProcessaAnimais extends HttpServlet {
 				ext = fileName.substring(posInicial, posFinal);
 
 				InputStream fileContent = file.getInputStream();
-	
+
 				OutputStream os = new FileOutputStream(filePath + "img//" + fileName.trim() + ext);
 
 				int data = fileContent.read();
 
 				while (data != -1) {
-				os.write(data);
+					os.write(data);
 					data = fileContent.read();
 				}
 
 				os.close();
 				fileContent.close();
-				
-				
-				 if(pDao.verificaFuncionario(usuSessao)!= null) {
-					 
-					 p = pDao.verificaFuncionario(usuSessao);
-					 String nomeVeterinario = p.getP_nome() + " " + p.getS_nome();
-					 l.setNomeVeterinario(nomeVeterinario);
-				 }
-				 
+
+				if (pDao.verificaFuncionario(usuSessao) != null) {
+
+					p = pDao.verificaFuncionario(usuSessao);
+					String nomeVeterinario = p.getP_nome() + " " + p.getS_nome();
+					l.setNomeVeterinario(nomeVeterinario);
+				}
+
 				a.setCodAnimal(Integer.valueOf(codigoAnimal));
 				l.setDataDiagnostico(dataDiagnostico);
 				l.setDiagnostico(breveDiagnostico);
 				l.setImagem(fileName.trim());
 				a.setLaudo(l);
-				
-				if(aDao.inserirLaudo(a)) {
+
+				if (aDao.inserirLaudo(a)) {
 					System.out.println("Laudo inserido com sucesso");
-					resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/dataDoguinho.jsp");
+					resp.sendRedirect(
+							"http://localhost:8080/goldpetFrontEnd/dataDoguinho.jsp?codAnimal=" + codigoAnimal);
 				}
-				
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-		
-			
+
+		} else if (acaoModal != null && acaoModal.equals("atualizarLaudo")) {
+
+			System.out.println("ATUALIZAR LAUDO");
+
+			Integer usuSessao = Integer.parseInt(codUser);
+
+			// System.out.println("COD USER2 - " + usuSessao);
+
+			String codigoAnimal = req.getParameter("codAnimal");
+			String breveDiagnostico = req.getParameter("breveDiagnostico");
+			String diagnosticoCompleto = req.getParameter("diagnosticoCompleto");
+			String filePath = req.getParameter("pathFile");
+
+			Laudo l = new Laudo();
+			Animais a = new Animais();
+			Pessoa p = new Pessoa();
+			PessoaDAO pDao = new PessoaDAO();
+
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-MM");
+			Date dataDiagnostico;
+
+			try {
+				dataDiagnostico = format.parse(req.getParameter("dataDiagnostico"));
+
+				Part file = req.getPart("diagnosticoCompleto");
+				String fileName = file.getSubmittedFileName();
+				System.out.println("FN - " + fileName);
+
+				int posInicial = fileName.lastIndexOf('.');
+				int posFinal = fileName.length();
+				ext = fileName.substring(posInicial, posFinal);
+
+				InputStream fileContent = file.getInputStream();
+
+				OutputStream os = new FileOutputStream(filePath + "img//" + fileName.trim() + ext);
+
+				int data = fileContent.read();
+
+				while (data != -1) {
+					os.write(data);
+					data = fileContent.read();
+				}
+
+				os.close();
+				fileContent.close();
+
+				if (pDao.verificaFuncionario(usuSessao) != null) {
+
+					p = pDao.verificaFuncionario(usuSessao);
+					String nomeVeterinario = p.getP_nome() + " " + p.getS_nome();
+					l.setNomeVeterinario(nomeVeterinario);
+				}
+
+				a.setCodAnimal(Integer.valueOf(codigoAnimal));
+				l.setDataDiagnostico(dataDiagnostico);
+				l.setDiagnostico(breveDiagnostico);
+				l.setImagem(fileName.trim());
+				a.setLaudo(l);
+
+				if (aDao.AtualizarLaudo(Integer.valueOf(codigoAnimal), a)) {
+					System.out.println("Laudo inserido com sucesso");
+					resp.sendRedirect(
+							"http://localhost:8080/goldpetFrontEnd/dataDoguinho.jsp?codAnimal=" + codigoAnimal);
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		}
+
 	}
+
 }

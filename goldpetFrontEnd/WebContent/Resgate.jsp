@@ -315,8 +315,10 @@ body, html {
 					System.out.println("Tô aqui dps do while");
 					if (fimWhile) {
 				%>
+				</div>
+				<%} %>
 
-					<div class="card" style="width: 23rem;">
+				<!-- 	<div class="card" style="width: 23rem;">
 						<img src="img/slide01.png" class="card-img" href="#"
 							style="height: 500px;">
 						<div class="card-body">
@@ -342,7 +344,7 @@ body, html {
 				</div>
 
 			</div>
-		</div>
+		</div> -->
 
 
 
