@@ -72,7 +72,6 @@ public class ProcessaResgate extends HttpServlet {
 				int nivel = Integer.valueOf(req.getParameter("nivel"));
 				String filePath = req.getParameter("pathFile");
 				
-				
 				try {
 
 					Part file = req.getPart("imagem");
@@ -124,8 +123,11 @@ public class ProcessaResgate extends HttpServlet {
 				}
 				
 			}
-		}
+		}else {
+	    	objMens.put("mensagemModal", "nenhuma requisição ao modal");
+			out.print(objMens.toString());
+	    }
+
     	
     }
-
 }

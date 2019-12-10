@@ -17,7 +17,7 @@ public class ConsumirWebService{
     //                                  ---WEB SERVICE PARA PESSOA---
     public static String cadastrar(String pNome, String sNome, String apelido, String cep, String referencia, String cpf, String rg, String tel1, String tel2,
                             String dataNasc, String email, String senha, String confSenha, String genero, String acao, String acaoConta){
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaPessoas";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaPessoas";
 
         try{
 
@@ -65,7 +65,7 @@ public class ConsumirWebService{
     }
 
     public static JSONObject login(String login, String senha, String acao){
-        String urlWebService = "http://192.168.56.1:8080/goldpetBackEnd/ProcessaPessoas";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaPessoas";
 
         try{
             String parametros = "login=" + login + "&senha=" + senha + "&acao=" + acao;
@@ -92,7 +92,7 @@ public class ConsumirWebService{
             return null;
         }
     } public static JSONObject perfil(int codeUser){
-        String urlWebService = "http://192.168.56.1:8080/goldpetBackEnd/ProcessaPessoas";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaPessoas";
         String acao = "mostrarCredencial";
         try{
             String parametros = "codeUser=" + codeUser + "&acao=" + acao;
@@ -125,7 +125,7 @@ public class ConsumirWebService{
     //                                  ---WEB SERVICE PARA ANIMAL---
 
     public static JSONArray listarAnimaisAdocao(String acao){
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaAnimais";
 
         try {
             String parametros = "acao=" + acao;
@@ -159,7 +159,7 @@ public class ConsumirWebService{
 
 
     public static JSONObject perfilAnimal(Integer codAnimal){
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaAnimais";
         String acao = "perfil";
         try{
             String parametros = "codAnimal=" + codAnimal + "&acao=" + acao;
@@ -190,7 +190,7 @@ public class ConsumirWebService{
     }
 
     public static String inserirLaudo(int codAnimal, String nomeVet, String dataDiagnostico, String breveDiagnostico, String diagnosticoCompleto){
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaAnimais";
         String acao = "inserirLaudo";
 
         try {
@@ -232,7 +232,7 @@ public class ConsumirWebService{
     //                                  ---WEB SERVICE PARA RESGATE---
 
     public static JSONArray listarAnimaisResgate(){
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaResgate";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaResgate";
         String acao = "listarAnimaisResgate";
         try {
             String parametros = "acao=" + acao;
@@ -256,31 +256,49 @@ public class ConsumirWebService{
                 obj = new JSONObject(linha);
                 arr.put(obj);
             }
+
             return arr;
+
         }catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-
     public static boolean inserirResgate(String descricao, String endereco, int nivel, byte[] image){
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaResgate";
+
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaResgate";
         String acaoModal = "inserirResgate";
 
         try{
-            String parametros = "acaoModal=" + acaoModal + "&descricao=" + descricao + "&endereco=" + endereco + "&nivel=" + nivel + "&pathFile=" + image;
 
+
+
+            String boundary = "===" + System.currentTimeMillis() + "===";
             URL url = new URL(urlWebService);
             HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
+            conexaoWeb.setRequestProperty("Content-Type",
+                    "multipart/form-data; boundary=" + boundary);
             conexaoWeb.setRequestMethod("POST");
             conexaoWeb.setDoOutput(true);
 
             DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
-            for(int i = 0; i < image.length; i++){
-                wr.write(image[i]);
+
+            for(int i = 0; i <= image.length; i++){
+                pathFile = String.valueOf(image[i]);
             }
+
+            String parametros = "acaoModal=" + acaoModal + "&descricao=" + descricao + "&endereco=" + endereco + "&nivel=" + nivel + "&filePath=" + pathFile;
+
             wr.writeBytes(parametros);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
+
+            String linha = "";
+
+            while ((linha = br.readLine()) != null) {
+                System.out.println("Tô aqui " + linha);
+            }
 
             return true;
 
