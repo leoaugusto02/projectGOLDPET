@@ -284,11 +284,11 @@ public class ProcessaAnimais extends HttpServlet {
 			PessoaDAO pDao = new PessoaDAO();
 
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-MM");
-			Date dataDiagnostico;
+			String dataDiagnostico;
 
 			try {
-				dataDiagnostico = format.parse(req.getParameter("dataDiagnostico"));
-
+				//dataDiagnostico = format.parse(req.getParameter("dataDiagnostico"));
+				dataDiagnostico = req.getParameter("dataDiagnostico");
 				Part file = req.getPart("diagnosticoCompleto");
 				String fileName = file.getSubmittedFileName();
 				System.out.println("FN - " + fileName);
@@ -356,8 +356,10 @@ public class ProcessaAnimais extends HttpServlet {
 			Date dataDiagnostico;
 
 			try {
-				dataDiagnostico = format.parse(req.getParameter("dataDiagnostico"));
+				//dataDiagnostico = format.parse(req.getParameter("dataDiagnostico"));
 
+				String dataa = req.getParameter("dataDiagnostico");
+				
 				Part file = req.getPart("diagnosticoCompleto");
 				String fileName = file.getSubmittedFileName();
 				System.out.println("FN - " + fileName);
@@ -388,7 +390,7 @@ public class ProcessaAnimais extends HttpServlet {
 				}
 
 				a.setCodAnimal(Integer.valueOf(codigoAnimal));
-				l.setDataDiagnostico(dataDiagnostico);
+				l.setDataDiagnostico(dataa);
 				l.setDiagnostico(breveDiagnostico);
 				l.setImagem(fileName.trim());
 				a.setLaudo(l);

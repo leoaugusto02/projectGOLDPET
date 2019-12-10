@@ -5,13 +5,14 @@ import java.util.Date;
 public class Laudo {
 
 	private String nomeVeterinario, diagnostico, imagem;
-	private Date dataDiagnostico, dataPostagen;
+	private Date dataPostagen;
+	private String dataDiagnostico;
 
 	public Laudo() {
 		super();
 	}
 
-	public Laudo(String nomeVeterinario, Date dataDiagnostico, Date dataPostagen, String diagnostico,
+	public Laudo(String nomeVeterinario, String dataDiagnostico, Date dataPostagen, String diagnostico,
 			String imagem) {
 		super();
 		this.nomeVeterinario = nomeVeterinario;
@@ -29,11 +30,11 @@ public class Laudo {
 		this.nomeVeterinario = nomeVeterinario;
 	}
 
-	public Date getDataDiagnostico() {
+	public String getDataDiagnostico() {
 		return dataDiagnostico;
 	}
 
-	public void setDataDiagnostico(Date dataDiagnostico) {
+	public void setDataDiagnostico(String dataDiagnostico) {
 		this.dataDiagnostico = dataDiagnostico;
 	}
 

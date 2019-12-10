@@ -62,7 +62,7 @@ public class AnimaisDAO {
 			Animais a = new Animais();
 
 			l.setNomeVeterinario(rs.getString("nomeVeterinario"));
-			l.setDataDiagnostico(rs.getDate("dataDiagnostico"));
+			l.setDataDiagnostico(rs.getString("dataDiagnostico"));
 			l.setDiagnostico(rs.getString("diagnostico"));
 			l.setImagem(rs.getString("imagem"));
 			l.setDataPostagen(rs.getDate("datapostagem"));
@@ -103,7 +103,7 @@ public class AnimaisDAO {
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, a.getCodAnimal());
 		ps.setString(2, a.getLaudo().getNomeVeterinario().toString());
-		ps.setDate(3, new java.sql.Date(a.getLaudo().getDataDiagnostico().getTime()));
+		ps.setString(3, a.getLaudo().getDataDiagnostico());//new java.sql.Date(a.getLaudo().getDataDiagnostico().getTime()));
 		ps.setString(4, a.getLaudo().getDiagnostico().toString());
 		ps.setString(5, a.getLaudo().getImagem().toString());
 
@@ -202,7 +202,7 @@ public class AnimaisDAO {
 
 		ps = con.prepareStatement(sql);
 		ps.setString(1, a.getLaudo().getNomeVeterinario());
-		ps.setDate(2, new java.sql.Date(a.getLaudo().getDataDiagnostico().getTime()));
+		ps.setString(2, a.getLaudo().getDataDiagnostico());//new java.sql.Date(a.getLaudo().getDataDiagnostico().getTime()));
 		ps.setString(3, a.getLaudo().getDiagnostico());
 		ps.setString(4, a.getLaudo().getImagem());
 		ps.setInt(5, codAnimal);
