@@ -105,10 +105,12 @@ body, html {
 			String breveDiagnostico = request.getParameter("breveDiagnostico");
 			String diagnosticoCompleto = request.getParameter("diagnosticoCompleto");
 
-			if (/*codAnimale != null) ||*/ (dataDiagnostico != null) || (breveDiagnostico != null) || (diagnosticoCompleto != null)) {
+			if (/*codAnimale != null) ||*/ (dataDiagnostico != null) || (breveDiagnostico != null)
+					|| (diagnosticoCompleto != null)) {
 				System.out.println("codAnimal= " + codAnimal);
-				parametros = "codAnimal=" + codAnimal + "&dataDiagnostico=" + dataDiagnostico + "&breveDiagnostico=" + breveDiagnostico
-						+ "&diagnosticoCompleto=" + diagnosticoCompleto + "&acaoModal=" + acaoModal;
+				parametros = "codAnimal=" + codAnimal + "&dataDiagnostico=" + dataDiagnostico + "&breveDiagnostico="
+						+ breveDiagnostico + "&diagnosticoCompleto=" + diagnosticoCompleto + "&acaoModal="
+						+ acaoModal;
 
 				System.out.println(parametros);
 			}
@@ -263,19 +265,41 @@ body, html {
 								</tr>
 								<tr>
 									<th><strong>Diagnostico completo:</strong></th>
-									<td><%=obj.getString("imgDiag")%></td>
+									<td>
+										<!-- Button trigger modal -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#exampleModal">
+											Visualizar laudo</button>
+
+										<div class="modal fade" id="exampleModal" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel"
+											aria-hidden="true">
+											<div class="modal-dialog modal-xl" role="document">
+												<div class="modal-content">
+													<div class="modal-body center">
+														<iframe src="./img/teste.pdf" width="1400" height="800"></iframe>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</td>
 								</tr>
 
-								<tr style="visibility: hidden;">
-									<th><strong>Enviar laudo medico</strong></th>
-									<td></td>
-								</tr>
 							</tbody>
 						</table>
 
 					</div>
 				</div>
 				<%
+					if (request.getSession().getAttribute("cargo").equals("Veterinario")) {
+				%>
+				<button type="button" class="btn btn-outline-success"
+					data-toggle="modal" data-target="#laudoModal">Atualizar
+					Laudo</button>
+					<br>
+				<%
+					}
 					} else if (obj.getString("mensagem").equals("semLaudo")) {
 						//System.out.println("OBJ 2 - " + request.getSession().getAttribute("cargo"));
 
@@ -326,11 +350,11 @@ body, html {
 									<!--  <img alt="postar.png" src="img/postar.png"
 										style="height: 20px; width: 20px; margin-left: -0.5;" />-->
 
-									<input type="hidden" name="codUser" value="<%=request.getSession().getAttribute("codigoUsuario")%>"/>
-									<input type="hidden" name="codAnimal" value="<%=codAnimal%>"/>
+									<input type="hidden" name="codUser"
+										value="<%=request.getSession().getAttribute("codigoUsuario")%>" />
+									<input type="hidden" name="codAnimal" value="<%=codAnimal%>" />
 									<input type="hidden" id="acaoModal" name="acaoModal"
-										value="inserirLaudo" />
-									<input type="hidden" name="pathFile"
+										value="inserirLaudo" /> <input type="hidden" name="pathFile"
 										value="<%=getServletContext().getRealPath("/").replace('\\', '/')%>" />
 									<button type="button" class="btn btn-outline-danger"
 										data-dismiss="modal">
@@ -354,7 +378,7 @@ body, html {
 				<br>
 				<div id="buttonAdd">
 					<button type="button" class="btn btn-outline-success"
-						data-toggle="modal" data-target="#siteModal">Adotar</button>
+						data-toggle="modal" data-target="#siteModal">Agendar visita</button>
 				</div>
 
 				<div class="modal" id="siteModal" tabindex="-1" role="dialog"
@@ -508,6 +532,7 @@ body, html {
 			</div>
 		</div>
 	</div>
+
 	<div id="direita"></div>
 
 	<script src="js/bootstrap.min.js"></script>
@@ -517,6 +542,8 @@ body, html {
 			$("#acaoModal").val("inserirLaudo");
 		}
 	</script>
+
+
 
 </body>
 </html>

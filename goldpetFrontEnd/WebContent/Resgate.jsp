@@ -1,3 +1,9 @@
+<%@page import="org.json.JSONObject"%>
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.io.DataOutputStream"%>
+<%@page import="java.net.HttpURLConnection"%>
+<%@page import="java.net.URL"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -101,6 +107,36 @@ body, html {
 </head>
 <body>
 
+	<%
+		String acao = "listaRegaste";
+		String acaoModal = request.getParameter("acaoModal");
+		String parametros = "";
+		
+		if(acaoModal != null){
+			parametros="";
+			
+		}else{
+			parametros = "acao=" + acao;
+		}
+		
+		URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaRegaste");
+		
+		HttpURLConnection con = (HttpURLConnection) url.openConnection();
+		con.setRequestMethod("POST");
+		con.setDoOutput(true);
+
+		System.out.println(parametros);
+
+		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+		wr.writeBytes(parametros);
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+		String linha = "";
+		JSONObject obj;
+		
+	%>
+
 	<div class="conteudo">
 
 		<div id="esquerda"></div>
@@ -165,12 +201,22 @@ body, html {
 
 						<div class="modal-body">
 							<div>
-									
-								<input class="form-control"
-									type="text" placeholder="endereço" style="margin-bottom: 3%;" />
 
-								<input class="form-control" type="text" placeholder="Nivel de Urgencia"
+								<input class="form-control" type="text" placeholder="Endereço"
 									style="margin-bottom: 3%;" />
+
+								<div class="input-group mb-3">
+									<select class="custom-select" id="inputGroupSelect01">
+										<option selected>Selecione o nível de urgência...</option>
+										<option value="1">Não urgente</option>
+										<option value="2">Pouco machucado</option>
+										<option value="3">Machucado</option>
+										<option value="3">Perigo</option>
+										<option value="3">Muito Urgente</option>
+									</select>
+								</div>
+
+
 
 								<div id="textArea">
 									<textarea class="form-control" id="textarea"
@@ -181,29 +227,28 @@ body, html {
 								<div>
 
 									<input type="file" id="upload" name="imagem"
-											style="float: right; margin-top: 6%;"> <img id="img"
-											style="width: 300px; margin-left: 17%;" />
-											<script>
-											$(function() {
-												$('#upload')
-														.change(
-																function() {
-																	console
-																			.log($(this));
-																	const file = ($(this)[0].files[0])
-																	const fileReader = new FileReader()
-																	fileReader.onloadend = function() {
-																		$(
-																				'#img')
-																				.attr(
-																						'src',
-																						fileReader.result)
-																	}
-																	fileReader
-																			.readAsDataURL(file)
-																})
-											})
-										</script>
+										style="float: right; margin-top: 6%;"> <img id="img"
+										style="width: 300px; margin-left: 17%;" />
+									<script>
+										$(function() {
+											$('#upload')
+													.change(
+															function() {
+																console
+																		.log($(this));
+																const file = ($(this)[0].files[0])
+																const fileReader = new FileReader()
+																fileReader.onloadend = function() {
+																	$('#img')
+																			.attr(
+																					'src',
+																					fileReader.result)
+																}
+																fileReader
+																		.readAsDataURL(file)
+															})
+										})
+									</script>
 
 								</div>
 							</div>
@@ -225,12 +270,26 @@ body, html {
 				</div>
 			</div>
 
+ 		<%
+					System.out.println("Tô aqui antes do while");
 
+					int i = 0;
+					boolean fimWhile = false;
+
+					while ((linha = br.readLine()) != null) {
+						//System.out.println("Tô aqui " + linha);
+						obj = new JSONObject(linha);
+
+						System.out.println("img/" + obj.getString("imgAnimal"));
+
+						if (i == 0) {
+				%>
 			<div class="">
+			<%} %>
 				<div class="d-flex flex-row justify-content-around mb-5"
 					id="infoDog">
 					<div class="card" style="width: 23rem;">
-						<img src="img/slide01.png" class="card-img" href="#"
+						<img src="img/<%=obj.getString("imgAnimal")%>" class="card-img" href="#"
 							style="height: 500px;">
 						<div class="card-body">
 							<h5 class="card-title">Especie</h5>
@@ -240,7 +299,22 @@ body, html {
 							</p>
 						</div>
 					</div>
+<%
+						i++;
+							if (i == 3) {
+								fimWhile = false;
+					%>
+				</div>
+				<%
+					i = 0;
+						} else {
+							fimWhile = true;
+						}
 
+					}
+					System.out.println("Tô aqui dps do while");
+					if (fimWhile) {
+				%>
 
 					<div class="card" style="width: 23rem;">
 						<img src="img/slide01.png" class="card-img" href="#"

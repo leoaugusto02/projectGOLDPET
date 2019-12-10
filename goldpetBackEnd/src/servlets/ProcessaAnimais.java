@@ -56,12 +56,7 @@ public class ProcessaAnimais extends HttpServlet {
 		JSONObject objMens = new JSONObject();
 
 		String acao = req.getParameter("acao");
-		
-
-		
-		
-		
-		
+				
 		String acaoModal = req.getParameter("acaoModal");
 		String acaoVerifica = req.getParameter("acaoVerifica");
 
@@ -324,10 +319,16 @@ public class ProcessaAnimais extends HttpServlet {
 
 				os.close();
 				fileContent.close();
-				p = pDao.verificaFuncionario(usuSessao);
 				
+				
+				 if(pDao.verificaFuncionario(usuSessao)!= null) {
+					 
+					 p = pDao.verificaFuncionario(usuSessao);
+					 String nomeVeterinario = p.getP_nome() + " " + p.getS_nome();
+					 l.setNomeVeterinario(nomeVeterinario);
+				 }
+				 
 				a.setCodAnimal(Integer.valueOf(codigoAnimal));
-				l.setNomeVeterinario(p.getP_nome() + p.getS_nome());
 				l.setDataDiagnostico(dataDiagnostico);
 				l.setDiagnostico(breveDiagnostico);
 				l.setImagem(fileName.trim());
