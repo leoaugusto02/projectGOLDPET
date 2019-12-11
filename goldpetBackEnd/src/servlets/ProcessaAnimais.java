@@ -370,7 +370,7 @@ public class ProcessaAnimais extends HttpServlet {
 
 				InputStream fileContent = file.getInputStream();
 
-				OutputStream os = new FileOutputStream(filePath + "img//" + codigoAnimal + "-11122019"  + ext);
+				OutputStream os = new FileOutputStream(filePath + "img//" + codigoAnimal + "-11122019"  + ext); //localDate.now()
 
 				int data = fileContent.read();
 
