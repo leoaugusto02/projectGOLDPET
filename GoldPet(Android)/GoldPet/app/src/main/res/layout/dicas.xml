@@ -238,7 +238,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="195dp"
+            android:layout_marginLeft="200dp"
             android:layout_marginTop="-140dp"
             android:text="Cachorros adoram beijar seus donos"
             android:textColor="#000"
@@ -246,17 +246,15 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="195dp"
-            android:textSize="16dp"
+            android:layout_height="77dp"
+            android:layout_marginLeft="200dp"
             android:text="Sabe aquela lambida no rosto que o seu cachorrinho adora dar?..."
-            />
+            android:textSize="16dp" />
 
         <Button
             android:id="@+id/btnBeijam"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
             android:text="Leia mias..." />
 
         <ImageView
@@ -299,7 +297,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="195dp"
+            android:layout_marginLeft="200dp"
             android:layout_marginTop="-140dp"
             android:text="Cães velhos aprendem truques novos?"
             android:textColor="#000"
@@ -308,9 +306,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="195dp"
+            android:layout_marginLeft="200dp"
             android:textSize="19dp"
-            android:text="Um dos motivos de haver mais cães adultos nos abrigos e ONGs é o..."
+            android:text="Um dos motivos de haver mais cães adultos ..."
             />
 
         <Button
