@@ -108,19 +108,19 @@ body, html {
 <body>
 
 	<%
-		String acao = "listaRegaste";
+		String acao = "listarAnimaisResgate";
 		String acaoModal = request.getParameter("acaoModal");
 		String parametros = "";
-		
-		if(acaoModal != null){
-			parametros="";
-			
-		}else{
+
+		if (acaoModal != null) {
+			parametros = "";
+
+		} else {
 			parametros = "acao=" + acao;
 		}
-		
-		URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaRegaste");
-		
+
+		URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaResgate");
+
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.setRequestMethod("POST");
 		con.setDoOutput(true);
@@ -129,12 +129,11 @@ body, html {
 
 		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 		wr.writeBytes(parametros);
-		
+
 		BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
 		String linha = "";
-		JSONObject obj;
-		
+		JSONObject obj = new JSONObject();
 	%>
 
 	<div class="conteudo">
@@ -151,6 +150,7 @@ body, html {
 				<div class="navC d-flex w-100 justfy-content-center">
 
 					<div class="w-100">
+
 						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
 							<a class="navbar-brand" href="Index.jsp">Home</a>
 							<button class="navbar-toggler" type="button"
@@ -269,8 +269,10 @@ body, html {
 					</div>
 				</div>
 			</div>
-
- 		<%
+			<form method="post" action="#">
+				<%
+				if(obj.getString("mensagem").equals("temAnimais")){
+					
 					System.out.println("Tô aqui antes do while");
 
 					int i = 0;
@@ -280,17 +282,16 @@ body, html {
 						//System.out.println("Tô aqui " + linha);
 						obj = new JSONObject(linha);
 
-						System.out.println("img/" + obj.getString("imgAnimal"));
-
 						if (i == 0) {
 				%>
-			<div class="">
-			<%} %>
-				<div class="d-flex flex-row justify-content-around mb-5"
-					id="infoDog">
+				<div class="d-flex justify-content-around">
+					<%
+						}
+					%>
+
 					<div class="card" style="width: 23rem;">
-						<img src="img/<%=obj.getString("imgAnimal")%>" class="card-img" href="#"
-							style="height: 500px;">
+						<img src="img/<%=obj.getString("dogeImagem")%>" class="card-img"
+							href="#" style="height: 500px;">
 						<div class="card-body">
 							<h5 class="card-title">Especie</h5>
 							<p class="card-text">Observaçoes sobre o Pet</p>
@@ -298,8 +299,9 @@ body, html {
 								<small class="text-muted">Localizacao do Pet</small>
 							</p>
 						</div>
+
 					</div>
-<%
+					<%
 						i++;
 							if (i == 3) {
 								fimWhile = false;
@@ -315,40 +317,21 @@ body, html {
 					System.out.println("Tô aqui dps do while");
 					if (fimWhile) {
 				%>
-				</div>
-				<%} %>
+			
+		</div>
+		<%
+			}
+				}else{
+					%>
+					<h2>sem animais</h2>
+					<%
+					}
+		%>
+		</form>
 
-				<!-- 	<div class="card" style="width: 23rem;">
-						<img src="img/slide01.png" class="card-img" href="#"
-							style="height: 500px;">
-						<div class="card-body">
-							<h5 class="card-title">Especie</h5>
-							<p class="card-text">Observaçoes sobre o Pet</p>
-							<p class="card-text">
-								<small class="text-muted">Localizacao do Pet</small>
-							</p>
-						</div>
-					</div>
+	</div>
 
-					<div class="card" style="width: 23rem;">
-						<img src="img/slide01.png" class="card-img" href="#"
-							style="height: 500px;">
-						<div class="card-body">
-							<h5 class="card-title">Especie</h5>
-							<p class="card-text">Observaçoes sobre o Pet</p>
-							<p class="card-text">
-								<small class="text-muted">Localizacao do Pet</small>
-							</p>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div> -->
-
-
-
-		<div id="direita"></div>
+	<div id="direita"></div>
 
 
 	</div>
@@ -359,5 +342,4 @@ body, html {
 	</div>
 	<!-- <script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script> -->
-
 </body>

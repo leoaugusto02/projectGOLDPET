@@ -114,16 +114,16 @@ body, html {
 
 				System.out.println(parametros);
 			}
-					
+
 		} else {
-			
+
 			parametros = "acao=" + acao + "&codUser=" + request.getSession().getAttribute("codigoUsuario")
 					+ "&codAnimal=" + codAnimal + "&acaoVerifica=" + acaoVerifica;
-			
+
 		}
 
 		System.out.println("PARAMETROS - " + parametros);
-		
+
 		URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
 
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -286,7 +286,8 @@ body, html {
 											<div class="modal-dialog modal-xl" role="document">
 												<div class="modal-content">
 													<div class="modal-body center">
-														<iframe src="./img/teste.pdf" width="1400" height="800"></iframe>
+														<iframe src="./img/<%=obj.getString("imgDiag")%>"
+															width="1400" height="800"></iframe>
 													</div>
 												</div>
 											</div>
@@ -306,11 +307,11 @@ body, html {
 				<button type="button" class="btn btn-outline-success"
 					data-toggle="modal" data-target="#laudoModal">Atualizar
 					Laudo</button>
-					<br>
+				<br>
 				<%
 					}
-					
-				}else if (obj.getString("mensagem").equals("semLaudo")) {
+
+					} else if (obj.getString("mensagem").equals("semLaudo")) {
 						//System.out.println("OBJ 2 - " + request.getSession().getAttribute("cargo"));
 
 						if (request.getSession().getAttribute("cargo").equals("Veterinario")) {
@@ -333,7 +334,8 @@ body, html {
 				<br>
 				<div id="buttonAdd">
 					<button type="button" class="btn btn-outline-success"
-						data-toggle="modal" data-target="#siteModal">Agendar visita</button>
+						data-toggle="modal" data-target="#siteModal">Agendar
+						visita</button>
 				</div>
 
 				<div class="modal" id="siteModal" tabindex="-1" role="dialog"
@@ -498,69 +500,74 @@ body, html {
 		}
 	</script>
 
-					<div class="modal" id="laudoModal" tabindex="-1" role="dialog"
-						aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content" style="width: 565px;">
+	<div class="modal" id="laudoModal" tabindex="-1" role="dialog"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width: 565px;">
 
-								<div class="modal-header" style="background-color: #139F97;">
-									<h5 class="modal-title">Inserir Laudo</h5>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span>x</span>
-									</button>
-								</div>
+				<div class="modal-header" style="background-color: #139F97;">
+					<h5 class="modal-title">Inserir Laudo</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span>x</span>
+					</button>
+				</div>
 
-<form action="http://localhost:8080/goldpetBackEnd/ProcessaAnimais"
+				<form action="http://localhost:8080/goldpetBackEnd/ProcessaAnimais"
 					method="POST" enctype="multipart/form-data">
-								<div class="modal-body">
-								
-									<div class="form-group">
-										<label>Data do diagnóstico:</label> <input type="date"
-											class="form-group col-md-6" name="dataDiagnostico"
-											style="margin-left: 3%;">
-									</div>
-									<div id="textArea">
-										<textarea class="form-control" id="textarea"
-											placeholder="Breve diagnóstico" rows="3"
-											name="breveDiagnostico"
-											style="margin-top: 2px; margin-bottom: 3%; height: 80px; width: 470px;"></textarea>
-									</div>
-									<div class="form-group">
-										<label>Diagnóstico completo: </label> <input type="file"
-											id="upload" name="diagnosticoCompleto" style="float: right;" />
-									</div>
-								</div>
-								<div class="modal-footer">
-									<input type="submit" class="btn btn-outline-success"
-										value="Confirmar" />
-									<!--  <img alt="postar.png" src="img/postar.png"
-										style="height: 20px; width: 20px; margin-left: -0.5;" />-->
+					<div class="modal-body">
 
-									<input type="hidden" name="codUser"
-										value="<%=request.getSession().getAttribute("codigoUsuario")%>" />
-									<input type="hidden" name="codAnimal" value="<%=codAnimal%>" />
-									<% if (obj.getString("mensagem").equals("temLaudo")) { %>					
-									<input type="hidden" id="acaoModal" name="acaoModal"
-										value="atualizarLaudo" />
-									<% } else { %>					
-									<input type="hidden" id="acaoModal" name="acaoModal"
-										value="inserirLaudo" />
-									<% } %>
-										 <input type="hidden" name="pathFile"
-										value="<%=getServletContext().getRealPath("/").replace('\\', '/')%>" />
-									<button type="button" class="btn btn-outline-danger"
-										data-dismiss="modal">
-										<img alt="close.png" src="img/close.png"
-											style="height: 20px; width: 20px; margin-left: -0.5;" />
-										Cancelar
-									</button>
-								</div>
-								
-				</form>
-							</div>
+						<div class="form-group">
+							<label>Data do diagnóstico:</label> <input type="date"
+								class="form-group col-md-6" name="dataDiagnostico"
+								style="margin-left: 3%;">
+						</div>
+						<div id="textArea">
+							<textarea class="form-control" id="textarea"
+								placeholder="Breve diagnóstico" rows="3" name="breveDiagnostico"
+								style="margin-top: 2px; margin-bottom: 3%; height: 80px; width: 470px;"></textarea>
+						</div>
+						<div class="form-group">
+							<label>Diagnóstico completo: </label> <input type="file"
+								id="upload" name="diagnosticoCompleto" style="float: right;" />
 						</div>
 					</div>
+					<div class="modal-footer">
+						<input type="submit" class="btn btn-outline-success"
+							value="Confirmar" />
+						<!--  <img alt="postar.png" src="img/postar.png"
+										style="height: 20px; width: 20px; margin-left: -0.5;" />-->
+
+						<input type="hidden" name="codUser"
+							value="<%=request.getSession().getAttribute("codigoUsuario")%>" />
+						<input type="hidden" name="codAnimal" value="<%=codAnimal%>" />
+						<%
+							if (obj.getString("mensagem").equals("temLaudo")) {
+						%>
+						<input type="hidden" id="acaoModal" name="acaoModal"
+							value="atualizarLaudo" />
+						<%
+							} else {
+						%>
+						<input type="hidden" id="acaoModal" name="acaoModal"
+							value="inserirLaudo" />
+						<%
+							}
+						%>
+						<input type="hidden" name="pathFile"
+							value="<%=getServletContext().getRealPath("/").replace('\\', '/')%>" />
+						<button type="button" class="btn btn-outline-danger"
+							data-dismiss="modal">
+							<img alt="close.png" src="img/close.png"
+								style="height: 20px; width: 20px; margin-left: -0.5;" />
+							Cancelar
+						</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

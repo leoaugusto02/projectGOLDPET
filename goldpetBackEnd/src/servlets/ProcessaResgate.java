@@ -51,6 +51,7 @@ public class ProcessaResgate extends HttpServlet {
 							
 							out.print(objMens.toString() + "\n");
 						}
+						objMens.put("mensagem", "temAnimais");
 					}else {
 						objMens.put("mensagem", "não existe animais para resgate");
 					}
