@@ -272,25 +272,23 @@ public class ConsumirWebService{
 
         try{
 
-
-
             String boundary = "===" + System.currentTimeMillis() + "===";
             URL url = new URL(urlWebService);
             HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
-            conexaoWeb.setRequestProperty("Content-Type",
+            conexaoWeb.setRequestProperty("EncType",
                     "multipart/form-data; boundary=" + boundary);
             conexaoWeb.setRequestMethod("POST");
             conexaoWeb.setDoOutput(true);
 
             DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
 
-            for(int i = 0; i <= image.length; i++){
-                pathFile = String.valueOf(image[i]);
-            }
-
-            String parametros = "acaoModal=" + acaoModal + "&descricao=" + descricao + "&endereco=" + endereco + "&nivel=" + nivel + "&filePath=" + pathFile;
+            String parametros = "acaoModal=" + acaoModal + "&descricao=" + descricao + "&endereco=" + endereco + "&nivel=" + nivel + "&pathFile=";
 
             wr.writeBytes(parametros);
+
+            for(int i = 0; i < image.length; i++){
+              wr.writeBytes(String.valueOf(image[i]));
+            }
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
 

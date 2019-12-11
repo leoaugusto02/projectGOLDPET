@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="110dp"
         android:text="Alimentação"
         android:textColor="#EC0A0A"
         android:textSize="25dp" />
@@ -34,7 +34,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="315dp"
+        android:layout_marginLeft="280dp"
         android:text="voltar"/>
 
     </LinearLayout>
