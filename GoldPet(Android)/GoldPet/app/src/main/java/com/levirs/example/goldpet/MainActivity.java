@@ -120,6 +120,8 @@ import android.widget.ImageView;
 
             }else if (id == R.id.nav_resgate){
 
+            }else if (id == R.id.nav_dicas){
+
             }
 
             DrawerLayout drawer = findViewById(R.id.drawer_layout);
