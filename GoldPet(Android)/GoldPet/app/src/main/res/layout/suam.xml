@@ -50,6 +50,7 @@
         android:text="O suor em excesso pode ser um dos motivos do cachorro lamber as patas. Mas também pode ser estresse."/>
 
     <Button
+        android:id="@+id/btnVoltar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="315dp"
