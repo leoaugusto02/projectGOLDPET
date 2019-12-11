@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="Dicas, Cuorisidades e Cuidados !!"
-        android:textSize="25dp"
+        android:textSize="22dp"
         android:textColor="#FF1B1B"
         android:layout_marginLeft="10dp"/>
 
@@ -124,7 +124,7 @@
             android:layout_marginTop="-110dp"
             android:text="Levar no Veterinario"
             android:textColor="#000"
-            android:textSize="25dp" />
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -211,15 +211,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="-140dp"
-            android:layout_marginLeft="195dp"
+            android:layout_marginLeft="200dp"
             android:text="Por que os cachorros fazem xixi em pé?"
-            android:textSize="18dp"
+            android:textSize="17dp"
             android:textColor="#000"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="83dp"
-            android:layout_marginLeft="195dp"
+            android:layout_marginLeft="200dp"
             android:text="A maioria dos machos tem esse tipo de comportamento, muito embora... "
             android:textSize="14dp" />
 
@@ -242,7 +242,7 @@
             android:layout_marginTop="-140dp"
             android:text="Cachorros adoram beijar seus donos"
             android:textColor="#000"
-            android:textSize="20dp" />
+            android:textSize="17dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -255,6 +255,7 @@
             android:id="@+id/btnBeijam"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:text="Leia mias..." />
 
         <ImageView
@@ -307,7 +308,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="200dp"
-            android:textSize="19dp"
+            android:textSize="17dp"
             android:text="Um dos motivos de haver mais cães adultos ..."
             />
 

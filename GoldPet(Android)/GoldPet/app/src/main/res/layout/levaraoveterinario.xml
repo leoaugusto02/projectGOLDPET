@@ -13,55 +13,60 @@
     <ImageView
         android:layout_width="356dp"
         android:layout_height="162dp"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="25dp"
         android:src="@drawable/veterinario" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
+        android:layout_marginLeft="90dp"
         android:text="Levar ao Veterinario"
         android:textColor="#E91A1A"
         android:textSize="22dp" />
 
-    <TextView
-        android:layout_width="375dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
-        android:text="Sabe com que frequência deve levar seu cãozinho ao veterinário? Essa é uma pergunta muito comum entre as mamães de quatro patas, por isso, daremos a resposta e mencionaremos a importância do check-up no seu melhor amigo!"
-        android:textColor="#000"
-        android:textSize="17dp" />
+        <TextView
+            android:layout_width="392dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Sabe com que frequência deve levar seu cãozinho ao veterinário? Essa é uma pergunta muito comum entre as mamães de quatro patas, por isso, daremos a resposta e mencionaremos a importância do check-up no seu melhor amigo!"
+            android:textColor="#000"
+            android:textSize="15dp" />
 
-    <TextView
+        <TextView
         android:layout_width="377dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Quando ainda jovens, os cães devem realizar os exames de rotina anualmente para verificar a saúde do animal – mesmo que não apresente sintomas de doenças. É importante que este período seja respeitado, pois uma visita ao veterinário garante a prevenção e/ou identificação de enfermidades que podem leva-lo à morte." android:textColor="#000"
-        android:textSize="17dp" />
-
-    <TextView
-        android:layout_width="378dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Já os cachorros idosos, a partir dos oito anos, devem realizar o check-up a cada seis meses. As mamães devem respeitar essa periodicidade, tendo em vista que a imunidade do animal diminui e a contração de doenças pode ser maior"
+        android:text="Quando ainda jovens, os cães devem realizar os exames de rotina anualmente para verificar a saúde do animal – mesmo que não apresente sintomas de doenças."
         android:textColor="#000"
-        android:textSize="17dp" />
+        android:textSize="15dp" />
 
-    <TextView
-        android:layout_width="377dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Reconhecer a importância de visitar um médico veterinário frequentemente é uma das maiores demonstrações de amor e carinho que pode ter com o peludinho!"
-        android:textColor="#000"
-        android:textSize="17dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" É importante que este período seja respeitado, pois uma visita ao veterinário garante a prevenção e/ou identificação de enfermidades que podem leva-lo à morte."
+            android:textSize="15dp"
+            android:textColor="#000"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Já os cachorros idosos, a partir dos oito anos, devem realizar o check-up a cada seis meses. As mamães devem respeitar essa periodicidade, tendo em vista que a imunidade do animal diminui e a contração de doenças pode ser maior."
+            android:textColor="#000"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="411dp"
+            android:layout_height="86dp"
+            android:text="Reconhecer a importância de visitar um médico veterinário frequentemente é uma das maiores demonstrações de amor e carinho que pode ter com o peludinho!"
+            android:textColor="#000"
+            android:textSize="15dp" />
 
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="315dp"
+        android:layout_marginLeft="280dp"
         android:text="voltar"/>
 
 </LinearLayout>

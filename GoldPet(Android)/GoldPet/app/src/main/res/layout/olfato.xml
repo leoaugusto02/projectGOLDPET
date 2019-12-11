@@ -20,44 +20,47 @@
     <TextView
         android:layout_width="278dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
         android:text="O mágico olfato dos cães"
         android:textColor="#E62222"
         android:textSize="22dp" />
 
-    <TextView
-        android:layout_width="374dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:text="Você sabia que os cachorros percebem os cheiros 1 milhão de vezes melhor do que os seres humanos? “Esse olfato é tão poderoso que o seu pet pode captar odores que você nem de longe poderia imaginar (e sentir). Os cães são capazes de sentir o cheiro de um inseto que está a longas distâncias ou até uma gota de sangue em um grande compartimento com água”, conta Dra. Luana Sartori. Não é a toa que alguns animais são utilizados na busca por desaparecidos em uma tragédia natural, por exemplo."
-        android:textColor="#000"
-        android:textSize="17dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Você sabia que os cachorros percebem os cheiros 1 milhão de vezes melhor do que os seres humanos? “Esse olfato é tão poderoso que o seu pet pode captar odores que você nem de longe poderia imaginar (e sentir)."
+            android:textColor="#000"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:text=" Os cães são capazes de sentir o cheiro de um inseto que está a longas distâncias ou até uma gota de sangue em um grande compartimento com água”, conta Dra. Luana Sartori. Não é a toa que alguns animais são utilizados na busca por desaparecidos em uma tragédia natural, por exemplo."
+            />
 
 
-    <TextView
-        android:layout_width="374dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:textColor="#000"
-        android:textSize="17dp"
-        android:text="Se você observar filhotes caninos recém-nascidos, vai perceber que mesmo sem abrir os olhos eles encontram a mãe e as mamas para se alimentar. Isso acontece porque o olfato é o primeiro sentido desenvolvido nos cachorros. “Há uma história bem conhecida que conta a peripécia de Fern – um cão nascido na Irlanda do Norte -, que foi capaz de encontrar uma lata de carne escondida nas profundidades do Lago Castlewellan”, revela a veterinária. Mas não é só isso, ele farejou o alimento cerca de dez minutos depois que o barco submergiu a lata. O lago possui 1,5 quilômetro de comprimento e 800 metros de largura."
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Se você observar filhotes caninos recém-nascidos, vai perceber que mesmo sem abrir os olhos eles encontram a mãe e as mamas para se alimentar. Isso acontece porque o olfato é o primeiro sentido desenvolvido nos cachorros. “Há uma história bem conhecida que conta a peripécia de Fern – um cão nascido na Irlanda do Norte -, que foi capaz de encontrar uma lata de carne escondida nas profundidades do Lago Castlewellan”, revela a veterinária. Mas não é só isso, ele farejou o alimento cerca de dez minutos depois que o barco submergiu a lata. O lago possui 1,5 quilômetro de comprimento e 800 metros de largura."
+            android:textColor="#000"
+            android:textSize="15dp" />
 
-    <TextView
-        android:layout_width="374dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:textColor="#000"
-        android:textSize="17dp"
-        android:text="É através desse olfato apurado que os cães se comunicam. Por isso, que eles buscam rabos alheios para cheirar."
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="É através desse olfato apurado que os cães se comunicam. Por isso, que eles buscam rabos alheios para cheirar."
+            android:textColor="#000"
+            android:textSize="15dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="315dp"
+        android:layout_marginLeft="280dp"
         android:text="voltar"/>
 </LinearLayout>
 </ScrollView>

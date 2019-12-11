@@ -17,38 +17,37 @@
         android:layout_marginTop="25dp"
         android:src="@drawable/snow" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="25dp"
-        android:textSize="20dp"
-        android:textColor="#CF1818"
-        android:text="Por que os cachorros fazem xixi em pé?"/>
+        <TextView
+            android:layout_width="398dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:text="Por que os cachorros fazem xixi em pé?"
+            android:textColor="#CF1818"
+            android:textSize="20dp" />
 
-    <TextView
-        android:layout_width="375dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
-        android:text="A maioria dos machos tem esse tipo de comportamento, muito embora algumas fêmeas também. Muitos tutores imaginam que isso faz parte do processo que envolve a urina do cão. Porém, fazer xixi em pé está ligado à necessidade de marcar território – o que ocorre, em média, a partir dos seis meses."
-        android:textColor="#000"
-        android:textSize="18dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="A maioria dos machos tem esse tipo de comportamento, muito embora algumas fêmeas também. Muitos tutores imaginam que isso faz parte do processo que envolve a urina do cão. Porém, fazer xixi em pé está ligado à necessidade de marcar território – o que ocorre, em média, a partir dos seis meses."
+            android:textColor="#000"
+            android:textSize="16dp" />
 
-    <TextView
-        android:layout_width="375dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="5dp"
-        android:textColor="#000"
-        android:textSize="18dp"
-        android:text="Segundo a veterinário, cachorros machos preferem as superfícies verticais e se esforçam para alcançar o ponto mais alto. É possível observar também que esses animais urinam menos, mas mais vezes durante o passeio, para marcar um maior número de locais. A urina de um animal contém muitos feromônios, que passam diversas informações e atraem outros animais. Esse sistema faz parte da natureza e da comunicação do pet. Por isso, no passeio,  deixe-o fazer todo xixi que quiser, sem acelerar"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Segundo a veterinário, cachorros machos preferem as superfícies verticais e se esforçam para alcançar o ponto mais alto. É possível observar também que esses animais urinam menos, mas mais vezes durante o passeio, para marcar um maior número de locais. A urina de um animal contém muitos feromônios, que passam diversas informações e atraem outros animais. Esse sistema faz parte da natureza e da comunicação do pet. Por isso, no passeio,  deixe-o fazer todo xixi que quiser, sem acelerar"
+            android:textColor="#000"
+            android:textSize="16dp" />
 
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="315dp"
+            android:layout_marginLeft="280dp"
             android:text="voltar" />
     </LinearLayout>
 

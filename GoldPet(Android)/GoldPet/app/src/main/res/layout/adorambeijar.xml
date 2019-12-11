@@ -22,19 +22,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="20dp"
             android:text="Cachorros adoram beijar seus donos"
             android:textColor="#E91C1C"
-            android:textSize="22dp" />
+            android:textSize="20dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Sabe aquela lambida no rosto que o seu cachorrinho adora dar? É o famoso beijo de cachorro. Normalmente um cão tem o costume de lamber a boca de outro animal, como sinal de afeição. É o mesmo carinho que a fêmea dispensa aos seus filhotes, lambendo-os para limpá-los e acarinhá-los. Já o filhote, lambe a boca da sua mãe para descobrir o que ela comeu e tentar pegar um restinho da alimentação que ficou no pelo."
+        android:text="Sabe aquela lambida no rosto que o seu cachorrinho adora dar? É o famoso beijo de cachorro."
         android:textColor="#000"
         android:textSize="18dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Normalmente um cão tem o costume de lamber a boca de outro animal, como sinal de afeição. É o mesmo carinho que a fêmea dispensa aos seus filhotes, lambendo-os para limpá-los e acarinhá-los. Já o filhote, lambe a boca da sua mãe para descobrir o que ela comeu e tentar pegar um restinho da alimentação que ficou no pelo."
+            android:textSize="18dp"
+            android:textColor="#000"
+                />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,7 +51,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="315dp"
+        android:layout_marginLeft="280dp"
         android:layout_marginTop="10dp"
         android:text="voltar"/>
 
