@@ -78,6 +78,16 @@ body, html {
 	margin: auto;
 	overflow: visible;
 }
+
+#imgPet>img {
+	border-radius: 65%;
+	overflow: hidden;
+	width: 298px;
+	height: 318px;
+	margin-left: 0.5%;
+	
+}
+
 </style>
 
 <meta charset="ISO-8859-1">
@@ -188,9 +198,9 @@ body, html {
 				<div class="container">
 					<div style="text-align: center">
 						<h2>Doguinho</h2>
-						<div class="circulo square">
-							<img src="img/<%=obj.getString("imgAnimal")%>" class="card-img"
-								href="#">
+						<div  id="imgPet" class="circulo square">
+							<img src="img/<%=obj.getString("imgAnimal")%>" style="margin-left:-0.2%; margin-bottom:0.4%; class="card-img"
+								href="#"/>
 							<!-- style="height: 500px;"-->
 						</div>
 					</div>
