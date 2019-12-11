@@ -90,7 +90,7 @@
         <TextView android:id="@+id/txtVeterinario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-135dp"
+            android:layout_marginTop="-116dp"
             android:layout_marginLeft="165dp"
             android:textSize="25dp"
             android:textColor="#000"
@@ -98,9 +98,9 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="94dp"
+            android:layout_height="80dp"
             android:layout_marginLeft="165dp"
-            android:text="Leve-o todos os dias para passear, o cachorro também precisa se exercitar e andar ..."
+            android:text="Leve-o todos os dias para passear, o cachorro também..."
             android:textSize="18dp" />
 
         <Button
@@ -152,7 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="-110dp"
             android:layout_marginLeft="180dp"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:textColor="#000"
             android:text="O mágico olfato dos cães"/>
 
@@ -181,7 +181,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-140dp"
         android:layout_marginLeft="190dp"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:textColor="#000"
         android:text="Dormir com o pet faz mal?"
         />
@@ -189,9 +189,9 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="107dp"
+            android:layout_height="95dp"
             android:layout_marginLeft="190dp"
-            android:text="Tem bicho que parece gente, domina a casa toda, desde o sofá até a cama.."
+            android:text="Tem bicho que parece gente, domina a casa toda, desde o sofá.."
             android:textSize="18dp" />
 
         <Button
@@ -213,16 +213,15 @@
             android:layout_marginTop="-140dp"
             android:layout_marginLeft="195dp"
             android:text="Por que os cachorros fazem xixi em pé?"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:textColor="#000"/>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="94dp"
+            android:layout_height="83dp"
             android:layout_marginLeft="195dp"
-            android:text="A maioria dos machos tem esse tipo de comportamento, muito embora algumas... "
-            android:textColor="#000"
-            android:textSize="16dp" />
+            android:text="A maioria dos machos tem esse tipo de comportamento, muito embora... "
+            android:textSize="14dp" />
 
         <Button
             android:id="@+id/btnCachorroFaz"
