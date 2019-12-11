@@ -135,6 +135,9 @@ public class MainActivity extends AppCompatActivity
         }else if (id == R.id.nav_resgate) {
             Intent it = new Intent(getApplicationContext(), Resgatar.class);
             startActivity(it);
+        }else  if (id == R.id.nav_dicas){
+            Intent it = new Intent(getApplicationContext(), Dicas.class);
+            startActivity(it);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
