@@ -62,13 +62,14 @@
             android:textColor="#000"
             android:textSize="15dp" />
 
-
-    <Button
-        android:id="@+id/btnVoltar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="280dp"
-        android:text="voltar"/>
+        <Button
+            android:id="@+id/btVoltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:layout_marginLeft="280dp"
+            android:text="Voltar"
+            />
 
 </LinearLayout>
 </ScrollView>
