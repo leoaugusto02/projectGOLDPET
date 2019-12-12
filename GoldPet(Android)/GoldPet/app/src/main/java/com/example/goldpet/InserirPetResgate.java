@@ -4,8 +4,10 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -26,6 +28,9 @@ import com.example.goldpet.model.ConsumirWebService;
 import com.levirs.example.goldpet.R;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class InserirPetResgate extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -124,17 +129,32 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CAMERA && resultCode == RESULT_OK) {
+        if (requestCode == CAMERA && resultCode == RESULT_OK)  {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
 
             ivImagem.setImageBitmap(imageBitmap);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            imageBitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+            byte[] bitmapdata = bos.toByteArray();
 
+            String nomeImg = "teste.png";
+            String seuDiretorio = Environment.getExternalStorageState() + File.separator + "GoldPet";
 
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            /*ByteArrayOutputStream stream = new ByteArrayOutputStream();
             imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
 
-            byteArray = stream.toByteArray();
+            byteArray = stream.toByteArray();*/
+
+            try {
+                File imgToSdcard = new File(seuDiretorio + File.separator + nomeImg);
+                FileOutputStream outputStream = new FileOutputStream(imgToSdcard, false);
+                outputStream.write(bitmapdata , 0, bitmapdata.length);
+                outputStream.flush();
+                outputStream.close();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
         }else if(requestCode == GALERIA && resultCode == RESULT_OK){
             Uri img = data.getData();

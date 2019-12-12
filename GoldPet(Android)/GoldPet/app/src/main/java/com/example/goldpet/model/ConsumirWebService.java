@@ -271,24 +271,63 @@ public class ConsumirWebService{
         String acaoModal = "inserirResgate";
 
         try{
+            String twoHyphens = "--";
+            String boundary = "*****";
+            String lineEnd = "\r\n";
 
-            String boundary = "===" + System.currentTimeMillis() + "===";
             URL url = new URL(urlWebService);
             HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
-            conexaoWeb.setRequestProperty("EncType",
-                    "multipart/form-data; boundary=" + boundary);
-            conexaoWeb.setRequestMethod("POST");
             conexaoWeb.setDoOutput(true);
+            conexaoWeb.setUseCaches(false);
+            conexaoWeb.setRequestMethod("POST");
+            conexaoWeb.setRequestProperty("Accept-Encoding", "");
+            //conn.setRequestProperty("Connection", "Keep-Alive");
+            conexaoWeb.setRequestProperty("ENCTYPE", "multipart/form-data");
+            conexaoWeb.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
+            conexaoWeb.setRequestProperty("uploaded_file", String.valueOf(image));
+            conexaoWeb.setRequestProperty("acaoModal", acaoModal);
+            conexaoWeb.setRequestProperty("descricao", descricao);
+            conexaoWeb.setRequestProperty("endereco", endereco);
+            conexaoWeb.setRequestProperty("nivel", String.valueOf(nivel));
+
 
             DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
 
-            String parametros = "acaoModal=" + acaoModal + "&descricao=" + descricao + "&endereco=" + endereco + "&nivel=" + nivel + "&pathFile=";
+            /*String parametros = "acaoModal=" + acaoModal + "&descricao=" + descricao + "&endereco=" + endereco + "&nivel=" + nivel + "&pathFile=";
 
             wr.writeBytes(parametros);
 
             for(int i = 0; i < image.length; i++){
               wr.writeBytes(String.valueOf(image[i]));
-            }
+            }*/
+
+
+            //first parameter - acaoModal
+            wr.writeBytes(twoHyphens + boundary + lineEnd);
+            wr.writeBytes("Content-Disposition: form-data; name=\"descricao\"" + lineEnd + lineEnd
+                    + acaoModal + lineEnd);
+
+            //second parameter - descricao
+            String testDesc = descricao.getBytes("UTF-8").toString();
+            wr.writeBytes(twoHyphens + boundary + lineEnd);
+            wr.writeBytes("Content-Disposition: form-data; name=\"descricao\"" + lineEnd + lineEnd
+                    + testDesc + lineEnd);
+
+            //third parameter - endereco
+            String testEndec  = descricao.getBytes("UTF-8").toString();
+            wr.writeBytes(twoHyphens + boundary + lineEnd);
+            wr.writeBytes("Content-Disposition: form-data; name=\"endereco\"" + lineEnd + lineEnd
+                    + testEndec + lineEnd);
+
+            wr.writeBytes(twoHyphens + boundary + lineEnd);
+            wr.writeBytes("Content-Disposition: form-data; name=\"nivel\"" + lineEnd + lineEnd
+                    + nivel + lineEnd);
+
+            //forth parameter - filename
+            wr.writeBytes(twoHyphens + boundary + lineEnd);
+            wr.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\""
+                    + image + "\"" + lineEnd);
+            wr.writeBytes(lineEnd);
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
 

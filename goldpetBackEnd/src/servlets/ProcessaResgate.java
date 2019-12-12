@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +23,12 @@ import org.json.JSONObject;
 import dao.ResgateDAO;
 import vo.Resgate;
 
-@WebServlet("/ProcessaResgate")
+
+@MultipartConfig
+
+
+@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaResgate" }, loadOnStartup = 1)
+
 public class ProcessaResgate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,9 +41,12 @@ public class ProcessaResgate extends HttpServlet {
 		String acao = req.getParameter("acao");
 		String acaoModal = req.getParameter("acaoModal");
 		String ext = "";
-		
+
 		int verifica = 0;
-		
+
+
+		System.out.println("A - " + acao);
+		System.out.println("AM - " + acaoModal);
 		
 		if(acao != null) {
 			if(acao.equals("listarAnimaisResgate")) {
@@ -73,10 +82,11 @@ public class ProcessaResgate extends HttpServlet {
 		
 		if((acaoModal != null) && (verifica == 0)) {
 			if(acaoModal.equals("inserirResgate")) {
+				System.out.println("ENTREI NO INSERIR RESGATE");
 				String descricao = req.getParameter("descricao");
 				String endereco = req.getParameter("endereco");
 				int nivel = Integer.valueOf(req.getParameter("nivel"));
-				String filePath = req.getParameter("pathFile");
+				String filePath = req.getParameter("uploaded_file");
 				
 				try {
 
@@ -127,6 +137,8 @@ public class ProcessaResgate extends HttpServlet {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+
+				System.out.println("FIM NO INSERIR RESGATE");
 				
 			}
 		}else if(verifica == 0){
