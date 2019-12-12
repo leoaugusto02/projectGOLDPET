@@ -49,10 +49,9 @@
         android:text="No caso dos cães com o ser humano, também pode ser sinal de afeto, mas um ótima forma de descobrir o que comemos."/>
 
         <Button
-            android:id="@+id/btVoltar"
+            android:id="@+id/btnVoltar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClick"
             android:layout_marginLeft="280dp"
             android:text="Voltar"
             />
