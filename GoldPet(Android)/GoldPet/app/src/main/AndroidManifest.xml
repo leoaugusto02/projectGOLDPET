@@ -36,6 +36,15 @@
         <activity android:name="com.example.goldpet.Resgatar" />
         <activity android:name="com.example.goldpet.InserirPetResgate" />
         <activity android:name="com.example.goldpet.Dicas" />
+        <activity android:name="com.example.goldpet.Alimentacao" />
+        <activity android:name="com.example.goldpet.Adoram" />
+        <activity android:name="com.example.goldpet.Passeio" />
+        <activity android:name="com.example.goldpet.Higiene" />
+        <activity android:name="com.example.goldpet.Olfatos" />
+        <activity android:name="com.example.goldpet.Veterinario" />
+        <activity android:name="com.example.goldpet.Suam" />
+        <activity android:name="com.example.goldpet.Truques" />
+        <activity android:name="com.example.goldpet.CachorroFazem" />
     </application>
     <uses-permission android:name="android.permission.CAMERA"/>
 </manifest>
