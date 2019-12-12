@@ -271,18 +271,23 @@ body, html {
 			</div>
 			<form method="post" action="#">
 				<%
-				if(obj.getString("mensagem").equals("temAnimais")){
-					
-					System.out.println("Tô aqui antes do while");
+					//System.out.println("OBJ - " + obj.toString());
+					//if(obj.getString("mensagem").equals("temAnimais")){
+
+					//System.out.println("Tô aqui antes do while");
 
 					int i = 0;
 					boolean fimWhile = false;
 
 					while ((linha = br.readLine()) != null) {
+
 						//System.out.println("Tô aqui " + linha);
 						obj = new JSONObject(linha);
+						System.out.println("OBJ - " + obj.toString());
 
-						if (i == 0) {
+						if (!obj.getString("status").equals("ntem")) {
+
+							if (i == 0) {
 				%>
 				<div class="d-flex justify-content-around">
 					<%
@@ -293,24 +298,38 @@ body, html {
 						<img src="img/<%=obj.getString("dogeImagem")%>" class="card-img"
 							href="#" style="height: 500px;">
 						<div class="card-body">
-							<h5 class="card-title">Especie</h5>
-							<p class="card-text">Observaçoes sobre o Pet</p>
+							<h5 class="card-title">
+								Nível de Urgência:
+								<%=obj.getInt("nivelUrgencia")%></h5>
 							<p class="card-text">
-								<small class="text-muted">Localizacao do Pet</small>
+								Código:
+								<%=obj.getInt("codeResgate")%></p>
+							<p class="card-text">
+								Observaçoes sobre o Pet:
+								<%=obj.getString("descricao")%></p>
+							<p class="card-text">
+								Status:
+								<%=obj.getString("status")%></p>
+							<p class="card-text">
+								<small class="text-muted">Localizacao do Pet: <%=obj.getString("endereco")%></small>
 							</p>
 						</div>
-
 					</div>
+
 					<%
 						i++;
-							if (i == 3) {
-								fimWhile = false;
+								if (i == 3) {
+									fimWhile = false;
 					%>
+
 				</div>
+				<br>
 				<%
 					i = 0;
-						} else {
-							fimWhile = true;
+							} else {
+								fimWhile = true;
+							}
+
 						}
 
 					}
@@ -321,11 +340,11 @@ body, html {
 		</div>
 		<%
 			}
-				}else{
-					%>
-					<h2>sem animais</h2>
-					<%
-					}
+			//}else{
+		%>
+		<!-- <h2>sem animais</h2> -->
+		<%
+			//}
 		%>
 		</form>
 
@@ -335,7 +354,6 @@ body, html {
 
 
 	</div>
-
 
 	<div id="finalPg">
 		<img src="img/Rodape2.png" />

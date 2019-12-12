@@ -35,7 +35,7 @@ public class ResgateDAO {
 
 	public List<Resgate> ultimosResgates() throws SQLException {
 
-		String sql = "SELECT codeResgate ,status, dogeImagem, nivelUrgencia FROM Resgate ORDER BY nivelUrgencia DESC";
+		String sql = " SELECT codeResgate, descricao,endereco,status, dogeImagem, nivelUrgencia FROM Resgate ORDER BY nivelUrgencia DESC";
 		
 		con = ConnectionDB.getConnection();
 
@@ -49,14 +49,15 @@ public class ResgateDAO {
 			Resgate r = new Resgate();
 			
 			r.setCodResgate(rs.getInt("codeResgate"));
+			r.setDescricao(rs.getString("descricao"));
+			r.setEndereco(rs.getString("endereco"));
 			r.setStatus(rs.getString("status"));
 			r.setDogeImagem(rs.getString("dogeImagem"));
 			r.setNivelUrgencia(rs.getInt("nivelUrgencia"));
 			lstResg.add(r);
-
-			return lstResg;
+	
 		}
-		return null;
+		return lstResg;
 	}
 	
 	public boolean confirmarResgate() throws SQLException {

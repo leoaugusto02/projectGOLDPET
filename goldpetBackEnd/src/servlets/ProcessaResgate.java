@@ -36,24 +36,29 @@ public class ProcessaResgate extends HttpServlet {
 		String acaoModal = req.getParameter("acaoModal");
 		String ext = "";
 		
+		int verifica = 0;
+		
 		
 		if(acao != null) {
 			if(acao.equals("listarAnimaisResgate")) {
-				
+				verifica = 1;
 				try {
 					if(rDao.ultimosResgates() != null) {
 						List<Resgate> lstResgate = rDao.ultimosResgates();
+						
 						for(Resgate r : lstResgate) {
 							objMens.put("codeResgate", r.getCodResgate());
+							objMens.put("descricao", r.getDescricao());
+							objMens.put("endereco", r.getEndereco());
 							objMens.put("status", r.getStatus());
-							objMens.put("nivelUrgencia", r.getNivelUrgencia());
 							objMens.put("dogeImagem", r.getDogeImagem());
+							objMens.put("nivelUrgencia", r.getNivelUrgencia());
 							
 							out.print(objMens.toString() + "\n");
 						}
-						objMens.put("mensagem", "temAnimais");
+					
 					}else {
-						objMens.put("mensagem", "não existe animais para resgate");
+						objMens.put("status", "ntem");
 					}
 				} catch (JSONException e) {
 					e.printStackTrace();
@@ -62,11 +67,11 @@ public class ProcessaResgate extends HttpServlet {
 				}
 			}
 		}else {
-			objMens.put("mensagem", "aguardando requisição");
+			objMens.put("codeResgate", "aguardando requisição");
 			out.print(objMens.toString());
 		}
 		
-		if(acaoModal != null) {
+		if((acaoModal != null) && (verifica == 0)) {
 			if(acaoModal.equals("inserirResgate")) {
 				String descricao = req.getParameter("descricao");
 				String endereco = req.getParameter("endereco");
@@ -124,7 +129,7 @@ public class ProcessaResgate extends HttpServlet {
 				}
 				
 			}
-		}else {
+		}else if(verifica == 0){
 	    	objMens.put("mensagemModal", "nenhuma requisição ao modal");
 			out.print(objMens.toString());
 	    }
