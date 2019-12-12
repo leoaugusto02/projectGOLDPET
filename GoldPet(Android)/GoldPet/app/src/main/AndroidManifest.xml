@@ -36,6 +36,7 @@
         <activity android:name="com.example.goldpet.Resgatar" />
         <activity android:name="com.example.goldpet.InserirPetResgate" />
         <activity android:name="com.example.goldpet.Dicas" />
+        <activity android:name="com.example.goldpet.Alimentacao" />
     </application>
     <uses-permission android:name="android.permission.CAMERA"/>
 </manifest>
