@@ -370,7 +370,7 @@ public class ProcessaAnimais extends HttpServlet {
 
 				InputStream fileContent = file.getInputStream();
 
-				OutputStream os = new FileOutputStream(filePath + "img//" + fileName.trim() + ext);
+				OutputStream os = new FileOutputStream(filePath + "img//" + codigoAnimal + "-11122019"  + ext); //localDate.now()
 
 				int data = fileContent.read();
 
@@ -392,7 +392,7 @@ public class ProcessaAnimais extends HttpServlet {
 				a.setCodAnimal(Integer.valueOf(codigoAnimal));
 				l.setDataDiagnostico(dataa);
 				l.setDiagnostico(breveDiagnostico);
-				l.setImagem(fileName.trim());
+				l.setImagem(codigoAnimal + "-11122019"  + ext);
 				a.setLaudo(l);
 
 				if (aDao.AtualizarLaudo(Integer.valueOf(codigoAnimal), a)) {
