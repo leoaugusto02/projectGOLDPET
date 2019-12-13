@@ -24,8 +24,6 @@ import vo.Resgate;
 
 
 @MultipartConfig
-
-
 @WebServlet("/ProcessaResgate")
 
 //@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaResgate" }, loadOnStartup = 1)
