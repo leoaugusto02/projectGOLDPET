@@ -76,5 +76,11 @@ UPDATE Resgate SET status = 'resgatado';
 INSERT INTO Animais VALUES(NULL, "Dolf", "ariano", "branco", "alto", "5", "saudavél", "macho", "sem-imagem");
 INSERT INTO Pessoa VALUES(NULL, "adolfinho", "Adolf", "Naitler", "1889-04-20", "Guardião", "161", "adolfH@gmail.com", "12345654", "M", "123214354" "Perto do Campo", "dio", "12345678", "12345678");
 INSERT INTO Agenda VALUES(NULL, 1, 1, "2019-10-25", "20:12:30", "Em aguardo", "pego");
+				
+				
+				---	LAUDO---
+				
+							
+ALTER TABLE ADD column dataPostagen date not null 
 
 	--FIM--		  											   

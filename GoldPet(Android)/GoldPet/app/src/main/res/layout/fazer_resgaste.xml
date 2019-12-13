@@ -12,18 +12,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <Button
-        android:id="@+id/btnImagem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Imagem Pet"
-        android:layout_marginLeft="150dp"/>
 
-    <ImageView
-        android:id="@+id/ivImagem"
-        android:layout_width="355dp"
-        android:layout_height="228dp"
-        android:layout_marginLeft="30dp" />
+        <Button
+            android:id="@+id/btnImagem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tirar foto"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="230dp"/>
+
+        <ImageView
+            android:id="@+id/ivImagem"
+            android:layout_width="355dp"
+            android:layout_height="228dp"
+            android:layout_marginLeft="30dp" />
 
         <TextView
             android:id="@+id/txtEspecie"

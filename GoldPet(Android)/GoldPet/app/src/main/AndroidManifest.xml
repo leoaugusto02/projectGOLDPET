@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.levirs.example.goldpet">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
     <uses-feature android:name="android.hardware.camera2"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:debuggable="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_adocao"
         android:label="@string/app_name"
         android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_adocao"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="HardcodedDebugMode">
         <activity
             android:name="com.example.goldpet.MainActivity"
             android:label="@string/app_name"
@@ -31,5 +34,17 @@
         <activity android:name="com.example.goldpet.PerfilAnimal" />
         <activity android:name="com.example.goldpet.RealizarLaudo" />
         <activity android:name="com.example.goldpet.Resgatar" />
+        <activity android:name="com.example.goldpet.InserirPetResgate" />
+        <activity android:name="com.example.goldpet.Dicas" />
+        <activity android:name="com.example.goldpet.Alimentacao" />
+        <activity android:name="com.example.goldpet.Adoram" />
+        <activity android:name="com.example.goldpet.Passeio" />
+        <activity android:name="com.example.goldpet.Higiene" />
+        <activity android:name="com.example.goldpet.Olfatos" />
+        <activity android:name="com.example.goldpet.Veterinario" />
+        <activity android:name="com.example.goldpet.Suam" />
+        <activity android:name="com.example.goldpet.Truques" />
+        <activity android:name="com.example.goldpet.CachorroFazem" />
     </application>
+    <uses-permission android:name="android.permission.CAMERA"/>
 </manifest>

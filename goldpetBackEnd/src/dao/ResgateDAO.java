@@ -20,7 +20,7 @@ public class ResgateDAO {
 		//3-urgente
 		//2-muito urgente
 		//1-perigo
-		String sql = "INSERT INTO Resgate VALUES(NULL, ?, ?, ?, ?, 'Em resgate')";
+		String sql = "INSERT INTO Resgate VALUES(NULL, ?, ?, ?, ?, 'Não Resgatado')";
 		
 		con = ConnectionDB.getConnection();
 

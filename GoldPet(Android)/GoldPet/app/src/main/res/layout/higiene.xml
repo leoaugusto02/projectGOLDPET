@@ -15,30 +15,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"
-        android:text="Higiene"
+        android:text="Higiêne"
         android:textColor="#E20909"
         android:textSize="25dp"
         />
 
-    <TextView
-        android:layout_width="377dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Dê banho em seu cachorro pelo menos uma vez ao mês e se possível peça em um pet shop que escove os dentes dele para prevenir de tártaros e evitar mal cheiro. Faça a tosa dos pelos sempre que necessário, isso ajuda a não acumular sujeiras e embolar o pelo dele e peça a um veterinário que corte as unhas dele para não machucá-lo. E mantenha sempre o local que ele dorme bem limpo e confortável para evitar pulgas e carrapatos."
-        android:textColor="#000"
-        android:textSize="18dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Dê banho em seu cachorro pelo menos uma vez ao mês e se possível peça em um pet shop que escove os dentes dele para prevenir de tártaros e evitar mal cheiro."
+            android:textColor="#000"
+            android:textSize="17dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Faça a tosa dos pelos sempre que necessário, isso ajuda a não acumular sujeiras e embolar o pelo dele e peça a um veterinário que corte as unhas dele para não machucá-lo. E mantenha sempre o local que ele dorme bem limpo e confortável para evitar pulgas e carrapatos."
+            android:textSize="17dp"
+            android:textColor="#000"
+            />
 
     <ImageView
         android:layout_width="376dp"
         android:layout_height="312dp"
-        android:layout_marginLeft="20dp"
         android:src="@drawable/higiene" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="315dp"
-        android:text="voltar"/>
+
+        <Button
+            android:id="@+id/btVoltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:layout_marginLeft="280dp"
+            android:text="Voltar"
+            />
     </LinearLayout>
 
 </ScrollView>

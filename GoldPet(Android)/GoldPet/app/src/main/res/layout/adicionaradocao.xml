@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#93D6D6"
-    tools:context="AdicionarAdocao"
+    tools:context=""
     android:fillViewport="true">
 
     <LinearLayout
@@ -16,7 +16,7 @@
         android:id="@+id/btnImagem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tirar Foto"
+        android:text="escolher arquivo"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="150dp"/>
 
@@ -25,37 +25,74 @@
             android:layout_width="match_parent"
             android:layout_height="228dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nome:" />
+        <EditText
+            android:id="@+id/edtNome"
+            android:layout_width="189dp"
+            android:layout_height="wrap_content"
+            android:hint="Nome:" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Idade:" />
+        <EditText
+            android:id="@+id/edtIdade"
+            android:layout_width="221dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="-45dp"
+            android:hint="Idade:" />
+
+        <EditText
+            android:id="@+id/edtGenero"
+            android:layout_width="189dp"
+            android:layout_height="wrap_content"
+            android:hint="Raça:" />
+
+        <EditText
+            android:id="@+id/edtPorte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="-45dp"
+            android:hint="Porte: " />
+
+        <EditText
+            android:id="@+id/edtEspecie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Especie:"
+            />
+
+        <RadioButton
+            android:layout_width="96dp"
+            android:layout_height="47dp"
+            android:layout_marginLeft="90dp"
+            android:text="Fêmea"
+            android:textSize="17dp" />
+
+        <RadioButton
+            android:layout_width="96dp"
+            android:layout_height="47dp"
+            android:layout_marginTop="-45dp"
+            android:layout_marginLeft="190dp"
+            android:text="Macho"
+            android:textSize="17dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:textSize="18dp"
-            android:text="Laudo do pet..." />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Genêro:" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Porte: " />
+            android:text="Estado do pet..."
+            android:textSize="18dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="300dp"
-        android:text="Salvar" />
+        android:layout_marginLeft="280dp"
+        android:text="Postar" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-50dp"
+            android:layout_marginLeft="190dp"
+            android:text="Close" />
 
     </LinearLayout>
 </ScrollView>

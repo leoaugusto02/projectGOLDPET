@@ -1,3 +1,9 @@
+<%@page import="org.json.JSONObject"%>
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.io.DataOutputStream"%>
+<%@page import="java.net.HttpURLConnection"%>
+<%@page import="java.net.URL"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -101,6 +107,35 @@ body, html {
 </head>
 <body>
 
+	<%
+		String acao = "listarAnimaisResgate";
+		String acaoModal = request.getParameter("acaoModal");
+		String parametros = "";
+
+		if (acaoModal != null) {
+			parametros = "";
+
+		} else {
+			parametros = "acao=" + acao;
+		}
+
+		URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaResgate");
+
+		HttpURLConnection con = (HttpURLConnection) url.openConnection();
+		con.setRequestMethod("POST");
+		con.setDoOutput(true);
+
+		System.out.println(parametros);
+
+		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+		wr.writeBytes(parametros);
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+		String linha = "";
+		JSONObject obj = new JSONObject();
+	%>
+
 	<div class="conteudo">
 
 		<div id="esquerda"></div>
@@ -115,6 +150,7 @@ body, html {
 				<div class="navC d-flex w-100 justfy-content-center">
 
 					<div class="w-100">
+
 						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
 							<a class="navbar-brand" href="Index.jsp">Home</a>
 							<button class="navbar-toggler" type="button"
@@ -166,64 +202,53 @@ body, html {
 						<div class="modal-body">
 							<div>
 
-								<input class="form-control" type="text" placeholder="Raça"
-									style="margin-bottom: 3%;" /> <input class="form-control"
-									type="text" placeholder="Porte" style="margin-bottom: 3%;" />
-
-								<input class="form-control" type="text" placeholder="Espécie"
+								<input class="form-control" type="text" placeholder="Endereço"
 									style="margin-bottom: 3%;" />
 
-								<div class="form-check form-check-inline"
-									style="margin-bottom: 2%;">
-									<input class="form-check-input" type="radio"
-										name="inlineRadioOptions" id="inlineRadio1" value="option1">
-									<label class="form-check-label" for="inlineRadio1"> <img
-										alt="feminino.png" src="img/feminino.png"
-										style="height: 25px; width: 25px; margin-left: -0.5;">Fêmea
-									</label>
+								<div class="input-group mb-3">
+									<select class="custom-select" id="inputGroupSelect01">
+										<option selected>Selecione o nível de urgência...</option>
+										<option value="1">Não urgente</option>
+										<option value="2">Pouco machucado</option>
+										<option value="3">Machucado</option>
+										<option value="3">Perigo</option>
+										<option value="3">Muito Urgente</option>
+									</select>
 								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio"
-										name="inlineRadioOptions" id="inlineRadio2" value="option2">
-									<label class="form-check-label" for="inlineRadio2"> <img
-										alt="masculino.png" src="img/masculino.png"
-										style="height: 25px; width: 25px; margin-left: -0.5;">Macho
-									</label>
 
-								</div>
+
 
 								<div id="textArea">
 									<textarea class="form-control" id="textarea"
-										placeholder="Status do Pet" rows="3"
+										placeholder="Descrição do Pet" rows="3"
 										style="margin-top: 2px; margin-bottom: 0px; height: 80px; width: 470px;"></textarea>
 								</div>
 
 								<div>
 
 									<input type="file" id="upload" name="imagem"
-											style="float: right; margin-top: 6%;"> <img id="img"
-											style="width: 300px; margin-left: 17%;" />
-											<script>
-											$(function() {
-												$('#upload')
-														.change(
-																function() {
-																	console
-																			.log($(this));
-																	const file = ($(this)[0].files[0])
-																	const fileReader = new FileReader()
-																	fileReader.onloadend = function() {
-																		$(
-																				'#img')
-																				.attr(
-																						'src',
-																						fileReader.result)
-																	}
-																	fileReader
-																			.readAsDataURL(file)
-																})
-											})
-										</script>
+										style="float: right; margin-top: 6%;"> <img id="img"
+										style="width: 300px; margin-left: 17%;" />
+									<script>
+										$(function() {
+											$('#upload')
+													.change(
+															function() {
+																console
+																		.log($(this));
+																const file = ($(this)[0].files[0])
+																const fileReader = new FileReader()
+																fileReader.onloadend = function() {
+																	$('#img')
+																			.attr(
+																					'src',
+																					fileReader.result)
+																}
+																fileReader
+																		.readAsDataURL(file)
+															})
+										})
+									</script>
 
 								</div>
 							</div>
@@ -244,14 +269,29 @@ body, html {
 					</div>
 				</div>
 			</div>
+			<form method="post" action="#">
+				<%
+				if(obj.getString("mensagem").equals("temAnimais")){
+					
+					System.out.println("Tô aqui antes do while");
 
+					int i = 0;
+					boolean fimWhile = false;
 
-			<div class="">
-				<div class="d-flex flex-row justify-content-around mb-5"
-					id="infoDog">
+					while ((linha = br.readLine()) != null) {
+						//System.out.println("Tô aqui " + linha);
+						obj = new JSONObject(linha);
+
+						if (i == 0) {
+				%>
+				<div class="d-flex justify-content-around">
+					<%
+						}
+					%>
+
 					<div class="card" style="width: 23rem;">
-						<img src="img/slide01.png" class="card-img" href="#"
-							style="height: 500px;">
+						<img src="img/<%=obj.getString("dogeImagem")%>" class="card-img"
+							href="#" style="height: 500px;">
 						<div class="card-body">
 							<h5 class="card-title">Especie</h5>
 							<p class="card-text">Observaçoes sobre o Pet</p>
@@ -259,40 +299,39 @@ body, html {
 								<small class="text-muted">Localizacao do Pet</small>
 							</p>
 						</div>
-					</div>
 
-
-					<div class="card" style="width: 23rem;">
-						<img src="img/slide01.png" class="card-img" href="#"
-							style="height: 500px;">
-						<div class="card-body">
-							<h5 class="card-title">Especie</h5>
-							<p class="card-text">Observaçoes sobre o Pet</p>
-							<p class="card-text">
-								<small class="text-muted">Localizacao do Pet</small>
-							</p>
-						</div>
 					</div>
-
-					<div class="card" style="width: 23rem;">
-						<img src="img/slide01.png" class="card-img" href="#"
-							style="height: 500px;">
-						<div class="card-body">
-							<h5 class="card-title">Especie</h5>
-							<p class="card-text">Observaçoes sobre o Pet</p>
-							<p class="card-text">
-								<small class="text-muted">Localizacao do Pet</small>
-							</p>
-						</div>
-					</div>
+					<%
+						i++;
+							if (i == 3) {
+								fimWhile = false;
+					%>
 				</div>
+				<%
+					i = 0;
+						} else {
+							fimWhile = true;
+						}
 
-			</div>
+					}
+					System.out.println("Tô aqui dps do while");
+					if (fimWhile) {
+				%>
+			
 		</div>
+		<%
+			}
+				}else{
+					%>
+					<h2>sem animais</h2>
+					<%
+					}
+		%>
+		</form>
 
+	</div>
 
-
-		<div id="direita"></div>
+	<div id="direita"></div>
 
 
 	</div>
@@ -303,5 +342,4 @@ body, html {
 	</div>
 	<!-- <script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script> -->
-
 </body>

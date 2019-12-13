@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#93D6D6"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context="com.example.goldpet.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,33 +20,54 @@
         android:layout_marginTop="25dp"/>
 
     <TextView
-        android:layout_width="375dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="10dp"
         android:textColor="#E61414"
         android:textSize="20dp"
         android:text="Cães velhos aprendem truques novos?"/>
 
-    <TextView
-        android:layout_width="375dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:textColor="#000"
-        android:textSize="18dp"
-        android:text="Um dos motivos de haver mais cães adultos nos abrigos e ONGs é o medo de cães velhos não aprenderem coisas novas. Desde um xixi no lugar certo, até um comando de adestramento. Esse mito ainda persiste na mente de muitas pessoas, infelizmente."/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Um dos motivos de haver mais cães adultos nos abrigos e ONGs é o medo de cães velhos não aprenderem coisas novas."
+            android:textColor="#000"
+            android:textSize="17dp" />
 
-    <TextView
-        android:layout_width="375dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:textColor="#000"
-        android:textSize="18dp"
-        android:text="Assim como nós, qualquer cão, em todas as idades, pode aprender coisas novas. Basta ter paciência e persistência. O aprendizado talvez não seja tão rápido quanto seria com um filhote de seis meses, por exemplo. Mas, mais que um desafio para o cão, é uma forma de estreitar laços entre peludos e humanos."/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textColor="#000"
+            android:textSize="17dp"
+            android:text="Desde um xixi no lugar certo, até um comando de adestramento. Esse mito ainda persiste na mente de muitas pessoas, infelizmente."
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Assim como nós, qualquer cão, em todas as idades, pode aprender coisas novas. Basta ter paciência e persistência."
+            android:textColor="#000"
+            android:textSize="17dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="O aprendizado talvez não seja tão rápido quanto seria com um filhote de seis meses, por exemplo. Mas, mais que um desafio para o cão, é uma forma de estreitar laços entre peludos e humanos."
+            android:textSize="17dp"
+            android:textColor="#000"
+            />
 
     <Button
+        android:id="@+id/btVoltar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="315dp"
-        android:text="voltar"/>
-</LinearLayout>
+        android:onClick="onClick"
+        android:layout_marginLeft="280dp"
+        android:text="Voltar"
+        />
+    </LinearLayout>
 </ScrollView>

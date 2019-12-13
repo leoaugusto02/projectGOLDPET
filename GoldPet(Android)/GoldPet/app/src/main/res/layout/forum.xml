@@ -37,9 +37,9 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="300dp"
+            android:layout_marginLeft="260dp"
             android:layout_marginTop="20dp"
-            android:background="#003E26CE"
+            android:background="#2A948F"
             android:text="Enviar" />
     </LinearLayout>
 </ScrollView>

@@ -53,9 +53,10 @@
 			
 			JSONObject obj = new JSONObject(apnd);
 			
+			System.out.println("LOGIN - " + obj.toString());
 			if(obj.getString("mensagem").equals("0")){
 				request.getSession().setAttribute("codigoUsuario", obj.getInt("codeUser"));
-				//request.getSession().setAttribute("tipo", obj.getString("tipo"));
+				request.getSession().setAttribute("cargo", obj.getString("cargo"));
 				
 
 				response.sendRedirect("perfil.jsp");

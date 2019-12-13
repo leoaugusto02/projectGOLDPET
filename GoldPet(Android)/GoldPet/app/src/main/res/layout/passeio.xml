@@ -19,25 +19,37 @@
         android:textColor="#EE1515"
         android:text="Passeio"/>
 
-    <TextView
-        android:layout_width="374dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Leve-o todos os dias para passear, o cachorro também precisa se exercitar e andar como nós, ainda mais se sua casa não tem quintal. Eles aproveitam o passeio para curtir sua companhia. Lembre-se que todo dono deve recolher as fezes de seu animalzinho nas ruas, praças e calçadas: é um ato de cidadania e obrigatório por lei."
-        android:textColor="#000"
-        android:textSize="18dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Leve-o todos os dias para passear, o cachorro também precisa se exercitar e andar como nós, ainda mais se sua casa não tem quintal."
+            android:textColor="#000"
+            android:textSize="17dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textColor="#000"
+            android:textSize="17dp"
+            android:text="Eles aproveitam o passeio para curtir sua companhia. Lembre-se que todo dono deve recolher as fezes de seu animalzinho nas ruas, praças e calçadas: é um ato de cidadania e obrigatório por lei."
+        />
 
     <ImageView
         android:layout_width="371dp"
         android:layout_height="325dp"
-        android:layout_marginLeft="20dp"
         android:src="@drawable/passeio" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="315dp"
-        android:text="voltar"/>
+
+        <Button
+            android:id="@+id/btVoltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:layout_marginLeft="280dp"
+            android:text="Voltar"
+            />
 
 </LinearLayout>
 </ScrollView>

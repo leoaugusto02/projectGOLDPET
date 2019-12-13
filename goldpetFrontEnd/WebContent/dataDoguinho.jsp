@@ -78,6 +78,16 @@ body, html {
 	margin: auto;
 	overflow: visible;
 }
+
+#imgPet>img {
+	border-radius: 65%;
+	overflow: hidden;
+	width: 298px;
+	height: 318px;
+	margin-left: 0.5%;
+	
+}
+
 </style>
 
 <meta charset="ISO-8859-1">
@@ -93,15 +103,36 @@ body, html {
 
 	<%
 		String acao = "perfil";
-		String acaoInserir = request.getParameter("acaoInserir");
+		String acaoModal = request.getParameter("acaoModal");
 		String codAnimal = request.getParameter("codAnimal");
-		String acaoVerifica = request.getParameter("acaoVerifica");
-		String codUser = request.getParameter("codUser");
-		String parametros = "acao=" + acao + "&codAnimal=" + codAnimal;
+		String acaoVerifica = "verificaSessao";
 
-		if (acaoInserir != null) {
+		String parametros = "";
+
+		if (acaoModal != null) {
+
+			String dataDiagnostico = request.getParameter("dataDiagnostico");
+			String breveDiagnostico = request.getParameter("breveDiagnostico");
+			String diagnosticoCompleto = request.getParameter("diagnosticoCompleto");
+
+			if (/*codAnimale != null) ||*/ (dataDiagnostico != null) || (breveDiagnostico != null)
+					|| (diagnosticoCompleto != null)) {
+				System.out.println("codAnimal= " + codAnimal);
+				parametros = "codAnimal=" + codAnimal + "&dataDiagnostico=" + dataDiagnostico + "&breveDiagnostico="
+						+ breveDiagnostico + "&diagnosticoCompleto=" + diagnosticoCompleto + "&acaoModal="
+						+ acaoModal;
+
+				System.out.println(parametros);
+			}
+
+		} else {
+
+			parametros = "acao=" + acao + "&codUser=" + request.getSession().getAttribute("codigoUsuario")
+					+ "&codAnimal=" + codAnimal + "&acaoVerifica=" + acaoVerifica;
 
 		}
+
+		System.out.println("PARAMETROS - " + parametros);
 
 		URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
 
@@ -167,7 +198,11 @@ body, html {
 				<div class="container">
 					<div style="text-align: center">
 						<h2>Doguinho</h2>
-						<div class="circulo square"></div>
+						<div  id="imgPet" class="circulo square">
+							<img src="img/<%=obj.getString("imgAnimal")%>" style="margin-left:-0.2%; margin-bottom:0.4%; class="card-img"
+								href="#"/>
+							<!-- style="height: 500px;"-->
+						</div>
 					</div>
 
 				</div>
@@ -217,277 +252,332 @@ body, html {
 
 								</tbody>
 							</table>
-
 						</div>
 					</div>
+				</div>
 
-					<%
-						if (obj.getString("mensagem").equals("temLaudo")) {
-					%>
-					<div class="card  mb-8">
+				<%
+					if (obj.getString("mensagem").equals("temLaudo")) {
+				%>
+				<div class="card  mb-8">
 
-						<h4 class="card-header">Laudo</h4>
+					<h4 class="card-header">Laudo</h4>
 
-						<div class="panel-body" border="3px">
-							<table class="table profile__table">
-								<tbody>
-									<tr>
-										<th><strong>Nome do Veterinario:</strong><label></label></th>
-										<td><%=obj.getString("nomeVet")%></td>
-									</tr>
-									<tr>
-										<th><strong>Data do Diagnostico:</strong></th>
-										<td><%=obj.getString("dataDiag")%></td>
-									</tr>
-									<tr>
-										<th><strong>Breve Diagnostico:</strong></th>
-										<td><%=obj.getString("diagnostico")%></td>
-									</tr>
-									<tr>
-										<th><strong>Diagnostico completo:</strong></th>
-										<td><%=obj.getString("imgDiag")%></td>
-									</tr>
-									<%
-										// if (request.getSession().getAttribute("codigoUsuario") == null) {
+					<div class="panel-body" border="3px">
+						<table class="table profile__table">
+							<tbody>
+								<tr>
+									<th><strong>Nome do Veterinario:</strong><label></label></th>
+									<td><%=obj.getString("nomeVet")%></td>
+								</tr>
+								<tr>
+									<th><strong>Data Postagem:</strong></th>
+									<td><%=obj.getString("dataPost")%></td>
+								</tr>
+								<tr>
+									<th><strong>Data do Diagnostico:</strong></th>
+									<td><%=obj.getString("dataDiag")%></td>
+								</tr>
+								<tr>
+									<th><strong>Breve Diagnostico:</strong></th>
+									<td><%=obj.getString("diagnostico")%></td>
+								</tr>
+								<tr>
+									<th><strong>Diagnostico completo:</strong></th>
+									<td>
+										<!-- Button trigger modal -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#exampleModal">
+											Visualizar laudo</button>
 
-											//}
-									%>
-
-									<tr style="visibility: hidden;">
-										<th><strong>Enviar laudo medico</strong></th>
-										<td></td>
-									</tr>
-								</tbody>
-							</table>
-
-						</div>
-					</div>
-					<%
-						} else if (obj.getString("mensagem").equals("semLaudo")) {
-							if (request.getSession().getAttribute("codigoUsuario") != null) {
-								if (obj.getString("mensagem").equals("veterinario")) {
-					%>
-					<br>
-					<button type="button" class="btn btn-outline-success"
-						data-toggle="modal" data-target="#laudoModal">Inserir
-						Laudo</button>
-
-					<div class="modal" id="laudoModal" tabindex="-1" role="dialog"
-						aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content" style="width: 565px;">
-
-								<div class="modal-header" style="background-color: #139F97;">
-									<h5 class="modal-title">Inserir Laudo</h5>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span>x</span>
-									</button>
-								</div>
-
-								<div class="modal-body">
-									<div class="form-group">
-										<label>Data do diagnóstico:</label> <input type="date"
-											class="form-group col-md-6" name="dataDiagnostico"
-											style="margin-left: 3%;">
-									</div>
-									<div id="textArea">
-										<textarea class="form-control" id="textarea"
-											placeholder="Breve diagnóstico" rows="3"
-											name="breveDiagnostico"
-											style="margin-top: 2px; margin-bottom: 3%; height: 80px; width: 470px;"></textarea>
-									</div>
-									<div class="form-group">
-										<label>Diagnóstico completo: </label> <input type="file"
-											id="upload" name="arquivo" style="float: right;" />
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-outline-success">
-										<img alt="postar.png" src="img/postar.png"
-											style="height: 20px; width: 20px; margin-left: -0.5;" />
-										Confirmar
-									</button>
-									<input type="hidden" name="acaoInserir" value="inserirLaudo">
-									<button type="button" class="btn btn-outline-danger"
-										data-dismiss="modal">
-										<img alt="close.png" src="img/close.png"
-											style="height: 20px; width: 20px; margin-left: -0.5;" />
-										Cancelar
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<%
-						} else if (("mensagem").equals("guardiao")) {
-					%>
-					<br>
-					<div id="buttonAdd">
-						<button type="button" class="btn btn-outline-success"
-							data-toggle="modal" data-target="#siteModal">Adotar</button>
-					</div>
-
-					<div class="modal" id="siteModal" tabindex="-1" role="dialog"
-						aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-
-								<div class="modal-header" style="background-color: #139F97;">
-									<h5 class="modal-title">Adotar</h5>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span>x</span>
-									</button>
-								</div>
-
-								<div class="modal-body">
-									<div>
-										<div class="custom-control custom-radio">
-											<input type="radio" id="customRadio1" name="customRadio"
-												class="custom-control-input"> <label
-												class="custom-control-label" for="customRadio1 style="margin-bottom: 1%;"">Buscar
-												na Ong</label>
-										</div>
-										<div class="custom-control custom-radio">
-											<input type="radio" id="customRadio2" name="customRadio"
-												class="custom-control-input"> <label
-												class="custom-control-label" for="customRadio2"
-												style="margin-bottom: 3%;">Levar até na casa</label>
-										</div>
-									</div>
-
-									<div id="levarNaCasa">
-										<input class="form-control" type="text" placeholder="CEP"
-											id="cep" style="margin-bottom: 3%;" />
-
-										<script>
-											$(document)
-													.ready(
-															function() {
-																$("#cep")
-																		.keyup(
-																				function() {
-																					var cep = $(
-																							"#cep")
-																							.val();
-																					if (cep.length == 8) {
-
-																						$
-																								.get(
-																										"https://viacep.com.br/ws/"
-																												+ cep
-																												+ "/json/",
-																										function(
-																												data,
-																												status) {
-																											console
-																													.log(data);
-																											$(
-																													"#cidade")
-																													.val(
-																															data.localidade);
-																											$(
-																													"#nomeRua")
-																													.val(
-																															data.logradouro);
-																											$(
-																													"#bairro")
-																													.val(
-																															data.bairro);
-																										});
-																					}
-																				});
-															});
-										</script>
-
-										<input class="form-control" type="text" placeholder="Cidade"
-											id="cidade" style="margin-bottom: 3%;" /> <input
-											class="form-control" type="text" placeholder="Rua"
-											id="nomeRua" style="margin-bottom: 3%;" /> <input
-											class="form-control" type="number" placeholder="N° casa"
-											style="margin-bottom: 3%;" /> <input class="form-control"
-											type="text" placeholder="Bairro" id="bairro"
-											style="margin-bottom: 3%;" />
-
-									</div>
-
-									<div id="buscarNaYong">
-										<div class="form-group">
-											<label class="col-md-5 control-label" for="hora">Horario</label>
-											<div class="col-md-5">
-												<select id="hora" name="time" class="form-control">
-													<option value="Não informado">Não informado</option>
-													<option value="Manha">9:00 AM</option>
-													<option value="Manha">9:30 AM</option>
-													<option value="Manha">10:00 AM</option>
-													<option value="Manha">10:30 AM</option>
-													<option value="Manha">11:00 AM</option>
-													<option value="Manha">11:30 AM</option>
-													<option value="Tarde">12:00 PM</option>
-													<option value="Tarde">12:30 PM</option>
-													<option value="Tarde">13:00 PM</option>
-												</select>
+										<div class="modal fade" id="exampleModal" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel"
+											aria-hidden="true">
+											<div class="modal-dialog modal-xl" role="document">
+												<div class="modal-content">
+													<div class="modal-body center">
+														<iframe src="./img/<%=obj.getString("imgDiag")%>"
+															width="1400" height="800"></iframe>
+													</div>
+												</div>
 											</div>
 										</div>
 
-										<div class="form-group">
-											<label class="col-md-4 control-label" for="dia">Dia</label>
-											<div class="col-md-4">
-												<select id="hora" name="time" class="form-control">
-													<option value="Não informado">Não informado</option>
-													<option value="Segunda">Segunda</option>
-													<option value="Terca">Terça</option>
-													<option value="Quarta">Quarta</option>
-													<option value="Quinta">Quinta</option>
-													<option value="Sexta">Sexta</option>
-												</select>
-											</div>
-										</div>
-									</div>
+									</td>
+								</tr>
 
-								</div>
-
-								<div class="modal-footer">
-									<button type="button" class="btn btn-outline-danger"
-										data-dismiss="modal">
-										<img alt="close.png" src="img/close.png"
-											style="height: 20px; width: 20px; margin-left: -0.5;" />
-										Fechar
-									</button>
-									<button type="button" class="btn btn-outline-success">
-										<img alt="postar.png" src="img/postar.png"
-											style="height: 20px; width: 20px; margin-left: -0.5;" />
-										Confirmar
-									</button>
-								</div>
-							</div>
-						</div>
-
-					</div>
-					<%
-						}
-							} else {
-					%>
-					<div class="alert alert-info" role="alert">
-						Para agendar uma visita para adotar este animalzinho,<a
-							href="cadastro.jsp" class="alert-link">clique aqui</a>, e faça
-						seu cadastro no nosso site!
-						<%
-						}
-						}
-					%>
-
-
-
+							</tbody>
+						</table>
 
 					</div>
 				</div>
+				<%
+					if (request.getSession().getAttribute("cargo").equals("Veterinario")) {
+				%>
+				<button type="button" class="btn btn-outline-success"
+					data-toggle="modal" data-target="#laudoModal">Atualizar
+					Laudo</button>
+				<br>
+				<%
+					}
+
+					} else if (obj.getString("mensagem").equals("semLaudo")) {
+						//System.out.println("OBJ 2 - " + request.getSession().getAttribute("cargo"));
+
+						if (request.getSession().getAttribute("cargo").equals("Veterinario")) {
+							//if (obj.getString("mensagemFunc").equals("veterinario")) {
+				%>
+				<br>
+				<button type="button" class="btn btn-outline-success"
+					data-toggle="modal" data-target="#laudoModal">Inserir
+					Laudo</button>
+
+				<!-- MODAL AQUI -->
+				<%
+					}
+					}
+					/*System.out.println("OBJ - " + obj.toString());
+					System.out.println("MSG - " + obj.getString("mensagem"));
+					if (obj.getString("mensagem").equals("guardiao")) {*/
+					if (request.getSession().getAttribute("codigoUsuario") != null) {
+				%>
+				<br>
+				<div id="buttonAdd">
+					<button type="button" class="btn btn-outline-success"
+						data-toggle="modal" data-target="#siteModal">Agendar
+						visita</button>
+				</div>
+
+				<div class="modal" id="siteModal" tabindex="-1" role="dialog"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+
+							<div class="modal-header" style="background-color: #139F97;">
+								<h5 class="modal-title">Adotar</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span>x</span>
+								</button>
+							</div>
+
+							<div class="modal-body">
+								<div>
+									<div class="custom-control custom-radio">
+										<input type="radio" id="customRadio1" name="customRadio"
+											class="custom-control-input"> <label
+											class="custom-control-label" for="customRadio1 style="margin-bottom: 1%;"">Buscar
+											na Ong</label>
+									</div>
+									<div class="custom-control custom-radio">
+										<input type="radio" id="customRadio2" name="customRadio"
+											class="custom-control-input"> <label
+											class="custom-control-label" for="customRadio2"
+											style="margin-bottom: 3%;">Levar até na casa</label>
+									</div>
+								</div>
+
+								<div id="levarNaCasa">
+									<input class="form-control" type="text" placeholder="CEP"
+										id="cep" style="margin-bottom: 3%;" />
+
+									<script>
+										$(document)
+												.ready(
+														function() {
+															$("#cep")
+																	.keyup(
+																			function() {
+																				var cep = $(
+																						"#cep")
+																						.val();
+																				if (cep.length == 8) {
+
+																					$
+																							.get(
+																									"https://viacep.com.br/ws/"
+																											+ cep
+																											+ "/json/",
+																									function(
+																											data,
+																											status) {
+																										console
+																												.log(data);
+																										$(
+																												"#cidade")
+																												.val(
+																														data.localidade);
+																										$(
+																												"#nomeRua")
+																												.val(
+																														data.logradouro);
+																										$(
+																												"#bairro")
+																												.val(
+																														data.bairro);
+																									});
+																				}
+																			});
+														});
+									</script>
+
+									<input class="form-control" type="text" placeholder="Cidade"
+										id="cidade" style="margin-bottom: 3%;" /> <input
+										class="form-control" type="text" placeholder="Rua"
+										id="nomeRua" style="margin-bottom: 3%;" /> <input
+										class="form-control" type="number" placeholder="N° casa"
+										style="margin-bottom: 3%;" /> <input class="form-control"
+										type="text" placeholder="Bairro" id="bairro"
+										style="margin-bottom: 3%;" />
+
+								</div>
+
+								<div id="buscarNaYong">
+									<div class="form-group">
+										<label class="col-md-5 control-label" for="hora">Horario</label>
+										<div class="col-md-5">
+											<select id="hora" name="time" class="form-control">
+												<option value="Não informado">Não informado</option>
+												<option value="Manha">9:00 AM</option>
+												<option value="Manha">9:30 AM</option>
+												<option value="Manha">10:00 AM</option>
+												<option value="Manha">10:30 AM</option>
+												<option value="Manha">11:00 AM</option>
+												<option value="Manha">11:30 AM</option>
+												<option value="Tarde">12:00 PM</option>
+												<option value="Tarde">12:30 PM</option>
+												<option value="Tarde">13:00 PM</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="dia">Dia</label>
+										<div class="col-md-4">
+											<select id="hora" name="time" class="form-control">
+												<option value="Não informado">Não informado</option>
+												<option value="Segunda">Segunda</option>
+												<option value="Terca">Terça</option>
+												<option value="Quarta">Quarta</option>
+												<option value="Quinta">Quinta</option>
+												<option value="Sexta">Sexta</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-outline-danger"
+									data-dismiss="modal">
+									<img alt="close.png" src="img/close.png"
+										style="height: 20px; width: 20px; margin-left: -0.5;" />
+									Fechar
+								</button>
+								<button type="button" class="btn btn-outline-success">
+									<img alt="postar.png" src="img/postar.png"
+										style="height: 20px; width: 20px; margin-left: -0.5;" />
+									Confirmar
+								</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<%
+					} else {
+				%>
+				<div class="alert alert-info" role="alert">
+					Para agendar uma visita para adotar este animalzinho,<a
+						href="cadastro.jsp" class="alert-link">clique aqui</a>, e faça seu
+					cadastro no nosso site!
+					<%
+					}
+				%>
+				</div>
 			</div>
 		</div>
-		<div id="direita"></div>
+	</div>
 
-		<script src="js/bootstrap.min.js"></script>
+	<div id="direita"></div>
+
+	<script src="js/bootstrap.min.js"></script>
+
+	<script>
+		function inserirLaudo() {
+			$("#acaoModal").val("inserirLaudo");
+		}
+	</script>
+
+	<div class="modal" id="laudoModal" tabindex="-1" role="dialog"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width: 565px;">
+
+				<div class="modal-header" style="background-color: #139F97;">
+					<h5 class="modal-title">Inserir Laudo</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span>x</span>
+					</button>
+				</div>
+
+				<form action="http://localhost:8080/goldpetBackEnd/ProcessaAnimais"
+					method="POST" enctype="multipart/form-data">
+					<div class="modal-body">
+
+						<div class="form-group">
+							<label>Data do diagnóstico:</label> <input type="date"
+								class="form-group col-md-6" name="dataDiagnostico"
+								style="margin-left: 3%;">
+						</div>
+						<div id="textArea">
+							<textarea class="form-control" id="textarea"
+								placeholder="Breve diagnóstico" rows="3" name="breveDiagnostico"
+								style="margin-top: 2px; margin-bottom: 3%; height: 80px; width: 470px;"></textarea>
+						</div>
+						<div class="form-group">
+							<label>Diagnóstico completo: </label> <input type="file"
+								id="upload" name="diagnosticoCompleto" style="float: right;" />
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="submit" class="btn btn-outline-success"
+							value="Confirmar" />
+						<!--  <img alt="postar.png" src="img/postar.png"
+										style="height: 20px; width: 20px; margin-left: -0.5;" />-->
+
+						<input type="hidden" name="codUser"
+							value="<%=request.getSession().getAttribute("codigoUsuario")%>" />
+						<input type="hidden" name="codAnimal" value="<%=codAnimal%>" />
+						<%
+							if (obj.getString("mensagem").equals("temLaudo")) {
+						%>
+						<input type="hidden" id="acaoModal" name="acaoModal"
+							value="atualizarLaudo" />
+						<%
+							} else {
+						%>
+						<input type="hidden" id="acaoModal" name="acaoModal"
+							value="inserirLaudo" />
+						<%
+							}
+						%>
+						<input type="hidden" name="pathFile"
+							value="<%=getServletContext().getRealPath("/").replace('\\', '/')%>" />
+						<button type="button" class="btn btn-outline-danger"
+							data-dismiss="modal">
+							<img alt="close.png" src="img/close.png"
+								style="height: 20px; width: 20px; margin-left: -0.5;" />
+							Cancelar
+						</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

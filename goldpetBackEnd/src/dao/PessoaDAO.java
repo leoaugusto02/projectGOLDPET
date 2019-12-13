@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONObject;
+
 import vo.Funcionario;
 import vo.Guardiao;
 import vo.Pessoa;
@@ -16,10 +18,13 @@ public class PessoaDAO {
 	private Connection con;
 	private PreparedStatement ps;
 
-	public Integer login(Pessoa p) throws SQLException {
+	public String login(Pessoa p) throws SQLException {
 
-		String sql = "SELECT codePerson FROM Pessoa WHERE email = ? OR nick_name = ? AND senha = ?";
+		//String sql = "SELECT codePerson FROM Pessoa WHERE email = ? OR nick_name = ? AND senha = ?";
 
+		String sql = "SELECT Pessoa.codePerson, cargo FROM Pessoa LEFT JOIN Funcionario ON Pessoa.codePerson = Funcionario.codePerson " + 
+		"WHERE email = ? OR nick_name = ? AND senha = ?";
+		
 		con = ConnectionDB.getConnection();
 
 		ps = con.prepareStatement(sql);
@@ -30,11 +35,39 @@ public class PessoaDAO {
 		ResultSet rs = ps.executeQuery();
 
 		if (rs.next()) {
-			p.setCodePerson(rs.getInt("codePerson"));
-			return p.getCodePerson();
+			String ret = rs.getInt("codePerson") + ";" + rs.getString("cargo");
+			System.out.print("RET - " + ret);
+			return ret;
+			//p.setCodePerson(rs.getInt("codePerson"));
+			//return p.getCodePerson();
+			//return rs.getInt("codePerson");
 		}
 		return null;
 	}
+	
+	/*public JSONObject login(Pessoa p) throws SQLException {
+
+		String sql = "SELECT * FROM Pessoa WHERE email = ? OR nick_name = ? AND senha = ?";
+
+		con = ConnectionDB.getConnection();
+
+		JSONObject obj = new JSONObject();
+		
+		ps = con.prepareStatement(sql);
+		ps.setString(1, p.getEmail());
+		ps.setString(2, p.getApelido());
+		ps.setString(3, p.getSenha());
+
+		ResultSet rs = ps.executeQuery();
+
+		if (rs.next()) {
+			//p.setCodePerson(rs.getInt("codePerson"));
+			obj.put("cod", rs.getInt("codePerson"));
+			obj.put("profissao", rs.getObject(columnIndex));
+			return obj;
+		}
+		return null;
+	}*/
 
 	public boolean cadastrar(Pessoa p, String acao) throws SQLException {
 
@@ -43,7 +76,7 @@ public class PessoaDAO {
 
 		sql = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?,'" + acao + "', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-		if (acao.equals("Guardião")) {
+		if (acao.equals("Guardiao")) {
 			sqlCondicao = "INSERT INTO Guardiao VALUES(null, "
 					+ "(SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,'Iniciante',0,'ativo')";
 		} else {
@@ -191,7 +224,7 @@ public class PessoaDAO {
 			sql = "INSERT INTO Guardiao(codePerson, animais_resgatados, rank, progresso)" + " SELECT * FROM (SELECT "
 					+ codePerson + ", 0, 'Iniciante', 0) AS guard" + " WHERE NOT EXISTS ("
 					+ "	SELECT codePerson FROM Guardiao WHERE codePerson =" + codePerson + ") LIMIT 1;";
-			sql2 = "UPDATE Pessoa p INNER JOIN Funcionario f ON p.codePerson = f.codePerson INNER JOIN Guardiao g ON p.codePerson = f.codePerson SET p.tipo = 'Guardião', f.status='demetido', g.status='ativo' WHERE p.codePerson ="
+			sql2 = "UPDATE Pessoa p INNER JOIN Funcionario f ON p.codePerson = f.codePerson INNER JOIN Guardiao g ON p.codePerson = f.codePerson SET p.tipo = 'Guardiao', f.status='demetido', g.status='ativo' WHERE p.codePerson ="
 					+ codePerson;
 		}
 
@@ -208,25 +241,59 @@ public class PessoaDAO {
 	}
 
 	public Pessoa verificaTipo(int codigo) throws SQLException {
-		String sql = "SELECT * FROM Pessoa WHERE codePerson = ?";
+		String sql = "SELECT tipo FROM Pessoa WHERE codePerson = ?";
 
 		con = ConnectionDB.getConnection();
 
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, codigo);
 
+		ResultSet rs = ps.executeQuery();
+		
+		if(rs.next()) {
+			Pessoa p = new Pessoa();
+			p.setTipo(rs.getString("tipo"));
+			return p;
+		}
 		return null;
 	}
 
-	public Funcionario verificaCargo(int codUsuario) throws SQLException {
+	public Pessoa verificaCargo(int codUsuario) throws SQLException {
 
-		String sql = "SELECT cargo FROM Funcionario, Pessoa p WHERE p.codePerson = ? ";
+		String sql = "SELECT cargo FROM Funcionario, Pessoa p WHERE p.codePerson = ?";
 
 		con = ConnectionDB.getConnection();
 
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, codUsuario);
+		
+		ResultSet rs = ps.executeQuery();
 
+		if(rs.next()) {
+			Pessoa p = new Pessoa();
+			p.setCargo(rs.getString("cargo"));
+			return p;
+		}
+		return null;
+	}
+	
+	public Pessoa verificaFuncionario(int codigo) throws SQLException {
+		String sql = "SELECT p_nome, s_nome"
+				+ " FROM Pessoa WHERE codePerson = ?";
+
+		con = ConnectionDB.getConnection();
+
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, codigo);
+
+		ResultSet rs = ps.executeQuery();
+		
+		if(rs.next()) {
+			Pessoa p = new Pessoa();
+			p.setP_nome(rs.getString("p_nome"));
+			p.setS_nome(rs.getString("s_nome"));
+			return p;
+		}
 		return null;
 	}
 }

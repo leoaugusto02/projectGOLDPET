@@ -37,7 +37,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-<body class="background" >
+<body>
 
 	<form action="#">
 		<div class="container" style="text-align: center">

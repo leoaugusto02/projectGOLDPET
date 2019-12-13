@@ -14,118 +14,310 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dicas, Cuorisidades e Cuidados !!"
-        android:textSize="25dp"
-        android:textColor="#FA3434"
-        android:layout_marginLeft="25dp"/>
-    <TextView
-        android:id="@+id/txtAlimentacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="25dp"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:text="Alimentação"/>
+        android:text="Dicas, Cuorisidades e Cuidados !!"
+        android:textSize="22dp"
+        android:textColor="#FF1B1B"
+        android:layout_marginLeft="10dp"/>
 
-    <TextView android:id="@+id/txtHigiene"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:text="Higiene"/>
+        <ImageView
+            android:layout_width="153dp"
+            android:layout_height="139dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/alimentacao" />
 
-    <TextView
-        android:id="@+id/txtPasseio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:text="Passeio"/>
+        <TextView
+            android:id="@+id/txtAlimentacao"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="165dp"
+            android:layout_marginTop="-140dp"
+            android:text="Alimentação"
+            android:textColor="#000"
+            android:textSize="22dp" />
 
-    <TextView android:id="@+id/txtBrincar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:text="Brincar"/>
-    <TextView
-        android:id="@+id/txtVeterinario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:text="Levar ao veterinário"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="108dp"
+            android:layout_marginLeft="165dp"
+            android:text="Programe os horários de alimentar seu cão, sem excessos e de maneira razoável para que ele não passe fome..."
+            android:textSize="18dp" />
 
-    <TextView
+
+        <Button
+            android:id="@+id/btnAlimentacao"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Leia mais..."/>
+
+        <ImageView
+            android:layout_width="153dp"
+            android:layout_height="149dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/higiene" />
+
+        <TextView android:id="@+id/txtHigiene"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-135dp"
+            android:layout_marginLeft="165dp"
+            android:textSize="25dp"
+            android:textColor="#000"
+            android:text="Higiêne"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="94dp"
+            android:layout_marginLeft="165dp"
+            android:text="Dê banho em seu cachorro pelo menos uma vez ao mês e se possível peça em ..."
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/btnHigiene"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Leia mais..."/>
+
+        <ImageView
+            android:layout_width="153dp"
+            android:layout_height="115dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/passeio" />
+
+        <TextView android:id="@+id/txtVeterinario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-116dp"
+            android:layout_marginLeft="165dp"
+            android:textSize="25dp"
+            android:textColor="#000"
+            android:text="Passeio"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginLeft="165dp"
+            android:text="Leve-o todos os dias para passear, o cachorro também..."
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/btnPasseio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Leia mais..."/>
+
+
+        <ImageView
+            android:layout_width="153dp"
+            android:layout_height="115dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/veterinario" />
+
+        <TextView
+            android:layout_width="239dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="165dp"
+            android:layout_marginTop="-110dp"
+            android:text="Levar no Veterinario"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="83dp"
+            android:layout_marginLeft="165dp"
+            android:textSize="16dp"
+            android:text="Sabe com que frequência deve levar seu cãozinho ao veterinário? Essa é uma pergunta muito comum..." />
+
+        <Button
+            android:id="@+id/btnVeterinario"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Leia mais..."/>
+
+        <ImageView
+            android:layout_width="164dp"
+            android:layout_height="117dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/olfato" />
+
+        <TextView
+            android:id="@+id/Olfato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-110dp"
+            android:layout_marginLeft="180dp"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:text="O mágico olfato dos cães"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="79dp"
+            android:layout_marginLeft="180dp"
+            android:textSize="16dp"
+            android:text="Você sabia que os cachorros percebem os cheiros 1 milhão de vezes..." />
+
+        <Button
+            android:id="@+id/btnOlfato"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Leia Mais..." />
+
+        <ImageView
+            android:layout_width="190dp"
+            android:layout_height="136dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/dormir" />
+
+        <TextView
         android:id="@+id/txtDormir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="25dp"
+        android:layout_marginTop="-140dp"
+        android:layout_marginLeft="190dp"
         android:textSize="20dp"
         android:textColor="#000"
         android:text="Dormir com o pet faz mal?"
         />
 
-    <TextView
-        android:id="@+id/Olfato"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:text="O mágico olfato dos cães"/>
 
-    <TextView
-        android:id="@+id/txtCachorrosFazem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:text="Por que os cachorros fazem xixi em pé?"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:layout_marginLeft="190dp"
+            android:text="Tem bicho que parece gente, domina a casa toda, desde o sofá.."
+            android:textSize="18dp" />
 
-    <TextView
-        android:id="@+id/txtSuam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:text="Os cães também suam, sabia?"/>
+        <Button
+            android:id="@+id/btnDormir"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Leia mais..."
+            />
 
-    <TextView
-        android:id="@+id/txtTruques"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:text="Cães velhos aprendem truques novos?"/>
+        <ImageView
+            android:layout_width="197dp"
+            android:layout_height="157dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/snow" />
 
-    <TextView
-        android:id="@+id/txtBeijar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:text="Cachorros adoram beijar seus donos"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-140dp"
+            android:layout_marginLeft="200dp"
+            android:text="Por que os cachorros fazem xixi em pé?"
+            android:textSize="17dp"
+            android:textColor="#000"/>
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="83dp"
+            android:layout_marginLeft="200dp"
+            android:text="A maioria dos machos tem esse tipo de comportamento, muito embora... "
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/btnCachorroFaz"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Leia mais..."/>
+
+        <ImageView
+            android:layout_width="197dp"
+            android:layout_height="157dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/adoravel" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-140dp"
+            android:text="Cachorros adoram beijar seus donos"
+            android:textColor="#000"
+            android:textSize="17dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:layout_marginLeft="200dp"
+            android:text="Sabe aquela lambida no rosto que o seu cachorrinho adora dar?..."
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/btnBeijam"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="Leia mias..." />
+
+        <ImageView
+            android:layout_width="197dp"
+            android:layout_height="157dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/peludinho"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="195dp"
+            android:layout_marginTop="-140dp"
+            android:text="Os cães também suam, sabia?"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="195dp"
+            android:textSize="16dp"
+            android:text="Antes de mais nada é preciso entender qual é a temperatura corporal ideal para o cão..."
+            />
+
+        <Button
+            android:id="@+id/btnSuam"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Leia mais..."
+            android:layout_marginTop="15dp"/>
+
+        <ImageView
+            android:layout_width="197dp"
+            android:layout_height="157dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/truques"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-140dp"
+            android:text="Cães velhos aprendem truques novos?"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="200dp"
+            android:textSize="17dp"
+            android:text="Um dos motivos de haver mais cães adultos ..."
+            />
+
+        <Button
+            android:id="@+id/btnTruques"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_marginTop="5dp"
+            android:text="Leia mais..." />
+
+    </LinearLayout>
 </ScrollView>
