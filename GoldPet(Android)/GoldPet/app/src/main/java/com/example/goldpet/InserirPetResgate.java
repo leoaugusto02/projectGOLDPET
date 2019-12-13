@@ -42,9 +42,10 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
     Button btnFoto, btnArquivo, btnClose, btnPostar;
     ImageView ivImagem;
     Handler handler;
-    byte[] byteArray;
+    File f;
     ArrayAdapter<String> adtNivelUrgencia;
     LinearLayout layout;
+
 
     int nivel;
 
@@ -134,24 +135,23 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
             Bitmap imageBitmap = (Bitmap) extras.get("data");
 
             ivImagem.setImageBitmap(imageBitmap);
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            imageBitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
-            byte[] bitmapdata = bos.toByteArray();
 
-            String nomeImg = "teste.png";
-            String seuDiretorio = Environment.getExternalStorageState() + File.separator + "GoldPet";
+            String filename = "teste.png";
 
-            /*ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            try{
+                //create a file to write bitmap data
+                f = new File(getCacheDir(), filename);
+                f.createNewFile();
 
-            byteArray = stream.toByteArray();*/
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                imageBitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+                byte[] bitmapdata = bos.toByteArray();
 
-            try {
-                File imgToSdcard = new File(seuDiretorio + File.separator + nomeImg);
-                FileOutputStream outputStream = new FileOutputStream(imgToSdcard, false);
-                outputStream.write(bitmapdata , 0, bitmapdata.length);
-                outputStream.flush();
-                outputStream.close();
+                //write the bytes in file
+                FileOutputStream stream = new FileOutputStream(f);
+                stream.write(bitmapdata);
+                stream.flush();
+                stream.close();
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -167,7 +167,7 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
         new Thread(){
             @Override
             public void run() {
-                if(ConsumirWebService.inserirResgate(edtDescricao.getText().toString(), edtEndereco.getText().toString(), nivel, byteArray)){
+                if(ConsumirWebService.inserirResgate(edtDescricao.getText().toString(), edtEndereco.getText().toString(), nivel, f)){
                     handler.post(new Runnable() {
                         @Override
                         public void run() {

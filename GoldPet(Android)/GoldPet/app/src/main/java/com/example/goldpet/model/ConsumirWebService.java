@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -17,7 +18,7 @@ public class ConsumirWebService{
     //                                  ---WEB SERVICE PARA PESSOA---
     public static String cadastrar(String pNome, String sNome, String apelido, String cep, String referencia, String cpf, String rg, String tel1, String tel2,
                             String dataNasc, String email, String senha, String confSenha, String genero, String acao, String acaoConta){
-        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaPessoas";
+        String urlWebService = "http://192.168.1.5:8080/goldpetBackEnd/ProcessaPessoas";
 
         try{
 
@@ -65,7 +66,7 @@ public class ConsumirWebService{
     }
 
     public static JSONObject login(String login, String senha, String acao){
-        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaPessoas";
+        String urlWebService = "http://192.168.1.5:8080/goldpetBackEnd/ProcessaPessoas";
 
         try{
             String parametros = "login=" + login + "&senha=" + senha + "&acao=" + acao;
@@ -92,7 +93,7 @@ public class ConsumirWebService{
             return null;
         }
     } public static JSONObject perfil(int codeUser){
-        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaPessoas";
+        String urlWebService = "http://192.168.1.5:8080/goldpetBackEnd/ProcessaPessoas";
         String acao = "mostrarCredencial";
         try{
             String parametros = "codeUser=" + codeUser + "&acao=" + acao;
@@ -125,7 +126,7 @@ public class ConsumirWebService{
     //                                  ---WEB SERVICE PARA ANIMAL---
 
     public static JSONArray listarAnimaisAdocao(String acao){
-        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaAnimais";
+        String urlWebService = "http://192.168.1.5:8080/goldpetBackEnd/ProcessaAnimais";
 
         try {
             String parametros = "acao=" + acao;
@@ -159,7 +160,7 @@ public class ConsumirWebService{
 
 
     public static JSONObject perfilAnimal(Integer codAnimal){
-        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaAnimais";
+        String urlWebService = "http://192.168.1.5:8080/goldpetBackEnd/ProcessaAnimais";
         String acao = "perfil";
         try{
             String parametros = "codAnimal=" + codAnimal + "&acao=" + acao;
@@ -190,7 +191,7 @@ public class ConsumirWebService{
     }
 
     public static String inserirLaudo(int codAnimal, String nomeVet, String dataDiagnostico, String breveDiagnostico, String diagnosticoCompleto){
-        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaAnimais";
+        String urlWebService = "http://192.168.1.5:8080/goldpetBackEnd/ProcessaAnimais";
         String acao = "inserirLaudo";
 
         try {
@@ -232,7 +233,7 @@ public class ConsumirWebService{
     //                                  ---WEB SERVICE PARA RESGATE---
 
     public static JSONArray listarAnimaisResgate(){
-        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaResgate";
+        String urlWebService = "http://192.168.1.5:8080/goldpetBackEnd/ProcessaResgate";
         String acao = "listarAnimaisResgate";
         try {
             String parametros = "acao=" + acao;
@@ -265,9 +266,9 @@ public class ConsumirWebService{
         }
     }
 
-    public static boolean inserirResgate(String descricao, String endereco, int nivel, byte[] image){
+    public static boolean inserirResgate(String descricao, String endereco, int nivel, File image){
 
-        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaResgate";
+        String urlWebService = "http://192.168.1.5:8080/goldpetBackEnd/ProcessaResgate";
         String acaoModal = "inserirResgate";
 
         try{
@@ -275,9 +276,11 @@ public class ConsumirWebService{
             String boundary = "*****";
             String lineEnd = "\r\n";
 
+
             URL url = new URL(urlWebService);
             HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
             conexaoWeb.setDoOutput(true);
+            conexaoWeb.setDoInput(true);
             conexaoWeb.setUseCaches(false);
             conexaoWeb.setRequestMethod("POST");
             conexaoWeb.setRequestProperty("Accept-Encoding", "");
@@ -304,20 +307,18 @@ public class ConsumirWebService{
 
             //first parameter - acaoModal
             wr.writeBytes(twoHyphens + boundary + lineEnd);
-            wr.writeBytes("Content-Disposition: form-data; name=\"descricao\"" + lineEnd + lineEnd
+            wr.writeBytes("Content-Disposition: form-data; name=\"acaoModal\"" + lineEnd + lineEnd
                     + acaoModal + lineEnd);
 
             //second parameter - descricao
-            String testDesc = descricao.getBytes("UTF-8").toString();
             wr.writeBytes(twoHyphens + boundary + lineEnd);
             wr.writeBytes("Content-Disposition: form-data; name=\"descricao\"" + lineEnd + lineEnd
-                    + testDesc + lineEnd);
+                    + descricao + lineEnd);
 
             //third parameter - endereco
-            String testEndec  = descricao.getBytes("UTF-8").toString();
             wr.writeBytes(twoHyphens + boundary + lineEnd);
             wr.writeBytes("Content-Disposition: form-data; name=\"endereco\"" + lineEnd + lineEnd
-                    + testEndec + lineEnd);
+                    + endereco + lineEnd);
 
             wr.writeBytes(twoHyphens + boundary + lineEnd);
             wr.writeBytes("Content-Disposition: form-data; name=\"nivel\"" + lineEnd + lineEnd
@@ -328,6 +329,10 @@ public class ConsumirWebService{
             wr.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\""
                     + image + "\"" + lineEnd);
             wr.writeBytes(lineEnd);
+
+            wr.flush();
+            wr.close();
+            conexaoWeb.disconnect();
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
 
