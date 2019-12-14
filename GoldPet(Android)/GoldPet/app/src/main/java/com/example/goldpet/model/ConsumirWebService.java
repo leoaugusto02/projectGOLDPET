@@ -284,7 +284,7 @@ public class ConsumirWebService{
             conexaoWeb.setUseCaches(false);
             conexaoWeb.setRequestMethod("POST");
             conexaoWeb.setRequestProperty("Accept-Encoding", "");
-            //conn.setRequestProperty("Connection", "Keep-Alive");
+            //conexaoWeb.setRequestProperty("Connection", "Keep-Alive");
             conexaoWeb.setRequestProperty("ENCTYPE", "multipart/form-data");
             conexaoWeb.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
             conexaoWeb.setRequestProperty("uploaded_file", String.valueOf(image));
@@ -332,7 +332,6 @@ public class ConsumirWebService{
 
             wr.flush();
             wr.close();
-            conexaoWeb.disconnect();
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
 

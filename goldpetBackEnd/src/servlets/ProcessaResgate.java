@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -27,9 +26,13 @@ import vo.Resgate;
 @MultipartConfig
 
 
+<<<<<<< HEAD
 //@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaResgate" }, loadOnStartup = 1)
+=======
+>>>>>>> 3c569c1e1f2c4a83fa48c735416f1d51022d1135
 @WebServlet("/ProcessaResgate")
 
+//@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaResgate" }, loadOnStartup = 1)
 public class ProcessaResgate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -77,7 +80,11 @@ System.out.println("to no servlet");
 				}
 			}
 		}else {
+<<<<<<< HEAD
 			objMens.put("status", "aguardando requisição");
+=======
+			objMens.put("mensagem", "aguardando requisição");
+>>>>>>> 3c569c1e1f2c4a83fa48c735416f1d51022d1135
 			out.print(objMens.toString());
 		}
 		
