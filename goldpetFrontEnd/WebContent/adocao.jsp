@@ -152,7 +152,7 @@ body, html {
 
 			<!--  INICIO BUTTON ADD -->
 			<%
-			 if(request.getSession().getAttribute("cargo") != null){
+			 if(request.getSession().getAttribute("cargo") != null){ 
 				
 			%>
 			<div id="buttonAdd"
@@ -275,7 +275,6 @@ body, html {
 				</div>
 			</form>
 			<!--  FIM FORM MODAL -->
-
 			<%
 				String acao = "listaAdocao";
 				String codAnimal = request.getParameter("codAnimal");

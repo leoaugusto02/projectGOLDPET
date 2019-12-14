@@ -61,9 +61,13 @@ public class ProcessaAnimais extends HttpServlet {
 		String acaoVerifica = req.getParameter("acaoVerifica");
 		String codUser = req.getParameter("codUser");
 
+		String cargo = String.valueOf(req.getSession().getAttribute("cargo"));
+		
 		System.out.println("acaoVerifica= " + acaoVerifica);
 
 		System.out.println("codUser= " + codUser);
+		
+		System.out.println("Cargo= " + cargo);
 
 		if (acao != null) {
 
@@ -102,7 +106,21 @@ public class ProcessaAnimais extends HttpServlet {
 						objMens.put("mensagem", "semLaudo");
 
 					}
-
+					Integer usuario = Integer.valueOf(codUser);
+					PessoaDAO pDao = new PessoaDAO();
+					
+					Pessoa p = pDao.carregaInputs(usuario);
+					
+					if(pDao.carregaInputs(usuario) != null) {
+						
+						objMens.put("nomeUser", p.getP_nome() + " " + p.getS_nome());
+						objMens.put("cpf", p.getCpf());
+						objMens.put("rg", p.getRg());
+						objMens.put("telefone", p.getTel1());
+						
+						out.print(objMens.toString());
+					}
+					
 					out.print(objMens.toString());
 					System.out.println(objMens.toString());
 
@@ -405,6 +423,10 @@ public class ProcessaAnimais extends HttpServlet {
 				e.printStackTrace();
 			}
 
+		} else if (acaoModal != null && acaoModal.equals("atualizarEagendar")) {
+			
+			
+			
 		}
 
 	}
