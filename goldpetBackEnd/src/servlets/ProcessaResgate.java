@@ -25,11 +25,9 @@ import vo.Resgate;
 
 @MultipartConfig
 
-
-<<<<<<< HEAD
 //@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaResgate" }, loadOnStartup = 1)
-=======
->>>>>>> 3c569c1e1f2c4a83fa48c735416f1d51022d1135
+
+
 @WebServlet("/ProcessaResgate")
 
 //@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaResgate" }, loadOnStartup = 1)
@@ -80,11 +78,10 @@ System.out.println("to no servlet");
 				}
 			}
 		}else {
-<<<<<<< HEAD
+
 			objMens.put("status", "aguardando requisição");
-=======
+
 			objMens.put("mensagem", "aguardando requisição");
->>>>>>> 3c569c1e1f2c4a83fa48c735416f1d51022d1135
 			out.print(objMens.toString());
 		}
 		
