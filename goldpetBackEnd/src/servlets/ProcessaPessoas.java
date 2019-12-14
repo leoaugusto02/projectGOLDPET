@@ -37,7 +37,7 @@ public class ProcessaPessoas extends HttpServlet {
 		Respostas r = new Respostas();
 		RespostasDAO rDao = new RespostasDAO();
 		PessoaDAO pDao = new PessoaDAO();
-		JSONObject objMens = new JSONObject();
+		JSONObject objMens = new JSONObject(); 
 
 		String acao = req.getParameter("acao");
 		String acaoConta = req.getParameter("acaoConta");
@@ -238,6 +238,7 @@ public class ProcessaPessoas extends HttpServlet {
 				String codigo = req.getParameter("codeUser");
 				try {
 					p = pDao.perfil(Integer.valueOf(codigo));
+					System.out.println("codigoUser= " + codigo);
 
 					objMens.put("apelido", p.getApelido());
 					objMens.put("nome", p.getP_nome() + " " + p.getS_nome());

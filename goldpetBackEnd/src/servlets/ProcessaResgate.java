@@ -27,7 +27,8 @@ import vo.Resgate;
 @MultipartConfig
 
 
-@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaResgate" }, loadOnStartup = 1)
+//@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaResgate" }, loadOnStartup = 1)
+@WebServlet("/ProcessaResgate")
 
 public class ProcessaResgate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -41,9 +42,8 @@ public class ProcessaResgate extends HttpServlet {
 		String acao = req.getParameter("acao");
 		String acaoModal = req.getParameter("acaoModal");
 		String ext = "";
-
+System.out.println("to no servlet");
 		int verifica = 0;
-
 
 		System.out.println("A - " + acao);
 		System.out.println("AM - " + acaoModal);
@@ -68,6 +68,7 @@ public class ProcessaResgate extends HttpServlet {
 					
 					}else {
 						objMens.put("status", "ntem");
+						out.print(objMens.toString());
 					}
 				} catch (JSONException e) {
 					e.printStackTrace();
@@ -76,7 +77,7 @@ public class ProcessaResgate extends HttpServlet {
 				}
 			}
 		}else {
-			objMens.put("codeResgate", "aguardando requisição");
+			objMens.put("status", "aguardando requisição");
 			out.print(objMens.toString());
 		}
 		
