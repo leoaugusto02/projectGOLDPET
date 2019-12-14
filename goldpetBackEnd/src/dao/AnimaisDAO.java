@@ -48,7 +48,7 @@ public class AnimaisDAO {
 	}
 
 	public Animais laudo(int codeAnimal) throws SQLException {
-		String sql = "SELECT nomeVeterinario, dataDiagnostico, diagnostico, imagem, datapostagem FROM Laudo WHERE codeAnimal = ?";
+		String sql = "SELECT nomeVeterinario, dataDiagnostico,  dataPostagen ,diagnostico, imagem FROM Laudo WHERE codeAnimal = ?";
 
 		con = ConnectionDB.getConnection();
 
@@ -63,9 +63,9 @@ public class AnimaisDAO {
 
 			l.setNomeVeterinario(rs.getString("nomeVeterinario"));
 			l.setDataDiagnostico(rs.getString("dataDiagnostico"));
+			l.setDataPostagen(rs.getDate("dataPostagen"));
 			l.setDiagnostico(rs.getString("diagnostico"));
 			l.setImagem(rs.getString("imagem"));
-			l.setDataPostagen(rs.getDate("datapostagem"));
 			
 			a.setLaudo(l);
 
@@ -96,7 +96,7 @@ public class AnimaisDAO {
 
 	public boolean inserirLaudo(Animais a) throws SQLException {
 
-		String sql = "INSERT INTO Laudo VALUES(?, ?, ?, ?, ?, CURDATE())";
+		String sql = "INSERT INTO Laudo VALUES(?, ?, ?,CURDATE(), ?, ?)";
 
 		con = ConnectionDB.getConnection();
 

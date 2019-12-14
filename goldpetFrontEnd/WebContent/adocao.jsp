@@ -106,7 +106,7 @@ body, html {
 </style>
 </head>
 <body>
-<!--  ATUALIZAR ADOÇÃO -->
+	<!--  ATUALIZAR ADOÇÃO -->
 	<div class="conteudo">
 
 		<div id="esquerda"></div>
@@ -151,6 +151,10 @@ body, html {
 			</div>
 
 			<!--  INICIO BUTTON ADD -->
+			<%
+			 if(request.getSession().getAttribute("cargo") != null){
+				
+			%>
 			<div id="buttonAdd"
 				style="margin-left: 86%; margin-bottom: 2%; width: 15%;">
 				<button type="button" class="btn btn-outline-success"
@@ -160,6 +164,7 @@ body, html {
 					Adicinar Dog
 				</button>
 			</div>
+			<% }%>
 			<!--  FIM BUTTON ADD -->
 
 			<!--  INICIO FORM MODAL -->
@@ -303,10 +308,14 @@ body, html {
 						response.sendRedirect("adocao.jsp");
 
 					}
+				} else if (request.getSession().getAttribute("codigoUsuario") != null) {
+					parametros = "acao=" + acao + "&acaoVerifica=" + acaoVerifica + "&codUser="
+							+ request.getSession().getAttribute("codigoUsuario");
+
 				} else {
-					parametros = "acao=" + acao + "&acaoVerifica=" + acaoVerifica + "&codUser=" + request.getSession().getAttribute("codigoUsuario");
+					parametros = "acao=" + acao;
 				}
-		
+
 				URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
 
 				HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -322,7 +331,6 @@ body, html {
 
 				String linha = "";
 				JSONObject obj;
-			
 			%>
 
 			<!-- FORM LISTA ANIMAL-->
@@ -364,8 +372,8 @@ body, html {
 								<p class="card-text">Last updated 3 mins ago</p>
 							</div>
 						</div> <br>
-					</a>
-			  	  	<input type="hidden" name="acaoVerifica" id="acaoVerifica" value="verificaSessao">
+					</a> <input type="hidden" name="acaoVerifica" id="acaoVerifica"
+						value="verificaSessao">
 					<%
 						i++;
 							if (i == 3) {
