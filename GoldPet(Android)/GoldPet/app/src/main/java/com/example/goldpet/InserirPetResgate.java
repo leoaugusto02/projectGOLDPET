@@ -31,6 +31,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class InserirPetResgate extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -139,6 +140,14 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
         }else if(requestCode == GALERIA && resultCode == RESULT_OK){
             Uri img = data.getData();
             ivImagem.setImageURI(img);
+         /*   try{
+                InputStream inputStream = getContentResolver().openInputStream(img);
+
+                imageBitmap = BitmapFactory.decodeStream(inputStream);
+                ivImagem.setImageBitmap(imageBitmap);
+            }catch (IOException io){
+            Log.e("erroIO", io + "--" + "IMAGEURI");
+            }*/
 
         }
     }
