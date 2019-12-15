@@ -167,22 +167,6 @@ public class AnimaisDAO {
 		return lstAnimais;
 	}
 
-	public boolean AdotarAnimal(Animais a) throws SQLException {
-		String sql = "INSERT INTO Agenda(codeAnimal, codePerson, data_adocao, confirmar, horario_marcado, transportado) VALUES (?, ?, ?, 'não confirmado', ?, ?);";
-
-		con = ConnectionDB.getConnection();
-
-		ps = con.prepareStatement(sql);
-		ps.setInt(1, a.getCodAnimal());
-		ps.setInt(2, a.getPessoa().getCodePerson());
-		ps.setDate(3, new java.sql.Date(a.getAgenda().getData_adocao().getTime()));
-		ps.setString(4, a.getAgenda().getConfirmar());
-		ps.setDate(5, new java.sql.Date(a.getAgenda().getHorario_marcado().getTime()));
-		ps.setString(6, a.getAgenda().getTransportado());
-
-		return ps.executeUpdate() > 0;
-	}
-
 	public boolean ConfirmarAutorizacao(int codeAnimal) throws SQLException {
 		String sql = "UPDATE Agenda SET confirmar = 'autorizado' SET entregar = 'em adocao' WHERE codeAnimal = ?";
 
@@ -210,6 +194,21 @@ public class AnimaisDAO {
 
 		return ps.executeUpdate() > 0;
 
+	}
+	
+	public boolean AgendarVisita(Animais a) throws SQLException {
+
+		String sql = "INSERT INTO Agenda VALUES(0, ?, ?, ?, ?)";
+
+		con = ConnectionDB.getConnection();
+
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, a.getAgenda().getCodeAnimal());
+		ps.setInt(2, a.getAgenda().getCodePerson());
+		ps.setString(3, a.getAgenda().getHorario_marcado());
+		ps.setString(4, a.getAgenda().getDia_marcado());
+
+		return ps.executeUpdate() > 0;
 	}
 
 }
