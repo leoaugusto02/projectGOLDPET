@@ -117,6 +117,7 @@ public class Resgatar extends AppCompatActivity implements View.OnClickListener 
                 resgate.setStatus(jsonResgate.getString("status"));
                 resgate.setNivelUrgencia(jsonResgate.getInt("nivelUrgencia"));
                 resgate.setStatus(jsonResgate.getString("status"));
+                resgate.setDogeImagem(jsonResgate.getString("dogeImagem"));
                 resgateList.add(resgate);
             }
 

@@ -42,7 +42,7 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
     Button btnFoto, btnArquivo, btnClose, btnPostar;
     ImageView ivImagem;
     Handler handler;
-    File f;
+    Bitmap imageBitmap;
     ArrayAdapter<String> adtNivelUrgencia;
     LinearLayout layout;
 
@@ -132,29 +132,9 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA && resultCode == RESULT_OK)  {
             Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            imageBitmap = (Bitmap) extras.get("data");
 
             ivImagem.setImageBitmap(imageBitmap);
-
-            String filename = "teste.png";
-
-            try{
-                //create a file to write bitmap data
-                f = new File(getCacheDir(), filename);
-                f.createNewFile();
-
-                ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                imageBitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
-                byte[] bitmapdata = bos.toByteArray();
-
-                //write the bytes in file
-                FileOutputStream stream = new FileOutputStream(f);
-                stream.write(bitmapdata);
-                stream.flush();
-                stream.close();
-            }catch (Exception e){
-                e.printStackTrace();
-            }
 
         }else if(requestCode == GALERIA && resultCode == RESULT_OK){
             Uri img = data.getData();
@@ -167,11 +147,12 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
         new Thread(){
             @Override
             public void run() {
-                if(ConsumirWebService.inserirResgate(edtDescricao.getText().toString(), edtEndereco.getText().toString(), nivel, f)){
+                if(ConsumirWebService.inserirResgate(edtDescricao.getText().toString(), edtEndereco.getText().toString(), nivel, imageBitmap) != null){
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
                             Toast.makeText(InserirPetResgate.this, "Espere o resgate", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                     });
                 }else{

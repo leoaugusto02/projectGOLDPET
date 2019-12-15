@@ -67,7 +67,7 @@ CREATE TABLE Resgate(
 	endereco varchar(50) not null,
 	dogeImagem varchar (20) not null,
 	nivelUrgencia integer not null,
-	status varchar(11) not null
+	status varchar(20) not null
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Perguntas(

@@ -83,11 +83,9 @@ public class ProcessaResgate extends HttpServlet {
 				String descricao = req.getParameter("descricao");
 				String endereco = req.getParameter("endereco");
 				int nivel = Integer.valueOf(req.getParameter("nivel"));
-				String filePath = req.getParameter("uploaded_file");
 				
 				try {
-
-					Part file = req.getPart("imagem");
+					Part file = req.getPart("img");
 					String fileName = file.getSubmittedFileName();
 					System.out.println("FN - " + fileName);
 
@@ -100,7 +98,7 @@ public class ProcessaResgate extends HttpServlet {
 					// OutputStream os = new
 					// FileOutputStream("D:\\Documentos\\Workspace\\Eclipse\\UpLoad\\WebContent\\images\\"
 					// + nome + ext);
-					OutputStream os = new FileOutputStream(filePath + "img//" + descricao.trim() + endereco.trim() + ext);
+					OutputStream os = new FileOutputStream("C:\\GitHub Repositorys\\GitHub\\projectGOLDPET\\goldpetFrontEnd\\WebContent\\imgAnimalResgate\\" + descricao.trim() + endereco.trim() + ext);
 
 					int data = fileContent.read();
 
@@ -126,7 +124,7 @@ public class ProcessaResgate extends HttpServlet {
 				try {
 					if (rDao.inserirResgate(r)) {
 						System.out.println("Resgate inserido com sucesso");
-						resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/Resgate.jsp");
+						objMens.put("mensagem", "Resgate inserido com sucesso");
 					}else {
 						System.out.println("Algo deu errado");
 					}

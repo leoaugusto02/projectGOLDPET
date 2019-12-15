@@ -1,5 +1,8 @@
 package com.example.goldpet.model;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.StrictMode;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -266,86 +269,26 @@ public class ConsumirWebService{
         }
     }
 
-    public static boolean inserirResgate(String descricao, String endereco, int nivel, File image){
+    public static String inserirResgate(String descricao, String endereco, int nivel, Bitmap img){
 
         String urlWebService = "http://192.168.1.5:8080/goldpetBackEnd/ProcessaResgate";
         String acaoModal = "inserirResgate";
 
         try{
-            String twoHyphens = "--";
-            String boundary = "*****";
-            String lineEnd = "\r\n";
+            ConexaoUploadArquivo cnua = new ConexaoUploadArquivo(urlWebService);
+            cnua.addFormField("acaoModal", acaoModal);
+            cnua.addFormField("descricao", descricao);
+            cnua.addFormField("endereco", endereco);
+            cnua.addFormField("nivel", String.valueOf(nivel));
 
+            cnua.addFilePart("img", img);
 
-            URL url = new URL(urlWebService);
-            HttpURLConnection conexaoWeb = (HttpURLConnection) url.openConnection();
-            conexaoWeb.setDoOutput(true);
-            conexaoWeb.setDoInput(true);
-            conexaoWeb.setUseCaches(false);
-            conexaoWeb.setRequestMethod("POST");
-            conexaoWeb.setRequestProperty("Accept-Encoding", "");
-            //conexaoWeb.setRequestProperty("Connection", "Keep-Alive");
-            conexaoWeb.setRequestProperty("ENCTYPE", "multipart/form-data");
-            conexaoWeb.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
-            conexaoWeb.setRequestProperty("uploaded_file", String.valueOf(image));
-            conexaoWeb.setRequestProperty("acaoModal", acaoModal);
-            conexaoWeb.setRequestProperty("descricao", descricao);
-            conexaoWeb.setRequestProperty("endereco", endereco);
-            conexaoWeb.setRequestProperty("nivel", String.valueOf(nivel));
-
-
-            DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
-
-            /*String parametros = "acaoModal=" + acaoModal + "&descricao=" + descricao + "&endereco=" + endereco + "&nivel=" + nivel + "&pathFile=";
-
-            wr.writeBytes(parametros);
-
-            for(int i = 0; i < image.length; i++){
-              wr.writeBytes(String.valueOf(image[i]));
-            }*/
-
-
-            //first parameter - acaoModal
-            wr.writeBytes(twoHyphens + boundary + lineEnd);
-            wr.writeBytes("Content-Disposition: form-data; name=\"acaoModal\"" + lineEnd + lineEnd
-                    + acaoModal + lineEnd);
-
-            //second parameter - descricao
-            wr.writeBytes(twoHyphens + boundary + lineEnd);
-            wr.writeBytes("Content-Disposition: form-data; name=\"descricao\"" + lineEnd + lineEnd
-                    + descricao + lineEnd);
-
-            //third parameter - endereco
-            wr.writeBytes(twoHyphens + boundary + lineEnd);
-            wr.writeBytes("Content-Disposition: form-data; name=\"endereco\"" + lineEnd + lineEnd
-                    + endereco + lineEnd);
-
-            wr.writeBytes(twoHyphens + boundary + lineEnd);
-            wr.writeBytes("Content-Disposition: form-data; name=\"nivel\"" + lineEnd + lineEnd
-                    + nivel + lineEnd);
-
-            //forth parameter - filename
-            wr.writeBytes(twoHyphens + boundary + lineEnd);
-            wr.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\""
-                    + image + "\"" + lineEnd);
-            wr.writeBytes(lineEnd);
-
-            wr.flush();
-            wr.close();
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
-
-            String linha = "";
-
-            while ((linha = br.readLine()) != null) {
-                System.out.println("Tô aqui " + linha);
-            }
-
-            return true;
-
+            return cnua.finish();
         }catch (Exception e){
-            e.printStackTrace();
-            return false;
+            Log.e("errorIO", String.valueOf(e));
+            return null;
         }
+
+
     }
 }
