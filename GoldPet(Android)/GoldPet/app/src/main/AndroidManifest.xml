@@ -35,6 +35,7 @@
         <activity android:name="com.example.goldpet.RealizarLaudo" />
         <activity android:name="com.example.goldpet.Resgatar" />
         <activity android:name="com.example.goldpet.InserirPetResgate" />
+        <activity android:name="com.example.goldpet.InserirPetAdocao" />
         <activity android:name="com.example.goldpet.Dicas" />
         <activity android:name="com.example.goldpet.Alimentacao" />
         <activity android:name="com.example.goldpet.Adoram" />

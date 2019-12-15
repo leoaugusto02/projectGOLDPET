@@ -36,7 +36,6 @@ import java.io.InputStream;
 public class InserirPetResgate extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     static final int CAMERA = 1;
-    static final int GALERIA = 2;
 
     EditText edtDescricao, edtEndereco;
     Spinner spnNiverUrgencia;

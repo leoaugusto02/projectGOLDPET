@@ -254,7 +254,7 @@ public class ProcessaAnimais extends HttpServlet {
 				// OutputStream os = new
 				// FileOutputStream("D:\\Documentos\\Workspace\\Eclipse\\UpLoad\\WebContent\\images\\"
 				// + nome + ext);
-				OutputStream os = new FileOutputStream(filePath + "img//" + nome.trim() + ext);
+				OutputStream os = new FileOutputStream("C:\\GitHub Repositorys\\GitHub\\projectGOLDPET\\goldpetFrontEnd\\WebContent\\imgAnimalAdocao\\" + nome.trim() + ext);
 
 				int data = fileContent.read();
 
@@ -284,7 +284,7 @@ public class ProcessaAnimais extends HttpServlet {
 			try {
 				if (aDao.inserirAnimal(a)) {
 					System.out.println("Animal inserido com sucesso");
-					resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/adocao.jsp");
+					objMens.put("mensagem", "Adocão foi um sucesso");
 				}
 
 			} catch (SQLException e) {

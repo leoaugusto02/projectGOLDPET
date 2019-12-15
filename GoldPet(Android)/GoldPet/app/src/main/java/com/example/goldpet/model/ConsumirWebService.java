@@ -289,6 +289,28 @@ public class ConsumirWebService{
             return null;
         }
 
+    }
 
+    public static String inserirAdocao(String nome, Integer idade, String raca, String especie, String genero, String status, Bitmap image){
+        String urlWebService = "http://192.168.1.7:8080/goldpetBackEnd/ProcessaAnimais";
+        String acaoModal = "inserirPet";
+
+        try{
+            ConexaoUploadArquivo cnua = new ConexaoUploadArquivo(urlWebService);
+            cnua.addFormField("acaoModal", acaoModal);
+            cnua.addFormField("nome", nome);
+            cnua.addFormField("idade", String.valueOf(idade));
+            cnua.addFormField("raca",raca);
+            cnua.addFormField("especie",especie);
+            cnua.addFormField("genero",genero);
+            cnua.addFormField("status", status);
+
+            cnua.addFilePart("imagem", image);
+
+            return cnua.finish();
+        }catch (Exception e){
+            Log.e("ErrorSql", String.valueOf(e));
+        }
+        return null;
     }
 }
