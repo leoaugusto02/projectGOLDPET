@@ -384,7 +384,8 @@ body, html {
 									<div id="levarNaCasa">
 										<label><h6>Confirme seus dados:</h6></label> <input
 											class="form-control" type="text" id="nome"
-											style="margin-bottom: 3%;" />
+											style="margin-bottom: 3%;"
+											value="<%=obj.getString("nomeUser")%>" required="required" />
 
 										<!--  <input class="form-control" type="text" placeholder="CEP"
 										id="cep" style="margin-bottom: 3%;" />
@@ -429,11 +430,14 @@ body, html {
 														});
 									</script>-->
 
-										<input class="form-control" type="text" name="cpf" id="cpf"
-											style="margin-bottom: 3%;" /> <input class="form-control"
-											type="text" name="rg" name="rg" style="margin-bottom: 3%;" />
-										<input class="form-control" type="text" name="telefone"
-											style="margin-bottom: 3%;" />
+										<input class="form-control" type="text" id="cpf"
+											style="margin-bottom: 3%;" value="<%=obj.getString("cpf")%>"
+											required="required" /> <input class="form-control"
+											type="text" name="rg" style="margin-bottom: 3%;"
+											value="<%=obj.getString("rg")%>" required="required" /> <input
+											class="form-control" type="text"
+											style="margin-bottom: 3%;"
+											value="<%=obj.getString("telefone")%>" required="required" />
 									</div>
 
 									<div id="buscarNaYong">
@@ -477,9 +481,9 @@ body, html {
 
 
 									<input type="submit" value="Confirmar"
-										class="btn btn-outline-success" />
-									<input type="hidden" name="acao" value="agendarVisita"/>
-									<input type="hidden" name="acaoModal" value=""/>
+										class="btn btn-outline-success" /> <input type="hidden"
+										name="acao" value="agendarVisita" /> <input type="hidden"
+										name="acaoModal" value="atualizarEagendar" />
 									<!--  <img alt="postar.png" src="img/postar.png"
 										style="height: 20px; width: 20px; margin-left: -0.5;" />-->
 									<button type="button" class="btn btn-outline-danger"

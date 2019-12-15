@@ -296,4 +296,29 @@ public class PessoaDAO {
 		}
 		return null;
 	}
+	
+	public Pessoa carregaInputs(int codePessoa) throws SQLException {
+
+		String sql = "SELECT p_nome, s_nome, cpf, rg, telefone1 FROM Pessoa WHERE codePerson + ?";
+
+		con = ConnectionDB.getConnection();
+
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, codePessoa);
+
+		ResultSet rs = ps.executeQuery();
+
+		if (rs.next()) {
+			Pessoa p = new Pessoa();
+
+			p.setP_nome(rs.getString("p_nome"));
+			p.setS_nome(rs.getString("s_nome"));
+			p.setCpf(rs.getString("cpf"));
+			p.setRg(rs.getString("rg"));
+			p.setTel1(rs.getString("telefone1"));
+	
+			return p;
+		}
+		return null;
+	}
 }
