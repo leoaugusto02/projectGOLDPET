@@ -167,6 +167,8 @@ body, html {
 		while ((linha = br.readLine()) != null)
 			apnd += linha;
 
+		System.out.println("Linha " + apnd);
+
 		JSONObject obj = new JSONObject(apnd);
 	%>
 	<div id="esquerda"></div>
@@ -365,13 +367,12 @@ body, html {
 					<button type="button" class="btn btn-outline-success"
 						data-toggle="modal" data-target="#siteModal">Adotar</button>
 				</div>
-				<form method="post">
 
-					<div class="modal" id="siteModal" tabindex="-1" role="dialog"
-						aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-
+				<div class="modal" id="siteModal" tabindex="-1" role="dialog"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<form method="post">
 								<div class="modal-header" style="background-color: #139F97;">
 									<h5 class="modal-title">Para adotar é necessário agendar
 										uma visita na nossa ONG</h5>
@@ -381,160 +382,100 @@ body, html {
 									</button>
 								</div>
 
+
 								<div class="modal-body">
 									<div>
-										<!-- <div class="custom-control custom-radio">
-										 <input type="radio" id="customRadio1" name="customRadio"
-											class="custom-control-input"> <label
-											class="custom-control-label" for="customRadio1 style="margin-bottom: 1%;"">Buscar
-											na Ong</label>
-									</div>
-									<div class="custom-control custom-radio">
-										<input type="radio" id="customRadio2" name="customRadio"
-											class="custom-control-input"> <label
-											class="custom-control-label" for="customRadio2"
-											style="margin-bottom: 3%;">Levar até na casa</label>
-									</div>
-								</div>-->
 
-										<div id="levarNaCasa">
-											<label><h6>Confirme seus dados:</h6></label> <input
-												class="form-control" type="text" id="pNome" name="pNome"
-												style="margin-bottom: 3%;"
-												value="<%=obj.getString("pNome")%>" required="required" />
-											<input class="form-control" type="text" id="sNome"
-												name="sNome" style="margin-bottom: 3%;"
-												value="<%=obj.getString("sNome")%>" required="required" />
-
-											<!--  <input class="form-control" type="text" placeholder="CEP"
-										id="cep" style="margin-bottom: 3%;" />
-
-									<script>
-										$(document)
-												.ready(
-														function() {
-															$("#cep")
-																	.keyup(
-																			function() {
-																				var cep = $(
-																						"#cep")
-																						.val();
-																				if (cep.length == 8) {
-
-																					$
-																							.get(
-																									"https://viacep.com.br/ws/"
-																											+ cep
-																											+ "/json/",
-																									function(
-																											data,
-																											status) {
-																										console
-																												.log(data);
-																										$(
-																												"#cidade")
-																												.val(
-																														data.localidade);
-																										$(
-																												"#nomeRua")
-																												.val(
-																														data.logradouro);
-																										$(
-																												"#bairro")
-																												.val(
-																														data.bairro);
-																									});
-																				}
-																			});
-														});
-									</script>-->
-
-											<input class="form-control" type="text" id="cpf" name="cpf"
-												style="margin-bottom: 3%;" value="<%=obj.getString("cpf")%>"
-												required="required" /> <input class="form-control"
-												type="text" name="rg" style="margin-bottom: 3%;" name="rg"
-												value="<%=obj.getString("rg")%>" required="required" /> <input
-												class="form-control" type="text" style="margin-bottom: 3%;"
-												name="telefone" value="<%=obj.getString("telefone")%>"
-												required="required" />
-										</div>
-
-										<div id="buscarNaYong">
-											<label><h6>Agende um dia e horário:</h6></label>
-											<div class="form-group">
-												<label class="col-md-5 control-label" for="hora">Horario:</label>
-												<div class="col-md-5">
-													<select id="hora" name="horarioMarcado"
-														class="form-control">
-														<option value="Não informado">Não informado</option>
-														<option value="9:00">9:00</option>
-														<option value="9:30">9:30</option>
-														<option value="10:00">10:00</option>
-														<option value="10:30">10:30</option>
-														<option value="11:00">11:00</option>
-														<option value="11:30">11:30</option>
-														<option value="12:00">12:00</option>
-														<option value="12:30">12:30</option>
-														<option value="13:00">13:00</option>
-														<option value="13:30">13:30</option>
-														<option value="14:00">14:00</option>
-														<option value="14:30">14:30</option>
-														<option value="15:00">15:00</option>
-														<option value="15:30">15:30</option>
-														<option value="16:00">16:00</option>
-														<option value="16:30">16:30</option>
-														<option value="17:00">17:00</option>
-													</select>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label class="col-md-5 control-label" for="dia">Dia:</label>
-												<div>
-													<input type="date" class="form-group col-md-6"
-														name="diaMarcado" style="margin-left: 3%;">
-												</div>
+										<label><h6>Confirme seus dados:</h6></label> <input
+											class="form-control" type="text" id="pNome" name="pNome"
+											style="margin-bottom: 3%;"
+											value="<%=obj.getString("pNome")%>" required="required" /> <input
+											class="form-control" type="text" id="sNome" name="sNome"
+											style="margin-bottom: 3%;"
+											value="<%=obj.getString("sNome")%>" required="required" /> <input
+											class="form-control" type="text" id="cpf" name="cpf"
+											style="margin-bottom: 3%;" value="<%=obj.getString("cpf")%>"
+											required="required" /> <input class="form-control"
+											type="text" name="rg" style="margin-bottom: 3%;" name="rg"
+											value="<%=obj.getString("rg")%>" required="required" /> <input
+											class="form-control" type="text" style="margin-bottom: 3%;"
+											name="telefone" value="<%=obj.getString("telefone")%>"
+											required="required" /> <label><h6>Agende um dia
+												e horário:</h6></label>
+										<div class="form-group">
+											<label class="col-md-5 control-label" for="hora">Horario:</label>
+											<div class="col-md-5">
+												<select id="hora" name="horarioMarcado" class="form-control">
+													<option value="Não informado">Não informado</option>
+													<option value="9:00">9:00</option>
+													<option value="9:30">9:30</option>
+													<option value="10:00">10:00</option>
+													<option value="10:30">10:30</option>
+													<option value="11:00">11:00</option>
+													<option value="11:30">11:30</option>
+													<option value="12:00">12:00</option>
+													<option value="12:30">12:30</option>
+													<option value="13:00">13:00</option>
+													<option value="13:30">13:30</option>
+													<option value="14:00">14:00</option>
+													<option value="14:30">14:30</option>
+													<option value="15:00">15:00</option>
+													<option value="15:30">15:30</option>
+													<option value="16:00">16:00</option>
+													<option value="16:30">16:30</option>
+													<option value="17:00">17:00</option>
+												</select>
 											</div>
 										</div>
 
+										<div class="form-group">
+											<label class="col-md-5 control-label" for="dia">Dia:</label>
+											<div>
+												<input type="date" class="form-group col-md-6"
+													name="diaMarcado" style="margin-left: 3%;">
+											</div>
+										</div>
+
+
+										<input type="hidden" name="codUser"
+											value="<%=request.getSession().getAttribute("codigoUsuario")%>" />
+										<input type="hidden" name="codAnimal" value="<%=codAnimal%>" />
 									</div>
-									<input type="hidden" name="codUser"
-										value="<%=request.getSession().getAttribute("codigoUsuario")%>" />
-									<input type="hidden" name="codAnimal" value="<%=codAnimal%>" />
-				</form>
-				<div class="modal-footer">
+								</div>
 
-
-					<input type="submit" value="Confirmar"
-						class="btn btn-outline-success" /> <input type="hidden"
-						name="acaoModal" id="acaoModal" value="atualizarEagendar" />
-					<!--  <img alt="postar.png" src="img/postar.png"
+								<div class="modal-footer">
+									<input type="submit" value="Confirmar"
+										class="btn btn-outline-success" /> <input type="hidden"
+										name="acaoModal" id="acaoModal" value="atualizarEagendar" />
+									<!--  <img alt="postar.png" src="img/postar.png"
 										style="height: 20px; width: 20px; margin-left: -0.5;" />-->
-					<button type="button" class="btn btn-outline-danger"
-						data-dismiss="modal">
-						<img alt="close.png" src="img/close.png"
-							style="height: 20px; width: 20px; margin-left: -0.5;" /> Fechar
-					</button>
+									<button type="button" class="btn btn-outline-danger"
+										data-dismiss="modal">
+										<img alt="close.png" src="img/close.png"
+											style="height: 20px; width: 20px; margin-left: -0.5;" />
+										Fechar
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+
+				<%
+					} else {
+				%>
+				<div class="alert alert-info" role="alert">
+					Para agendar uma visita para adotar este animalzinho,<a
+						href="cadastro.jsp" class="alert-link">clique aqui</a>, e faça seu
+					cadastro no nosso site!
+					<%
+					}
+				%>
 				</div>
 			</div>
 		</div>
-
 	</div>
-	<%
-		} else {
-	%>
-	<div class="alert alert-info" role="alert">
-		Para agendar uma visita para adotar este animalzinho,<a
-			href="cadastro.jsp" class="alert-link">clique aqui</a>, e faça seu
-		cadastro no nosso site!
-		<%
-		}
-	%>
-	</div>
-	</div>
-	</div>
-	</div>
-
 	<div id="direita"></div>
 
 	<script src="js/bootstrap.min.js"></script>

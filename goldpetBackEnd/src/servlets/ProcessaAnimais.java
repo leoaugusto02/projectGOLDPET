@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -323,8 +324,13 @@ public class ProcessaAnimais extends HttpServlet {
 				ext = fileName.substring(posInicial, posFinal);
 
 				InputStream fileContent = file.getInputStream();
+				
+				DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+				Date date = new Date(); 
+				String atualSistema = dateFormat.format(date); 
+				System.out.println("data atual " + atualSistema);
 
-				OutputStream os = new FileOutputStream(filePath + "img//" + fileName.trim() + ext);
+				OutputStream os = new FileOutputStream(filePath + "img//" + codigoAnimal + atualSistema.trim() + ext);
 
 				int data = fileContent.read();
 
@@ -346,7 +352,7 @@ public class ProcessaAnimais extends HttpServlet {
 				a.setCodAnimal(Integer.valueOf(codigoAnimal));
 				l.setDataDiagnostico(dataDiagnostico);
 				l.setDiagnostico(breveDiagnostico);
-				l.setImagem(fileName.trim());
+				l.setImagem(codigoAnimal + atualSistema.trim() + ext);
 				a.setLaudo(l);
 
 				if (aDao.inserirLaudo(a)) {

@@ -180,7 +180,7 @@ public class AnimaisDAO {
 
 	public boolean AtualizarLaudo(int codAnimal, Animais a) throws SQLException {
 
-		String sql = "UPDATE Laudo SET nomeVeterinario = ?, dataDiagnostico = ?, diagnostico = ?, imagem = ?, datapostagem = CURDATE() WHERE codeAnimal = ?";
+		String sql = "UPDATE Laudo SET nomeVeterinario = ?, dataDiagnostico = ?, diagnostico = ?, imagem = ?, dataPostagen = CURDATE() WHERE codeAnimal = ?";
 		
 		con = ConnectionDB.getConnection();
 
