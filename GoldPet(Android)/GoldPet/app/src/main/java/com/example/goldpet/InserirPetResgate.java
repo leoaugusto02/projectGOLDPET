@@ -36,11 +36,10 @@ import java.io.InputStream;
 public class InserirPetResgate extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     static final int CAMERA = 1;
-    static final int GALERIA = 2;
 
     EditText edtDescricao, edtEndereco;
     Spinner spnNiverUrgencia;
-    Button btnFoto, btnArquivo, btnClose, btnPostar;
+    Button btnFoto, btnClose, btnPostar;
     ImageView ivImagem;
     Handler handler;
     Bitmap imageBitmap;
@@ -77,7 +76,6 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
         edtDescricao = findViewById(R.id.edtDescricao);
         edtEndereco = findViewById(R.id.edtEndereco);
         btnFoto = findViewById(R.id.btnFoto);
-        btnArquivo = findViewById(R.id.btnArquivo);
         btnClose = findViewById(R.id.btnClose);
         btnPostar = findViewById(R.id.btnPostar);
         ivImagem = findViewById(R.id.ivImagem);
@@ -90,7 +88,6 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
 
         spnNiverUrgencia.setOnItemSelectedListener(this);
         btnFoto.setOnClickListener(this);
-        btnArquivo.setOnClickListener(this);
         btnClose.setOnClickListener(this);
         btnPostar.setOnClickListener(this);
 
@@ -102,9 +99,6 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
             case R.id.btnFoto:
                 TirarFotoIntent();
             break;
-            case R.id.btnArquivo:
-                AcessarGaleria();
-             break;
 
             case R.id.btnPostar:
                 postar();
@@ -116,16 +110,9 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
         }
     }
 
-
-
     private void TirarFotoIntent() {
         Intent tirarFoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(tirarFoto, CAMERA);
-    }
-
-    private void AcessarGaleria() {
-        Intent acessarGaleria = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(Intent.createChooser(acessarGaleria, "Selecione uma imagem"), GALERIA);
     }
 
     @Override
@@ -136,19 +123,6 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
             imageBitmap = (Bitmap) extras.get("data");
 
             ivImagem.setImageBitmap(imageBitmap);
-
-        }else if(requestCode == GALERIA && resultCode == RESULT_OK){
-            Uri img = data.getData();
-            ivImagem.setImageURI(img);
-         /*   try{
-                InputStream inputStream = getContentResolver().openInputStream(img);
-
-                imageBitmap = BitmapFactory.decodeStream(inputStream);
-                ivImagem.setImageBitmap(imageBitmap);
-            }catch (IOException io){
-            Log.e("erroIO", io + "--" + "IMAGEURI");
-            }*/
-
         }
     }
 
