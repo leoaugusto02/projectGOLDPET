@@ -112,15 +112,30 @@ body, html {
 			String dataDiagnostico = request.getParameter("dataDiagnostico");
 			String breveDiagnostico = request.getParameter("breveDiagnostico");
 			String diagnosticoCompleto = request.getParameter("diagnosticoCompleto");
+			String horarioMarcado = request.getParameter("horarioMarcado");
+			String diaMarcado = request.getParameter("diaMarcado");
+			String pNome = request.getParameter("pNome");
+			String sNome = request.getParameter("sNome");
+			String cpf = request.getParameter("cpf");
+			String rg = request.getParameter("rg");
+			String telefone = request.getParameter("telefone");
 
 			if (/*codAnimale != null) ||*/ (dataDiagnostico != null) || (breveDiagnostico != null)
-					|| (diagnosticoCompleto != null)) {
+					|| (diagnosticoCompleto != null) || (horarioMarcado == null) || (diaMarcado == null)) {
 				System.out.println("codAnimal= " + codAnimal);
 				parametros = "codAnimal=" + codAnimal + "&dataDiagnostico=" + dataDiagnostico + "&breveDiagnostico="
 						+ breveDiagnostico + "&diagnosticoCompleto=" + diagnosticoCompleto + "&acaoModal="
 						+ acaoModal;
 
 				System.out.println(parametros);
+			} else if ((horarioMarcado != null) || (diaMarcado != null) || (pNome != null || (sNome != null))
+					|| (request.getSession().getAttribute("codigoUsuario") != null) || (cpf != null)
+					|| (telefone != null)) {
+
+				parametros = "codAnimal=" + codAnimal + "&pNome=" + pNome + "&sNome=" + sNome + "&rg=" + rg
+						+ "&cpf=" + cpf + "&telefone=" + telefone + "&horarioMarcado=" + horarioMarcado
+						+ "&diaMarcado=" + diaMarcado + "&codUser="
+						+ request.getSession().getAttribute("codigoUsuario") + "&acaoModal=" + acaoModal;
 			}
 
 		} else if (request.getSession().getAttribute("codigoUsuario") != null) {
@@ -350,24 +365,25 @@ body, html {
 					<button type="button" class="btn btn-outline-success"
 						data-toggle="modal" data-target="#siteModal">Adotar</button>
 				</div>
+				<form method="post">
 
-				<div class="modal" id="siteModal" tabindex="-1" role="dialog"
-					aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
+					<div class="modal" id="siteModal" tabindex="-1" role="dialog"
+						aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
 
-							<div class="modal-header" style="background-color: #139F97;">
-								<h5 class="modal-title">Para adotar é necessário agendar
-									uma visita na nossa ONG</h5>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span>x</span>
-								</button>
-							</div>
+								<div class="modal-header" style="background-color: #139F97;">
+									<h5 class="modal-title">Para adotar é necessário agendar
+										uma visita na nossa ONG</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span>x</span>
+									</button>
+								</div>
 
-							<div class="modal-body">
-								<div>
-									<!-- <div class="custom-control custom-radio">
+								<div class="modal-body">
+									<div>
+										<!-- <div class="custom-control custom-radio">
 										 <input type="radio" id="customRadio1" name="customRadio"
 											class="custom-control-input"> <label
 											class="custom-control-label" for="customRadio1 style="margin-bottom: 1%;"">Buscar
@@ -381,13 +397,16 @@ body, html {
 									</div>
 								</div>-->
 
-									<div id="levarNaCasa">
-										<label><h6>Confirme seus dados:</h6></label> <input
-											class="form-control" type="text" id="nome"
-											style="margin-bottom: 3%;"
-											value="<%=obj.getString("nomeUser")%>" required="required" />
+										<div id="levarNaCasa">
+											<label><h6>Confirme seus dados:</h6></label> <input
+												class="form-control" type="text" id="pNome" name="pNome"
+												style="margin-bottom: 3%;"
+												value="<%=obj.getString("pNome")%>" required="required" />
+											<input class="form-control" type="text" id="sNome"
+												name="sNome" style="margin-bottom: 3%;"
+												value="<%=obj.getString("sNome")%>" required="required" />
 
-										<!--  <input class="form-control" type="text" placeholder="CEP"
+											<!--  <input class="form-control" type="text" placeholder="CEP"
 										id="cep" style="margin-bottom: 3%;" />
 
 									<script>
@@ -430,166 +449,173 @@ body, html {
 														});
 									</script>-->
 
-										<input class="form-control" type="text" id="cpf"
-											style="margin-bottom: 3%;" value="<%=obj.getString("cpf")%>"
-											required="required" /> <input class="form-control"
-											type="text" name="rg" style="margin-bottom: 3%;"
-											value="<%=obj.getString("rg")%>" required="required" /> <input
-											class="form-control" type="text"
-											style="margin-bottom: 3%;"
-											value="<%=obj.getString("telefone")%>" required="required" />
-									</div>
+											<input class="form-control" type="text" id="cpf" name="cpf"
+												style="margin-bottom: 3%;" value="<%=obj.getString("cpf")%>"
+												required="required" /> <input class="form-control"
+												type="text" name="rg" style="margin-bottom: 3%;" name="rg"
+												value="<%=obj.getString("rg")%>" required="required" /> <input
+												class="form-control" type="text" style="margin-bottom: 3%;"
+												name="telefone" value="<%=obj.getString("telefone")%>"
+												required="required" />
+										</div>
 
-									<div id="buscarNaYong">
-										<label><h6>Agende um dia e horário:</h6></label>
-										<div class="form-group">
-											<label class="col-md-5 control-label" for="hora">Horario:</label>
-											<div class="col-md-5">
-												<select id="hora" name="time" class="form-control">
-													<option value="Não informado">Não informado</option>
-													<option value="Manha">9:00 AM</option>
-													<option value="Manha">9:30 AM</option>
-													<option value="Manha">10:00 AM</option>
-													<option value="Manha">10:30 AM</option>
-													<option value="Manha">11:00 AM</option>
-													<option value="Manha">11:30 AM</option>
-													<option value="Tarde">12:00 PM</option>
-													<option value="Tarde">12:30 PM</option>
-													<option value="Tarde">13:00 PM</option>
-												</select>
+										<div id="buscarNaYong">
+											<label><h6>Agende um dia e horário:</h6></label>
+											<div class="form-group">
+												<label class="col-md-5 control-label" for="hora">Horario:</label>
+												<div class="col-md-5">
+													<select id="hora" name="horarioMarcado"
+														class="form-control">
+														<option value="Não informado">Não informado</option>
+														<option value="9:00">9:00</option>
+														<option value="9:30">9:30</option>
+														<option value="10:00">10:00</option>
+														<option value="10:30">10:30</option>
+														<option value="11:00">11:00</option>
+														<option value="11:30">11:30</option>
+														<option value="12:00">12:00</option>
+														<option value="12:30">12:30</option>
+														<option value="13:00">13:00</option>
+														<option value="13:30">13:30</option>
+														<option value="14:00">14:00</option>
+														<option value="14:30">14:30</option>
+														<option value="15:00">15:00</option>
+														<option value="15:30">15:30</option>
+														<option value="16:00">16:00</option>
+														<option value="16:30">16:30</option>
+														<option value="17:00">17:00</option>
+													</select>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-md-5 control-label" for="dia">Dia:</label>
+												<div>
+													<input type="date" class="form-group col-md-6"
+														name="diaMarcado" style="margin-left: 3%;">
+												</div>
 											</div>
 										</div>
 
-										<div class="form-group">
-											<label class="col-md-5 control-label" for="dia">Dia:</label>
-											<div class="col-md-5">
-												<select id="hora" name="time" class="form-control">
-													<option value="Não informado">Não informado</option>
-													<option value="Segunda">Segunda</option>
-													<option value="Terca">Terça</option>
-													<option value="Quarta">Quarta</option>
-													<option value="Quinta">Quinta</option>
-													<option value="Sexta">Sexta</option>
-												</select>
-											</div>
-										</div>
 									</div>
+									<input type="hidden" name="codUser"
+										value="<%=request.getSession().getAttribute("codigoUsuario")%>" />
+									<input type="hidden" name="codAnimal" value="<%=codAnimal%>" />
+				</form>
+				<div class="modal-footer">
 
-								</div>
 
-								<div class="modal-footer">
-
-
-									<input type="submit" value="Confirmar"
-										class="btn btn-outline-success" /> <input type="hidden"
-										name="acao" value="agendarVisita" /> <input type="hidden"
-										name="acaoModal" value="atualizarEagendar" />
-									<!--  <img alt="postar.png" src="img/postar.png"
+					<input type="submit" value="Confirmar"
+						class="btn btn-outline-success" /> <input type="hidden"
+						name="acaoModal" id="acaoModal" value="atualizarEagendar" />
+					<!--  <img alt="postar.png" src="img/postar.png"
 										style="height: 20px; width: 20px; margin-left: -0.5;" />-->
-									<button type="button" class="btn btn-outline-danger"
-										data-dismiss="modal">
-										<img alt="close.png" src="img/close.png"
-											style="height: 20px; width: 20px; margin-left: -0.5;" />
-										Fechar
-									</button>
-								</div>
-							</div>
-						</div>
-
-					</div>
-					<%
-						} else {
-					%>
-					<div class="alert alert-info" role="alert">
-						Para agendar uma visita para adotar este animalzinho,<a
-							href="cadastro.jsp" class="alert-link">clique aqui</a>, e faça
-						seu cadastro no nosso site!
-						<%
-						}
-					%>
-					</div>
+					<button type="button" class="btn btn-outline-danger"
+						data-dismiss="modal">
+						<img alt="close.png" src="img/close.png"
+							style="height: 20px; width: 20px; margin-left: -0.5;" /> Fechar
+					</button>
 				</div>
 			</div>
 		</div>
 
-		<div id="direita"></div>
+	</div>
+	<%
+		} else {
+	%>
+	<div class="alert alert-info" role="alert">
+		Para agendar uma visita para adotar este animalzinho,<a
+			href="cadastro.jsp" class="alert-link">clique aqui</a>, e faça seu
+		cadastro no nosso site!
+		<%
+		}
+	%>
+	</div>
+	</div>
+	</div>
+	</div>
 
-		<script src="js/bootstrap.min.js"></script>
+	<div id="direita"></div>
 
-		<script>
-			function inserirLaudo() {
-				$("#acaoModal").val("inserirLaudo");
-			}
-		</script>
+	<script src="js/bootstrap.min.js"></script>
 
-		<div class="modal" id="laudoModal" tabindex="-1" role="dialog"
-			aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content" style="width: 565px;">
+	<script>
+		function inserirLaudo() {
+			$("#acaoModal").val("inserirLaudo");
+		}
 
-					<div class="modal-header" style="background-color: #139F97;">
-						<h5 class="modal-title">Inserir Laudo</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span>x</span>
+		function atualizarEagendar() {
+			$("#acaoModal").val("atualizarEagendar");
+		}
+	</script>
+
+	<div class="modal" id="laudoModal" tabindex="-1" role="dialog"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width: 565px;">
+
+				<div class="modal-header" style="background-color: #139F97;">
+					<h5 class="modal-title">Inserir Laudo</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span>x</span>
+					</button>
+				</div>
+
+				<form action="http://localhost:8080/goldpetBackEnd/ProcessaAnimais"
+					method="POST" enctype="multipart/form-data">
+					<div class="modal-body">
+
+						<div class="form-group">
+							<label>Data do diagnóstico:</label> <input type="date"
+								class="form-group col-md-6" name="dataDiagnostico"
+								style="margin-left: 3%;">
+						</div>
+						<div id="textArea">
+							<textarea class="form-control" id="textarea"
+								placeholder="Breve diagnóstico" rows="3" name="breveDiagnostico"
+								style="margin-top: 2px; margin-bottom: 3%; height: 80px; width: 470px;"></textarea>
+						</div>
+						<div class="form-group">
+							<label>Diagnóstico completo: </label> <input type="file"
+								id="upload" name="diagnosticoCompleto" style="float: right;" />
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="submit" class="btn btn-outline-success"
+							value="Confirmar" />
+						<!--  <img alt="postar.png" src="img/postar.png"
+										style="height: 20px; width: 20px; margin-left: -0.5;" />-->
+
+						<input type="hidden" name="codUser"
+							value="<%=request.getSession().getAttribute("codigoUsuario")%>" />
+						<input type="hidden" name="codAnimal" value="<%=codAnimal%>" />
+						<%
+							if (obj.getString("mensagem").equals("temLaudo")) {
+						%>
+						<input type="hidden" id="acaoModal" name="acaoModal"
+							value="atualizarLaudo" />
+						<%
+							} else {
+						%>
+						<input type="hidden" id="acaoModal" name="acaoModal"
+							value="inserirLaudo" />
+						<%
+							}
+						%>
+						<input type="hidden" name="pathFile"
+							value="<%=getServletContext().getRealPath("/").replace('\\', '/')%>" />
+						<button type="button" class="btn btn-outline-danger"
+							data-dismiss="modal">
+							<img alt="close.png" src="img/close.png"
+								style="height: 20px; width: 20px; margin-left: -0.5;" />
+							Cancelar
 						</button>
 					</div>
 
-					<form action="http://localhost:8080/goldpetBackEnd/ProcessaAnimais"
-						method="POST" enctype="multipart/form-data">
-						<div class="modal-body">
-
-							<div class="form-group">
-								<label>Data do diagnóstico:</label> <input type="date"
-									class="form-group col-md-6" name="dataDiagnostico"
-									style="margin-left: 3%;">
-							</div>
-							<div id="textArea">
-								<textarea class="form-control" id="textarea"
-									placeholder="Breve diagnóstico" rows="3"
-									name="breveDiagnostico"
-									style="margin-top: 2px; margin-bottom: 3%; height: 80px; width: 470px;"></textarea>
-							</div>
-							<div class="form-group">
-								<label>Diagnóstico completo: </label> <input type="file"
-									id="upload" name="diagnosticoCompleto" style="float: right;" />
-							</div>
-						</div>
-						<div class="modal-footer">
-							<input type="submit" class="btn btn-outline-success"
-								value="Confirmar" />
-							<!--  <img alt="postar.png" src="img/postar.png"
-										style="height: 20px; width: 20px; margin-left: -0.5;" />-->
-
-							<input type="hidden" name="codUser"
-								value="<%=request.getSession().getAttribute("codigoUsuario")%>" />
-							<input type="hidden" name="codAnimal" value="<%=codAnimal%>" />
-							<%
-								if (obj.getString("mensagem").equals("temLaudo")) {
-							%>
-							<input type="hidden" id="acaoModal" name="acaoModal"
-								value="atualizarLaudo" />
-							<%
-								} else {
-							%>
-							<input type="hidden" id="acaoModal" name="acaoModal"
-								value="inserirLaudo" />
-							<%
-								}
-							%>
-							<input type="hidden" name="pathFile"
-								value="<%=getServletContext().getRealPath("/").replace('\\', '/')%>" />
-							<button type="button" class="btn btn-outline-danger"
-								data-dismiss="modal">
-								<img alt="close.png" src="img/close.png"
-									style="height: 20px; width: 20px; margin-left: -0.5;" />
-								Cancelar
-							</button>
-						</div>
-
-					</form>
-				</div>
+				</form>
 			</div>
 		</div>
+	</div>
 </body>
 </html>

@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.json.JSONObject;
 
+import vo.Animais;
 import vo.Funcionario;
 import vo.Guardiao;
 import vo.Pessoa;
@@ -299,7 +300,7 @@ public class PessoaDAO {
 	
 	public Pessoa carregaInputs(int codePessoa) throws SQLException {
 
-		String sql = "SELECT p_nome, s_nome, cpf, rg, telefone1 FROM Pessoa WHERE codePerson + ?";
+		String sql = "SELECT p_nome, s_nome, cpf, rg, telefone1 FROM Pessoa WHERE codePerson = ?";
 
 		con = ConnectionDB.getConnection();
 
@@ -320,5 +321,23 @@ public class PessoaDAO {
 			return p;
 		}
 		return null;
+	}
+	
+	public boolean AtualizarDadosAgenda(Pessoa p, int codPerson) throws SQLException {
+
+		String sql = "UPDATE Pessoa SET p_nome = ?, s_nome = ?, cpf = ?, rg = ?, telefone1 = ? WHERE codePerson = ?";
+		
+		con = ConnectionDB.getConnection();
+
+		ps = con.prepareStatement(sql);
+		ps.setString(1, p.getP_nome());
+		ps.setString(2, p.getS_nome());
+		ps.setString(3, p.getCpf());
+		ps.setString(4, p.getRg());
+		ps.setString(5, p.getTel1());
+		ps.setInt(6, codPerson);
+
+		return ps.executeUpdate() > 0;
+
 	}
 }
