@@ -1,5 +1,6 @@
 package com.example.goldpet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,8 +25,9 @@ public class Higiene extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btVoltar:
-                setContentView(R.layout.dicas);
+            case R.id.btnVoltar:
+                Intent it = new Intent(getApplicationContext(), Dicas.class);
+                startActivity(it);
                 break;
         }
     }
