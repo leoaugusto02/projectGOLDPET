@@ -21,7 +21,7 @@ public class ConsumirWebService{
     //                                  ---WEB SERVICE PARA PESSOA---
     public static String cadastrar(String pNome, String sNome, String apelido, String cep, String referencia, String cpf, String rg, String tel1, String tel2,
                             String dataNasc, String email, String senha, String confSenha, String genero, String acao, String acaoConta){
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaPessoas";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaPessoas";
 
         try{
 
@@ -69,7 +69,7 @@ public class ConsumirWebService{
     }
 
     public static JSONObject login(String login, String senha, String acao){
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaPessoas";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaPessoas";
 
         try{
             String parametros = "login=" + login + "&senha=" + senha + "&acao=" + acao;
@@ -96,7 +96,7 @@ public class ConsumirWebService{
             return null;
         }
     } public static JSONObject perfil(int codeUser){
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaPessoas";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaPessoas";
         String acao = "mostrarCredencial";
         try{
             String parametros = "codeUser=" + codeUser + "&acao=" + acao;
@@ -129,7 +129,7 @@ public class ConsumirWebService{
     //                                  ---WEB SERVICE PARA ANIMAL---
 
     public static JSONArray listarAnimaisAdocao(String acao){
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaAnimais";
 
         try {
             String parametros = "acao=" + acao;
@@ -163,7 +163,7 @@ public class ConsumirWebService{
 
 
     public static JSONObject perfilAnimal(Integer codAnimal){
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaAnimais";
         String acao = "perfil";
         try{
             String parametros = "codAnimal=" + codAnimal + "&acao=" + acao;
@@ -194,7 +194,7 @@ public class ConsumirWebService{
     }
 
     public static String inserirLaudo(int codAnimal, String nomeVet, String dataDiagnostico, String breveDiagnostico, String diagnosticoCompleto){
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaAnimais";
         String acao = "inserirLaudo";
 
         try {
@@ -236,7 +236,7 @@ public class ConsumirWebService{
     //                                  ---WEB SERVICE PARA RESGATE---
 
     public static JSONArray listarAnimaisResgate(){
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaResgate";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaResgate";
         String acao = "listarAnimaisResgate";
         try {
             String parametros = "acao=" + acao;
@@ -271,7 +271,7 @@ public class ConsumirWebService{
 
     public static String inserirResgate(String descricao, String endereco, int nivel, Bitmap img){
 
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaResgate";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaResgate";
         String acaoModal = "inserirResgate";
 
         try{
@@ -280,7 +280,6 @@ public class ConsumirWebService{
             cnua.addFormField("descricao", descricao);
             cnua.addFormField("endereco", endereco);
             cnua.addFormField("nivel", String.valueOf(nivel));
-
             cnua.addFilePart("img", img);
 
             return cnua.finish();
@@ -292,7 +291,7 @@ public class ConsumirWebService{
     }
 
     public static String inserirAdocao(String nome, Integer idade, String raca, String porte, String especie, String genero, String status, Bitmap image){
-        String urlWebService = "http://10.87.202.147:8080/goldpetBackEnd/ProcessaAnimais";
+        String urlWebService = "http://192.168.1.40:8080/goldpetBackEnd/ProcessaAnimais";
         String acaoModal = "inserirPet";
 
         try{

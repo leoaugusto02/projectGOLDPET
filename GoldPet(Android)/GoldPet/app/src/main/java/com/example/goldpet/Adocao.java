@@ -59,6 +59,7 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
 
         rvAnimais.setAdapter(adocaoAdapter);
     }
+    
 
     @Override
     public void onClick(View view) {

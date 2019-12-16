@@ -292,7 +292,6 @@ public class ProcessaAnimais extends HttpServlet {
 				if (aDao.inserirAnimal(a)) {
 					System.out.println("Animal inserido com sucesso");
 					objMens.put("mensagem", "Adocão foi um sucesso");
-					resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/adocao.jsp");
 				}
 
 			} catch (SQLException e) {

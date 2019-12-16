@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="-50dp"
             android:layout_marginLeft="190dp"
-            android:text="Close" />
+            android:text="Fechar" />
 
     </LinearLayout>
 </ScrollView>
