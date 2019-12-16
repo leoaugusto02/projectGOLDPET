@@ -137,7 +137,8 @@ body, html {
 						+ "&diaMarcado=" + diaMarcado + "&codUser="
 						+ request.getSession().getAttribute("codigoUsuario") + "&acaoModal=" + acaoModal;
 			}
-
+			
+		
 		} else if (request.getSession().getAttribute("codigoUsuario") != null) {
 
 			parametros = "acao=" + acao + "&codUser=" + request.getSession().getAttribute("codigoUsuario")
@@ -169,7 +170,11 @@ body, html {
 
 		System.out.println("Linha " + apnd);
 
-		JSONObject obj = new JSONObject(apnd);
+		JSONObject obj = new JSONObject();
+		
+		if(!acaoModal.equals("atualizarEagendar")){
+			obj = new JSONObject(apnd);
+		}
 	%>
 	<div id="esquerda"></div>
 	<div id="meio">
