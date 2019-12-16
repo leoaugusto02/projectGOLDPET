@@ -35,5 +35,4 @@ public class Truques extends AppCompatActivity implements View.OnClickListener {
                 break;
         }
     }
-
 }
