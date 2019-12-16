@@ -170,11 +170,12 @@ body, html {
 
 		System.out.println("Linha " + apnd);
 
-		JSONObject obj = new JSONObject();
+		JSONObject obj = new JSONObject(apnd);
+		//JSONObject obj = new JSONObject();
 		
-		if(!acaoModal.equals("atualizarEagendar")){
-			obj = new JSONObject(apnd);
-		}
+		//if(!acaoModal.equals("atualizarEagendar")){
+			//obj = new JSONObject(apnd);
+		//}
 	%>
 	<div id="esquerda"></div>
 	<div id="meio">

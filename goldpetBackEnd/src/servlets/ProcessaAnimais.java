@@ -46,9 +46,9 @@ import vo.Pessoa;
 
 @MultipartConfig
 
-@WebServlet("/ProcessaAnimais")
+//@WebServlet("/ProcessaAnimais")
 
-//@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaAnimais" }, loadOnStartup = 1)
+@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaAnimais" }, loadOnStartup = 1)
 public class ProcessaAnimais extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
