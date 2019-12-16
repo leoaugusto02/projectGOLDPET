@@ -46,7 +46,7 @@ import vo.Pessoa;
 
 @MultipartConfig
 
-@WebServlet("/ProcessaResgate")
+@WebServlet("/ProcessaAnimais")
 
 //@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaAnimais" }, loadOnStartup = 1)
 public class ProcessaAnimais extends HttpServlet {
