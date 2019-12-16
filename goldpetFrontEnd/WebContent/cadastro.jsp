@@ -50,74 +50,30 @@
 
 		<h4>Digite seus dados nos campos abaixo</h4>
 
-		<div id="buttonAdd"
-			style="margin-left: 23%; margin-bottom: 2%; width: 15%;">
-			<button type="button" class="btn btn-outline-success"
-				data-toggle="modal" data-target="#siteModal">
-				<img alt="add.png" src="img/add.png"
-					style="height: 20px; width: 20px; margin-left: -0.5;">
-				Adicionar foto do perfil
-			</button>
-		</div>
 		<form action="http://localhost:8080/goldpetBackEnd/ProcessaAnimais"
 			method="POST" enctype="multipart/form-data">
-			<div class="modal" id="siteModal" tabindex="-1" role="dialog"
-				aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-
-						<div class="modal-header" style="background-color: #139F97;">
-							<h5 class="modal-title">Foto do perfil</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span>x</span>
-							</button>
-						</div>
-
-						<div class="modal-body">
 
 
-							<input type="file" id="upload" name="imagem"
-								style="float: left; margin-top: 6%;"> <img id="img"
-								style="width: 300px;" />
-							<script>
-								$(function() {
-									$('#upload')
-											.change(
-													function() {
-														console.log($(this));
-														const file = ($(this)[0].files[0])
-														const fileReader = new FileReader()
-														fileReader.onloadend = function() {
-															$('#img')
-																	.attr(
-																			'src',
-																			fileReader.result)
-														}
-														fileReader
-																.readAsDataURL(file)
-													})
-								})
-							</script>
-
-
-						</div>
-
-						<div class="modal-footer">
-
-							<input type="submit" class="btn btn-primary" value="Ok"/>
-							<input type="hidden" name="imagem" id="imagem" value="inserirPet" />
-							<input type="hidden" name="pathFile"
-								value="<%=getServletContext().getRealPath("/").replace('\\', '/')%>" />
-							<button type="button" class="btn btn-outline-danger"
-								data-dismiss="modal">
-								<img alt="close.png" src="img/close.png"
-									style="height: 20px; width: 20px; margin-left: -0.5;" />
-								Cancelar
-							</button>
-						</div>
-					</div>
-				</div>
+			<div class="form-group">
+				<label style="margin-left: 20%;"><h6>Escolha uma foto
+						para o perfil:</h6></label> <input type="file" id="upload" name="imagem"
+					class="form-group col-md-6" style="margin-top: 6%;"> <img
+					id="img" style="width: 300px;" />
+				<script>
+					$(function() {
+						$('#upload').change(function() {
+							console.log($(this));
+							const file = ($(this)[0].files[0])
+							const fileReader = new FileReader()
+							fileReader.onloadend = function() {
+								$('#img').attr('src', fileReader.result)
+							}
+							fileReader.readAsDataURL(file)
+						})
+					})
+				</script>
+				<input type="hidden" name="pathFile"
+					value="<%=getServletContext().getRealPath("/").replace('\\', '/')%>" />
 			</div>
 		</form>
 		<form action="#">
