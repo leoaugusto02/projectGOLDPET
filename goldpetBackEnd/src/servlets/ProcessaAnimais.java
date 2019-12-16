@@ -479,7 +479,7 @@ public class ProcessaAnimais extends HttpServlet {
 
 					if (pDao.AtualizarDadosAgenda(p, codPerson)) {
 						System.out.println("Agenda inserida com sucesso");
-						objMens.put("mensagemResultado", "sucesso");
+						resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/dataDoguinho.jsp?codAnimal=" + codAnimal);
 					}
 				}
 			} catch (SQLException e) {
