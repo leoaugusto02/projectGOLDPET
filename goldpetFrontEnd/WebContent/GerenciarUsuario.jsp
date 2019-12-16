@@ -1,3 +1,9 @@
+<%@page import="org.json.JSONObject"%>
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.io.DataOutputStream"%>
+<%@page import="java.net.HttpURLConnection"%>
+<%@page import="java.net.URL"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -134,7 +140,31 @@ a {
 <body>
 	<div class="conteudo">
 
-	<div class="card card-splash"
+		<%
+		String acao = "listarPessoas";	
+		
+		String parametros = "acao=" + acao;
+		
+		URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaPessoas");
+		
+		HttpURLConnection con = (HttpURLConnection) url.openConnection();
+		con.setRequestMethod("POST");
+		con.setDoOutput(true);
+		
+		System.out.println(parametros);
+
+		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+		wr.writeBytes(parametros);
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+		String linha = "";
+		
+		JSONObject obj = new JSONObject();
+		
+		%>
+
+		<div class="card card-splash"
 			style="margin-top: 11.4%; width: 300px; height: 150px; background-color: rgba(199, 252, 255, 0.5);">
 			<div id="esquerda">
 				<div class="menuLateral">
@@ -234,59 +264,24 @@ a {
 								<th>Tipo</th>
 								<th>CEP</th>
 								<th>Telefone</th>
-								<th>Editar</th>
-								<th>Excluir</th>
 							</tr>
 						</thead>
 						<tbody>
+						<% while ((linha = br.readLine()) != null) {
+								obj = new JSONObject(linha);
+							%>
 							<tr>
-								<td>Leônidas Augusto</td>
-								<td>540524787-10</td>
-								<td>518942549146</td>
-								<td>leo@gmail.com</td>
-								<td>Guardião</td>
-								<td>1520</td>
-								<td>19985624851</td>
-								<td>
-									<button type="button" class="btn btn-default btn-sm"
-										data-toggle="modal" data-target="#editar">
-										<span class=""><img src="img/edit.svg" width="25"
-											height="25">
-										</span>
-									</button>
-								</td>
-								<td>
-									<button type="button" class="btn btn-default btn-sm">
-										<span class=""> <img src="img/garbage.svg" width="25"
-											height="25">
-										</span>
-									</button>
-								</td>
+							
+								<td><%=obj.getString("pNome")%> <%=obj.getString("sNome") %></td>
+								<td><%=obj.getString("cpf")%></td>
+								<td><%=obj.getString("rg")%></td>
+								<td><%=obj.getString("email")%></td>
+								<td><%=obj.getString("tipo")%></td>
+								<td><%=obj.getString("cep")%></td>
+								<td><%=obj.getString("tel1")%></td>
+								
 							</tr>
-							<!--  <tr>
-								<td>Marcelo</td>
-								<td>405245878-10</td>
-								<td>1526546315110</td>
-								<td>celim@gmail.com</td>
-								<td>Funcionário</td>
-								<td>266326</td>
-								<td>19954821657</td>
-								<td>
-									<button type="button" class="btn btn-default btn-sm"
-										data-toggle="modal" data-target="#editar">
-										<span class="#"> <img src="img/edit.svg" width="25"
-											height="25">
-										</span>
-									</button>
-								</td>
-								<td>
-									<button type="button" class="btn btn-default btn-sm">
-										<span class="#"> <img src="img/garbage.svg" width="25"
-											height="25">
-										</span>
-									</button>
-								</td>
-							</tr>-->
+							<%} %>
 						</tbody>
 
 					</table>

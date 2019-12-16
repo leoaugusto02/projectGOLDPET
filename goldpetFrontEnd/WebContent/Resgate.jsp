@@ -177,7 +177,7 @@ body, html {
 
 			</div>
 
-			<div id="buttonAdd"
+		<!--  	<div id="buttonAdd"
 				style="margin-left: 86%; margin-bottom: 2%; width: 15%;">
 				<button type="button" class="btn btn-outline-success"
 					data-toggle="modal" data-target="#siteModal">
@@ -185,7 +185,7 @@ body, html {
 						style="height: 20px; width: 20px; margin-left: -0.5;">
 					Novo Resgate
 				</button>
-			</div>
+			</div>-->
 
 			<div class="modal" id="siteModal" tabindex="-1" role="dialog"
 				aria-hidden="true">
