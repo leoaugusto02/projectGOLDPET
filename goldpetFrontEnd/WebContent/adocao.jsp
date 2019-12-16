@@ -134,10 +134,12 @@ body, html {
 							<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 								<div class="navbar-nav">
 									<a class="nav-item nav-link active" href="adocao.jsp">Adoção<span
-										class="sr-only">(current)</span></a> <a class="nav-item nav-link "
-										href="Resgate.jsp">Resgate</a> <a
+										class="sr-only">(current)</span></a> 
+										<a class="nav-item nav-link " href="Resgate.jsp">Resgate</a> <a
 										class="nav-item nav-link active" href="DicasPets.jsp">Dicas</a>
 									<a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
+									<a class="nav-item nav-link active" href="Login.jsp">Login</a>
+									<a class="nav-item nav-link active" href="perfil.jsp">Perfil</a>
 									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
 								</div>
 							</div>

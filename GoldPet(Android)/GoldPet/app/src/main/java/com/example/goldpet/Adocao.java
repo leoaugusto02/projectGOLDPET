@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -57,78 +59,80 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
 
         rvAnimais.setAdapter(adocaoAdapter);
     }
+    
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.txtAdicionarMais:
-               Intent it = new Intent(getApplicationContext(), InserirPetAdocao.class);
-               startActivity(it);
-            break;
+                Intent it = new Intent(getApplicationContext(), InserirPetAdocao.class);
+                startActivity(it);
+                break;
 
             case R.id.btnVoltar:
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
+                Intent ite = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(ite);
                 break;
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.adocao,menu);
-        return super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.adocao, menu);
+        return true;
     }
 
-    private void listarAnimaisAdocao() {
-        new Thread(){
-            public void run(){
-                String acao = "listaAdocao";
-                final JSONArray jsonAnimais = ConsumirWebService.listarAnimaisAdocao(acao);
 
-                if(jsonAnimais == null){
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(Adocao.this, "Não existe animais para adotar no momento", Toast.LENGTH_LONG).show();
-                        }
-                    });
-                }else{
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            exibirAnimais(jsonAnimais);
-                        }
-                    });
+        private void listarAnimaisAdocao () {
+            new Thread() {
+                public void run() {
+                    String acao = "listaAdocao";
+                    final JSONArray jsonAnimais = ConsumirWebService.listarAnimaisAdocao(acao);
+
+                    if (jsonAnimais == null) {
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(Adocao.this, "Não existe animais para adotar no momento", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } else {
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                exibirAnimais(jsonAnimais);
+                            }
+                        });
+                    }
+
+
+                }
+            }.start();
+        }
+
+
+        private void exibirAnimais (JSONArray jsonAnimais){
+            try {
+                for (int i = 0; i < jsonAnimais.length(); i++) {
+                    JSONObject jsonAnimal = jsonAnimais.getJSONObject(i);
+
+                    Animais animais = new Animais();
+
+                    animais.setCodAnimal(jsonAnimal.getInt("codAnimal"));
+                    animais.setNome(jsonAnimal.getString("nome"));
+                    animais.setStatus(jsonAnimal.getString("status"));
+                    animais.setRaca(jsonAnimal.getString("raca"));
+                    animais.setEspecie(jsonAnimal.getString("especie"));
+                    animais.setImgAnimal(jsonAnimal.getString("imgAnimal"));
+                    animaisList.add(animais);
                 }
 
-
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }.start();
-    }
-
-
-
-
-    private void exibirAnimais (JSONArray jsonAnimais){
-        try {
-            for (int i = 0; i < jsonAnimais.length(); i++) {
-                JSONObject jsonAnimal = jsonAnimais.getJSONObject(i);
-
-                Animais animais = new Animais();
-
-                animais.setCodAnimal(jsonAnimal.getInt("codAnimal"));
-                animais.setNome(jsonAnimal.getString("nome"));
-                animais.setStatus(jsonAnimal.getString("status"));
-                animais.setRaca(jsonAnimal.getString("raca"));
-                animais.setEspecie(jsonAnimal.getString("especie"));
-                animais.setImgAnimal(jsonAnimal.getString("imgAnimal"));
-                animaisList.add(animais);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            adocaoAdapter.notifyDataSetChanged();
         }
-        adocaoAdapter.notifyDataSetChanged();
+
     }
 
-}

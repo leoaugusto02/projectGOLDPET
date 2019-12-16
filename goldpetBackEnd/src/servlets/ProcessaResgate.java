@@ -102,7 +102,7 @@ public class ProcessaResgate extends HttpServlet {
 					OutputStream os; 
 					
 					if(filePath != null) {
-						os = new FileOutputStream("C:\\GitHub Repositorys\\GitHub\\projectGOLDPET\\goldpetFrontEnd\\WebContent\\imgAnimalResgate\\" + descricao.trim() + endereco.trim() + ext);
+						os = new FileOutputStream("C:\\Users\\Aluno\\JavaWEB\\4inf\\projectGOLDPET\\goldpetFrontEnd\\WebContent\\imgAnimalResgate\\" + descricao.trim() + endereco.trim() + ext);
 					}else {
 						os = new FileOutputStream(filePath + "imgAnimalResgate//" + descricao.trim() + endereco.trim() + ext);
 					}

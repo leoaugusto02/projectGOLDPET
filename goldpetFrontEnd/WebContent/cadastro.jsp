@@ -49,34 +49,9 @@
 		</div>
 
 		<h4>Digite seus dados nos campos abaixo</h4>
-
-		<form action="http://localhost:8080/goldpetBackEnd/ProcessaPessoas"
-			method="POST" enctype="multipart/form-data">
-
-
-			<div class="form-group">
-				<label style="margin-left: 20%;"><h6>Escolha uma foto
-						para o perfil:</h6></label> <input type="file" id="upload" name="imagem"
-					class="form-group col-md-6" style="margin-top: 6%;"> <img
-					id="img" style="width: 300px;" />
-				<script>
-					$(function() {
-						$('#upload').change(function() {
-							console.log($(this));
-							const file = ($(this)[0].files[0])
-							const fileReader = new FileReader()
-							fileReader.onloadend = function() {
-								$('#img').attr('src', fileReader.result)
-							}
-							fileReader.readAsDataURL(file)
-						})
-					})
-				</script>
-				<input type="hidden" name="pathFile"
-					value="<%=getServletContext().getRealPath("/").replace('\\', '/')%>" />
+	<div>
+		<form method="post" action="#" >
 			</div>
-		</form>
-		<form action="#">
 			<div class="form-group">
 				<input type="text" class="form-group col-md-6" name="apelido"
 					placeholder="Apelido" required autofocus autocomplete="on"
@@ -155,7 +130,7 @@
 			</div>
 			<input type="submit" class="btn btn-primary" value="Cadastrar">
 			<input type="hidden" name="acao" id="acao" value="cadastrar" />
-		</form>
+			</form>
 	</div>
 
 	<%
@@ -174,13 +149,11 @@
 		String genero = request.getParameter("genero");
 		String acao = request.getParameter("acao");
 		String dataNasc = request.getParameter("nascimento");
-		String imagem = request.getParameter("imagem");
 		String acaoConta = "Guardião";
 
 		if ((pNome != null) && (sNome != null) && (apelido != null) && (cep != null) && (referencia != null)
 				&& (cpf != null) && (rg != null) && (tel1 != null) && (dataNasc != null) && (email != null)
-				&& (senha != null) && (confSenha != null) && (genero != null) && (acao != null)
-				&& (imagem != null)) {
+				&& (senha != null) && (confSenha != null) && (genero != null) && (acao != null)) {
 
 			if (tel2.equals("")) {
 				tel2 = "-"; //comit pro Correa
@@ -189,7 +162,7 @@
 			String parametros = "pNome=" + pNome + "&sNome=" + sNome + "&apelido=" + apelido + "&cep=" + cep
 					+ "&referencia=" + referencia + "&cpf=" + cpf + "&rg=" + rg + "&tel1=" + tel1 + "&tel2=" + tel2
 					+ "&nascimento=" + dataNasc + "&email=" + email + "&senha=" + senha + "&confSenha=" + confSenha
-					+ "&genero=" + genero + "&acao=" + acao + "&acaoConta=" + acaoConta + "&imagem=" + imagem;
+					+ "&genero=" + genero + "&acao=" + acao + "&acaoConta=" + acaoConta;
 
 			URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaPessoas");
 

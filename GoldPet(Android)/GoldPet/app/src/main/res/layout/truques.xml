@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#93D6D6"
     android:fillViewport="true"
-    tools:context="com.example.goldpet.MainActivity">
+    tools:context="com.example.goldpet.Truques">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,6 +20,7 @@
         android:layout_marginTop="25dp"/>
 
     <TextView
+        android:id="@+id/tvTeste"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -62,7 +63,7 @@
             />
 
     <Button
-        android:id="@+id/btVoltar"
+        android:id="@+id/btVoltar9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClick"

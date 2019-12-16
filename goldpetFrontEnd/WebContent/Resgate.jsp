@@ -147,10 +147,9 @@ body, html {
 					<img src="img/LogoPet.png" style="width: 220px; height: 220px;" />
 				</div>
 
-				<div class="navC d-flex w-100 justfy-content-center">
+							<div class="navC d-flex w-100 justfy-content-center">
 
 					<div class="w-100">
-
 						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
 							<a class="navbar-brand" href="Index.jsp">Home</a>
 							<button class="navbar-toggler" type="button"
@@ -162,16 +161,19 @@ body, html {
 							<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 								<div class="navbar-nav">
 									<a class="nav-item nav-link active" href="adocao.jsp">Adoção<span
-										class="sr-only">(current)</span></a> <a class="nav-item nav-link "
-										href="Resgate.jsp">Resgate</a> <a
+										class="sr-only">(current)</span></a> 
+										<a class="nav-item nav-link " href="Resgate.jsp">Resgate</a> <a
 										class="nav-item nav-link active" href="DicasPets.jsp">Dicas</a>
 									<a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
+									<a class="nav-item nav-link active" href="Login.jsp">Login</a>
+									<a class="nav-item nav-link active" href="perfil.jsp">Perfil</a>
 									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
 								</div>
 							</div>
 						</nav>
 					</div>
 				</div>
+			</div>
 
 			</div>
 

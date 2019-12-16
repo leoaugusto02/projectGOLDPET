@@ -107,7 +107,7 @@ public class ProcessaPessoas extends HttpServlet {
 				referencia = req.getParameter("referencia");
 				genero = req.getParameter("genero");
 				
-				String filePath = req.getParameter("pathFile");
+				//String filePath = req.getParameter("pathFile");
 
 				try {
 
@@ -117,6 +117,7 @@ public class ProcessaPessoas extends HttpServlet {
 					dataNasc = format.parse(req.getParameter("nascimento"));
 					p.setNascimento(dataNasc);
 
+					/*
 					Part file = req.getPart("imagem");
 					String fileName = file.getSubmittedFileName();
 					System.out.println("FN - " + fileName);
@@ -138,7 +139,8 @@ public class ProcessaPessoas extends HttpServlet {
 					}
 
 					os.close();
-					fileContent.close();
+					fileContent.close();?
+					*/
 
 					}catch (Exception e) {
 					// TODO: handle exception

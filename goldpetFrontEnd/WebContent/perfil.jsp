@@ -129,35 +129,35 @@ body, html {
 						<img src="img/LogoPet.png" style="width: 220px; height: 220px;" />
 					</div>
 
-					<div class="navC">
-						<div class="d-flex">
-							<div class="navC d-flex w-100 justfy-content-center">
+										<div class="navC d-flex w-100 justfy-content-center">
 
-								<div class="w-100">
-									<nav class="navbar navbar-expand-lg navbar-light minhaNav">
-										<a class="navbar-brand" href="Index.jsp">Home</a>
-										<button class="navbar-toggler" type="button"
-											data-toggle="collapse" data-target="#navbarNavAltMarkup"
-											aria-controls="navbarNavAltMarkup" aria-expanded="false"
-											aria-label="Toggle navigation">
-											<span class="navbar-toggler-icon"></span>
-										</button>
-										<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-											<div class="navbar-nav">
-												<a class="nav-item nav-link active" href="adocao.jsp">Adoção<span
-													class="sr-only">(current)</span></a> <a
-													class="nav-item nav-link " href="Resgate.jsp">Resgate</a> <a
-													class="nav-item nav-link active" href="DicasPets.jsp">Dicas</a>
-												<a class="nav-item nav-link active"
-													href="GerenciarUsuario.jsp">Dashboard</a> <a
-													class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
-											</div>
-										</div>
-									</nav>
+					<div class="w-100">
+						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
+							<a class="navbar-brand" href="Index.jsp">Home</a>
+							<button class="navbar-toggler" type="button"
+								data-toggle="collapse" data-target="#navbarNavAltMarkup"
+								aria-controls="navbarNavAltMarkup" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+								<div class="navbar-nav">
+									<a class="nav-item nav-link active" href="adocao.jsp">Adoção<span
+										class="sr-only">(current)</span></a> 
+										<a class="nav-item nav-link " href="Resgate.jsp">Resgate</a> <a
+										class="nav-item nav-link active" href="DicasPets.jsp">Dicas</a>
+									<a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
+									<a class="nav-item nav-link active" href="Login.jsp">Login</a>
+									<a class="nav-item nav-link active" href="perfil.jsp">Perfil</a>
+									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
 								</div>
 							</div>
-						</div>
+						</nav>
 					</div>
+				</div>
+			</div>
+					
+				
 				</div>
 				<br>
 				<div class="col-xs-12 col-sm-9">
@@ -221,10 +221,10 @@ body, html {
 											<th><strong>Endereço:</strong></th>
 											<td><%=obj.getString("endereco")%></td>
 										</tr>
-										<tr>
+									<%-- 	<tr>
 											<th><strong>Rank:</strong></th>
 											<td><%=obj.getString("rank")%></td>
-										</tr>
+										</tr> --%>
 										<%-- <tr>
 											<th><strong>Animais Resgatados:</strong></th>
 											<td><%=obj.getInt("aniResgatados")%></td>
@@ -245,10 +245,10 @@ body, html {
 
 					</div>
 				</div>
-				<div id="botao" style="margin-top: 5%; margin-left: 28%">
+			<!-- 	<div id="botao" style="margin-top: 5%; margin-left: 28%">
 					<button type="button" class="btn btn-outline-success"
 						data-toggle="modal" data-target="#siteModal">Alterar
-						Informações</button>
+						Informações</button> -->
 			</form>
 		</div>
 
