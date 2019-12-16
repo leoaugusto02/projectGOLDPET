@@ -257,7 +257,12 @@ public class ProcessaAnimais extends HttpServlet {
 				// OutputStream os = new
 				// FileOutputStream("D:\\Documentos\\Workspace\\Eclipse\\UpLoad\\WebContent\\images\\"
 				// + nome + ext);
-				OutputStream os = new FileOutputStream("C:\\GitHub Repositorys\\GitHub\\projectGOLDPET\\goldpetFrontEnd\\WebContent\\imgAnimalAdocao\\" + nome.trim() + ext);
+				OutputStream os;
+				if(filePath == null) {
+					os = new FileOutputStream("C:\\GitHub Repositorys\\GitHub\\projectGOLDPET\\goldpetFrontEnd\\WebContent\\imgAnimalAdocao\\" + nome.trim() + ext);
+				}else {
+					os = new FileOutputStream(filePath + "imgAnimalAdocao\\" + nome.trim() + ext);
+				}
 
 				int data = fileContent.read();
 
