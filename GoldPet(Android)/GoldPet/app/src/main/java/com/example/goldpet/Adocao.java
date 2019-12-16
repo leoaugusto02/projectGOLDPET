@@ -62,7 +62,7 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.txtAdicionarMais:
-               Intent it = new Intent(getApplicationContext(), AcordoAdocao.class);
+               Intent it = new Intent(getApplicationContext(), InserirPetAdocao.class);
                startActivity(it);
             break;
 
@@ -121,6 +121,7 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
                 animais.setStatus(jsonAnimal.getString("status"));
                 animais.setRaca(jsonAnimal.getString("raca"));
                 animais.setEspecie(jsonAnimal.getString("especie"));
+                animais.setImgAnimal(jsonAnimal.getString("imgAnimal"));
                 animaisList.add(animais);
             }
 

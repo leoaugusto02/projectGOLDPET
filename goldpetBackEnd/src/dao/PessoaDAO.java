@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.json.JSONObject;
 
+import vo.Animais;
 import vo.Funcionario;
 import vo.Guardiao;
 import vo.Pessoa;
@@ -76,7 +77,7 @@ public class PessoaDAO {
 
 		sql = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?,'" + acao + "', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-		if (acao.equals("Guardiao")) {
+		if (acao.equals("Guardião")) {
 			sqlCondicao = "INSERT INTO Guardiao VALUES(null, "
 					+ "(SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,'Iniciante',0,'ativo')";
 		} else {
@@ -295,5 +296,48 @@ public class PessoaDAO {
 			return p;
 		}
 		return null;
+	}
+	
+	public Pessoa carregaInputs(int codePessoa) throws SQLException {
+
+		String sql = "SELECT p_nome, s_nome, cpf, rg, telefone1 FROM Pessoa WHERE codePerson = ?";
+
+		con = ConnectionDB.getConnection();
+
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, codePessoa);
+
+		ResultSet rs = ps.executeQuery();
+
+		if (rs.next()) {
+			Pessoa p = new Pessoa();
+
+			p.setP_nome(rs.getString("p_nome"));
+			p.setS_nome(rs.getString("s_nome"));
+			p.setCpf(rs.getString("cpf"));
+			p.setRg(rs.getString("rg"));
+			p.setTel1(rs.getString("telefone1"));
+	
+			return p;
+		}
+		return null;
+	}
+	
+	public boolean AtualizarDadosAgenda(Pessoa p, int codPerson) throws SQLException {
+
+		String sql = "UPDATE Pessoa SET p_nome = ?, s_nome = ?, cpf = ?, rg = ?, telefone1 = ? WHERE codePerson = ?";
+		
+		con = ConnectionDB.getConnection();
+
+		ps = con.prepareStatement(sql);
+		ps.setString(1, p.getP_nome());
+		ps.setString(2, p.getS_nome());
+		ps.setString(3, p.getCpf());
+		ps.setString(4, p.getRg());
+		ps.setString(5, p.getTel1());
+		ps.setInt(6, codPerson);
+
+		return ps.executeUpdate() > 0;
+
 	}
 }

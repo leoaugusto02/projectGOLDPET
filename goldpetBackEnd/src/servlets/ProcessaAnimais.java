@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -29,6 +30,7 @@ import java.io.OutputStream;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.print.attribute.standard.PDLOverrideSupported;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,6 +38,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.AnimaisDAO;
 import dao.PessoaDAO;
+import vo.Agenda;
 import vo.Animais;
 import vo.Funcionario;
 import vo.Laudo;
@@ -43,7 +46,9 @@ import vo.Pessoa;
 
 @MultipartConfig
 
-@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaAnimais" }, loadOnStartup = 1)
+@WebServlet("/ProcessaAnimais")
+
+//@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaAnimais" }, loadOnStartup = 1)
 public class ProcessaAnimais extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -61,9 +66,15 @@ public class ProcessaAnimais extends HttpServlet {
 		String acaoVerifica = req.getParameter("acaoVerifica");
 		String codUser = req.getParameter("codUser");
 
+		String cargo = String.valueOf(req.getSession().getAttribute("cargo"));
+
 		System.out.println("acaoVerifica= " + acaoVerifica);
 
 		System.out.println("codUser= " + codUser);
+
+		System.out.println("Cargo= " + cargo);
+
+		System.out.println("acaoModal= " + acaoModal);
 
 		if (acao != null) {
 
@@ -103,6 +114,23 @@ public class ProcessaAnimais extends HttpServlet {
 
 					}
 
+					PessoaDAO pDao = new PessoaDAO();
+
+					if (codUser != null) {
+						Pessoa p = pDao.carregaInputs(Integer.valueOf(codUser));
+
+						if (pDao.carregaInputs(Integer.valueOf(codUser)) != null) {
+
+							objMens.put("pNome", p.getP_nome());
+							objMens.put("sNome", p.getS_nome());
+							objMens.put("cpf", p.getCpf());
+							objMens.put("rg", p.getRg());
+							objMens.put("telefone", p.getTel1());
+
+							out.print(objMens.toString());
+						}
+					}
+
 					out.print(objMens.toString());
 					System.out.println(objMens.toString());
 
@@ -130,7 +158,6 @@ public class ProcessaAnimais extends HttpServlet {
 							objMens.put("imgAnimal", a.getImgAnimal());
 
 							out.print(objMens.toString() + "\n");
-
 						}
 					} else {
 						objMens.put("mensagem", "Falta animais");
@@ -229,7 +256,13 @@ public class ProcessaAnimais extends HttpServlet {
 				// OutputStream os = new
 				// FileOutputStream("D:\\Documentos\\Workspace\\Eclipse\\UpLoad\\WebContent\\images\\"
 				// + nome + ext);
-				OutputStream os = new FileOutputStream(filePath + "img//" + nome.trim() + ext);
+				OutputStream os;
+				if(filePath == null) {
+					os = new FileOutputStream("C:\\GitHub Repositorys\\GitHub\\projectGOLDPET\\goldpetFrontEnd\\WebContent\\imgAnimalAdocao\\" + nome.trim() + ext);
+				}else {
+	//				os = new FileOutputStream(filePath + "img//" + nome.trim() + ext);
+					os = new FileOutputStream(filePath + "imgAnimalAdocao//" + nome.trim() + ext);
+				}
 
 				int data = fileContent.read();
 
@@ -259,6 +292,7 @@ public class ProcessaAnimais extends HttpServlet {
 			try {
 				if (aDao.inserirAnimal(a)) {
 					System.out.println("Animal inserido com sucesso");
+					objMens.put("mensagem", "Adocão foi um sucesso");
 					resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/adocao.jsp");
 				}
 
@@ -287,7 +321,7 @@ public class ProcessaAnimais extends HttpServlet {
 			String dataDiagnostico;
 
 			try {
-				//dataDiagnostico = format.parse(req.getParameter("dataDiagnostico"));
+				// dataDiagnostico = format.parse(req.getParameter("dataDiagnostico"));
 				dataDiagnostico = req.getParameter("dataDiagnostico");
 				Part file = req.getPart("diagnosticoCompleto");
 				String fileName = file.getSubmittedFileName();
@@ -298,8 +332,13 @@ public class ProcessaAnimais extends HttpServlet {
 				ext = fileName.substring(posInicial, posFinal);
 
 				InputStream fileContent = file.getInputStream();
+				
+				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss"); 
+				Date date = new Date(); 
+				String atualSistema = String.valueOf(dateFormat.format(date)); 
+				System.out.println("data atual " + atualSistema);
 
-				OutputStream os = new FileOutputStream(filePath + "img//" + fileName.trim() + ext);
+				OutputStream os = new FileOutputStream(filePath + "img//" + codigoAnimal + atualSistema.trim() + ext);
 
 				int data = fileContent.read();
 
@@ -321,7 +360,7 @@ public class ProcessaAnimais extends HttpServlet {
 				a.setCodAnimal(Integer.valueOf(codigoAnimal));
 				l.setDataDiagnostico(dataDiagnostico);
 				l.setDiagnostico(breveDiagnostico);
-				l.setImagem(fileName.trim());
+				l.setImagem(codigoAnimal + atualSistema.trim() + ext);
 				a.setLaudo(l);
 
 				if (aDao.inserirLaudo(a)) {
@@ -356,10 +395,10 @@ public class ProcessaAnimais extends HttpServlet {
 			Date dataDiagnostico;
 
 			try {
-				//dataDiagnostico = format.parse(req.getParameter("dataDiagnostico"));
+				// dataDiagnostico = format.parse(req.getParameter("dataDiagnostico"));
 
 				String dataa = req.getParameter("dataDiagnostico");
-				
+
 				Part file = req.getPart("diagnosticoCompleto");
 				String fileName = file.getSubmittedFileName();
 				System.out.println("FN - " + fileName);
@@ -369,8 +408,13 @@ public class ProcessaAnimais extends HttpServlet {
 				ext = fileName.substring(posInicial, posFinal);
 
 				InputStream fileContent = file.getInputStream();
+				
+				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss"); 
+				Date date = new Date(); 
+				String atualSistema = String.valueOf(dateFormat.format(date)); 
+				System.out.println("data atual " + atualSistema);
 
-				OutputStream os = new FileOutputStream(filePath + "img//" + codigoAnimal + "-11122019"  + ext); //localDate.now()
+				OutputStream os = new FileOutputStream(filePath + "img//" + codigoAnimal + atualSistema.trim() + ext);
 
 				int data = fileContent.read();
 
@@ -392,7 +436,7 @@ public class ProcessaAnimais extends HttpServlet {
 				a.setCodAnimal(Integer.valueOf(codigoAnimal));
 				l.setDataDiagnostico(dataa);
 				l.setDiagnostico(breveDiagnostico);
-				l.setImagem(codigoAnimal + "-11122019"  + ext);
+				l.setImagem(codigoAnimal + atualSistema + ext);
 				a.setLaudo(l);
 
 				if (aDao.AtualizarLaudo(Integer.valueOf(codigoAnimal), a)) {
@@ -402,6 +446,56 @@ public class ProcessaAnimais extends HttpServlet {
 				}
 
 			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (acaoModal != null && acaoModal.equals("atualizarEagendar")) {
+
+			String codAnimal = req.getParameter("codAnimal");
+			Integer codPerson = Integer.valueOf(codUser);
+			String horarioMarcado = req.getParameter("horarioMarcado");
+			String diaMarcado = req.getParameter("diaMarcado");
+
+			String pNome = req.getParameter("pNome");
+			String sNome = req.getParameter("sNome");
+			String cpf = req.getParameter("cpf");
+			String rg = req.getParameter("rg");
+			String telefone = req.getParameter("telefone");
+
+			Agenda ag = new Agenda();
+			Animais a = new Animais();
+
+			ag.setCodeAnimal(Integer.valueOf(codAnimal));
+			ag.setCodePerson(codPerson);
+			ag.setHorario_marcado(horarioMarcado);
+			ag.setDia_marcado(diaMarcado);
+
+			a.setAgenda(ag);
+
+			try {
+				if (aDao.AgendarVisita(a)) {
+					Pessoa p = new Pessoa();
+					PessoaDAO pDao = new PessoaDAO();
+
+					p.setP_nome(pNome);
+					p.setS_nome(sNome);
+					p.setCpf(cpf);
+					p.setRg(rg);
+					p.setTel1(telefone);
+					System.out.println("Pnome " + pNome);
+					System.out.println("Snome " + sNome);
+					System.out.println("cpf " + cpf);
+					System.out.println("rg " + rg);
+					System.out.println("telefone " + telefone);
+
+					if (pDao.AtualizarDadosAgenda(p, codPerson)) {
+						System.out.println("Agenda inserida com sucesso");
+						objMens.put("mensagemAgenda", "sucesso");
+						out.print(objMens.toString());
+						//resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/dataDoguinho.jsp?codAnimal=" + codAnimal);
+					}
+				}
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 

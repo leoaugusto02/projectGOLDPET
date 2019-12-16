@@ -83,7 +83,7 @@ public class PerfilAnimal extends AppCompatActivity implements View.OnClickListe
 
     private void exibirpet(JSONObject jsonObject) {
         try{
-
+            btnLaudo.setVisibility(View.GONE);
             txtNomePet.setText("Nome do pet: " + jsonObject.getString("nome"));
             txtEspecie.setText("Espécie: " + jsonObject.getString("especie"));
             txtIdade.setText("Idade: " + jsonObject.getString("idade"));

@@ -1,3 +1,9 @@
+<%@page import="org.json.JSONObject"%>
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.io.DataOutputStream"%>
+<%@page import="java.net.HttpURLConnection"%>
+<%@page import="java.net.URL"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -28,13 +34,12 @@ body, html {
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
-	 overflow-x: hidden;
+	overflow-x: hidden;
 }
 
-.conteudo{
-	display:flex;
+.conteudo {
+	display: flex;
 	flex-direction: row;
-	
 }
 
 #esquerda {
@@ -67,7 +72,7 @@ body, html {
 #finalPg {
 	float: bottom;
 	width: 100%;
-	height:20%
+	height: 20%
 }
 
 .navC {
@@ -122,28 +127,33 @@ body, html {
 			<div id="cabecalho">
 
 				<div id="imgLogo">
-					<img src="img/LogoPet.png" style="width: 220px; height: 220px;"  href="Index.jsp" />
+					<img src="img/LogoPet.png" style="width: 220px; height: 220px;"
+						href="Index.jsp" />
 				</div>
 
 				<div class="navC d-flex w-100 justfy-content-center">
-				
+
 					<div class="w-100">
-			<nav class="navbar navbar-expand-lg navbar-light minhaNav">
-  <a class="navbar-brand" href="Index.jsp">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="adocao.jsp">adoção<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link " href="Resgate.jsp">resgate</a>
-      <a class="nav-item nav-link active" href="DicasPets.jsp">Dicas</a>
-      <a class="nav-item nav-link " href="questionPage.jsp">Forun</a>
-      <a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
-      <a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
-    </div>
-  </div>
-</nav>
+						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
+							<a class="navbar-brand" href="Index.jsp">Home</a>
+							<button class="navbar-toggler" type="button"
+								data-toggle="collapse" data-target="#navbarNavAltMarkup"
+								aria-controls="navbarNavAltMarkup" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+								<div class="navbar-nav">
+									<a class="nav-item nav-link active" href="adocao.jsp">adoção<span
+										class="sr-only">(current)</span></a> <a class="nav-item nav-link "
+										href="Resgate.jsp">resgate</a> <a
+										class="nav-item nav-link active" href="DicasPets.jsp">Dicas</a>
+									<a class="nav-item nav-link " href="questionPage.jsp">Forun</a>
+									<a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
+									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
+								</div>
+							</div>
+						</nav>
 
 					</div>
 				</div>
@@ -191,22 +201,79 @@ body, html {
 				</a>
 
 			</div>
+			<%
+				String acao = "listaAdocao";
+				String parametros = "acao=" + acao;
+
+				URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
+
+				HttpURLConnection con = (HttpURLConnection) url.openConnection();
+				con.setRequestMethod("POST");
+				con.setDoOutput(true);
+
+				System.out.println(parametros);
+
+				DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+				wr.writeBytes(parametros);
+
+				BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+				String linha = "";
+				JSONObject obj;
+			%>
 
 			<div id="dogF">
 
 				<h4 style="margin-top: 2%; margin-left: 0.5%;">Dogs para
 					Adoação</h4>
 
-				<div id="imgPet" class="row" style="margin-left: 0.5%;">
+				<%
+					System.out.println("Tô aqui antes do while");
 
+					int i = 0;
+					boolean fimWhile = false;
+
+					while ((linha = br.readLine()) != null) {
+						//System.out.println("Tô aqui " + linha);
+						obj = new JSONObject(linha);
+
+						System.out.println("img/" + obj.getString("imgAnimal"));
+
+						if (i == 0) {
+				%>
+
+				<div id="imgPet" class="row" style="margin-left: 0.5%;">
+					<%
+						}
+					%>
 					<div id="imgPet">
-						<img src="img/slide02.png" alt="slide02.png" class="img-thumbnail">
+						<img src="img/<%=obj.getString("imgAnimal") %>" alt="slide02.png" class="img-thumbnail">
 						<div id="dogName" style="margin-left: 20%;">
-							<strong style="margin-left: 3%">dogdog</strong>
+							<strong style="margin-left: 3%"><%=obj.getString("nome") %></strong>
 						</div>
 					</div>
+					<%
+						i++;
+							if (i == 5) {
+								fimWhile = false;
+					%>
+				</div>
+				<%
+					i = 0;
+						} else {
+							fimWhile = true;
+						}
 
-					<div id="imgPet" style="margin-left: 3%;">
+					}
+					System.out.println("Tô aqui dps do while");
+					if (fimWhile) {
+				%>
+			</div>
+			<%
+				}
+			%>
+
+			<!--	<div id="imgPet" style="margin-left: 3%;">
 						<img src="img/slide01.png" alt="slide01.png" class="img-thumbnail">
 						<div id="dogName" style="margin-left: 20%;">
 							<strong style="margin-left: 3%">dogdog</strong>
@@ -247,21 +314,21 @@ body, html {
 							<strong style="margin-left: 3%">dogdog</strong>
 						</div>
 					</div>
-				</div>
-
-			</div>
-
+				</div>-->
 
 		</div>
 
 
+	</div>
 
-		<div id="direita"></div>
+
+
+	<div id="direita"></div>
 
 	</div>
 
 	<div id="finalPg">
-	<img src="img/Rodape2.png" />
+		<img src="img/Rodape2.png" />
 	</div>
 
 

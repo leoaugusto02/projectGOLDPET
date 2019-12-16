@@ -106,7 +106,7 @@ body, html {
 </style>
 </head>
 <body>
-<!--  ATUALIZAR ADOÇÃO -->
+	<!--  ATUALIZAR ADOÇÃO -->
 	<div class="conteudo">
 
 		<div id="esquerda"></div>
@@ -133,11 +133,10 @@ body, html {
 							</button>
 							<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 								<div class="navbar-nav">
-									<a class="nav-item nav-link active" href="adocao.jsp">adoção<span
+									<a class="nav-item nav-link active" href="adocao.jsp">Adoção<span
 										class="sr-only">(current)</span></a> <a class="nav-item nav-link "
-										href="Resgate.jsp">resgate</a> <a
+										href="Resgate.jsp">Resgate</a> <a
 										class="nav-item nav-link active" href="DicasPets.jsp">Dicas</a>
-									<a class="nav-item nav-link " href="questionPage.jsp">Forun</a>
 									<a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
 									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
 								</div>
@@ -151,15 +150,21 @@ body, html {
 			</div>
 
 			<!--  INICIO BUTTON ADD -->
+			<%
+				if (request.getSession().getAttribute("cargo") != null) {
+			%>
 			<div id="buttonAdd"
-				style="margin-left: 86%; margin-bottom: 2%; width: 15%;">
+				style="margin-left: 80%; margin-bottom: 2%; width: 15%;">
 				<button type="button" class="btn btn-outline-success"
 					data-toggle="modal" data-target="#siteModal">
 					<img alt="add.png" src="img/add.png"
 						style="height: 20px; width: 20px; margin-left: -0.5;">
-					Adicinar Dog
+					Adicionar um novo animal para adoção
 				</button>
 			</div>
+			<%
+				}
+			%>
 			<!--  FIM BUTTON ADD -->
 
 			<!--  INICIO FORM MODAL -->
@@ -270,7 +275,6 @@ body, html {
 				</div>
 			</form>
 			<!--  FIM FORM MODAL -->
-
 			<%
 				String acao = "listaAdocao";
 				String codAnimal = request.getParameter("codAnimal");
@@ -299,14 +303,18 @@ body, html {
 						parametros = "acaoModal=" + acaoModal + "&nome=" + nome + "&idade=" + idade + "&raca=" + raca
 								+ "&porte=" + porte + "&especie=" + especie + "&genero=" + genero + "&imagem=" + imagem
 								+ "&status=" + status;
-
-						response.sendRedirect("adocao.jsp");
+						
+						response.sendRedirect("adocao.jsp?acao="+ acao);
 
 					}
+				} else if (request.getSession().getAttribute("codigoUsuario") != null) {
+					parametros = "acao=" + acao + "&acaoVerifica=" + acaoVerifica + "&codUser="
+							+ request.getSession().getAttribute("codigoUsuario");
+
 				} else {
-					parametros = "acao=" + acao + "&acaoVerifica=" + acaoVerifica + "&codUser=" + request.getSession().getAttribute("codigoUsuario");
+					parametros = "acao=" + acao;
 				}
-		
+
 				URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
 
 				HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -321,26 +329,24 @@ body, html {
 				BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
 				String linha = "";
+				
 				JSONObject obj;
-			
 			%>
 
 			<!-- FORM LISTA ANIMAL-->
 
 			<form action="#" method="post">
 				<%
-					System.out.println("Tô aqui antes do while");
+					System.out.println("Tô aqui antes do while");				
+						int i = 0;
+						boolean fimWhile = false;
 
-					int i = 0;
-					boolean fimWhile = false;
+						while ((linha = br.readLine()) != null) {
+							//System.out.println("Tô aqui " + linha);
+							obj = new JSONObject(linha);
+							System.out.println("img/" + obj.getString("imgAnimal"));
 
-					while ((linha = br.readLine()) != null) {
-						//System.out.println("Tô aqui " + linha);
-						obj = new JSONObject(linha);
-
-						System.out.println("img/" + obj.getString("imgAnimal"));
-
-						if (i == 0) {
+							if (i == 0) {
 				%>
 				<div class="d-flex justify-content-around">
 					<%
@@ -348,8 +354,8 @@ body, html {
 					%>
 					<a href="dataDoguinho.jsp?codAnimal=<%=obj.getInt("codAnimal")%>">
 						<div class="card bg-dark text-white" style="width: 23rem;">
-							<img src="img/<%=obj.getString("imgAnimal")%>" class="card-img"
-								href="#" style="height: 500px;">
+							<img src="imgAnimalAdocao/<%=obj.getString("imgAnimal")%>"
+								class="card-img" href="#" style="height: 500px;">
 							<div class="card-img-overlay">
 								<h5 class="card-title"><%=obj.getString("nome")%></h5>
 								<p class="card-text">
@@ -361,34 +367,31 @@ body, html {
 									<%=obj.getString("especie")%><br>
 
 								</p>
-								<p class="card-text">Last updated 3 mins ago</p>
 							</div>
 						</div> <br>
-					</a>
-			  	  	<input type="hidden" name="acaoVerifica" id="acaoVerifica" value="verificaSessao">
+					</a> <input type="hidden" name="acaoVerifica" id="acaoVerifica"
+						value="verificaSessao">
 					<%
 						i++;
-							if (i == 3) {
-								fimWhile = false;
+								if (i == 3) {
+									fimWhile = false;
 					%>
 				</div>
 				<%
 					i = 0;
-						} else {
-							fimWhile = true;
-						}
+							} else {
+								fimWhile = true;
+							}
 
-					}
-					System.out.println("Tô aqui dps do while");
-					if (fimWhile) {
+						}
+						System.out.println("Tô aqui dps do while");
+						if (fimWhile) {
 				%>
 			
 		</div>
 		<%
 			}
 		%>
-		</form>
-
 		<!--  FIM FORM LISTA -->
 	</div>
 

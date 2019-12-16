@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#93D6D6"
-    tools:context=""
+    tools:context="com.example.goldpet.InserirPetAdocao"
     android:fillViewport="true">
 
     <LinearLayout
@@ -16,7 +16,7 @@
         android:id="@+id/btnImagem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="escolher arquivo"
+        android:text="Tirar Foto"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="150dp"/>
 
@@ -29,7 +29,7 @@
             android:id="@+id/edtNome"
             android:layout_width="189dp"
             android:layout_height="wrap_content"
-            android:hint="Nome:" />
+            android:hint="Nome" />
 
         <EditText
             android:id="@+id/edtIdade"
@@ -37,13 +37,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="190dp"
             android:layout_marginTop="-45dp"
-            android:hint="Idade:" />
+            android:hint="Idade" />
 
         <EditText
-            android:id="@+id/edtGenero"
+            android:id="@+id/edtRaca"
             android:layout_width="189dp"
             android:layout_height="wrap_content"
-            android:hint="Raça:" />
+            android:hint="Raça" />
 
         <EditText
             android:id="@+id/edtPorte"
@@ -51,16 +51,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="190dp"
             android:layout_marginTop="-45dp"
-            android:hint="Porte: " />
+            android:hint="Porte" />
 
         <EditText
             android:id="@+id/edtEspecie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Especie:"
+            android:hint="Especie"
             />
 
         <RadioButton
+            android:id="@+id/rbFemenino"
             android:layout_width="96dp"
             android:layout_height="47dp"
             android:layout_marginLeft="90dp"
@@ -68,6 +69,7 @@
             android:textSize="17dp" />
 
         <RadioButton
+            android:id="@+id/rbMasculino"
             android:layout_width="96dp"
             android:layout_height="47dp"
             android:layout_marginTop="-45dp"
@@ -75,19 +77,22 @@
             android:text="Macho"
             android:textSize="17dp" />
 
-        <TextView
+        <EditText
+            android:id="@+id/edtEstadoPet"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:text="Estado do pet..."
+            android:hint="Estado do pet..."
             android:textSize="18dp" />
 
     <Button
+        android:id="@+id/btnPostar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="280dp"
         android:text="Postar" />
 
         <Button
+            android:id="@+id/btnFechar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-50dp"

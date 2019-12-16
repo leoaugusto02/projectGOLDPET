@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -25,10 +24,9 @@ import vo.Resgate;
 
 
 @MultipartConfig
+@WebServlet("/ProcessaResgate")
 
-
-@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaResgate" }, loadOnStartup = 1)
-
+//@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaResgate" }, loadOnStartup = 1)
 public class ProcessaResgate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -43,7 +41,6 @@ public class ProcessaResgate extends HttpServlet {
 		String ext = "";
 
 		int verifica = 0;
-
 
 		System.out.println("A - " + acao);
 		System.out.println("AM - " + acaoModal);
@@ -76,7 +73,7 @@ public class ProcessaResgate extends HttpServlet {
 				}
 			}
 		}else {
-			objMens.put("codeResgate", "aguardando requisição");
+			objMens.put("mensagem", "aguardando requisição");
 			out.print(objMens.toString());
 		}
 		
@@ -86,11 +83,10 @@ public class ProcessaResgate extends HttpServlet {
 				String descricao = req.getParameter("descricao");
 				String endereco = req.getParameter("endereco");
 				int nivel = Integer.valueOf(req.getParameter("nivel"));
-				String filePath = req.getParameter("uploaded_file");
+				String filePath = req.getParameter("filePath");
 				
 				try {
-
-					Part file = req.getPart("imagem");
+					Part file = req.getPart("img");
 					String fileName = file.getSubmittedFileName();
 					System.out.println("FN - " + fileName);
 
@@ -103,7 +99,13 @@ public class ProcessaResgate extends HttpServlet {
 					// OutputStream os = new
 					// FileOutputStream("D:\\Documentos\\Workspace\\Eclipse\\UpLoad\\WebContent\\images\\"
 					// + nome + ext);
-					OutputStream os = new FileOutputStream(filePath + "img//" + descricao.trim() + endereco.trim() + ext);
+					OutputStream os; 
+					
+					if(filePath != null) {
+						os = new FileOutputStream("C:\\GitHub Repositorys\\GitHub\\projectGOLDPET\\goldpetFrontEnd\\WebContent\\imgAnimalResgate\\" + descricao.trim() + endereco.trim() + ext);
+					}else {
+						os = new FileOutputStream(filePath + "imgAnimalResgate//" + descricao.trim() + endereco.trim() + ext);
+					}
 
 					int data = fileContent.read();
 
@@ -129,7 +131,7 @@ public class ProcessaResgate extends HttpServlet {
 				try {
 					if (rDao.inserirResgate(r)) {
 						System.out.println("Resgate inserido com sucesso");
-						resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/Resgate.jsp");
+						objMens.put("mensagem", "Resgate inserido com sucesso");
 					}else {
 						System.out.println("Algo deu errado");
 					}

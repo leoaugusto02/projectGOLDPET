@@ -249,8 +249,8 @@ a {
 								<td>19985624851</td>
 								<td>
 									<button type="button" class="btn btn-default btn-sm"
-										data-toggle="modal" data-target="#exampleModal">
-										<span class=""> <img src="img/edit.svg" width="25"
+										data-toggle="modal" data-target="#editar">
+										<span class=""><img src="img/edit.svg" width="25"
 											height="25">
 										</span>
 									</button>
@@ -263,7 +263,7 @@ a {
 									</button>
 								</td>
 							</tr>
-							<tr>
+							<!--  <tr>
 								<td>Marcelo</td>
 								<td>405245878-10</td>
 								<td>1526546315110</td>
@@ -273,7 +273,7 @@ a {
 								<td>19954821657</td>
 								<td>
 									<button type="button" class="btn btn-default btn-sm"
-										data-toggle="modal" data-target="#exampleModal">
+										data-toggle="modal" data-target="#editar">
 										<span class="#"> <img src="img/edit.svg" width="25"
 											height="25">
 										</span>
@@ -286,7 +286,7 @@ a {
 										</span>
 									</button>
 								</td>
-							</tr>
+							</tr>-->
 						</tbody>
 
 					</table>
@@ -300,7 +300,7 @@ a {
 
 
 		<!-- Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		<div class="modal fade" id="editar" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">

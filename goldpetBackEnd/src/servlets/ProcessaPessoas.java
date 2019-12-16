@@ -1,11 +1,17 @@
 package servlets;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -33,11 +39,12 @@ public class ProcessaPessoas extends HttpServlet {
 
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		String ext = "";
 		PrintWriter out = resp.getWriter();
 		Respostas r = new Respostas();
 		RespostasDAO rDao = new RespostasDAO();
 		PessoaDAO pDao = new PessoaDAO();
-		JSONObject objMens = new JSONObject();
+		JSONObject objMens = new JSONObject(); 
 
 		String acao = req.getParameter("acao");
 		String acaoConta = req.getParameter("acaoConta");
@@ -142,16 +149,42 @@ public class ProcessaPessoas extends HttpServlet {
 				tel2 = req.getParameter("tel2");
 				referencia = req.getParameter("referencia");
 				genero = req.getParameter("genero");
-
-				SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-MM");
-				Date dataNasc;
+				
+				String filePath = req.getParameter("pathFile");
 
 				try {
+
+					SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-MM");
+					Date dataNasc;
+			
 					dataNasc = format.parse(req.getParameter("nascimento"));
 					p.setNascimento(dataNasc);
 
-				} catch (Exception e) {
-					e.printStackTrace();
+					Part file = req.getPart("imagem");
+					String fileName = file.getSubmittedFileName();
+					System.out.println("FN - " + fileName);
+
+					int posInicial = fileName.lastIndexOf('.');
+					int posFinal = fileName.length();
+					ext = fileName.substring(posInicial, posFinal);
+
+					InputStream fileContent = file.getInputStream();
+					System.out.println("NOME - " + p_nome.trim() + ext);
+					
+					OutputStream os = new FileOutputStream(filePath + "img//" + p_nome.trim() + ext);
+					
+					int data = fileContent.read();
+
+					while (data != -1) {
+						os.write(data);
+						data = fileContent.read();
+					}
+
+					os.close();
+					fileContent.close();
+
+					}catch (Exception e) {
+					// TODO: handle exception
 				}
 
 				p.setApelido(apelido);
@@ -166,6 +199,8 @@ public class ProcessaPessoas extends HttpServlet {
 				p.setReferencia(referencia);
 				p.setGenero(genero);
 				p.setRg(rg);
+				
+				p.setImgPerfil(rg + p_nome.trim());
 
 				try {
 					if (pDao.verificarUsuario(p)) {
@@ -238,6 +273,7 @@ public class ProcessaPessoas extends HttpServlet {
 				String codigo = req.getParameter("codeUser");
 				try {
 					p = pDao.perfil(Integer.valueOf(codigo));
+					System.out.println("codigoUser= " + codigo);
 
 					objMens.put("apelido", p.getApelido());
 					objMens.put("nome", p.getP_nome() + " " + p.getS_nome());

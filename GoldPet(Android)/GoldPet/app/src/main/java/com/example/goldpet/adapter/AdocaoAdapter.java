@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.goldpet.PerfilAnimal;
 import com.example.goldpet.model.vo.Animais;
 import com.levirs.example.goldpet.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class AdocaoAdapter extends RecyclerView.Adapter<Adocao_ResgateViewHolder
         final Animais animais = lstAnimais.get(position);
 
         holder.infoAnimal.setText("Nome do pet: " + animais.getNome() + "\r\n" + "Status: " + animais.getStatus() + "\r\n" + "Raça: " + animais.getRaca() + "\r\n"+ "Espécie: " + animais.getEspecie());
-
+        Picasso.with(context).load("http://192.168.1.7:8080/goldpetFrontEnd/imgAnimalAdocao/" + animais.getImgAnimal()).into(holder.imgAnimal);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

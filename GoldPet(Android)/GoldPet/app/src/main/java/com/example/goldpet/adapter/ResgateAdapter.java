@@ -4,6 +4,7 @@ package com.example.goldpet.adapter;
 import android.content.Context;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.example.goldpet.PerfilAnimal;
 import com.example.goldpet.model.vo.Animais;
 import com.example.goldpet.model.vo.Resgate;
 import com.levirs.example.goldpet.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -39,8 +41,9 @@ public class ResgateAdapter extends RecyclerView.Adapter<Adocao_ResgateViewHolde
     public void onBindViewHolder(Adocao_ResgateViewHolder holder, int position) {
         final Resgate resgate = lstResgate.get(position);
 
-        holder.infoAnimal.setText("Nível : " + resgate.getNivelUrgencia() + "\r\n" + "Status: " + resgate.getStatus());
 
+        holder.infoAnimal.setText("Nível : " + resgate.getNivelUrgencia() + "\r\n" + "Status: " + resgate.getStatus());
+        Picasso.with(context).load("http://192.168.1.7:8080/goldpetFrontEnd/imgAnimalResgate/" + resgate.getDogeImagem()).into(holder.imgAnimal);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

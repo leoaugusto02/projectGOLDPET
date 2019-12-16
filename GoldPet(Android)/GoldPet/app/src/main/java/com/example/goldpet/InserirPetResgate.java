@@ -31,20 +31,21 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class InserirPetResgate extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     static final int CAMERA = 1;
-    static final int GALERIA = 2;
 
     EditText edtDescricao, edtEndereco;
     Spinner spnNiverUrgencia;
-    Button btnFoto, btnArquivo, btnClose, btnPostar;
+    Button btnFoto, btnClose, btnPostar;
     ImageView ivImagem;
     Handler handler;
-    byte[] byteArray;
+    Bitmap imageBitmap;
     ArrayAdapter<String> adtNivelUrgencia;
     LinearLayout layout;
+
 
     int nivel;
 
@@ -75,7 +76,6 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
         edtDescricao = findViewById(R.id.edtDescricao);
         edtEndereco = findViewById(R.id.edtEndereco);
         btnFoto = findViewById(R.id.btnFoto);
-        btnArquivo = findViewById(R.id.btnArquivo);
         btnClose = findViewById(R.id.btnClose);
         btnPostar = findViewById(R.id.btnPostar);
         ivImagem = findViewById(R.id.ivImagem);
@@ -88,7 +88,6 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
 
         spnNiverUrgencia.setOnItemSelectedListener(this);
         btnFoto.setOnClickListener(this);
-        btnArquivo.setOnClickListener(this);
         btnClose.setOnClickListener(this);
         btnPostar.setOnClickListener(this);
 
@@ -100,9 +99,6 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
             case R.id.btnFoto:
                 TirarFotoIntent();
             break;
-            case R.id.btnArquivo:
-                AcessarGaleria();
-             break;
 
             case R.id.btnPostar:
                 postar();
@@ -114,16 +110,9 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
         }
     }
 
-
-
     private void TirarFotoIntent() {
         Intent tirarFoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(tirarFoto, CAMERA);
-    }
-
-    private void AcessarGaleria() {
-        Intent acessarGaleria = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(Intent.createChooser(acessarGaleria, "Selecione uma imagem"), GALERIA);
     }
 
     @Override
@@ -131,35 +120,9 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA && resultCode == RESULT_OK)  {
             Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            imageBitmap = (Bitmap) extras.get("data");
 
             ivImagem.setImageBitmap(imageBitmap);
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            imageBitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
-            byte[] bitmapdata = bos.toByteArray();
-
-            String nomeImg = "teste.png";
-            String seuDiretorio = Environment.getExternalStorageState() + File.separator + "GoldPet";
-
-            /*ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-
-            byteArray = stream.toByteArray();*/
-
-            try {
-                File imgToSdcard = new File(seuDiretorio + File.separator + nomeImg);
-                FileOutputStream outputStream = new FileOutputStream(imgToSdcard, false);
-                outputStream.write(bitmapdata , 0, bitmapdata.length);
-                outputStream.flush();
-                outputStream.close();
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-
-        }else if(requestCode == GALERIA && resultCode == RESULT_OK){
-            Uri img = data.getData();
-            ivImagem.setImageURI(img);
-
         }
     }
 
@@ -167,11 +130,12 @@ public class InserirPetResgate extends AppCompatActivity implements View.OnClick
         new Thread(){
             @Override
             public void run() {
-                if(ConsumirWebService.inserirResgate(edtDescricao.getText().toString(), edtEndereco.getText().toString(), nivel, byteArray)){
+                if(ConsumirWebService.inserirResgate(edtDescricao.getText().toString(), edtEndereco.getText().toString(), nivel, imageBitmap) != null){
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
                             Toast.makeText(InserirPetResgate.this, "Espere o resgate", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                     });
                 }else{

@@ -85,9 +85,7 @@ body, html {
 	width: 298px;
 	height: 318px;
 	margin-left: 0.5%;
-	
 }
-
 </style>
 
 <meta charset="ISO-8859-1">
@@ -114,22 +112,40 @@ body, html {
 			String dataDiagnostico = request.getParameter("dataDiagnostico");
 			String breveDiagnostico = request.getParameter("breveDiagnostico");
 			String diagnosticoCompleto = request.getParameter("diagnosticoCompleto");
+			String horarioMarcado = request.getParameter("horarioMarcado");
+			String diaMarcado = request.getParameter("diaMarcado");
+			String pNome = request.getParameter("pNome");
+			String sNome = request.getParameter("sNome");
+			String cpf = request.getParameter("cpf");
+			String rg = request.getParameter("rg");
+			String telefone = request.getParameter("telefone");
 
 			if (/*codAnimale != null) ||*/ (dataDiagnostico != null) || (breveDiagnostico != null)
-					|| (diagnosticoCompleto != null)) {
+					|| (diagnosticoCompleto != null) || (horarioMarcado == null) || (diaMarcado == null)) {
 				System.out.println("codAnimal= " + codAnimal);
 				parametros = "codAnimal=" + codAnimal + "&dataDiagnostico=" + dataDiagnostico + "&breveDiagnostico="
 						+ breveDiagnostico + "&diagnosticoCompleto=" + diagnosticoCompleto + "&acaoModal="
 						+ acaoModal;
 
 				System.out.println(parametros);
-			}
+			} else if ((horarioMarcado != null) || (diaMarcado != null) || (pNome != null || (sNome != null))
+					|| (request.getSession().getAttribute("codigoUsuario") != null) || (cpf != null)
+					|| (telefone != null)) {
 
-		} else {
+				parametros = "acao=" + acao +"&codAnimal=" + codAnimal + "&pNome=" + pNome + "&sNome=" + sNome + "&rg=" + rg
+						+ "&cpf=" + cpf + "&telefone=" + telefone + "&horarioMarcado=" + horarioMarcado
+						+ "&diaMarcado=" + diaMarcado + "&codUser="
+						+ request.getSession().getAttribute("codigoUsuario") + "&acaoModal=" + acaoModal;
+			}
+			response.sendRedirect("dataDoguinho.jsp?acao=" + acao +"&codAnimal="+ codAnimal);
+
+		} else if (request.getSession().getAttribute("codigoUsuario") != null) {
 
 			parametros = "acao=" + acao + "&codUser=" + request.getSession().getAttribute("codigoUsuario")
 					+ "&codAnimal=" + codAnimal + "&acaoVerifica=" + acaoVerifica;
 
+		} else {
+			parametros = "acao=" + acao + "&codAnimal=" + codAnimal;
 		}
 
 		System.out.println("PARAMETROS - " + parametros);
@@ -152,7 +168,10 @@ body, html {
 		while ((linha = br.readLine()) != null)
 			apnd += linha;
 
+		System.out.println("Linha " + apnd);
+
 		JSONObject obj = new JSONObject(apnd);
+	
 	%>
 	<div id="esquerda"></div>
 	<div id="meio">
@@ -168,7 +187,7 @@ body, html {
 
 					<div class="w-100">
 						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
-							<a class="navbar-brand" href="#">Home</a>
+							<a class="navbar-brand" href="index.jsp">Home</a>
 							<button class="navbar-toggler" type="button"
 								data-toggle="collapse" data-target="#navbarNavAltMarkup"
 								aria-controls="navbarNavAltMa	rkup" aria-expanded="false"
@@ -197,10 +216,12 @@ body, html {
 				<!-- User profile -->
 				<div class="container">
 					<div style="text-align: center">
-						<h2>Doguinho</h2>
-						<div  id="imgPet" class="circulo square">
-							<img src="img/<%=obj.getString("imgAnimal")%>" style="margin-left:-0.2%; margin-bottom:0.4%; class="card-img"
-								href="#"/>
+						<h2><%=obj.getString("nome")%></h2>
+						<div id="imgPet" class="circulo square">
+							<img src="imgAnimalAdocao/<%=obj.getString("imgAnimal")%>"
+								style="margin-left: -0.2%; margin-bottom: 0.4%;"
+								card-img"
+								href="#" />
 							<!-- style="height: 500px;"-->
 						</div>
 					</div>
@@ -312,7 +333,8 @@ body, html {
 					</div>
 				</div>
 				<%
-					if (request.getSession().getAttribute("cargo").equals("Veterinario")) {
+					if (request.getSession().getAttribute("cargo") != null
+								&& request.getSession().getAttribute("cargo").equals("Veterinario")) {
 				%>
 				<button type="button" class="btn btn-outline-success"
 					data-toggle="modal" data-target="#laudoModal">Atualizar
@@ -324,7 +346,8 @@ body, html {
 					} else if (obj.getString("mensagem").equals("semLaudo")) {
 						//System.out.println("OBJ 2 - " + request.getSession().getAttribute("cargo"));
 
-						if (request.getSession().getAttribute("cargo").equals("Veterinario")) {
+						if ((request.getSession().getAttribute("cargo") != null)
+								&& (request.getSession().getAttribute("cargo").equals("Veterinario"))) {
 							//if (obj.getString("mensagemFunc").equals("veterinario")) {
 				%>
 				<br>
@@ -344,147 +367,103 @@ body, html {
 				<br>
 				<div id="buttonAdd">
 					<button type="button" class="btn btn-outline-success"
-						data-toggle="modal" data-target="#siteModal">Agendar
-						visita</button>
+						data-toggle="modal" data-target="#siteModal">Adotar</button>
 				</div>
 
 				<div class="modal" id="siteModal" tabindex="-1" role="dialog"
 					aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
-
-							<div class="modal-header" style="background-color: #139F97;">
-								<h5 class="modal-title">Adotar</h5>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span>x</span>
-								</button>
-							</div>
-
-							<div class="modal-body">
-								<div>
-									<div class="custom-control custom-radio">
-										<input type="radio" id="customRadio1" name="customRadio"
-											class="custom-control-input"> <label
-											class="custom-control-label" for="customRadio1 style="margin-bottom: 1%;"">Buscar
-											na Ong</label>
-									</div>
-									<div class="custom-control custom-radio">
-										<input type="radio" id="customRadio2" name="customRadio"
-											class="custom-control-input"> <label
-											class="custom-control-label" for="customRadio2"
-											style="margin-bottom: 3%;">Levar até na casa</label>
-									</div>
+							<form method="post">
+								<div class="modal-header" style="background-color: #139F97;">
+									<h5 class="modal-title">Para adotar é necessário agendar
+										uma visita na nossa ONG</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span>x</span>
+									</button>
 								</div>
 
-								<div id="levarNaCasa">
-									<input class="form-control" type="text" placeholder="CEP"
-										id="cep" style="margin-bottom: 3%;" />
 
-									<script>
-										$(document)
-												.ready(
-														function() {
-															$("#cep")
-																	.keyup(
-																			function() {
-																				var cep = $(
-																						"#cep")
-																						.val();
-																				if (cep.length == 8) {
+								<div class="modal-body">
+									<div>
 
-																					$
-																							.get(
-																									"https://viacep.com.br/ws/"
-																											+ cep
-																											+ "/json/",
-																									function(
-																											data,
-																											status) {
-																										console
-																												.log(data);
-																										$(
-																												"#cidade")
-																												.val(
-																														data.localidade);
-																										$(
-																												"#nomeRua")
-																												.val(
-																														data.logradouro);
-																										$(
-																												"#bairro")
-																												.val(
-																														data.bairro);
-																									});
-																				}
-																			});
-														});
-									</script>
-
-									<input class="form-control" type="text" placeholder="Cidade"
-										id="cidade" style="margin-bottom: 3%;" /> <input
-										class="form-control" type="text" placeholder="Rua"
-										id="nomeRua" style="margin-bottom: 3%;" /> <input
-										class="form-control" type="number" placeholder="N° casa"
-										style="margin-bottom: 3%;" /> <input class="form-control"
-										type="text" placeholder="Bairro" id="bairro"
-										style="margin-bottom: 3%;" />
-
-								</div>
-
-								<div id="buscarNaYong">
-									<div class="form-group">
-										<label class="col-md-5 control-label" for="hora">Horario</label>
-										<div class="col-md-5">
-											<select id="hora" name="time" class="form-control">
-												<option value="Não informado">Não informado</option>
-												<option value="Manha">9:00 AM</option>
-												<option value="Manha">9:30 AM</option>
-												<option value="Manha">10:00 AM</option>
-												<option value="Manha">10:30 AM</option>
-												<option value="Manha">11:00 AM</option>
-												<option value="Manha">11:30 AM</option>
-												<option value="Tarde">12:00 PM</option>
-												<option value="Tarde">12:30 PM</option>
-												<option value="Tarde">13:00 PM</option>
-											</select>
+										<label><h6>Confirme seus dados:</h6></label> <input
+											class="form-control" type="text" id="pNome" name="pNome"
+											style="margin-bottom: 3%;"
+											value="<%=obj.getString("pNome")%>" required="required" /> <input
+											class="form-control" type="text" id="sNome" name="sNome"
+											style="margin-bottom: 3%;"
+											value="<%=obj.getString("sNome")%>" required="required" /> <input
+											class="form-control" type="text" id="cpf" name="cpf"
+											style="margin-bottom: 3%;" value="<%=obj.getString("cpf")%>"
+											required="required" /> <input class="form-control"
+											type="text" name="rg" style="margin-bottom: 3%;" name="rg"
+											value="<%=obj.getString("rg")%>" required="required" /> <input
+											class="form-control" type="text" style="margin-bottom: 3%;"
+											name="telefone" value="<%=obj.getString("telefone")%>"
+											required="required" /> <label><h6>Agende um dia
+												e horário:</h6></label>
+										<div class="form-group">
+											<label class="col-md-5 control-label" for="hora">Horario:</label>
+											<div class="col-md-5">
+												<select id="hora" name="horarioMarcado" class="form-control">
+													<option value="Não informado">Não informado</option>
+													<option value="9:00">9:00</option>
+													<option value="9:30">9:30</option>
+													<option value="10:00">10:00</option>
+													<option value="10:30">10:30</option>
+													<option value="11:00">11:00</option>
+													<option value="11:30">11:30</option>
+													<option value="12:00">12:00</option>
+													<option value="12:30">12:30</option>
+													<option value="13:00">13:00</option>
+													<option value="13:30">13:30</option>
+													<option value="14:00">14:00</option>
+													<option value="14:30">14:30</option>
+													<option value="15:00">15:00</option>
+													<option value="15:30">15:30</option>
+													<option value="16:00">16:00</option>
+													<option value="16:30">16:30</option>
+													<option value="17:00">17:00</option>
+												</select>
+											</div>
 										</div>
-									</div>
 
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="dia">Dia</label>
-										<div class="col-md-4">
-											<select id="hora" name="time" class="form-control">
-												<option value="Não informado">Não informado</option>
-												<option value="Segunda">Segunda</option>
-												<option value="Terca">Terça</option>
-												<option value="Quarta">Quarta</option>
-												<option value="Quinta">Quinta</option>
-												<option value="Sexta">Sexta</option>
-											</select>
+										<div class="form-group">
+											<label class="col-md-5 control-label" for="dia">Dia:</label>
+											<div>
+												<input type="date" class="form-group col-md-6"
+													name="diaMarcado" style="margin-left: 3%;">
+											</div>
 										</div>
+
+
+										<input type="hidden" name="codUser"
+											value="<%=request.getSession().getAttribute("codigoUsuario")%>" />
+										<input type="hidden" name="codAnimal" value="<%=codAnimal%>" />
 									</div>
 								</div>
 
-							</div>
-
-							<div class="modal-footer">
-								<button type="button" class="btn btn-outline-danger"
-									data-dismiss="modal">
-									<img alt="close.png" src="img/close.png"
-										style="height: 20px; width: 20px; margin-left: -0.5;" />
-									Fechar
-								</button>
-								<button type="button" class="btn btn-outline-success">
-									<img alt="postar.png" src="img/postar.png"
-										style="height: 20px; width: 20px; margin-left: -0.5;" />
-									Confirmar
-								</button>
-							</div>
+								<div class="modal-footer">
+									<input type="submit" value="Confirmar"
+										class="btn btn-outline-success" /> <input type="hidden"
+										name="acaoModal" id="acaoModal" value="atualizarEagendar" />
+									<!--  <img alt="postar.png" src="img/postar.png"
+										style="height: 20px; width: 20px; margin-left: -0.5;" />-->
+									<button type="button" class="btn btn-outline-danger"
+										data-dismiss="modal">
+										<img alt="close.png" src="img/close.png"
+											style="height: 20px; width: 20px; margin-left: -0.5;" />
+										Fechar
+									</button>
+								</div>
+							</form>
 						</div>
 					</div>
-
 				</div>
+
+
 				<%
 					} else {
 				%>
@@ -499,7 +478,6 @@ body, html {
 			</div>
 		</div>
 	</div>
-
 	<div id="direita"></div>
 
 	<script src="js/bootstrap.min.js"></script>
@@ -507,6 +485,10 @@ body, html {
 	<script>
 		function inserirLaudo() {
 			$("#acaoModal").val("inserirLaudo");
+		}
+
+		function atualizarEagendar() {
+			$("#acaoModal").val("atualizarEagendar");
 		}
 	</script>
 
@@ -578,6 +560,5 @@ body, html {
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
