@@ -83,6 +83,7 @@ public class ProcessaResgate extends HttpServlet {
 				String descricao = req.getParameter("descricao");
 				String endereco = req.getParameter("endereco");
 				int nivel = Integer.valueOf(req.getParameter("nivel"));
+				String filePath = req.getParameter("filePath");
 				
 				try {
 					Part file = req.getPart("img");
@@ -98,7 +99,13 @@ public class ProcessaResgate extends HttpServlet {
 					// OutputStream os = new
 					// FileOutputStream("D:\\Documentos\\Workspace\\Eclipse\\UpLoad\\WebContent\\images\\"
 					// + nome + ext);
-					OutputStream os = new FileOutputStream("C:\\GitHub Repositorys\\GitHub\\projectGOLDPET\\goldpetFrontEnd\\WebContent\\imgAnimalResgate\\" + descricao.trim() + endereco.trim() + ext);
+					OutputStream os; 
+					
+					if(filePath != null) {
+						os = new FileOutputStream("C:\\GitHub Repositorys\\GitHub\\projectGOLDPET\\goldpetFrontEnd\\WebContent\\imgAnimalResgate\\" + descricao.trim() + endereco.trim() + ext);
+					}else {
+						os = new FileOutputStream(filePath + "imgAnimalResgate//" + descricao.trim() + endereco.trim() + ext);
+					}
 
 					int data = fileContent.read();
 
