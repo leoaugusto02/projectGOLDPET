@@ -132,12 +132,13 @@ body, html {
 					|| (request.getSession().getAttribute("codigoUsuario") != null) || (cpf != null)
 					|| (telefone != null)) {
 
-				parametros = "codAnimal=" + codAnimal + "&pNome=" + pNome + "&sNome=" + sNome + "&rg=" + rg
+				parametros = "acao=" + acao +"&codAnimal=" + codAnimal + "&pNome=" + pNome + "&sNome=" + sNome + "&rg=" + rg
 						+ "&cpf=" + cpf + "&telefone=" + telefone + "&horarioMarcado=" + horarioMarcado
 						+ "&diaMarcado=" + diaMarcado + "&codUser="
 						+ request.getSession().getAttribute("codigoUsuario") + "&acaoModal=" + acaoModal;
 			}
-			
+			response.sendRedirect("dataDoguinho.jsp?acao=" + acao +"&codAnimal="+ codAnimal);
+
 		
 		} else if (request.getSession().getAttribute("codigoUsuario") != null) {
 
@@ -164,7 +165,6 @@ body, html {
 		BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
 		String apnd = "", linha = "";
-		
 
 		while ((linha = br.readLine()) != null)
 			apnd += linha;
@@ -172,10 +172,6 @@ body, html {
 		System.out.println("Linha " + apnd);
 
 		JSONObject obj = new JSONObject(apnd);
-		
-		if(obj.getString("mensagemAgenda").equals("sucesso")){
-			response.sendRedirect("http://localhost:8080/goldpetFrontEnd/dataDoguinho.jsp?codAnimal"+ codAnimal);
-		}
 	
 	%>
 	<div id="esquerda"></div>
