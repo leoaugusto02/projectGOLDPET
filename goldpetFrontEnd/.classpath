@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path=""/>
+	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="/goldpetBackEnd/WebContent/WEB-INF/lib/cos-multipart.jar"/>
+	<classpathentry kind="lib" path="/projectGOLDPET/goldpetBackEnd/WebContent/WEB-INF/lib/cos-multipart.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
