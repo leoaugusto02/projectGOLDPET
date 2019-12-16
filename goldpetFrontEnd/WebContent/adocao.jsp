@@ -154,7 +154,7 @@ body, html {
 				if (request.getSession().getAttribute("cargo") != null) {
 			%>
 			<div id="buttonAdd"
-				style="margin-left: 86%; margin-bottom: 2%; width: 15%;">
+				style="margin-left: 80%; margin-bottom: 2%; width: 15%;">
 				<button type="button" class="btn btn-outline-success"
 					data-toggle="modal" data-target="#siteModal">
 					<img alt="add.png" src="img/add.png"
@@ -326,28 +326,24 @@ body, html {
 				DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 				wr.writeBytes(parametros);
 
-				JSONObject obj = new JSONObject();
-				
-				
 				BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
 				String linha = "";
+				
+				JSONObject obj = new JSONObject();
 			%>
 
 			<!-- FORM LISTA ANIMAL-->
 
 			<form action="#" method="post">
 				<%
-					System.out.println("Tô aqui antes do while");
-				
-					if (!obj.isEmpty()) {
+					System.out.println("Tô aqui antes do while");				
 						int i = 0;
 						boolean fimWhile = false;
 
 						while ((linha = br.readLine()) != null) {
 							//System.out.println("Tô aqui " + linha);
 							obj = new JSONObject(linha);
-
 							System.out.println("img/" + obj.getString("imgAnimal"));
 
 							if (i == 0) {
@@ -371,7 +367,6 @@ body, html {
 									<%=obj.getString("especie")%><br>
 
 								</p>
-								<p class="card-text">Last updated 3 mins ago</p>
 							</div>
 						</div> <br>
 					</a> <input type="hidden" name="acaoVerifica" id="acaoVerifica"
@@ -395,7 +390,6 @@ body, html {
 			
 		</div>
 		<%
-			}
 			}
 		%>
 		<!--  FIM FORM LISTA -->

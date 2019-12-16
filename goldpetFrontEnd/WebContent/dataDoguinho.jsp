@@ -222,7 +222,7 @@ body, html {
 					<div style="text-align: center">
 						<h2><%=obj.getString("nome")%></h2>
 						<div id="imgPet" class="circulo square">
-							<img src="img/<%=obj.getString("imgAnimal")%>"
+							<img src="imgAnimalAdocao/<%=obj.getString("imgAnimal")%>"
 								style="margin-left: -0.2%; margin-bottom: 0.4%;"
 								card-img"
 								href="#" />
