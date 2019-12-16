@@ -54,81 +54,38 @@ public class ProcessaPessoas extends HttpServlet {
 		System.out.println("chegou aqui no servlet");
 
 		if (acao != null) {
-			if (acao.equals("listarPerguntas")) {
-				/*
-				 * try { System.out.println("listar");
-				 * 
-				 * if (pDao.listarPerguntaUser() != null) { List<Pessoa> lstPergUser =
-				 * pDao.listarPerguntaUser(); for (Pessoa p : lstPergUser) { objMens.put("Nome",
-				 * p.getNome()); objMens.put("codePerguntas", p.getPerguntas().getCodPerg());
-				 * objMens.put("pergunta", p.getPerguntas().getPergunta()); objMens.put("tema",
-				 * p.getPerguntas().getTema());
-				 * 
-				 * out.print(objMens.toString() + "\n"); } } else { objMens.put("mensagem",
-				 * "2"); out.print(objMens.toString()); }
-				 * 
-				 * } catch (SQLException e) { e.printStackTrace(); objMens.put("mensagem",
-				 * "Erro sql = " + e); out.print(objMens.toString()); }
-				 * 
-				 * } else if (acao.equals("perguntas-respostas")) {
-				 * 
-				 * System.out.println("perguntar");
-				 * 
-				 * int codePerg = Integer.valueOf(req.getParameter("codigoPergunta"));
-				 * 
-				 * try { if (pDao.perguntaUser(codePerg) != null) { Pessoa p = new Pessoa();
-				 * 
-				 * p = pDao.perguntaUser(codePerg);
-				 * 
-				 * objMens.put("codeUser", p.getCodeUser()); objMens.put("Nome", p.getNome());
-				 * objMens.put("Pergunta",p.getPerguntas().getPergunta());
-				 * objMens.put("Descricao",p.getPerguntas().getDescricao());
-				 * objMens.put("Tema",p.getPerguntas().getTema());
-				 * out.print(objMens.toString()); //out.println(objMens.toString());
-				 * System.out.println(objMens.toString() + "\n"); }else {
-				 * objMens.put("mensagem", "2"); out.print(objMens.toString()); }
-				 * 
-				 * 
-				 * if(pDao.listarRespostas(codePerg) != null) { List<Pessoa> lstRespUser =
-				 * pDao.listarRespostas(codePerg);
-				 * 
-				 * for(Pessoa p: lstRespUser) { objMens.put("NomeResp", p.getNome());
-				 * objMens.put("Resposta", p.getRespostas().getResposta());
-				 * out.print(objMens.toString() + "\n"); System.out.println(objMens.toString() +
-				 * "\n"); } }else { objMens.put("mensagem", "2"); out.print(objMens.toString());
-				 * } } catch (SQLException e) { e.printStackTrace(); objMens.put("mensagem",
-				 * "Erro sql = " + e); out.print(objMens.toString()); }
-				 * 
-				 * }else if(acao.equals("postar")) {
-				 * 
-				 * 
-				 * String titulo = req.getParameter("titulo"); String temas =
-				 * req.getParameter("temas"); String descricao = req.getParameter("descricao");
-				 * String codePerson = req.getParameter("codePerson");
-				 * 
-				 * Perguntas perg = new Perguntas(); Pessoa p = new Pessoa();
-				 * 
-				 * /*HttpSession session = (HttpSession) req.getSession(); Pessoa codUser =
-				 * (Pessoa) session.getAttribute("codigoPessoa");
-				 * 
-				 * p.setCodePerson(Integer.valueOf(codePerson)); perg.setPessoa(p);
-				 * perg.setPergunta(titulo); perg.setTema(temas); perg.setDescricao(descricao);
-				 * 
-				 * 
-				 * System.out.println("quase funcionou"); try { if(pDao.realizarPergunta(perg))
-				 * { objMens.put("mensagem", "0"); out.print(objMens.toString());
-				 * System.out.println("certo");
-				 * 
-				 * }else if(pDao.realizarPergunta(perg) == false){ objMens.put("mensagem", "1");
-				 * out.print(objMens.toString()); System.out.println("errado");
-				 * 
-				 * }else{ System.out.println("outro erro"); }
-				 * 
-				 * } catch (SQLException e) { e.printStackTrace(); objMens.put("mensagem",
-				 * "erro sql = " + e); out.print(objMens.toString()); }
-				 * 
-				 * }
-				 */
+			if (acao.equals("listarPessoas")) {
+		
+				try {
+					if(pDao.listarPessoasDashBoard() != null) {
+						
+						List<Pessoa> list = pDao.listarPessoasDashBoard();
+						
+						for(Pessoa p : list) {
+							
+							objMens.put("codPerson", p.getCodePerson());
+							objMens.put("pNome", p.getP_nome());
+							objMens.put("sNome", p.getS_nome());
+							objMens.put("tipo",p.getTipo());
+							objMens.put("email",p.getEmail());
+							objMens.put("rg", p.getRg());
+							objMens.put("cpf", p.getCpf());
+							objMens.put("cep", p.getCep());
+							objMens.put("tel1", p.getTel1());
+							objMens.put("tel2", p.getTel2());
+
+							out.print(objMens.toString() + "\n");
+						}
+					} else {
+						objMens.put("mensagem", "semPessoas");
+						out.print(objMens.toString());
+					}
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	
 
 			} else if (acao.equals("cadastrar")) {
 				Pessoa p = new Pessoa();

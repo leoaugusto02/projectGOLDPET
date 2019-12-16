@@ -233,7 +233,7 @@ body, html {
 				<div class="container">
 					<div class="card  mb-8">
 
-						<h4 class="card-header">Informações Doge</h4>
+						<h4 class="card-header">Informações Animal:</h4>
 
 						<div class="panel-body" border="3px">
 							<table class="table profile__table">

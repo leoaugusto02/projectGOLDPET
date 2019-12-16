@@ -166,15 +166,15 @@ body, html {
 					<div class="container">
 						<div style="text-align: center">
 							<h2>GUARDIÃO</h2>
-							<div style="padding-top: 50px;">
+							<!--  <div style="padding-top: 50px;">
 								<img src="img/male-icon.png"
 									style="width: 300px; height: 300px;" />
-							</div>
+							</div>-->
 							<div style="margin: -50px 0px 0px 280px">
 								<img src="img/escudo.png" style="width: 85px; height: 60px;" />
 							</div>
 							<br>
-							<h4>NICKNAME</h4>
+							<h4><%=obj.getString("apelido")%></h4>
 						</div>
 
 					</div>
