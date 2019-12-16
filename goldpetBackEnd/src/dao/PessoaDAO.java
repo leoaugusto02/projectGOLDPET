@@ -77,7 +77,7 @@ public class PessoaDAO {
 
 		sql = "INSERT INTO Pessoa VALUES(NULL, ?, ?, ?, ?,'" + acao + "', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-		if (acao.equals("Guardiao")) {
+		if (acao.equals("Guardião")) {
 			sqlCondicao = "INSERT INTO Guardiao VALUES(null, "
 					+ "(SELECT codePerson FROM Pessoa ORDER BY codePerson DESC LIMIT 1), 0,'Iniciante',0,'ativo')";
 		} else {

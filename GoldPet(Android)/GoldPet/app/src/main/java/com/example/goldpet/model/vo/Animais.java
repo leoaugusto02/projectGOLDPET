@@ -14,6 +14,8 @@ public class Animais {
     private Pessoa pessoa;
     private Agenda agenda;
 
+
+
     public Animais() {
         super();
     }
@@ -33,6 +35,7 @@ public class Animais {
         this.imgAnimal = imgAnimal;
         this.pessoa = pessoa;
         this.agenda = agenda;
+
     }
 
     public String getNome() {
