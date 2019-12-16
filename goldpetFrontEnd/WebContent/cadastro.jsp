@@ -50,7 +50,7 @@
 
 		<h4>Digite seus dados nos campos abaixo</h4>
 
-		<form action="http://localhost:8080/goldpetBackEnd/ProcessaAnimais"
+		<form action="http://localhost:8080/goldpetBackEnd/ProcessaPessoas"
 			method="POST" enctype="multipart/form-data">
 
 
