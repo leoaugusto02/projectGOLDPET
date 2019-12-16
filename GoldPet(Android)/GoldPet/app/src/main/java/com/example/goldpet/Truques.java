@@ -11,21 +11,21 @@ import com.levirs.example.goldpet.R;
 
 public class Truques extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnVoltar;
+    Button btVoltar9;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.truques);
 
-        btnVoltar = findViewById(R.id.btVoltar);
-        btnVoltar.setOnClickListener(this);
+        btVoltar9 = findViewById(R.id.btVoltar9);
+        btVoltar9.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btnVoltar:
+            case R.id.btVoltar9:
                 Intent it = new Intent(getApplicationContext(), Dicas.class);
                 startActivity(it);
                 break;

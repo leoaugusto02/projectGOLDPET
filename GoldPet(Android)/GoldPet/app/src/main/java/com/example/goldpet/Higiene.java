@@ -11,21 +11,21 @@ import com.levirs.example.goldpet.R;
 
 public class Higiene extends AppCompatActivity implements View.OnClickListener {
 
-    Button btVoltar;
+    Button btVoltar4;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.higiene);
 
-        btVoltar = findViewById(R.id.btVoltar);
-        btVoltar.setOnClickListener(this);
+        btVoltar4 = findViewById(R.id.btVoltar4);
+        btVoltar4.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btVoltar:
+            case R.id.btVoltar4:
                 Intent it = new Intent(getApplicationContext(), Dicas.class);
                 startActivity(it);
                 break;
