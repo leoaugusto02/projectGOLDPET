@@ -104,6 +104,8 @@ public class InserirPetAdocao extends AppCompatActivity implements View.OnClickL
                         @Override
                         public void run() {
                             Toast.makeText(InserirPetAdocao.this, "Animal Adotado", Toast.LENGTH_SHORT).show();
+                            Intent it = new Intent(InserirPetAdocao.this, InserirPetAdocao.class);
+                            startActivity(it);
                             finish();
                         }
                     });

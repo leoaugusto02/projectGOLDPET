@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.goldpet.PerfilAnimal;
-import com.example.goldpet.model.FormatarString;
 import com.example.goldpet.model.vo.Animais;
 import com.levirs.example.goldpet.R;
 import com.squareup.picasso.Picasso;
@@ -41,10 +40,7 @@ public class AdocaoAdapter extends RecyclerView.Adapter<Adocao_ResgateViewHolder
     public void onBindViewHolder(Adocao_ResgateViewHolder holder, int position) {
         final Animais animais = lstAnimais.get(position);
 
-        FormatarString fs = new FormatarString();
-
-        holder.infoAnimal.setText("Nome do pet: " + fs.UTF8toISO(animais.getNome()) + "\r\n" + "Status: " + fs.UTF8toISO(animais.getStatus()) + "\r\n" + "Raça: "
-                + fs.UTF8toISO(animais.getRaca()) + "\r\n"+ "Espécie: " + fs.UTF8toISO(animais.getEspecie()));
+        holder.infoAnimal.setText("Nome do pet: " + animais.getNome() + "\r\n" + "Status: " + animais.getStatus() + "\r\n" + "Raça: " + animais.getRaca() + "\r\n"+ "Espécie: " + animais.getEspecie());
         Picasso.with(context).load("http://192.168.1.7:8080/goldpetFrontEnd/imgAnimalAdocao/" + animais.getImgAnimal()).into(holder.imgAnimal);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

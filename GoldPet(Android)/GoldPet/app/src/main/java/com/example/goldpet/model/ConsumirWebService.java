@@ -143,7 +143,7 @@ public class ConsumirWebService{
             wr.writeBytes(parametros);
 
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
+            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream(), "ISO-8859-1"));
 
             String linha = "";
             JSONObject obj = new JSONObject();
@@ -176,7 +176,7 @@ public class ConsumirWebService{
             DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
             wr.writeBytes(parametros);
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
+            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream(), "ISO-8859-1"));
 
             String apnd = "", linha = "";
 
@@ -209,7 +209,7 @@ public class ConsumirWebService{
             DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
             wr.writeBytes(parametros);
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
+            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream(), "ISO-8859-1"));
 
             String apnd = "", linha = "";
 
@@ -249,7 +249,7 @@ public class ConsumirWebService{
             DataOutputStream wr = new DataOutputStream(conexaoWeb.getOutputStream());
             wr.writeBytes(parametros);
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream()));
+            BufferedReader br = new BufferedReader(new InputStreamReader(conexaoWeb.getInputStream(), "ISO-8859-1"));
 
             String linha;
             JSONObject obj;

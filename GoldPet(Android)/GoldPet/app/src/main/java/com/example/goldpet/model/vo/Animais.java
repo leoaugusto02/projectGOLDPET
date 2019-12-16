@@ -1,7 +1,5 @@
 package com.example.goldpet.model.vo;
 
-import com.example.goldpet.model.FormatarString;
-
 public class Animais {
     private String nome;
     private Integer codAnimal;
