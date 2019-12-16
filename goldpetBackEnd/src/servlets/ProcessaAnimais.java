@@ -205,7 +205,7 @@ public class ProcessaAnimais extends HttpServlet {
 
 						p = pDao.verificaTipo(usuSessao);
 
-						if (p.getTipo().equals("Guardião")) {
+						if (p.getTipo().equals("Guardiao")) {
 							objMens.put("mensagem", "guardiao");
 							out.print(objMens.toString());
 							System.out.println(objMens.toString());

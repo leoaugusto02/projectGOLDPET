@@ -161,11 +161,10 @@ body, html {
 							</button>
 							<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 								<div class="navbar-nav">
-									<a class="nav-item nav-link active" href="adocao.jsp">adoção<span
+									<a class="nav-item nav-link active" href="adocao.jsp">Adoção<span
 										class="sr-only">(current)</span></a> <a class="nav-item nav-link "
-										href="Resgate.jsp">resgate</a> <a
+										href="Resgate.jsp">Resgate</a> <a
 										class="nav-item nav-link active" href="DicasPets.jsp">Dicas</a>
-									<a class="nav-item nav-link " href="questionPage.jsp">Forun</a>
 									<a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
 									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
 								</div>
@@ -182,7 +181,7 @@ body, html {
 					data-toggle="modal" data-target="#siteModal">
 					<img alt="add.png" src="img/add.png"
 						style="height: 20px; width: 20px; margin-left: -0.5;">
-					Adicinar Dog
+					Novo Resgate
 				</button>
 			</div>
 
@@ -192,7 +191,7 @@ body, html {
 					<div class="modal-content">
 
 						<div class="modal-header" style="background-color: #139F97;">
-							<h5 class="modal-title">Adicionar Pet</h5>
+							<h5 class="modal-title">Novo Resgate</h5>
 							<button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
 								<span>x</span>
@@ -258,7 +257,7 @@ body, html {
 							<button type="button" class="btn btn-outline-danger"
 								data-dismiss="modal">
 								<img alt="close.png" src="img/close.png"
-									style="height: 20px; width: 20px; margin-left: -0.5;" /> Close
+									style="height: 20px; width: 20px; margin-left: -0.5;" /> Fechar
 							</button>
 							<button type="button" class="btn btn-outline-success">
 								<img alt="postar.png" src="img/postar.png"
@@ -295,7 +294,7 @@ body, html {
 					%>
 
 					<div class="card" style="width: 23rem;">
-						<img src="img/<%=obj.getString("dogeImagem")%>" class="card-img"
+						<img src="imgAnimalResgate/<%=obj.getString("dogeImagem")%>" class="card-img"
 							href="#" style="height: 500px;">
 						<div class="card-body">
 							<h5 class="card-title">

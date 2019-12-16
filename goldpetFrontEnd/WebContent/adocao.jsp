@@ -330,7 +330,7 @@ body, html {
 
 				String linha = "";
 				
-				JSONObject obj = new JSONObject();
+				JSONObject obj;
 			%>
 
 			<!-- FORM LISTA ANIMAL-->

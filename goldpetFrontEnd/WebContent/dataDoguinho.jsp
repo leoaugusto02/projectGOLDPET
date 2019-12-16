@@ -139,7 +139,6 @@ body, html {
 			}
 			response.sendRedirect("dataDoguinho.jsp?acao=" + acao +"&codAnimal="+ codAnimal);
 
-		
 		} else if (request.getSession().getAttribute("codigoUsuario") != null) {
 
 			parametros = "acao=" + acao + "&codUser=" + request.getSession().getAttribute("codigoUsuario")

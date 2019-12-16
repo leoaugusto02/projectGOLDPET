@@ -92,6 +92,7 @@ CREATE TABLE Agenda(
 	codeAgenda integer primary key auto_increment,
 	codeAnimal integer not null,
 	codePerson integer not null,
+	confirmar varchar(18),
 	horario_marcado VARCHAR(30) not null,
 	dia_marcado VARCHAR(30) not null,
 	constraint fkCodePersonAgenda foreign key (codePerson) references Pessoa (codePerson),
