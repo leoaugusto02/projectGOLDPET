@@ -69,12 +69,19 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
                 break;
 
             case R.id.btnVoltar:
-                Intent ite = new Intent(getApplicationContext(), Dicas.class);
+                Intent ite = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(ite);
                 break;
-
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.adocao, menu);
+        return true;
+    }
+
 
         private void listarAnimaisAdocao () {
             new Thread() {

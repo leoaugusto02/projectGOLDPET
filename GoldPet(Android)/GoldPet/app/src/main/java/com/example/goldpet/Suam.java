@@ -25,7 +25,7 @@ public class Suam extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btnVoltar:
+            case R.id.btVoltar:
                 Intent it = new Intent(getApplicationContext(), Dicas.class);
                 startActivity(it);
                 break;

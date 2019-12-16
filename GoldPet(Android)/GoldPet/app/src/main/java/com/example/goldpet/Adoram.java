@@ -7,7 +7,6 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.levirs.example.goldpet.MainActivity;
 import com.levirs.example.goldpet.R;
 
 public class Adoram extends AppCompatActivity implements View.OnClickListener {
