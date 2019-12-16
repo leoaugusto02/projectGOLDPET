@@ -9,23 +9,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.levirs.example.goldpet.R;
 
-public class Adoram extends AppCompatActivity implements View.OnClickListener {
+public class Dormir extends AppCompatActivity implements View.OnClickListener {
 
-    Button btVoltar1;
+    Button btVoltar3;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.adorambeijar);
+        setContentView(R.layout.higiene);
 
-        btVoltar1 = findViewById(R.id.btVoltar1);
-        btVoltar1.setOnClickListener(this);
+        btVoltar3 = findViewById(R.id.btVoltar3);
+        btVoltar3.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btVoltar1:
+            case R.id.btVoltar3:
                 Intent it = new Intent(getApplicationContext(), Dicas.class);
                 startActivity(it);
                 break;

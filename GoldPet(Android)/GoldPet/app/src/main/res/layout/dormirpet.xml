@@ -46,7 +46,7 @@ Veja bem, mal não faz, mas é preciso cautela e cuidados com o pet para evitar 
 
 
         <Button
-            android:id="@+id/btVoltar"
+            android:id="@+id/btVoltar3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClick"

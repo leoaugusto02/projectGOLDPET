@@ -111,7 +111,7 @@ p.round {
 					<img src="img/LogoPet.png" style="width: 220px; height: 220px;" />
 				</div>
 
-				<div class="navC d-flex w-100 justfy-content-center">
+			<div class="navC d-flex w-100 justfy-content-center">
 
 					<div class="w-100">
 						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
@@ -124,18 +124,20 @@ p.round {
 							</button>
 							<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 								<div class="navbar-nav">
-									<a class="nav-item nav-link active" href="adocao.jsp">adoção<span
-										class="sr-only">(current)</span></a> <a class="nav-item nav-link "
-										href="Resgate.jsp">resgate</a> <a
+									<a class="nav-item nav-link active" href="adocao.jsp">Adoção<span
+										class="sr-only">(current)</span></a> 
+										<a class="nav-item nav-link " href="Resgate.jsp">Resgate</a> <a
 										class="nav-item nav-link active" href="DicasPets.jsp">Dicas</a>
-									<a class="nav-item nav-link " href="questionPage.jsp">Forun</a>
 									<a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
+									<a class="nav-item nav-link active" href="Login.jsp">Login</a>
+									<a class="nav-item nav-link active" href="perfil.jsp">Perfil</a>
 									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
 								</div>
 							</div>
 						</nav>
 					</div>
 				</div>
+			</div>
 			</div>
 			<div class="clearfix">
 				<img class="img1" src="img/suam.jpg" alt="Suam" width="800px"
