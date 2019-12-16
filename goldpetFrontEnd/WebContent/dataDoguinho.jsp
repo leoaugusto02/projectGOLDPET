@@ -164,6 +164,7 @@ body, html {
 		BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
 		String apnd = "", linha = "";
+		
 
 		while ((linha = br.readLine()) != null)
 			apnd += linha;
@@ -171,11 +172,11 @@ body, html {
 		System.out.println("Linha " + apnd);
 
 		JSONObject obj = new JSONObject(apnd);
-		//JSONObject obj = new JSONObject();
 		
-		//if(!acaoModal.equals("atualizarEagendar")){
-			//obj = new JSONObject(apnd);
-		//}
+		if(obj.getString("mensagemAgenda").equals("sucesso")){
+			response.sendRedirect("http://localhost:8080/goldpetFrontEnd/dataDoguinho.jsp?codAnimal"+ codAnimal);
+		}
+	
 	%>
 	<div id="esquerda"></div>
 	<div id="meio">
@@ -191,7 +192,7 @@ body, html {
 
 					<div class="w-100">
 						<nav class="navbar navbar-expand-lg navbar-light minhaNav">
-							<a class="navbar-brand" href="#">Home</a>
+							<a class="navbar-brand" href="index.jsp">Home</a>
 							<button class="navbar-toggler" type="button"
 								data-toggle="collapse" data-target="#navbarNavAltMarkup"
 								aria-controls="navbarNavAltMa	rkup" aria-expanded="false"

@@ -46,9 +46,9 @@ import vo.Pessoa;
 
 @MultipartConfig
 
-//@WebServlet("/ProcessaAnimais")
+@WebServlet("/ProcessaAnimais")
 
-@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaAnimais" }, loadOnStartup = 1)
+//@WebServlet(name = "FileUploadServlet", urlPatterns = { "/ProcessaAnimais" }, loadOnStartup = 1)
 public class ProcessaAnimais extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -260,6 +260,7 @@ public class ProcessaAnimais extends HttpServlet {
 				if(filePath == null) {
 					os = new FileOutputStream("C:\\GitHub Repositorys\\GitHub\\projectGOLDPET\\goldpetFrontEnd\\WebContent\\imgAnimalAdocao\\" + nome.trim() + ext);
 				}else {
+	//				os = new FileOutputStream(filePath + "img//" + nome.trim() + ext);
 					os = new FileOutputStream(filePath + "imgAnimalAdocao//" + nome.trim() + ext);
 				}
 
@@ -292,6 +293,7 @@ public class ProcessaAnimais extends HttpServlet {
 				if (aDao.inserirAnimal(a)) {
 					System.out.println("Animal inserido com sucesso");
 					objMens.put("mensagem", "Adocão foi um sucesso");
+					resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/adocao.jsp");
 				}
 
 			} catch (SQLException e) {
@@ -331,9 +333,9 @@ public class ProcessaAnimais extends HttpServlet {
 
 				InputStream fileContent = file.getInputStream();
 				
-				DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss"); 
 				Date date = new Date(); 
-				String atualSistema = dateFormat.format(date); 
+				String atualSistema = String.valueOf(dateFormat.format(date)); 
 				System.out.println("data atual " + atualSistema);
 
 				OutputStream os = new FileOutputStream(filePath + "img//" + codigoAnimal + atualSistema.trim() + ext);
@@ -406,8 +408,13 @@ public class ProcessaAnimais extends HttpServlet {
 				ext = fileName.substring(posInicial, posFinal);
 
 				InputStream fileContent = file.getInputStream();
+				
+				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss"); 
+				Date date = new Date(); 
+				String atualSistema = String.valueOf(dateFormat.format(date)); 
+				System.out.println("data atual " + atualSistema);
 
-				OutputStream os = new FileOutputStream(filePath + "img//" + codigoAnimal + "-11122019" + ext); // localDate.now()
+				OutputStream os = new FileOutputStream(filePath + "img//" + codigoAnimal + atualSistema.trim() + ext);
 
 				int data = fileContent.read();
 
@@ -429,7 +436,7 @@ public class ProcessaAnimais extends HttpServlet {
 				a.setCodAnimal(Integer.valueOf(codigoAnimal));
 				l.setDataDiagnostico(dataa);
 				l.setDiagnostico(breveDiagnostico);
-				l.setImagem(codigoAnimal + "-11122019" + ext);
+				l.setImagem(codigoAnimal + atualSistema + ext);
 				a.setLaudo(l);
 
 				if (aDao.AtualizarLaudo(Integer.valueOf(codigoAnimal), a)) {
@@ -483,11 +490,12 @@ public class ProcessaAnimais extends HttpServlet {
 
 					if (pDao.AtualizarDadosAgenda(p, codPerson)) {
 						System.out.println("Agenda inserida com sucesso");
-						resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/dataDoguinho.jsp?codAnimal=" + codAnimal);
+						objMens.put("mensagemAgenda", "sucesso");
+						out.print(objMens.toString());
+						//resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/dataDoguinho.jsp?codAnimal=" + codAnimal);
 					}
 				}
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
