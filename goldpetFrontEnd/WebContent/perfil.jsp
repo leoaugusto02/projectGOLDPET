@@ -144,11 +144,10 @@ body, html {
 										</button>
 										<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 											<div class="navbar-nav">
-												<a class="nav-item nav-link active" href="adocao.jsp">adoção<span
+												<a class="nav-item nav-link active" href="adocao.jsp">Adoção<span
 													class="sr-only">(current)</span></a> <a
-													class="nav-item nav-link " href="Resgate.jsp">resgate</a> <a
+													class="nav-item nav-link " href="Resgate.jsp">Resgate</a> <a
 													class="nav-item nav-link active" href="DicasPets.jsp">Dicas</a>
-												<a class="nav-item nav-link " href="questionPage.jsp">Forun</a>
 												<a class="nav-item nav-link active"
 													href="GerenciarUsuario.jsp">Dashboard</a> <a
 													class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
@@ -226,7 +225,7 @@ body, html {
 											<th><strong>Rank:</strong></th>
 											<td><%=obj.getString("rank")%></td>
 										</tr>
-										<tr>
+										<%-- <tr>
 											<th><strong>Animais Resgatados:</strong></th>
 											<td><%=obj.getInt("aniResgatados")%></td>
 										</tr>
@@ -234,7 +233,7 @@ body, html {
 											<th><strong>Progresso:</strong><label></label></th>
 											<td><%=obj.getInt("progresso")%></td>
 											<td></td>
-										</tr>
+										</tr> --%>
 										<%
 											}
 										%>

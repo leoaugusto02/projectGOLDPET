@@ -158,7 +158,6 @@ public class ProcessaAnimais extends HttpServlet {
 							objMens.put("imgAnimal", a.getImgAnimal());
 
 							out.print(objMens.toString() + "\n");
-
 						}
 					} else {
 						objMens.put("mensagem", "Falta animais");
@@ -206,7 +205,7 @@ public class ProcessaAnimais extends HttpServlet {
 
 						p = pDao.verificaTipo(usuSessao);
 
-						if (p.getTipo().equals("Guardiao")) {
+						if (p.getTipo().equals("Guardião")) {
 							objMens.put("mensagem", "guardiao");
 							out.print(objMens.toString());
 							System.out.println(objMens.toString());
