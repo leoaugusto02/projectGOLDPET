@@ -99,7 +99,7 @@ public class InserirPetAdocao extends AppCompatActivity implements View.OnClickL
                     genero = "M";
                 }
                 if(ConsumirWebService.inserirAdocao(edtNome.getText().toString(), Integer.valueOf(edtIdade.getText().toString()),
-                        edtRaca.getText().toString(), edtEspecie.getText().toString(), genero, edtEstadoPet.getText().toString(), imageBitmap) != null){
+                        edtRaca.getText().toString(), edtPorte.getText().toString(), edtEspecie.getText().toString(), genero, edtEstadoPet.getText().toString(), imageBitmap) != null){
                     handler.post(new Runnable() {
                         @Override
                         public void run() {

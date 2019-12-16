@@ -121,6 +121,7 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
                 animais.setStatus(jsonAnimal.getString("status"));
                 animais.setRaca(jsonAnimal.getString("raca"));
                 animais.setEspecie(jsonAnimal.getString("especie"));
+                animais.setImgAnimal(jsonAnimal.getString("imgAnimal"));
                 animaisList.add(animais);
             }
 

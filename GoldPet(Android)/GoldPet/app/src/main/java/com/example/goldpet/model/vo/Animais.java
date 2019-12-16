@@ -1,5 +1,7 @@
 package com.example.goldpet.model.vo;
 
+import com.example.goldpet.model.FormatarString;
+
 public class Animais {
     private String nome;
     private Integer codAnimal;
@@ -13,6 +15,8 @@ public class Animais {
     private String imgAnimal;
     private Pessoa pessoa;
     private Agenda agenda;
+
+
 
     public Animais() {
         super();
@@ -33,6 +37,7 @@ public class Animais {
         this.imgAnimal = imgAnimal;
         this.pessoa = pessoa;
         this.agenda = agenda;
+
     }
 
     public String getNome() {

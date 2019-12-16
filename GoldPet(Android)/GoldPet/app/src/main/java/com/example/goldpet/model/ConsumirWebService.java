@@ -291,7 +291,7 @@ public class ConsumirWebService{
 
     }
 
-    public static String inserirAdocao(String nome, Integer idade, String raca, String especie, String genero, String status, Bitmap image){
+    public static String inserirAdocao(String nome, Integer idade, String raca, String porte, String especie, String genero, String status, Bitmap image){
         String urlWebService = "http://192.168.1.7:8080/goldpetBackEnd/ProcessaAnimais";
         String acaoModal = "inserirPet";
 
@@ -300,6 +300,7 @@ public class ConsumirWebService{
             cnua.addFormField("acaoModal", acaoModal);
             cnua.addFormField("nome", nome);
             cnua.addFormField("idade", String.valueOf(idade));
+            cnua.addFormField("porte", porte);
             cnua.addFormField("raca",raca);
             cnua.addFormField("especie",especie);
             cnua.addFormField("genero",genero);
