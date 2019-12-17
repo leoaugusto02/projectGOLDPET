@@ -121,7 +121,7 @@
 					placeholder="Celular">
 			</div>
 			<div class="form-group">
-				<input type="text" class="form-group col-md-6" name="tel2"
+				<input type="text" class="form-group col-md-6" name="tel2" 
 					placeholder="Telefone" required autofocus autocomplete="on"
 					required="required">
 			</div>
