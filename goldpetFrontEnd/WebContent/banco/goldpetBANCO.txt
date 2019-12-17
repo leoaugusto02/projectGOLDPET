@@ -16,8 +16,8 @@ CREATE TABLE Pessoa(
 	cep varchar(10),
 	referencia varchar(150),
 	imgPerfil varchar(40),
-	telefone1 varchar(11) not null,
-	telefone2 varchar(11)
+	telefone1 varchar(20) not null,
+	telefone2 varchar(20)
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE Guardiao(
