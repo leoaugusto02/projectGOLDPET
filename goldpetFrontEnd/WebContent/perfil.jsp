@@ -221,10 +221,10 @@ body, html {
 											<th><strong>Endereço:</strong></th>
 											<td><%=obj.getString("endereco")%></td>
 										</tr>
-										<tr>
+									<%-- 	<tr>
 											<th><strong>Rank:</strong></th>
 											<td><%=obj.getString("rank")%></td>
-										</tr>
+										</tr> --%>
 										<%-- <tr>
 											<th><strong>Animais Resgatados:</strong></th>
 											<td><%=obj.getInt("aniResgatados")%></td>
@@ -245,10 +245,10 @@ body, html {
 
 					</div>
 				</div>
-				<div id="botao" style="margin-top: 5%; margin-left: 28%">
+			<!-- 	<div id="botao" style="margin-top: 5%; margin-left: 28%">
 					<button type="button" class="btn btn-outline-success"
 						data-toggle="modal" data-target="#siteModal">Alterar
-						Informações</button>
+						Informações</button> -->
 			</form>
 		</div>
 
