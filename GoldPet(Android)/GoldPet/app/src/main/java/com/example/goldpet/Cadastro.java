@@ -125,7 +125,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
                             Intent it = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(it);
                         }else{
-                            Toast.makeText(Cadastro.this, "Algo", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Cadastro.this, "Cadastro Falhou", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
