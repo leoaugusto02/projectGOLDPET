@@ -51,6 +51,7 @@ public class PerfilAnimal extends AppCompatActivity implements View.OnClickListe
 
         btnLaudo.setOnClickListener(this);
 
+        btnLaudo.setVisibility(View.GONE);
         perfilAnimal();
     }
 
