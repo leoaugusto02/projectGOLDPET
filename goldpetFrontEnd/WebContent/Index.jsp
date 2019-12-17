@@ -159,10 +159,8 @@ body, html {
 					</div>
 				</div>
 			</div>
-
-			</div>
-
-
+			
+			
 			<div id="carouselSite" class="carousel slide" data-ride="carousel">
 
 				<ol class="carousel-indicators">
@@ -171,7 +169,7 @@ body, html {
 					<li data-target="#carouselSite" data-slide-to="2"></li>
 				</ol>
 				<div class="carousel-inner">
-						<%
+						<% 
 							String acao;
 							String parametros;
 							URL url;
@@ -308,6 +306,12 @@ body, html {
 			<%
 				}
 			%>
+			
+
+			</div>
+
+
+			
 			<!--	<div id="imgPet" style="margin-left: 3%;">
 						<img src="img/slide01.png" alt="slide01.png" class="img-thumbnail">
 						<div id="dogName" style="margin-left: 20%;">
@@ -352,13 +356,13 @@ body, html {
 				</div>-->
 
 		</div>
-
+		<div id="direita"></div>
 
 	</div>
 
 
 
-	<div id="direita"></div>
+	
 
 	</div>
 
