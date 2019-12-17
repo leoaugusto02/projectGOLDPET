@@ -174,103 +174,7 @@ body, html {
 					</div>
 				</div>
 			</div>
-
-			</div>
-
-		<!--  	<div id="buttonAdd"
-				style="margin-left: 86%; margin-bottom: 2%; width: 15%;">
-				<button type="button" class="btn btn-outline-success"
-					data-toggle="modal" data-target="#siteModal">
-					<img alt="add.png" src="img/add.png"
-						style="height: 20px; width: 20px; margin-left: -0.5;">
-					Novo Resgate
-				</button>
-			</div>-->
-
-			<div class="modal" id="siteModal" tabindex="-1" role="dialog"
-				aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-
-						<div class="modal-header" style="background-color: #139F97;">
-							<h5 class="modal-title">Novo Resgate</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span>x</span>
-							</button>
-						</div>
-
-						<div class="modal-body">
-							<div>
-
-								<input class="form-control" type="text" placeholder="Endereço"
-									style="margin-bottom: 3%;" />
-
-								<div class="input-group mb-3">
-									<select class="custom-select" id="inputGroupSelect01">
-										<option selected>Selecione o nível de urgência...</option>
-										<option value="1">Não urgente</option>
-										<option value="2">Pouco machucado</option>
-										<option value="3">Machucado</option>
-										<option value="3">Perigo</option>
-										<option value="3">Muito Urgente</option>
-									</select>
-								</div>
-
-
-
-								<div id="textArea">
-									<textarea class="form-control" id="textarea"
-										placeholder="Descrição do Pet" rows="3"
-										style="margin-top: 2px; margin-bottom: 0px; height: 80px; width: 470px;"></textarea>
-								</div>
-
-								<div>
-
-									<input type="file" id="upload" name="imagem"
-										style="float: right; margin-top: 6%;"> <img id="img"
-										style="width: 300px; margin-left: 17%;" />
-									<script>
-										$(function() {
-											$('#upload')
-													.change(
-															function() {
-																console
-																		.log($(this));
-																const file = ($(this)[0].files[0])
-																const fileReader = new FileReader()
-																fileReader.onloadend = function() {
-																	$('#img')
-																			.attr(
-																					'src',
-																					fileReader.result)
-																}
-																fileReader
-																		.readAsDataURL(file)
-															})
-										})
-									</script>
-
-								</div>
-							</div>
-						</div>
-
-						<div class="modal-footer">
-							<button type="button" class="btn btn-outline-danger"
-								data-dismiss="modal">
-								<img alt="close.png" src="img/close.png"
-									style="height: 20px; width: 20px; margin-left: -0.5;" /> Fechar
-							</button>
-							<button type="button" class="btn btn-outline-success">
-								<img alt="postar.png" src="img/postar.png"
-									style="height: 20px; width: 20px; margin-left: -0.5;" />
-								Postar
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<form method="post" action="#">
+<form method="post" action="#">
 				<%
 					//System.out.println("OBJ - " + obj.toString());
 					//if(obj.getString("mensagem").equals("temAnimais")){
@@ -281,6 +185,7 @@ body, html {
 					boolean fimWhile = false;
 
 					while ((linha = br.readLine()) != null) {
+						
 
 						//System.out.println("Tô aqui " + linha);
 						obj = new JSONObject(linha);
@@ -386,8 +291,7 @@ body, html {
 					System.out.println("Tô aqui dps do while");
 					if (fimWhile) {
 				%>
-			
-		</div>
+			</form>
 		<%
 			}
 			//}else{
@@ -396,7 +300,102 @@ body, html {
 		<%
 			//}
 		%>
-		</form>
+			</div>
+
+		<!--  	<div id="buttonAdd"
+				style="margin-left: 86%; margin-bottom: 2%; width: 15%;">
+				<button type="button" class="btn btn-outline-success"
+					data-toggle="modal" data-target="#siteModal">
+					<img alt="add.png" src="img/add.png"
+						style="height: 20px; width: 20px; margin-left: -0.5;">
+					Novo Resgate
+				</button>
+			</div>-->
+
+			<div class="modal" id="siteModal" tabindex="-1" role="dialog"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+
+						<div class="modal-header" style="background-color: #139F97;">
+							<h5 class="modal-title">Novo Resgate</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span>x</span>
+							</button>
+						</div>
+
+						<div class="modal-body">
+							<div>
+
+								<input class="form-control" type="text" placeholder="Endereço"
+									style="margin-bottom: 3%;" />
+
+								<div class="input-group mb-3">
+									<select class="custom-select" id="inputGroupSelect01">
+										<option selected>Selecione o nível de urgência...</option>
+										<option value="1">Não urgente</option>
+										<option value="2">Pouco machucado</option>
+										<option value="3">Machucado</option>
+										<option value="3">Perigo</option>
+										<option value="3">Muito Urgente</option>
+									</select>
+								</div>
+
+
+
+								<div id="textArea">
+									<textarea class="form-control" id="textarea"
+										placeholder="Descrição do Pet" rows="3"
+										style="margin-top: 2px; margin-bottom: 0px; height: 80px; width: 470px;"></textarea>
+								</div>
+
+								<div>
+
+									<input type="file" id="upload" name="imagem"
+										style="float: right; margin-top: 6%;"> <img id="img"
+										style="width: 300px; margin-left: 17%;" />
+									<script>
+										$(function() {
+											$('#upload')
+													.change(
+															function() {
+																console
+																		.log($(this));
+																const file = ($(this)[0].files[0])
+																const fileReader = new FileReader()
+																fileReader.onloadend = function() {
+																	$('#img')
+																			.attr(
+																					'src',
+																					fileReader.result)
+																}
+																fileReader
+																		.readAsDataURL(file)
+															})
+										})
+									</script>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-danger"
+								data-dismiss="modal">
+								<img alt="close.png" src="img/close.png"
+									style="height: 20px; width: 20px; margin-left: -0.5;" /> Fechar
+							</button>
+							<button type="button" class="btn btn-outline-success">
+								<img alt="postar.png" src="img/postar.png"
+									style="height: 20px; width: 20px; margin-left: -0.5;" />
+								Postar
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 
 	</div>
 
