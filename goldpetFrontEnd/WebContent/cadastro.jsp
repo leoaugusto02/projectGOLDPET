@@ -49,88 +49,93 @@
 		</div>
 
 		<h4>Digite seus dados nos campos abaixo</h4>
-	<div>
-		<form method="post" action="#" >
+		<div>
+			<form method="post" action="#">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-group col-md-6" name="apelido"
+				placeholder="Apelido" required autofocus autocomplete="on"
+				required="required">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-group col-md-6" name="pNome"
+				placeholder="Primeiro Nome" required autofocus autocomplete="on"
+				required="required">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-group col-md-6" name="sNome"
+				placeholder="Sobrenome" required autofocus autocomplete="on"
+				required="required">
+		</div>
+		<div class="form-group">
+			<input type="date" class="form-group col-md-6" name="nascimento"
+				required autofocus autocomplete="on" required="required">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-group col-md-6" name="cep"
+				placeholder="CEP" maxlength="10"
+				onkeydown="javascript: fMasc( this, mCEP );" required autofocus
+				autocomplete="on" required="required">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-group col-md-6" name="referencia"
+				placeholder="Referência" required autofocus autocomplete="on"
+				required="required">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-group col-md-6" name="cpf"
+				placeholder="CPF" maxlength="14"
+				onkeydown="javascript: fMasc( this, mCPF );" required autofocus
+				autocomplete="on" required="required">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-group col-md-6" name="rg"
+				placeholder="RG" maxlength="12"
+				onkeydown="javascript: fMasc( this, mRG );" required autofocus
+				autocomplete="on" required="required">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-group col-md-6" name="tel1" id="tel1"
+				maxlength="14" onkeydown="javascript: fMasc( this, mTel );"
+				placeholder="Celular">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-group col-md-6" name="tel2"
+				placeholder="Telefone" maxlength="14"
+				onkeydown="javascript: fMasc( this, mTel );" required autofocus
+				autocomplete="on" required="required">
+		</div>
+		<div class="form-group">
+			<input type="email" class="form-group col-md-6" name="email"
+				placeholder="Ex. exemplo@example.com" required autofocus autocomplete="on"
+				required="required">
+		</div>
+		<div class="form-group">
+			<input type="password" class="form-group col-md-6" name="senha"
+				placeholder="Senha" required autofocus autocomplete="on"
+				required="required">
+		</div>
+		<div class="form-group">
+			<input type="password" class="form-group col-md-6" name="confSenha"
+				placeholder="Confirmar Senha" required autofocus autocomplete="on"
+				required="required">
+		</div>
+		<div class="form-group">
+			<div class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="genero"
+					id="RadioM" value="M"> <label class="form-check-label"
+					for="RadioM">Masculino</label>
 			</div>
-			<div class="form-group">
-				<input type="text" class="form-group col-md-6" name="apelido"
-					placeholder="Apelido" required autofocus autocomplete="on"
-					required="required">
-			</div>
-			<div class="form-group">
-				<input type="text" class="form-group col-md-6" name="pNome"
-					placeholder="Primeiro Nome" required autofocus autocomplete="on"
-					required="required">
-			</div>
-			<div class="form-group">
-				<input type="text" class="form-group col-md-6" name="sNome"
-					placeholder="Sobrenome" required autofocus autocomplete="on"
-					required="required">
-			</div>
-			<div class="form-group">
-				<input type="date" class="form-group col-md-6" name="nascimento"
-					required autofocus autocomplete="on" required="required">
-			</div>
-			<div class="form-group">
-				<input type="text" class="form-group col-md-6" name="cep"
-					placeholder="CEP" required autofocus autocomplete="on"
-					required="required">
-			</div>
-			<div class="form-group">
-				<input type="text" class="form-group col-md-6" name="referencia"
-					placeholder="Referência" required autofocus autocomplete="on"
-					required="required">
-			</div>
-			<div class="form-group">
-				<input type="text" class="form-group col-md-6" name="cpf"
-					placeholder="CPF" required autofocus autocomplete="on"
-					required="required">
-			</div>
-			<div class="form-group">
-				<input type="text" class="form-group col-md-6" name="rg"
-					placeholder="RG" required autofocus autocomplete="on"
-					required="required">
-			</div>
-			<div class="form-group">
-				<input type="text" class="form-group col-md-6" name="tel1"
-					placeholder="Celular">
-			</div>
-			<div class="form-group">
-				<input type="text" class="form-group col-md-6" name="tel2" 
-					placeholder="Telefone" required autofocus autocomplete="on"
-					required="required">
-			</div>
-			<div class="form-group">
-				<input type="email" class="form-group col-md-6" name="email"
-					placeholder="Email" required autofocus autocomplete="on"
-					required="required">
-			</div>
-			<div class="form-group">
-				<input type="password" class="form-group col-md-6" name="senha"
-					placeholder="Senha" required autofocus autocomplete="on"
-					required="required">
-			</div>
-			<div class="form-group">
-				<input type="password" class="form-group col-md-6" name="confSenha"
-					placeholder="Confirmar Senha" required autofocus autocomplete="on"
-					required="required">
-			</div>
-			<div class="form-group">
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="genero"
-						id="RadioM" value="M"> <label class="form-check-label"
-						for="RadioM">Masculino</label>
-				</div>
 
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="genero"
-						id="RadioF" value="F"> <label class="form-check-label"
-						for="RadioF">Feminino</label>
-				</div>
+			<div class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="genero"
+					id="RadioF" value="F"> <label class="form-check-label"
+					for="RadioF">Feminino</label>
 			</div>
-			<input type="submit" class="btn btn-primary" value="Cadastrar">
-			<input type="hidden" name="acao" id="acao" value="cadastrar" />
-			</form>
+		</div>
+		<input type="submit" class="btn btn-primary" value="Cadastrar">
+		<input type="hidden" name="acao" id="acao" value="cadastrar" />
+		</form>
 	</div>
 
 	<%
@@ -215,6 +220,10 @@
 	<%
 		}
 	%>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script>
@@ -222,5 +231,118 @@
 			$("#acao").val("cadastrar");
 		}
 	</script>
+	<script type="text/javascript">
+	function fMasc(objeto, mascara) {
+		obj = objeto
+		masc = mascara
+		setTimeout("fMascEx()", 1)
+	}
+
+	function fMascEx() {
+		obj.value = masc(obj.value)
+	}
+
+	function mTel(tel) {
+		tel = tel.replace(/\D/g, "")
+		tel = tel.replace(/^(\d)/, "($1")
+		tel = tel.replace(/(.{3})(\d)/, "$1)$2")
+		if (tel.length == 9) {
+			tel = tel.replace(/(.{1})$/, "-$1")
+		} else if (tel.length == 10) {
+			tel = tel.replace(/(.{2})$/, "-$1")
+		} else if (tel.length == 11) {
+			tel = tel.replace(/(.{3})$/, "-$1")
+		} else if (tel.length == 12) {
+			tel = tel.replace(/(.{4})$/, "-$1")
+		} else if (tel.length > 12) {
+			tel = tel.replace(/(.{4})$/, "-$1")
+		}
+		return tel;
+	}
+
+	function mCPF(cpf) {
+		cpf = cpf.replace(/\D/g, "")
+		cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+		cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+		cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+
+		return cpf
+	}
+
+	function mRG(rg) {
+		rg = rg.replace(/\D/g, "")
+		rg = rg.replace(/(\d{2})(\d)/, "$1.$2")
+		rg = rg.replace(/(\d{3})(\d)/, "$1.$2")
+		rg = rg.replace(/(\d{3})(\d{1,1})$/, "$1-$2")
+		return rg
+	}
+
+	function mCEP(cep) {
+		cep = cep.replace(/\D/g, "")
+		cep = cep.replace(/^(\d{2})(\d)/, "$1.$2")
+		cep = cep.replace(/\.(\d{3})(\d)/, ".$1-$2")
+		return cep
+	}
+
+	function mNum(num) {
+		num = num.replace(/\D/g, "")
+		return num
+	}
+</script>
+	<script>
+	function validarCPF(cpf) {
+
+		cpf = cpf.replace(/[^\d]+/g, '');
+		if (cpf == '')
+			return false;
+		// Elimina CPFs invalidos conhecidos	
+		if (cpf.length != 11 || cpf == "00000000000" || cpf == "11111111111"
+				|| cpf == "22222222222" || cpf == "33333333333"
+				|| cpf == "44444444444" || cpf == "55555555555"
+				|| cpf == "66666666666" || cpf == "77777777777"
+				|| cpf == "88888888888" || cpf == "99999999999") {
+
+			return false;
+
+		}
+		// Valida 1o digito	
+		add = 0;
+		for (i = 0; i < 9; i++)
+			add += parseInt(cpf.charAt(i)) * (10 - i);
+		rev = 11 - (add % 11);
+		if (rev == 10 || rev == 11)
+			rev = 0;
+		if (rev != parseInt(cpf.charAt(9)))
+			return false;
+		// Valida 2o digito	
+		add = 0;
+		for (i = 0; i < 10; i++)
+			add += parseInt(cpf.charAt(i)) * (11 - i);
+		rev = 11 - (add % 11);
+
+		if (rev == 10 || rev == 11)
+			rev = 0;
+		if (rev != parseInt(cpf.charAt(10)))
+			return false;
+
+		return true;
+
+	}
+
+	function validaDOC(cpf) {
+
+		if (validarCPF(cpf) == false) {
+			//document.getElementById("campoCPF").value = "";
+			document.getElementById("campoCPF").select();
+			document.getElementById("campoCPF").focus();
+			document.getElementById("campoCPF").style.backgroundColor = "#ffc2c2";
+		}/*else{
+
+	}
+
+	function limpa() {
+		document.getElementById("campoCPF").style.backgroundColor = "white";
+	}
+</script>
 </body>
 </html>
