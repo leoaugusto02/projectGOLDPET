@@ -77,6 +77,9 @@ INSERT INTO Animais VALUES(NULL, "Dolf", "ariano", "branco", "alto", "5", "sauda
 INSERT INTO Pessoa VALUES(NULL, "adolfinho", "Adolf", "Naitler", "1889-04-20", "Guardião", "161", "adolfH@gmail.com", "12345654", "M", "123214354" "Perto do Campo", "dio", "12345678", "12345678");
 INSERT INTO Agenda VALUES(NULL, 1, 1, "2019-10-25", "20:12:30", "Em aguardo", "pego");
 				
+ALTER TABLE Pessoa MODIFY COLUMN telefone1 varchar(20);
+ALTER TABLE Pessoa MODIFY COLUMN telefone2 varchar(20);			
+				
 				
 				---	LAUDO---
 				
