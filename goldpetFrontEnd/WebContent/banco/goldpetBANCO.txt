@@ -61,11 +61,11 @@ CREATE TABLE Laudo(
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
-CREATE TABLE Resgate(	
+CREATE TABLE Resgate(	w
 	codeResgate integer primary key auto_increment,
 	descricao varchar (150) not null,
 	endereco varchar(50) not null,
-	dogeImagem varchar (20) not null,
+	dogeImagem varchar (60) not null,
 	nivelUrgencia integer not null,
 	status varchar(20) not null
 )CHARACTER SET utf8 COLLATE utf8_general_ci;

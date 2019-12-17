@@ -29,7 +29,8 @@
             android:id="@+id/edtNome"
             android:layout_width="189dp"
             android:layout_height="wrap_content"
-            android:hint="Nome" />
+            android:hint="Nome"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/edtIdade"
@@ -37,13 +38,15 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="190dp"
             android:layout_marginTop="-45dp"
-            android:hint="Idade" />
+            android:hint="Idade"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/edtRaca"
             android:layout_width="189dp"
             android:layout_height="wrap_content"
-            android:hint="Raça" />
+            android:hint="Raça"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/edtPorte"
@@ -51,7 +54,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="190dp"
             android:layout_marginTop="-45dp"
-            android:hint="Porte" />
+            android:hint="Porte"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/edtEspecie"
@@ -82,6 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:hint="Estado do pet..."
+            android:inputType="text"
             android:textSize="18dp" />
 
     <Button

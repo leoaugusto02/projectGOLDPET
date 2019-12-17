@@ -106,7 +106,6 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
                         });
                     }
 
-
                 }
             }.start();
         }
