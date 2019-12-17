@@ -35,7 +35,7 @@ public class Adocao_UltimosAdotadosAdapter extends RecyclerView.Adapter<Adocao_U
     public void onBindViewHolder(Adocao_UltimosAdotadosViewHolder holder, int position) {
         final Animais animais = lstAnimais.get(position);
 
-        Picasso.with(context).load("http://192.168.1.7:8080/goldpetFrontEnd/imgAnimalAdocao/" + animais.getImgAnimal()).into(holder.adImgAnimal);
+        Picasso.with(context).load("http://192.168.0.101:8080/goldpetFrontEnd/imgAnimalAdocao/" + animais.getImgAnimal()).into(holder.adImgAnimal);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

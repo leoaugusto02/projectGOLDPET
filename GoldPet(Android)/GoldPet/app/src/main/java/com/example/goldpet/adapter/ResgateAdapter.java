@@ -43,7 +43,7 @@ public class ResgateAdapter extends RecyclerView.Adapter<Adocao_ResgateViewHolde
 
 
         holder.infoAnimal.setText("Nível : " + resgate.getNivelUrgencia() + "\r\n" + "Status: " + resgate.getStatus());
-        Picasso.with(context).load("http://192.168.1.7:8080/goldpetFrontEnd/imgAnimalResgate/" + resgate.getDogeImagem()).into(holder.imgAnimal);
+        Picasso.with(context).load("http://192.168.0.101:8080/goldpetFrontEnd/imgAnimalResgate/" + resgate.getDogeImagem()).into(holder.imgAnimal);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
