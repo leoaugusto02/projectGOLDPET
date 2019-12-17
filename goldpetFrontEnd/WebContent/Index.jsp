@@ -146,12 +146,10 @@ body, html {
 								<div class="navbar-nav">
 									<a class="nav-item nav-link active" href="adocao.jsp">Adoção<span
 										class="sr-only">(current)</span></a> 
-										<a class="nav-item nav-link " href="Resgate.jsp">Resgate</a> <a
-										class="nav-item nav-link active" href="DicasPets.jsp">Dicas</a>
+										<a class="nav-item nav-link " href="Resgate.jsp">Resgate</a> 
 									<a class="nav-item nav-link active" href="GerenciarUsuario.jsp">Dashboard</a>
 									<a class="nav-item nav-link active" href="Login.jsp">Login</a>
 									<a class="nav-item nav-link active" href="perfil.jsp">Perfil</a>
-									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
 									<a class="nav-item nav-link active" href="Cadastro.jsp">Cadastrar-se</a>
 								</div>
 							</div>
@@ -169,7 +167,7 @@ body, html {
 					<li data-target="#carouselSite" data-slide-to="2"></li>
 				</ol>
 				<div class="carousel-inner">
-						<% 
+						<%-- <% 
 							String acao;
 							String parametros;
 							URL url;
@@ -199,18 +197,18 @@ body, html {
 							while ((linha = br.readLine()) != null) {
 								obj = new JSONObject(linha);
 							
-						%>
+						%> --%>
 				
 					<div class="carousel-item active">
-						<img class="d-block w-100" src="imgAnimalResgate/<%=obj.getString("imgAnimalResgate")%>"
+						<img class="d-block w-100" src="img/slide01.png"
 							style="height: 500px" class="img-fluid d-block">
 					</div>
 						
-						<%
+						<%-- <%
 							}
 							con.disconnect();
-						%>
-					<!-- <div class="carousel-item">
+						%> --%>
+				 <div class="carousel-item">
 					
 
 						<img class="d-block w-100" src="img/slide02.png"
@@ -223,7 +221,7 @@ body, html {
 						<img class="d-block w-100" src="img/slide01.jpg"
 							style="height: 500px" class="img-fluid d-block">
 
-					</div> -->
+					</div>
 
 				</div>
 
@@ -237,10 +235,19 @@ body, html {
 
 			</div>
 			<%
-				acao = "homeListas";
-				parametros = "acao=" + acao;
+			String acao;
+			String parametros;
+			URL url;
+			HttpURLConnection con;
+			DataOutputStream wr;
+			BufferedReader br;
+			String linha = "";
+			JSONObject obj;	
+			
+				 acao = "homeListas";
+				 parametros = "acao=" + acao;
 
-				url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
+				 url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
 
 				con = (HttpURLConnection) url.openConnection();
 				con.setRequestMethod("POST");

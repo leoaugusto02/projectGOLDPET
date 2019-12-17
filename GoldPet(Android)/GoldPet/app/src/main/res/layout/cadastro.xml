@@ -37,17 +37,19 @@
             android:hint="Sobrenome" />
 
 
-    <EditText
-        android:id="@+id/edtDataNasc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="DD/MM/AAAA"/>
+        <EditText
+            android:id="@+id/edtDataNasc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="DD/MM/AAAA"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/edtCep"
             android:layout_width="194dp"
             android:layout_height="wrap_content"
-            android:hint="CEP" />
+            android:hint="CEP"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/edtReferencia"
@@ -61,7 +63,8 @@
             android:id="@+id/edtCpf"
             android:layout_width="197dp"
             android:layout_height="wrap_content"
-            android:hint="CPF" />
+            android:hint="CPF"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/edtRg"
@@ -69,14 +72,16 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="195dp"
             android:layout_marginTop="-45dp"
-            android:hint="RG" />
+            android:hint="RG"
+            android:inputType="number" />
 
 
         <EditText
             android:id="@+id/edtTel1"
             android:layout_width="197dp"
             android:layout_height="43dp"
-            android:hint="Celular" />
+            android:hint="Celular"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/edtTel2"
@@ -84,7 +89,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="195dp"
             android:layout_marginTop="-45dp"
-            android:hint="Telefone" />
+            android:hint="Telefone"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/edtEmail"
