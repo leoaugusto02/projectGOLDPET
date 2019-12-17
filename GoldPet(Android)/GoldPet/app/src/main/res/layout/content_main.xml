@@ -41,56 +41,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:text="Últimos animais lançados para adoção"
+        android:text="Últimos animais adotados"
         android:textSize="18dp"
         android:textColor="#000"/>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/snow"
-        android:layout_width="86dp"
-        android:layout_height="77dp"
-        android:layout_marginLeft="35dp"
-        android:src="@drawable/snow" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/golden"
-            android:layout_width="86dp"
-            android:layout_height="77dp"
-            android:layout_marginLeft="140dp"
-            android:layout_marginTop="-77dp"
-            android:src="@drawable/golden" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/peludinho"
-        android:layout_width="86dp"
-        android:layout_height="77dp"
-        android:layout_marginLeft="240dp"
-        android:layout_marginTop="-77dp"
-        android:src="@drawable/peludinho"/>
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/lilly"
-            android:layout_width="86dp"
-            android:layout_height="77dp"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/lily" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/black"
-        android:layout_width="86dp"
-        android:layout_height="77dp"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="-77sp"
-        android:src="@drawable/black"/>
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img"
-        android:layout_width="86dp"
-        android:layout_height="77dp"
-        android:layout_marginLeft="240dp"
-        android:layout_marginTop="-77dp"
-        android:src="@drawable/snow"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAdocaoUltimosResgates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/verMais"

@@ -60,6 +60,7 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
         rvAnimais.setAdapter(adocaoAdapter);
     }
 
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -104,7 +105,6 @@ public class Adocao extends AppCompatActivity implements View.OnClickListener {
                             }
                         });
                     }
-
 
                 }
             }.start();

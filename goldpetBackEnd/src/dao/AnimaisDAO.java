@@ -111,7 +111,7 @@ public class AnimaisDAO {
 	}
 
 	public List<Animais> listarAnimaisAdocao() throws SQLException {
-		String sql = "SELECT codeAnimal ,nome, status, raca, especie, imgAnimal FROM Animais a";
+		String sql = "SELECT codeAnimal ,nome, status, raca, especie, imgAnimal FROM Animais a WHERE status NOT LIKE 'Adotado'";
 
 		con = ConnectionDB.getConnection();
 
@@ -209,6 +209,29 @@ public class AnimaisDAO {
 		ps.setString(4, a.getAgenda().getDia_marcado());
 
 		return ps.executeUpdate() > 0;
+	}
+	
+	public List<Animais> listarUltimosAdotados() throws SQLException{
+		String sql = "select nome, imgAnimal FROM Animais WHERE status = 'Adotado' ORDER BY codeAnimal DESC LIMIT 6";
+		
+		con = ConnectionDB.getConnection();
+		
+		ps = con.prepareStatement(sql);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		List<Animais> lstUltimosAdotados = new ArrayList<>();
+		while(rs.next()) {
+			Animais a = new Animais();
+			
+			a.setNome(rs.getString("nome"));
+			a.setImgAnimal(rs.getString("imgAnimal"));
+			
+			lstUltimosAdotados.add(a);
+		}
+		
+		return lstUltimosAdotados;
+		
 	}
 
 }

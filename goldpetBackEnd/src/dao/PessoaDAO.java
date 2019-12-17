@@ -158,7 +158,7 @@ public class PessoaDAO {
 		return null;
 	}
 
-	public List<Pessoa> listarPessoasDashBoard(Pessoa p) throws SQLException {
+	public List<Pessoa> listarPessoasDashBoard() throws SQLException {
 
 		String sql = "SELECT codePerson, p_nome, s_nome, tipo, email, cpf, rg, cep, telefone1, telefone2 FROM Pessoa";
 
@@ -170,7 +170,8 @@ public class PessoaDAO {
 
 		List<Pessoa> lstPessoa = new ArrayList<>();
 		while (rs.next()) {
-
+			Pessoa p = new Pessoa();
+			
 			p.setCodePerson(rs.getInt("codePerson"));
 			p.setP_nome(rs.getString("p_nome"));
 			p.setS_nome(rs.getString("s_nome"));
@@ -184,9 +185,9 @@ public class PessoaDAO {
 
 			lstPessoa.add(p);
 
-			return lstPessoa;
+			
 		}
-		return null;
+		return lstPessoa;
 	}
 
 	public boolean verificarUsuario(Pessoa p) throws SQLException {

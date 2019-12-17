@@ -38,11 +38,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.AnimaisDAO;
 import dao.PessoaDAO;
+import dao.ResgateDAO;
 import vo.Agenda;
 import vo.Animais;
 import vo.Funcionario;
 import vo.Laudo;
 import vo.Pessoa;
+import vo.Resgate;
 
 @MultipartConfig
 
@@ -168,7 +170,29 @@ public class ProcessaAnimais extends HttpServlet {
 					e.printStackTrace();
 				}
 
-			} /*
+			} else if(acao.equals("homeListas")) { 				
+				try {
+					if(aDao.listarUltimosAdotados() != null) {
+						
+						List<Animais> listUA = aDao.listarUltimosAdotados();
+						
+						for(Animais a : listUA) {
+							objMens.put("nome", a.getNome());
+							objMens.put("imgAnimal", a.getImgAnimal());
+							out.print(objMens.toString() + "\n");
+						}
+					}else {
+						objMens.put("mensagem", "Ninguém foi adotado ainda");
+						out.print(objMens.toString() + "\n");
+					}
+					
+				} catch (SQLException e) {
+					System.out.println("Erro SQL homeListas -- " + e);
+					e.printStackTrace();
+				}
+			}
+			
+			/*
 				 * else if (acao.equals("inserirLaudo")) { int codAnimal =
 				 * Integer.valueOf(req.getParameter("codAnimal")); String nomeVet =
 				 * req.getParameter("nomeVet"); String dataDiagnostico =
@@ -258,7 +282,7 @@ public class ProcessaAnimais extends HttpServlet {
 				// + nome + ext);
 				OutputStream os;
 				if(filePath == null) {
-					os = new FileOutputStream("C:\\Users\\Aluno\\JavaWEB\\4inf\\projectGOLDPET\\goldpetFrontEnd\\WebContent\\imgAnimalAdocao\\" + nome.trim() + ext);
+					os = new FileOutputStream("C:\\GitHub Repositorys\\GitHub\\projectGOLDPET\\goldpetFrontEnd\\WebContent\\imgAnimalAdocao\\" + nome.trim() + ext);
 				}else {
 					os = new FileOutputStream(filePath + "imgAnimalAdocao//" + nome.trim() + ext);
 				}
@@ -292,7 +316,6 @@ public class ProcessaAnimais extends HttpServlet {
 				if (aDao.inserirAnimal(a)) {
 					System.out.println("Animal inserido com sucesso");
 					objMens.put("mensagem", "Adocão foi um sucesso");
-					resp.sendRedirect("http://localhost:8080/goldpetFrontEnd/adocao.jsp");
 				}
 
 			} catch (SQLException e) {

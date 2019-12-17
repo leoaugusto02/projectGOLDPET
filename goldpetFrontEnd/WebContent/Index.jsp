@@ -152,6 +152,7 @@ body, html {
 									<a class="nav-item nav-link active" href="Login.jsp">Login</a>
 									<a class="nav-item nav-link active" href="perfil.jsp">Perfil</a>
 									<a class="nav-item nav-link " href="AjudeOng.jsp">Ajude-nos</a>
+									<a class="nav-item nav-link active" href="Cadastro.jsp">Cadastrar-se</a>
 								</div>
 							</div>
 						</nav>
@@ -170,14 +171,49 @@ body, html {
 					<li data-target="#carouselSite" data-slide-to="2"></li>
 				</ol>
 				<div class="carousel-inner">
+						<%
+							String acao;
+							String parametros;
+							URL url;
+							HttpURLConnection con;
+							DataOutputStream wr;
+							BufferedReader br;
+							String linha = "";
+							JSONObject obj;
+							
+							acao = "homeListasResgate";
+							parametros = "acao=" + acao;
+							
+							url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaResgate");
+
+							con = (HttpURLConnection) url.openConnection();
+							con.setRequestMethod("POST");
+							con.setDoOutput(true);
+							
+							wr = new DataOutputStream(con.getOutputStream());
+							wr.writeBytes(parametros);
+
+							br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+							linha = "";
+							obj = new JSONObject();	
+							
+							while ((linha = br.readLine()) != null) {
+								obj = new JSONObject(linha);
+							
+						%>
+				
 					<div class="carousel-item active">
-
-						<img class="d-block w-100" src="img/slide01.png"
+						<img class="d-block w-100" src="imgAnimalResgate/<%=obj.getString("imgAnimalResgate")%>"
 							style="height: 500px" class="img-fluid d-block">
-
 					</div>
-
-					<div class="carousel-item">
+						
+						<%
+							}
+							con.disconnect();
+						%>
+					<!-- <div class="carousel-item">
+					
 
 						<img class="d-block w-100" src="img/slide02.png"
 							style="height: 500px" class="img-fluid d-block">
@@ -189,7 +225,7 @@ body, html {
 						<img class="d-block w-100" src="img/slide01.jpg"
 							style="height: 500px" class="img-fluid d-block">
 
-					</div>
+					</div> -->
 
 				</div>
 
@@ -203,30 +239,29 @@ body, html {
 
 			</div>
 			<%
-				String acao = "listaAdocao";
-				String parametros = "acao=" + acao;
+				acao = "homeListas";
+				parametros = "acao=" + acao;
 
-				URL url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
+				url = new URL("http://localhost:8080/goldpetBackEnd/ProcessaAnimais");
 
-				HttpURLConnection con = (HttpURLConnection) url.openConnection();
+				con = (HttpURLConnection) url.openConnection();
 				con.setRequestMethod("POST");
 				con.setDoOutput(true);
 
 				System.out.println(parametros);
 
-				DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+				wr = new DataOutputStream(con.getOutputStream());
 				wr.writeBytes(parametros);
 
-				BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
-				String linha = "";
-				JSONObject obj;
+				linha = "";
+				obj = new JSONObject();
 			%>
 
 			<div id="dogF">
 
-				<h4 style="margin-top: 2%; margin-left: 0.5%;">Dogs para
-					Adoação</h4>
+				<h4 style="margin-top: 2%; margin-left: 0.5%;">Ultimos Animais Adotados</h4>
 
 				<%
 					System.out.println("Tô aqui antes do while");
@@ -240,7 +275,7 @@ body, html {
 
 						System.out.println("img/" + obj.getString("imgAnimal"));
 
-						if (i == 0) {
+						 if (i == 0) {
 				%>
 
 				<div id="imgPet" class="row" style="margin-left: 0.5%;">
@@ -248,7 +283,7 @@ body, html {
 						}
 					%>
 					<div id="imgPet">
-						<img src="img/<%=obj.getString("imgAnimal") %>" alt="slide02.png" class="img-thumbnail">
+						<img src="imgAnimalAdocao/<%=obj.getString("imgAnimal") %>" alt="slide02.png" class="img-thumbnail">
 						<div id="dogName" style="margin-left: 20%;">
 							<strong style="margin-left: 3%"><%=obj.getString("nome") %></strong>
 						</div>
@@ -273,7 +308,6 @@ body, html {
 			<%
 				}
 			%>
-
 			<!--	<div id="imgPet" style="margin-left: 3%;">
 						<img src="img/slide01.png" alt="slide01.png" class="img-thumbnail">
 						<div id="dogName" style="margin-left: 20%;">

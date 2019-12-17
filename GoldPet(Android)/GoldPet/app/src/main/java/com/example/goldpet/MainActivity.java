@@ -3,6 +3,8 @@ package com.example.goldpet;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 
 import androidx.core.view.GravityCompat;
@@ -10,6 +12,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
+import com.example.goldpet.adapter.AdocaoAdapter;
+import com.example.goldpet.adapter.Adocao_UltimosAdotadosAdapter;
+import com.example.goldpet.model.ConsumirWebService;
+import com.example.goldpet.model.vo.Animais;
 import com.google.android.material.navigation.NavigationView;
 
 import com.levirs.example.goldpet.R;
@@ -20,17 +26,29 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     DrawerLayout drawer;
-
+    private RecyclerView rvAnimais;
+    private Adocao_UltimosAdotadosAdapter adocaoUltimosAdotadosAdapter;
+    private List<Animais> animaisList;
+    private Handler handler;
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
     TextView verMais;
@@ -46,7 +64,10 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        rvAnimais = findViewById(R.id.rvAdocaoUltimosResgates);
         drawer = findViewById(R.id.drawer_layout);
+        handler = new Handler();
+        
         navigationView = findViewById(R.id.nav_view);
         toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -69,8 +90,14 @@ public class MainActivity extends AppCompatActivity
                 setNavigationViewListener();
             }
         });
+        verMais.setVisibility(View.GONE);
 
-
+        listarAnimaisAdocao();
+        animaisList = new ArrayList<>();
+        adocaoUltimosAdotadosAdapter = new Adocao_UltimosAdotadosAdapter(this, animaisList);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
+        rvAnimais.setLayoutManager(layoutManager);
+        rvAnimais.setAdapter(adocaoUltimosAdotadosAdapter);
     }
 
     @Override
@@ -155,4 +182,49 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
     }
+
+
+    private void listarAnimaisAdocao() {
+        new Thread(){
+            public void run(){
+                final JSONArray jsonAnimais = ConsumirWebService.listarUltimosAdotados();
+
+                if(jsonAnimais == null){
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(MainActivity.this, "Não existe animais para adotar no momento", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }else{
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            exibirAnimais(jsonAnimais);
+                        }
+                    });
+                }
+            }
+        }.start();
+
+    }
+
+    private void exibirAnimais(JSONArray jsonAnimais) {
+        try {
+            for (int i = 0; i < jsonAnimais.length(); i++) {
+                JSONObject jsonAnimal = jsonAnimais.getJSONObject(i);
+
+                Animais animais = new Animais();
+
+                animais.setImgAnimal(jsonAnimal.getString("imgAnimal"));
+                animaisList.add(animais);
+            }
+
+        } catch (Exception e) {
+            Log.e("Error", "ErrorJSONARR exibirAnimais MainAC -- " + e);
+            e.printStackTrace();
+        }
+        adocaoUltimosAdotadosAdapter.notifyDataSetChanged();
+    }
+
 }
