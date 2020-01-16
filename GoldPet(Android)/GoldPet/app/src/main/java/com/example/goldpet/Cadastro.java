@@ -65,7 +65,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         edtTel2.addTextChangedListener(mtwt);
 
         //Data
-        SimpleMaskFormatter smfd = new SimpleMaskFormatter("NN/NN/NNNN");
+        SimpleMaskFormatter smfd = new SimpleMaskFormatter("NN-NN-NNNN");
         MaskTextWatcher mtwd = new MaskTextWatcher(edtDataNasc,smfd);
         edtDataNasc.addTextChangedListener(mtwd);
 

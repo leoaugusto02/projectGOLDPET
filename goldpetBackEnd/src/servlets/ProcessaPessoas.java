@@ -89,10 +89,23 @@ public class ProcessaPessoas extends HttpServlet {
 
 			} else if (acao.equals("cadastrar")) {
 				Pessoa p = new Pessoa();
-
+			
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-MM");
+				Date dataNasc;
 				String apelido, p_nome, s_nome, senha, confSenha, email, cep, cpf, rg, genero, referencia, tel1,
 						tel2;
+	
+				try {
+					
+					dataNasc = format.parse(req.getParameter("nascimento"));
+					p.setNascimento(dataNasc);
 
+
+				}catch (Exception e) {
+					System.out.println(e);
+					e.printStackTrace();
+				}
+				
 				apelido = req.getParameter("apelido");
 				p_nome = req.getParameter("pNome");
 				s_nome = req.getParameter("sNome");
@@ -109,42 +122,7 @@ public class ProcessaPessoas extends HttpServlet {
 				
 				//String filePath = req.getParameter("pathFile");
 
-				try {
-
-					SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-MM");
-					Date dataNasc;
-			
-					dataNasc = format.parse(req.getParameter("nascimento"));
-					p.setNascimento(dataNasc);
-
-					/*
-					Part file = req.getPart("imagem");
-					String fileName = file.getSubmittedFileName();
-					System.out.println("FN - " + fileName);
-
-					int posInicial = fileName.lastIndexOf('.');
-					int posFinal = fileName.length();
-					ext = fileName.substring(posInicial, posFinal);
-
-					InputStream fileContent = file.getInputStream();
-					System.out.println("NOME - " + p_nome.trim() + ext);
-					
-					OutputStream os = new FileOutputStream(filePath + "img//" + p_nome.trim() + ext);
-					
-					int data = fileContent.read();
-
-					while (data != -1) {
-						os.write(data);
-						data = fileContent.read();
-					}
-
-					os.close();
-					fileContent.close();?
-					*/
-
-					}catch (Exception e) {
-					// TODO: handle exception
-				}
+				
 
 				p.setApelido(apelido);
 				p.setP_nome(p_nome);
@@ -159,8 +137,6 @@ public class ProcessaPessoas extends HttpServlet {
 				p.setGenero(genero);
 				p.setRg(rg);
 				
-				p.setImgPerfil(rg + p_nome.trim());
-
 				try {
 					if (pDao.verificarUsuario(p)) {
 						if (senha.equals(confSenha)) {
